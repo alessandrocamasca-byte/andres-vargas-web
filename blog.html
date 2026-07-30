@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Andrés Vargas Sastrería</title>
+  <meta name="description" content="Diario sartorial Andrés Vargas: guías de estilo, cuidado de prendas, telas de temporada y el arte de la sastrería a medida." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="brand"><span class="brand__name">Andrés Vargas</span><span class="brand__tag">Sastrería · Est. 1994</span></a>
+      <ul class="nav__menu">
+        <li><a href="index.html" class="nav__link">Inicio</a></li>
+        <li><a href="telas.html" class="nav__link">Telas</a></li>
+        <li><a href="camisas.html" class="nav__link">Camisas</a></li>
+        <li><a href="trajes.html" class="nav__link">Trajes</a></li>
+        <li><a href="corporativo.html" class="nav__link">Corporativo</a></li>
+        <li><a href="blog.html" class="nav__link active">Blog</a></li>
+        <li><a href="index.html#cita" class="btn btn--gold nav__cta">Reservar cita</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Inicio</a> · Blog</div>
+      <span class="eyebrow eyebrow--claro">Diario sartorial</span>
+      <h1 class="display-lg">El arte de vestir, en palabras</h1>
+      <p class="lead max-60">Guías de estilo, secretos del oficio y todo lo que necesitas saber para sacar el máximo partido a tu guardarropa a medida.</p>
+    </div>
+  </section>
+
+  <!-- POST DESTACADO -->
+  <section class="section">
+    <div class="container">
+      <article class="post post--featured reveal">
+        <div class="post__media"><img src="https://images.unsplash.com/photo-1553143820-c1c9a6a4a1b1?auto=format&fit=crop&w=900&q=80" alt="Primer traje a medida" /></div>
+        <div class="post__body">
+          <span class="post__meta">Destacado · Guías · 5 min de lectura</span>
+          <h3>Cómo elegir tu primer traje a medida</h3>
+          <p>Dar el paso de la confección industrial a la sastrería puede parecer intimidante. En esta guía te acompañamos desde la elección de la tela hasta la última prueba, para que tu primera experiencia sea memorable.</p>
+          <div class="mt-2"><a href="#" class="link-arrow">Leer artículo</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <section class="section section--tight" style="padding-top:0;">
+    <div class="container">
+      <div class="tag-row" data-filter-group data-filter-target="#blog-grid">
+        <button class="chip active" data-cat="all">Todo</button>
+        <button class="chip" data-cat="guias">Guías</button>
+        <button class="chip" data-cat="telas">Telas</button>
+        <button class="chip" data-cat="estilo">Estilo</button>
+        <button class="chip" data-cat="cuidado">Cuidado</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID DE POSTS -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="grid grid-3" id="blog-grid">
+
+        <article class="post reveal" data-cat="telas">
+          <div class="post__media"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80" alt="Lanas de invierno" /></div>
+          <div class="post__body"><span class="post__meta">Telas · 4 min</span><h3>Lanas de invierno: peso, caída y calidez</h3><p>La guía definitiva para entender los gramajes y elegir la lana ideal para la temporada fría.</p><a href="#" class="link-arrow">Leer</a></div>
+        </article>
+
+        <article class="post reveal" data-delay="1" data-cat="estilo">
+          <div class="post__media"><img src="https://images.unsplash.com/photo-1594938328870-9623159c8c99?auto=format&fit=crop&w=700&q=80" alt="Black tie" /></div>
+          <div class="post__body"><span class="post__meta">Estilo · 6 min</span><h3>El código black tie descifrado</h3><p>Reglas modernas para el esmoquin y los eventos de gala sin cometer errores.</p><a href="#" class="link-arrow">Leer</a></div>
+        </article>
+
+        <article class="post reveal" data-delay="2" data-cat="cuidado">
+          <div class="post__media"><img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=700&q=80" alt="Cuidado de trajes" /></div>
+          <div class="post__body"><span class="post__meta">Cuidado · 3 min</span><h3>Cómo prolongar la vida de tu traje</h3><p>Colgado, cepillado y descanso: los tres hábitos que multiplican la duración de tus prendas.</p><a href="#" class="link-arrow">Leer</a></div>
+        </article>
+
+        <article class="post reveal" data-cat="guias">
+          <div class="post__media"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt="Guía de ajuste" /></div>
+          <div class="post__body"><span class="post__meta">Guías · 5 min</span><h3>Anatomía de un traje bien ajustado</h3><p>Hombros, largo de manga y caída del pantalón: qué mirar en el espejo.</p><a href="#" class="link-arrow">Leer</a></div>
+        </article>
+
+        <article class="post reveal" data-delay="1" data-cat="estilo">
+          <div class="post__media"><img src="https://images.unsplash.com/photo-1520367745676-56196632073f?auto=format&fit=crop&w=700&q=80" alt="Combinar colores" /></div>
+          <div class="post__body"><span class="post__meta">Estilo · 4 min</span><h3>El azul como color base del guardarropa</h3><p>Por qué el azul marino es la inversión más versátil que puedes hacer.</p><a href="#" class="link-arrow">Leer</a></div>
+        </article>
+
+        <article class="post reveal" data-delay="2" data-cat="telas">
+          <div class="post__media"><img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=700&q=80" alt="Lino de verano" /></div>
+          <div class="post__body"><span class="post__meta">Telas · 4 min</span><h3>Lino y frescolana: vestir con calor</h3><p>Las telas que te mantienen elegante cuando sube la temperatura.</p><a href="#" class="link-arrow">Leer</a></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER CTA -->
+  <section class="section cta-band">
+    <div class="container">
+      <div class="rule"><span></span><span class="diamond"></span><span></span></div>
+      <h2 class="display-lg">Recibe el diario sartorial</h2>
+      <p>Un correo al mes con guías de estilo, novedades de temporada y consejos del maestro sastre.</p>
+      <form class="newsletter" style="max-width:420px;margin:0 auto;border-color:rgba(255,255,255,0.4);">
+        <input type="email" placeholder="Tu correo" required aria-label="Correo" />
+        <button type="submit" aria-label="Suscribir">→</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <span class="brand__name">Andrés Vargas</span>
+          <p>Sastrería a medida desde 1994. Elegancia atemporal confeccionada en el corazón de Bogotá.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5A1.94 1.94 0 113 5a1.94 1.94 0 013.94 0zM3.5 8.5h3v12h-3zM10 8.5h2.9v1.6h.04c.4-.76 1.4-1.6 2.9-1.6 3.1 0 3.66 2 3.66 4.7v7.3h-3v-6.5c0-1.55-.03-3.55-2.16-3.55-2.16 0-2.5 1.7-2.5 3.44v6.6H10z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer"><h4>Colecciones</h4><ul><li><a href="trajes.html">Trajes</a></li><li><a href="camisas.html">Camisas</a></li><li><a href="telas.html">Telas</a></li><li><a href="corporativo.html">Corporativo</a></li></ul></div>
+        <div class="footer"><h4>Casa</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#cita">Reservar cita</a></li><li><a href="mailto:citas@andresvargas.com">Contacto</a></li></ul></div>
+        <div class="footer"><h4>Boletín sartorial</h4><p style="font-weight:300;font-size:0.9rem;">Consejos de estilo y novedades de temporada, una vez al mes.</p><form class="newsletter"><input type="email" placeholder="Tu correo" required aria-label="Correo" /><button type="submit" aria-label="Suscribir">→</button></form></div>
+      </div>
+      <div class="footer__bottom"><span>© 2026 Sastrería Andrés Vargas. Todos los derechos reservados.</span><span>Carrera 11 · Bogotá, Colombia</span></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
