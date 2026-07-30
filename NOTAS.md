@@ -14,7 +14,7 @@ Memoria viva del proyecto. Se actualiza en cada sesión.
 ## Pendientes (backlog)
 
 1. ~~Crear el repo remoto en GitHub y hacer el primer push.~~ HECHO 30 jul 2026: https://github.com/alessandrocamasca-byte/andres-vargas-web (privado, commit 2659660).
-2. Conectar Cloudflare Pages al repo (preguntar cuenta de Cloudflare a usar, regla de rigor). SIGUIENTE PASO.
+2. ~~Conectar Cloudflare Pages al repo.~~ HECHO 30 jul 2026: proyecto `andres-vargas-web` en la cuenta de Cloudflare de Alessandro con correo de agencia (alessandrocamasca@eqapla.com). URL: https://andres-vargas-web.pages.dev · Build settings vacíos (HTML puro, sin build). Push a `main` = deploy automático.
 3. Recibir del cliente: logo real, fotos del taller y prendas, dirección exacta, teléfono, correos, precios validados.
 4. Botón flotante de WhatsApp (clave de conversión en Perú).
 5. Agenda de citas real (Calendly o similar, como Firenze).
@@ -23,6 +23,8 @@ Memoria viva del proyecto. Se actualiza en cada sesión.
 8. Dominio del cliente: preguntar si ya tiene (andresvargas.pe o similar).
 
 ## Incidencias y limitaciones
+
+- **Fotos de Unsplash por hotlink:** las imágenes vienen de images.unsplash.com, no del repo. El 30 jul 2026 la foto `1553143820-c1c9a6a4a1b1` desapareció y rompió 2 bloques en producción. Riesgo latente: puede volver a pasar con cualquier otra. Se resuelve de raíz cuando el cliente entregue sus fotos reales y se alojen en el repo.
 
 - El artifact de Claude bloquea CDNs de fuentes: Playfair Display solo carga en la versión servida con hosting propio; en el artifact se usa el fallback serif del sistema.
 - `gh` CLI no está instalado en esta máquina, el repo remoto se crea vía web UI de GitHub.

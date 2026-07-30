@@ -5,7 +5,7 @@ Web del cliente Andrés Vargas Boutique, sastrería a medida en Lima, Perú. Obj
 ## Repo y deploy
 
 - **Repo:** `alessandrocamasca-byte/andres-vargas-web` (privado). Decisión del 30 jul 2026: cuenta personal; migrar a `hag240401` si Hernán lo pide.
-- **Deploy:** estático puro, por regla EQAPLA va a **Cloudflare Pages conectado al repo**. Push a `main` = deploy. Aún sin configurar (ver NOTAS.md).
+- **Deploy:** **Cloudflare Pages conectado al repo**, proyecto `andres-vargas-web`, cuenta de Cloudflare con correo de agencia (alessandrocamasca@eqapla.com). URL de producción: **https://andres-vargas-web.pages.dev** · Push a `main` = deploy automático (sin build command, HTML puro).
 - **Regla de oro:** lo publicado sale siempre del repo. Si no está pusheado, no existe.
 
 ## Estructura y fuente de verdad
