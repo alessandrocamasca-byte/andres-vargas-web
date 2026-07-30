@@ -3,1006 +3,1239 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Andrés Vargas | Sastrería a Medida en Lima</title>
-<meta name="description" content="Sastrería Andrés Vargas: trajes y camisas a medida en Lima. Confección artesanal desde 1994 y una biblioteca de más de 400 telas italianas e inglesas.">
-<meta name="theme-color" content="#10305F">
-<link rel="canonical" href="https://andres-vargas-web.pages.dev/">
+<title>Andrés Vargas | Sastrería a Medida en Lima desde 1982</title>
+<meta name="description" content="Sastrería Andrés Vargas: 44 años confeccionando trajes y camisas a medida en Lima. Distribuidores oficiales de telas nacionales e importadas. Surco y Cercado de Lima.">
+<meta name="theme-color" content="#1A2744">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Andrés Vargas | Sastrería a Medida en Lima">
-<meta property="og:description" content="Confección artesanal desde 1994 y más de 400 telas italianas e inglesas. Diseña tu traje o camisa a medida.">
+<meta property="og:title" content="Andrés Vargas | Sastrería a Medida en Lima desde 1982">
+<meta property="og:description" content="Cada prenda que hacemos guarda la medida exacta del carácter de quien la viste. 44 años de oficio en Lima.">
+<meta property="og:image" content="assets/editorial-esmoquin-marfil.jpg">
 <meta property="og:locale" content="es_PE">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2310305F'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' font-weight='bold' fill='%23C4A15A' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="assets/escudo-azul.png">
+<link rel="apple-touch-icon" href="assets/escudo-azul.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   DESIGN SYSTEM · ANDRÉS VARGAS SASTRERÍA
+   Derivado del Manual de Marca oficial.
+   Color: únicamente los tres azules primarios del manual.
+   Tipografía: Oswald (sust. Big Noodle Titling) + Montserrat (sust. Gotham).
+   Motivo estructural: doble filete, del doble contorno del escudo.
+   ============================================================ */
 :root {
-  --av-azul-900: #071633;
-  --av-azul-800: #0B2148;
-  --av-azul-700: #10305F;
-  --av-azul-600: #17417E;
-  --av-azul-500: #21569E;
-  --av-azul-400: #3D74BE;
-  --av-oro: #C4A15A;
-  --av-oro-claro: #E4CE9C;
-  --av-oro-oscuro: #9B7C3C;
-  --av-hueso: #FBFAF7;
-  --av-crema: #F4F1EA;
-  --av-humo: #EBE7DF;
-  --av-carbon: #1B1E24;
-  --av-grafito: #4A4F58;
-  --av-gris: #8A8F98;
-  --av-blanco: #FFFFFF;
-  --font-display: "Playfair Display", "Hoefler Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  --font-body: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --container: 1240px;
-  --gutter: clamp(1.25rem, 4vw, 3.5rem);
-  --radius: 2px;
-  --shadow-sm: 0 2px 12px rgba(7, 22, 51, 0.06);
-  --shadow-md: 0 12px 40px rgba(7, 22, 51, 0.10);
+  /* --- Azules de marca (Manual de Marca, colores planos) --- */
+  --azul:          #1A2744;  /* rgb(26,39,68)  primario */
+  --azul-medio:    #293661;  /* rgb(41,54,97)  secundario */
+  --azul-profundo: #172740;  /* rgb(23,39,64)  fondos profundos */
+  --azul-tenue:    #E7EAF0;  /* derivado para superficies suaves */
+
+  /* --- Neutros cálidos, derivados de la fotografía de marca --- */
+  --papel:  #FCFBF8;
+  --lino:   #F2EEE7;
+  --arena:  #E5DFD4;
+  --piedra: #8A8378;
+  --grafito:#4A4A46;
+  --tinta:  #1E1E1C;
+  --blanco: #FFFFFF;
+
+  /* --- Tipografía --- */
+  --display: "Oswald", "Haettenschweiler", "Arial Narrow", sans-serif;
+  --texto:   "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* --- Espaciado --- */
+  --e1: 0.5rem; --e2: 0.75rem; --e3: 1rem; --e4: 1.5rem;
+  --e5: 2rem;   --e6: 3rem;    --e7: 4rem;
+
+  /* --- Métricas --- */
+  --ancho: 1280px;
+  --margen: clamp(1.25rem, 5vw, 4rem);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
-* , *::before, *::after { box-sizing: border-box; }
-body { font-family: var(--font-body); color: var(--av-carbon); background: var(--av-hueso); line-height: 1.7; font-weight: 400; font-size: 16px; overflow-x: hidden; margin: 0; }
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--papel); color: var(--tinta);
+  font-family: var(--texto); font-weight: 400; font-size: 16px; line-height: 1.75;
+  overflow-x: hidden; -webkit-font-smoothing: antialiased;
+}
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-ul { list-style: none; margin: 0; padding: 0; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; }
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; color: var(--av-azul-800); margin: 0; text-wrap: balance; }
+ul { margin: 0; padding: 0; list-style: none; }
 p { margin: 0; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; color: inherit; }
+:focus-visible { outline: 2px solid var(--azul-medio); outline-offset: 3px; }
 
-.eyebrow { font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--av-oro-oscuro); display: inline-block; margin-bottom: 1.1rem; }
-.eyebrow--claro { color: var(--av-oro-claro); }
-.display-xl { font-size: clamp(2.6rem, 6vw, 5rem); letter-spacing: -0.01em; }
-.display-lg { font-size: clamp(2.2rem, 4.5vw, 3.6rem); }
-.display-md { font-size: clamp(1.7rem, 3vw, 2.6rem); }
-.lead { font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: var(--av-grafito); font-weight: 300; }
-.container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
-.section { padding-block: clamp(4rem, 9vw, 8rem); }
-.section--tight { padding-block: clamp(3rem, 6vw, 5rem); }
-.center { text-align: center; }
-.max-60 { max-width: 60ch; }
-.grid { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); }
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-@media (max-width: 900px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 620px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+/* ---------- Tipografía ---------- */
+h1, h2, h3, h4 {
+  margin: 0; font-family: var(--display); font-weight: 300;
+  text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.03;
+  color: var(--azul); text-wrap: balance;
+}
+.t-hero { font-size: clamp(2.5rem, 6.6vw, 5.2rem); }
+.t-xl   { font-size: clamp(2rem, 4.4vw, 3.4rem); }
+.t-lg   { font-size: clamp(1.55rem, 2.8vw, 2.2rem); }
+.rotulo {
+  font-family: var(--display); font-size: 0.76rem; font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.34em; color: var(--azul-medio);
+  display: block; margin-bottom: var(--e3);
+}
+.lead { font-size: clamp(1.02rem, 1.3vw, 1.15rem); font-weight: 300; color: var(--grafito); }
+.mini { font-size: 0.86rem; font-weight: 300; color: var(--piedra); }
+.sobre-azul, .sobre-azul h1, .sobre-azul h2, .sobre-azul h3, .sobre-azul h4 { color: var(--blanco); }
+.sobre-azul .lead { color: rgba(255,255,255,0.78); }
+.sobre-azul .rotulo { color: rgba(255,255,255,0.62); }
+.sobre-azul .mini { color: rgba(255,255,255,0.55); }
 
-.btn { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 1.05rem 2.2rem; border-radius: var(--radius); transition: all 0.4s var(--ease); }
-.btn--primary { background: var(--av-azul-700); color: var(--av-blanco); }
-.btn--gold { background: var(--av-oro); color: var(--av-azul-900); }
-.btn--gold:hover { background: var(--av-oro-claro); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.btn--ghost { border: 1px solid var(--av-azul-700); color: var(--av-azul-700); }
-.btn--ghost:hover { background: var(--av-azul-700); color: var(--av-blanco); }
-.btn--ghost-light { border: 1px solid rgba(255,255,255,0.5); color: var(--av-blanco); }
-.btn--ghost-light:hover { background: var(--av-blanco); color: var(--av-azul-800); border-color: var(--av-blanco); }
-.link-arrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--av-azul-600); display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.3s var(--ease), color 0.3s; cursor: pointer; }
-.link-arrow::after { content: "→"; transition: transform 0.3s var(--ease); }
-.link-arrow:hover { color: var(--av-oro-oscuro); }
-.link-arrow:hover::after { transform: translateX(5px); }
+/* ---------- Layout ---------- */
+.caja { max-width: var(--ancho); margin-inline: auto; padding-inline: var(--margen); }
+.seccion { padding-block: clamp(3.5rem, 8vw, 7rem); }
+.seccion-corta { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.fondo-azul { background: var(--azul); }
+.fondo-profundo { background: var(--azul-profundo); }
+.fondo-lino { background: var(--lino); }
+.centro { text-align: center; }
+.medida { max-width: 62ch; }
+.medida.centro { margin-inline: auto; }
 
-.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), padding 0.4s var(--ease); padding-block: 1.4rem; }
-.site-header.scrolled { background: rgba(251, 250, 247, 0.95); backdrop-filter: blur(12px); box-shadow: var(--shadow-sm); padding-block: 0.8rem; }
-.site-header.solid { background: rgba(251, 250, 247, 0.95); backdrop-filter: blur(12px); box-shadow: var(--shadow-sm); }
-.nav { display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; flex-direction: column; line-height: 1; cursor: pointer; }
-.brand__name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--av-azul-800); letter-spacing: 0.02em; }
-.brand__tag { font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--av-oro-oscuro); margin-top: 4px; }
-.hero-mode .site-header:not(.scrolled) .brand__name { color: var(--av-blanco); }
-.hero-mode .site-header:not(.scrolled) .brand__tag { color: var(--av-oro-claro); }
-.nav__menu { display: flex; gap: 2.2rem; align-items: center; }
-.nav__link { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--av-grafito); position: relative; padding-block: 4px; cursor: pointer; }
-.hero-mode .site-header:not(.scrolled) .nav__link { color: rgba(255,255,255,0.85); }
-.nav__link::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1.5px; background: var(--av-oro); transition: width 0.35s var(--ease); }
-.nav__link:hover::after, .nav__link.active::after { width: 100%; }
-.nav__link:hover, .nav__link.active { color: var(--av-azul-700); }
-.hero-mode .site-header:not(.scrolled) .nav__link:hover, .hero-mode .site-header:not(.scrolled) .nav__link.active { color: var(--av-blanco); }
-.nav__cta { padding: 0.75rem 1.6rem; font-size: 0.72rem; }
-.nav__toggle { display: none; flex-direction: column; gap: 5px; width: 30px; z-index: 120; }
-.nav__toggle span { display: block; height: 2px; background: var(--av-azul-800); transition: all 0.3s var(--ease); }
-.hero-mode .site-header:not(.scrolled) .nav__toggle span { background: var(--av-blanco); }
-@media (max-width: 1024px) {
-  .nav__toggle { display: flex; }
-  .nav__menu { position: fixed; inset: 0; background: var(--av-azul-900); flex-direction: column; justify-content: center; gap: 2rem; transform: translateX(100%); transition: transform 0.5s var(--ease); }
-  .nav__menu.open { transform: translateX(0); }
-  .nav__link { color: rgba(255,255,255,0.9) !important; font-size: 1.1rem; }
-  .nav__menu .nav__cta { background: var(--av-oro); color: var(--av-azul-900) !important; }
-  .nav__toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: #fff; }
-  .nav__toggle.active span:nth-child(2) { opacity: 0; }
-  .nav__toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: #fff; }
+.rejilla { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); }
+.r2 { grid-template-columns: repeat(2, 1fr); }
+.r3 { grid-template-columns: repeat(3, 1fr); }
+.r4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 980px) { .r3, .r4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .r2, .r3, .r4 { grid-template-columns: 1fr; } }
+
+.dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+@media (max-width: 900px) { .dos-col { grid-template-columns: 1fr; } }
+
+/* ---------- Doble filete: motivo del contorno del escudo ---------- */
+.doble-filete { border-top: 1px solid var(--arena); position: relative; padding-top: 4px; }
+.doble-filete::before { content: ""; position: absolute; left: 0; right: 0; top: 3px; height: 1px; background: var(--arena); }
+.sobre-azul .doble-filete { border-top-color: rgba(255,255,255,0.22); }
+.sobre-azul .doble-filete::before { background: rgba(255,255,255,0.22); }
+
+.marca-div { display: flex; align-items: center; justify-content: center; gap: var(--e3); margin-bottom: var(--e4); }
+.marca-div i { display: block; width: 46px; height: 1px; background: var(--arena); }
+.marca-div img { width: 26px; opacity: 0.9; }
+.sobre-azul .marca-div i { background: rgba(255,255,255,0.32); }
+.marca-div.izq { justify-content: flex-start; }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+  font-family: var(--display); font-size: 0.82rem; font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  padding: 1.02rem 2.05rem; transition: all 0.35s var(--ease); border: 1px solid transparent;
+}
+.btn-azul { background: var(--azul); color: var(--blanco); }
+.btn-azul:hover { background: var(--azul-medio); }
+.btn-linea { border-color: var(--azul); color: var(--azul); }
+.btn-linea:hover { background: var(--azul); color: var(--blanco); }
+.btn-claro { background: var(--blanco); color: var(--azul); }
+.btn-claro:hover { background: var(--azul-tenue); }
+.btn-linea-clara { border-color: rgba(255,255,255,0.55); color: var(--blanco); }
+.btn-linea-clara:hover { background: var(--blanco); color: var(--azul); }
+.acciones { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.enlace {
+  font-family: var(--display); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--azul-medio); display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
+  transition: gap 0.3s var(--ease);
+}
+.enlace::after { content: "→"; }
+.enlace:hover { gap: 0.9rem; }
+.sobre-azul .enlace { color: var(--blanco); }
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  position: fixed; inset: 0 0 auto 0; z-index: 100; padding-block: var(--e3);
+  transition: background 0.4s var(--ease), padding 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.cabecera.fijo { background: rgba(252,251,248,0.96); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--arena); padding-block: 0.6rem; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: var(--e4); }
+.logo { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
+.logo img { width: 34px; transition: width 0.4s var(--ease); }
+.cabecera.fijo .logo img { width: 28px; }
+.logo-txt { display: flex; flex-direction: column; line-height: 1; }
+.logo-txt b { font-family: var(--display); font-weight: 400; font-size: 1.1rem; letter-spacing: 0.13em; color: var(--azul); text-transform: uppercase; }
+.logo-txt i { font-style: normal; font-family: var(--display); font-size: 0.55rem; letter-spacing: 0.34em; color: var(--piedra); margin-top: 3px; text-transform: uppercase; }
+
+.menu { display: flex; align-items: center; gap: clamp(0.9rem, 1.9vw, 1.85rem); }
+.menu a {
+  font-family: var(--display); font-size: 0.8rem; font-weight: 400; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--azul); cursor: pointer; position: relative; padding-block: 3px;
+}
+.menu a::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0; background: var(--azul); transition: width 0.35s var(--ease); }
+.menu a:hover::after, .menu a.on::after { width: 100%; }
+.menu .btn { padding: 0.62rem 1.25rem; font-size: 0.72rem; }
+.menu .btn::after { display: none; }
+
+/* Toda página abre sobre una banda azul, así que la cabecera sin fondo va en blanco */
+.cabecera:not(.fijo) .logo-txt b,
+.cabecera:not(.fijo) .menu a { color: var(--blanco); }
+.cabecera:not(.fijo) .logo-txt i { color: rgba(255,255,255,0.6); }
+.cabecera:not(.fijo) .menu a::after { background: var(--blanco); }
+.cabecera:not(.fijo) .hamburguesa span { background: var(--blanco); }
+.cabecera:not(.fijo) .menu .btn-claro { color: var(--azul); }
+
+.hamburguesa { display: none; flex-direction: column; gap: 5px; width: 28px; z-index: 130; }
+.hamburguesa span { display: block; height: 2px; background: var(--azul); transition: all 0.3s var(--ease); }
+@media (max-width: 1140px) {
+  .hamburguesa { display: flex; }
+  .menu {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100svh;
+    background: var(--azul); flex-direction: column; justify-content: center; align-items: center;
+    gap: 1.5rem; overflow-y: auto; padding: 5rem 1.5rem 2rem;
+    transform: translateX(101%); transition: transform 0.5s var(--ease);
+  }
+  .menu.abierto { transform: none; }
+  .menu a { color: var(--blanco) !important; font-size: 1.05rem; letter-spacing: 0.2em; }
+  .menu a::after { background: var(--blanco) !important; }
+  .menu .btn-claro { background: var(--blanco) !important; color: var(--azul) !important; }
+  .hamburguesa.x span { background: var(--blanco); }
+  .hamburguesa.x span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburguesa.x span:nth-child(2) { opacity: 0; }
+  .hamburguesa.x span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 }
 
-.page { display: none; }
-.page.active { display: block; }
+/* ---------- Páginas ---------- */
+.pagina { display: none; }
+.pagina.activa { display: block; }
 
-.hero { min-height: 100vh; display: flex; align-items: center; position: relative; background: linear-gradient(115deg, rgba(7,22,51,0.92) 0%, rgba(16,48,95,0.78) 55%, rgba(16,48,95,0.35) 100%), var(--av-azul-800); color: var(--av-blanco); overflow: hidden; }
-.hero::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 82% 30%, rgba(196,161,90,0.18), transparent 45%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 40L40 0M-10 10L10 -10M30 50L50 30' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'/%3E%3C/svg%3E"); pointer-events: none; }
-.hero__inner { position: relative; z-index: 2; max-width: 720px; }
-.hero__inner h1 { color: var(--av-blanco); margin-bottom: 1.6rem; }
-.hero__inner .lead { color: rgba(255,255,255,0.82); margin-bottom: 2.4rem; }
-.hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero__scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.6); display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
-.hero__scroll::after { content: ""; width: 1px; height: 40px; background: linear-gradient(var(--av-oro), transparent); animation: scrollpulse 2s infinite; }
-@keyframes scrollpulse { 0%,100%{ opacity: 0.3; } 50%{ opacity: 1; } }
+/* ---------- Hero partido ---------- */
+.hero { display: grid; grid-template-columns: 1.02fr 0.98fr; min-height: 100svh; }
+.hero-panel {
+  background: var(--azul); display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(6rem, 10vw, 7rem) clamp(1.5rem, 5vw, 4.5rem) clamp(2.5rem, 5vw, 4rem);
+  position: relative; overflow: hidden;
+}
+.hero-panel::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M0 36L36 0M-9 9L9 -9M27 45L45 27' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'/%3E%3C/svg%3E");
+}
+.hero-panel > * { position: relative; z-index: 1; }
+.hero-escudo { width: 56px; margin-bottom: var(--e4); }
+.hero-slogan {
+  font-family: var(--display); font-weight: 200; text-transform: none;
+  font-size: clamp(1.42rem, 2.4vw, 2.1rem); line-height: 1.3; color: var(--blanco);
+  max-width: 23ch;
+}
+.hero-slogan em { font-style: normal; color: var(--azul-tenue); }
+.hero-firma { margin-top: var(--e5); }
+.hero-foto { position: relative; background: var(--arena); }
+.hero-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-foto { height: 60vh; }
+  .hero-panel { padding-top: 7.5rem; }
+}
 
-.page-hero { padding-top: clamp(9rem, 15vw, 12rem); padding-bottom: clamp(3.5rem, 7vw, 6rem); background: linear-gradient(120deg, var(--av-azul-800), var(--av-azul-600)); color: var(--av-blanco); position: relative; overflow: hidden; }
-.page-hero::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 85% 20%, rgba(196,161,90,0.2), transparent 40%); }
-.page-hero .container { position: relative; z-index: 2; }
-.page-hero h1 { color: var(--av-blanco); margin-bottom: 1.2rem; }
-.page-hero .lead { color: rgba(255,255,255,0.82); }
-.breadcrumb { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
-.breadcrumb a { cursor: pointer; }
-.breadcrumb a:hover { color: var(--av-oro-claro); }
+/* ---------- Cabecera de página interior ---------- */
+.pag-hero { background: var(--azul); padding: clamp(8rem, 15vw, 11rem) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
+.pag-hero::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M0 36L36 0M-9 9L9 -9M27 45L45 27' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'/%3E%3C/svg%3E"); }
+.pag-hero .caja { position: relative; z-index: 1; }
+.miga { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
+.miga span { cursor: pointer; }
+.miga span:hover { color: var(--blanco); }
 
-.rule { display: flex; align-items: center; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; }
-.rule span { height: 1px; width: 48px; background: var(--av-oro); }
-.rule--left { justify-content: flex-start; }
-.diamond { width: 6px; height: 6px; background: var(--av-oro); transform: rotate(45deg); }
-.section-head { max-width: 620px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-.section-head.center { margin-inline: auto; }
+/* ---------- Encabezado de sección ---------- */
+.enc { margin-bottom: clamp(2rem, 4vw, 3.25rem); max-width: 64ch; }
+.enc.centro { margin-inline: auto; }
 
-.card { background: var(--av-blanco); border: 1px solid var(--av-humo); border-radius: var(--radius); overflow: hidden; transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease); display: flex; flex-direction: column; cursor: pointer; }
-.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
-.card__media { aspect-ratio: 4/5; position: relative; overflow: hidden; }
-.card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
-.card:hover .card__media img { transform: scale(1.06); }
-.card__tag { position: absolute; top: 1rem; left: 1rem; background: rgba(7,22,51,0.85); color: #fff; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.4rem 0.9rem; }
-.card__body { padding: 1.8rem; display: flex; flex-direction: column; gap: 0.8rem; flex: 1; }
-.card__body h3 { font-size: 1.35rem; }
-.card__body p { color: var(--av-grafito); font-size: 0.95rem; font-weight: 300; flex: 1; }
+/* ---------- Cifras ---------- */
+.cifra { text-align: center; padding: var(--e4) var(--e2); }
+.cifra b { display: block; font-family: var(--display); font-weight: 200; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1; color: var(--blanco); }
+.cifra span { display: block; font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: var(--e2); }
 
-.feature { text-align: center; padding: 2.5rem 1.5rem; }
-.feature__icon { width: 64px; height: 64px; margin: 0 auto 1.4rem; display: grid; place-items: center; border: 1px solid var(--av-oro); border-radius: 50%; color: var(--av-oro-oscuro); }
-.feature__icon svg { width: 28px; height: 28px; }
-.feature h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
-.feature p { color: var(--av-grafito); font-size: 0.92rem; font-weight: 300; }
+/* ---------- Pilar ---------- */
+.pilar { padding-top: var(--e4); }
+.pilar .num { font-family: var(--display); font-size: 0.78rem; letter-spacing: 0.24em; color: var(--azul-medio); display: block; margin-bottom: var(--e2); }
+.pilar h3 { font-size: 1.2rem; letter-spacing: 0.05em; margin-bottom: var(--e2); font-weight: 400; }
+.pilar p { font-size: 0.95rem; font-weight: 300; color: var(--grafito); }
+.sobre-azul .pilar .num { color: rgba(255,255,255,0.6); }
+.sobre-azul .pilar p { color: rgba(255,255,255,0.72); }
 
-.stats { background: var(--av-azul-800); color: #fff; }
-.stats .grid { text-align: center; }
-.stat__num { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.4rem); color: var(--av-oro-claro); line-height: 1; }
-.stat__label { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 0.6rem; }
+/* ---------- Ficha de prenda ---------- */
+.ficha { cursor: pointer; }
+.ficha-img { position: relative; overflow: hidden; background: var(--lino); aspect-ratio: 3/4; }
+.ficha-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
+.ficha:hover .ficha-img img { transform: scale(1.045); }
+.ficha-cuerpo { padding-top: var(--e3); margin-top: var(--e3); }
+.ficha-cuerpo h3 { font-size: 1.04rem; letter-spacing: 0.07em; font-weight: 400; }
+.ficha-cuerpo p { font-size: 0.86rem; font-weight: 300; color: var(--piedra); margin-top: 0.25rem; }
 
-.showcase__media { position: relative; }
-.showcase__media img { border-radius: var(--radius); box-shadow: var(--shadow-md); aspect-ratio: 4/5; object-fit: cover; width: 100%; }
-.showcase__badge { position: absolute; bottom: -1.5rem; right: -1.5rem; background: var(--av-oro); color: var(--av-azul-900); padding: 1.4rem 1.8rem; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-md); }
-.showcase__badge strong { font-family: var(--font-display); font-size: 2rem; display: block; }
-.showcase__badge span { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; }
-@media (max-width: 860px) { .showcase__badge { right: 1rem; bottom: 1rem; } }
+/* ---------- Lista ---------- */
+.lista { display: grid; gap: var(--e3); margin-top: var(--e4); }
+.lista li { display: grid; grid-template-columns: auto 1fr; gap: 0.85rem; font-weight: 300; color: var(--grafito); font-size: 0.96rem; }
+.lista li::before { content: ""; width: 7px; height: 7px; margin-top: 0.62rem; border: 1px solid var(--azul-medio); }
+.sobre-azul .lista li { color: rgba(255,255,255,0.78); }
+.sobre-azul .lista li::before { border-color: rgba(255,255,255,0.6); }
 
-.checklist { display: grid; gap: 1rem; margin-top: 1.8rem; }
-.checklist li { display: flex; gap: 0.9rem; align-items: flex-start; font-weight: 300; color: var(--av-grafito); }
-.checklist li::before { content: "✓"; color: var(--av-oro-oscuro); font-weight: 700; flex-shrink: 0; width: 22px; height: 22px; border: 1px solid var(--av-oro); border-radius: 50%; display: grid; place-items: center; font-size: 0.7rem; }
+/* ---------- Pasos ---------- */
+.paso { display: grid; grid-template-columns: auto 1fr; gap: var(--e4); padding-block: var(--e4); border-top: 1px solid var(--arena); }
+.paso b { font-family: var(--display); font-weight: 200; font-size: 1.9rem; color: var(--azul-medio); line-height: 1; }
+.paso h3 { font-size: 1.08rem; letter-spacing: 0.05em; font-weight: 400; margin-bottom: 0.3rem; }
+.paso p { font-size: 0.93rem; font-weight: 300; color: var(--grafito); }
 
-.step { position: relative; padding-left: 4.5rem; padding-bottom: 2.5rem; }
-.step:not(:last-child)::before { content: ""; position: absolute; left: 1.4rem; top: 3rem; bottom: 0; width: 1px; background: var(--av-humo); }
-.step__num { position: absolute; left: 0; top: 0; width: 2.9rem; height: 2.9rem; border-radius: 50%; background: var(--av-azul-700); color: #fff; display: grid; place-items: center; font-family: var(--font-display); font-size: 1.1rem; }
-.step h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
-.step p { color: var(--av-grafito); font-weight: 300; font-size: 0.95rem; }
+/* ---------- Telas ---------- */
+.tela { border: 1px solid var(--arena); background: var(--blanco); transition: border-color 0.35s var(--ease); }
+.tela:hover { border-color: var(--azul-medio); }
+.tela-color { aspect-ratio: 4/3; }
+.tela-info { padding: var(--e3); border-top: 1px solid var(--arena); }
+.tela-info h4 { font-family: var(--display); font-weight: 400; font-size: 0.93rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--azul); }
+.tela-info p { font-size: 0.78rem; color: var(--piedra); font-weight: 300; margin-top: 0.15rem; }
 
-.swatch { border-radius: var(--radius); overflow: hidden; background: #fff; border: 1px solid var(--av-humo); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
-.swatch:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.swatch__color { aspect-ratio: 3/2; position: relative; }
-.swatch__color span { position: absolute; bottom: 0.8rem; left: 0.8rem; background: rgba(255,255,255,0.9); color: var(--av-azul-800); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.3rem 0.7rem; }
-.swatch__body { padding: 1.2rem 1.3rem 1.5rem; }
-.swatch__body h4 { font-size: 1.05rem; color: var(--av-azul-800); }
-.swatch__body p { font-size: 0.82rem; color: var(--av-gris); font-weight: 300; }
-.swatch__meta { display: flex; justify-content: space-between; align-items: center; margin-top: 0.9rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--av-oro-oscuro); }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+  font-family: var(--display); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.55rem 1.15rem; border: 1px solid var(--arena); color: var(--azul); background: var(--blanco);
+  transition: all 0.3s var(--ease);
+}
+.chip:hover { border-color: var(--azul-medio); }
+.chip.on { background: var(--azul); border-color: var(--azul); color: var(--blanco); }
 
-.pricing { background: #fff; border: 1px solid var(--av-humo); border-radius: var(--radius); padding: 2.5rem 2rem; text-align: center; transition: all 0.4s var(--ease); position: relative; }
-.pricing:hover { border-color: var(--av-oro); transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.pricing--featured { background: var(--av-azul-800); color: #fff; border-color: var(--av-azul-800); }
-.pricing--featured h3, .pricing--featured .price { color: #fff; }
-.pricing__badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--av-oro); color: var(--av-azul-900); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.35rem 1rem; }
-.pricing h3 { font-size: 1.4rem; margin-bottom: 0.4rem; }
-.price { font-family: var(--font-display); font-size: 2.6rem; color: var(--av-azul-800); margin: 1rem 0; }
-.price small { font-size: 0.85rem; color: var(--av-gris); font-family: var(--font-body); }
-.pricing ul { display: grid; gap: 0.8rem; margin: 1.6rem 0; text-align: left; }
-.pricing ul li { font-size: 0.9rem; font-weight: 300; padding-left: 1.6rem; position: relative; }
-.pricing ul li::before { content: "✓"; position: absolute; left: 0; color: var(--av-oro); }
-.pricing--featured ul li { color: rgba(255,255,255,0.85); }
+/* ---------- Configurador ---------- */
+.cfg { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+@media (max-width: 940px) { .cfg { grid-template-columns: 1fr; } }
+.cfg-vista { background: var(--blanco); border: 1px solid var(--arena); padding: clamp(1.25rem, 3vw, 2.25rem); position: sticky; top: 84px; text-align: center; }
+@media (max-width: 940px) { .cfg-vista { position: static; } }
+.cfg-vista svg { width: min(100%, 330px); margin-inline: auto; }
+.cfg-pie { margin-top: var(--e3); font-family: var(--display); font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-medio); }
+.cfg-panel { display: flex; flex-direction: column; gap: var(--e5); }
+.cfg-grupo h3 { font-family: var(--display); font-size: 0.78rem; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul); margin-bottom: var(--e3); }
+.cfg-grupo h3 em { font-style: normal; font-family: var(--texto); font-size: 0.73rem; letter-spacing: 0.02em; text-transform: none; color: var(--piedra); }
+.cfg-telas { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 0.6rem; }
+.cfg-tela { border: 1px solid var(--arena); background: var(--blanco); padding: 0.45rem; text-align: center; transition: all 0.3s var(--ease); }
+.cfg-tela:hover { border-color: var(--azul-medio); }
+.cfg-tela.on { border-color: var(--azul); box-shadow: inset 0 0 0 1px var(--azul); }
+.cfg-tela i { display: block; height: 40px; margin-bottom: 0.4rem; }
+.cfg-tela span { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--azul); line-height: 1.3; }
+.cfg-resumen { background: var(--azul); padding: clamp(1.25rem, 3vw, 1.9rem); }
+.cfg-resumen h3 { font-size: 1.02rem; letter-spacing: 0.1em; color: var(--blanco); margin-bottom: var(--e3); font-weight: 400; }
+.cfg-resumen ul { display: grid; gap: 0.5rem; margin-bottom: var(--e4); }
+.cfg-resumen li { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.86rem; font-weight: 300; color: rgba(255,255,255,0.72); border-bottom: 1px solid rgba(255,255,255,0.14); padding-bottom: 0.42rem; }
+.cfg-resumen li b { font-weight: 500; color: var(--blanco); text-align: right; }
+.cfg-nota { font-size: 0.74rem; font-weight: 300; color: rgba(255,255,255,0.5); margin-top: var(--e2); }
 
-.post { background: #fff; border: 1px solid var(--av-humo); border-radius: var(--radius); overflow: hidden; transition: all 0.5s var(--ease); display: flex; flex-direction: column; cursor: pointer; }
-.post:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.post__media { aspect-ratio: 16/10; overflow: hidden; }
-.post__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
-.post:hover .post__media img { transform: scale(1.05); }
-.post__body { padding: 1.8rem; display: flex; flex-direction: column; gap: 0.8rem; flex: 1; }
-.post__meta { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--av-oro-oscuro); }
-.post__body h3 { font-size: 1.3rem; }
-.post__body p { color: var(--av-grafito); font-size: 0.92rem; font-weight: 300; flex: 1; }
-.post--featured { display: grid; grid-template-columns: 1.1fr 1fr; align-items: stretch; }
-.post--featured .post__media { aspect-ratio: auto; }
-.post--featured .post__body { padding: clamp(2rem, 4vw, 3.5rem); justify-content: center; }
-.post--featured h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
-@media (max-width: 780px) { .post--featured { grid-template-columns: 1fr; } .post--featured .post__media { aspect-ratio: 16/10; } }
+/* ---------- Nota / Blog ---------- */
+.nota { cursor: pointer; }
+.nota-img { overflow: hidden; aspect-ratio: 16/10; background: var(--lino); }
+.nota-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
+.nota:hover .nota-img img { transform: scale(1.04); }
+.nota-cuerpo { padding-top: var(--e3); margin-top: var(--e3); }
+.nota-meta { font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-medio); }
+.nota-cuerpo h3 { font-size: 1.06rem; letter-spacing: 0.05em; font-weight: 400; margin: 0.45rem 0; }
+.nota-cuerpo p { font-size: 0.88rem; font-weight: 300; color: var(--piedra); }
 
-.quote { max-width: 820px; margin-inline: auto; text-align: center; }
-.quote p { font-family: var(--font-display); font-size: clamp(1.4rem, 2.6vw, 2rem); font-style: italic; color: var(--av-azul-800); line-height: 1.4; }
-.quote footer { margin-top: 1.6rem; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--av-oro-oscuro); }
+/* ---------- Aviso ---------- */
+.aviso { border: 1px solid var(--arena); background: var(--lino); padding: var(--e4); font-size: 0.86rem; font-weight: 300; color: #55524c; }
+.aviso b { font-family: var(--display); font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.78rem; color: var(--azul); display: block; margin-bottom: 0.4rem; }
 
-.cta-band { background: linear-gradient(120deg, var(--av-azul-800), var(--av-azul-600)); color: #fff; text-align: center; position: relative; overflow: hidden; }
-.cta-band::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 120%, rgba(196,161,90,0.25), transparent 55%); }
-.cta-band .container { position: relative; z-index: 2; }
-.cta-band h2 { color: #fff; margin-bottom: 1rem; }
-.cta-band p { color: rgba(255,255,255,0.82); max-width: 52ch; margin: 0 auto 2.2rem; font-weight: 300; }
+/* ---------- Tienda ---------- */
+.tienda { padding: var(--e4); border: 1px solid rgba(255,255,255,0.18); }
+.tienda h3 { font-size: 1rem; letter-spacing: 0.14em; font-weight: 400; margin-bottom: var(--e2); }
+.tienda p { font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.74); }
 
-.site-footer { background: var(--av-azul-900); color: rgba(255,255,255,0.72); padding-top: clamp(3.5rem, 7vw, 5.5rem); }
-.footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 2.5rem; padding-bottom: 3.5rem; }
-@media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 540px) { .footer__grid { grid-template-columns: 1fr; } }
-.footer__brand .brand__name { color: #fff; font-size: 1.7rem; }
-.footer__brand p { margin-top: 1rem; font-weight: 300; font-size: 0.92rem; max-width: 34ch; }
-.footcol h4 { color: #fff; font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.2rem; }
-.footcol ul { display: grid; gap: 0.7rem; }
-.footcol a { font-size: 0.9rem; font-weight: 300; transition: color 0.3s; cursor: pointer; }
-.footcol a:hover { color: var(--av-oro-claro); }
-.footer__social { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
-.footer__social a { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: grid; place-items: center; transition: all 0.3s; }
-.footer__social a:hover { background: var(--av-oro); border-color: var(--av-oro); color: var(--av-azul-900); }
-.footer__social svg { width: 16px; height: 16px; }
-.newsletter { display: flex; margin-top: 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); overflow: hidden; }
-.newsletter input { flex: 1; background: transparent; border: none; padding: 0.85rem 1rem; color: #fff; font-family: inherit; font-size: 0.85rem; }
-.newsletter input::placeholder { color: rgba(255,255,255,0.5); }
-.newsletter input:focus { outline: none; }
-.newsletter button { background: var(--av-oro); color: var(--av-azul-900); padding: 0 1.2rem; font-size: 1.1rem; }
-.footer__bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-block: 1.6rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+/* ---------- Pie ---------- */
+.pie { background: var(--azul-profundo); color: rgba(255,255,255,0.72); padding-top: clamp(3rem, 6vw, 4.5rem); }
+.pie-rejilla { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: clamp(1.5rem, 3vw, 2.5rem); padding-bottom: var(--e6); }
+@media (max-width: 900px) { .pie-rejilla { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .pie-rejilla { grid-template-columns: 1fr; } }
+.pie-logo img { width: 130px; margin-bottom: var(--e3); }
+.pie-rejilla p { font-size: 0.88rem; font-weight: 300; }
+.pie h4 { font-family: var(--display); font-size: 0.76rem; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blanco); margin-bottom: var(--e3); }
+.pie ul { display: grid; gap: 0.6rem; }
+.pie li { font-size: 0.88rem; font-weight: 300; }
+.pie ul a { cursor: pointer; transition: color 0.3s; }
+.pie ul a:hover { color: var(--blanco); }
+.redes { display: flex; gap: 0.6rem; margin-top: var(--e3); }
+.redes a { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.2); display: grid; place-items: center; transition: all 0.3s; }
+.redes a:hover { background: var(--blanco); border-color: var(--blanco); color: var(--azul); }
+.redes svg { width: 16px; height: 16px; }
+.pie-base {
+  border-top: 1px solid rgba(255,255,255,0.1); padding-block: var(--e4);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--e2);
+  font-size: 0.78rem; color: rgba(255,255,255,0.45);
+}
 
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-.reveal.visible { opacity: 1; transform: none; }
-.reveal[data-delay="1"] { transition-delay: 0.1s; }
-.reveal[data-delay="2"] { transition-delay: 0.2s; }
-.reveal[data-delay="3"] { transition-delay: 0.3s; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero__scroll::after { animation: none; } * { scroll-behavior: auto !important; } }
+/* ---------- WhatsApp flotante ---------- */
+.wa {
+  position: fixed; right: clamp(1rem, 3vw, 1.75rem); bottom: clamp(1rem, 3vw, 1.75rem); z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%; background: #25D366;
+  display: grid; place-items: center; box-shadow: 0 8px 28px rgba(23,39,64,0.28);
+  transition: transform 0.3s var(--ease);
+}
+.wa:hover { transform: scale(1.07); }
+.wa svg { width: 30px; height: 30px; fill: #fff; }
 
-.bg-crema { background: var(--av-crema); }
-.mt-2 { margin-top: 2rem; }
-.tag-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-.chip { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.5rem 1.1rem; border: 1px solid var(--av-humo); border-radius: 999px; color: var(--av-grafito); background: #fff; transition: all 0.3s; cursor: pointer; }
-.chip:hover, .chip.active { background: var(--av-azul-700); color: #fff; border-color: var(--av-azul-700); }
-:focus-visible { outline: 2px solid var(--av-oro); outline-offset: 3px; }
-
-/* ---------- Confección (banda artesanal) ---------- */
-.craft { background: var(--av-azul-900); color: #fff; position: relative; overflow: hidden; }
-.craft::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 12% 85%, rgba(196,161,90,0.14), transparent 45%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 40L40 0M-10 10L10 -10M30 50L50 30' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'/%3E%3C/svg%3E"); pointer-events: none; }
-.craft .container { position: relative; z-index: 2; }
-.craft h2 { color: #fff; }
-.craft .lead { color: rgba(255,255,255,0.78); }
-.craft-item { border-top: 1px solid rgba(255,255,255,0.14); padding: 1.6rem 0 0.4rem; }
-.craft-item h3 { color: var(--av-oro-claro); font-size: 1.15rem; margin-bottom: 0.5rem; }
-.craft-item p { color: rgba(255,255,255,0.72); font-size: 0.92rem; font-weight: 300; }
-.craft-item .craft-num { font-family: var(--font-display); font-size: 0.9rem; color: var(--av-oro); display: block; margin-bottom: 0.8rem; letter-spacing: 0.1em; }
-
-/* ---------- Configurador a medida ---------- */
-.cfg { background: var(--av-crema); }
-.cfg-shell { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 4vw, 4rem); align-items: start; }
-@media (max-width: 900px) { .cfg-shell { grid-template-columns: 1fr; } }
-.cfg-preview { background: linear-gradient(160deg, #fff, var(--av-humo)); border: 1px solid var(--av-humo); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.5rem); position: sticky; top: 90px; text-align: center; box-shadow: var(--shadow-sm); }
-@media (max-width: 900px) { .cfg-preview { position: static; } }
-.cfg-preview svg { width: min(100%, 340px); height: auto; margin-inline: auto; display: block; }
-.cfg-preview-label { margin-top: 1rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--av-oro-oscuro); }
-.cfg-panel { display: flex; flex-direction: column; gap: 2rem; }
-.cfg-group h3 { font-size: 0.78rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--av-azul-700); margin-bottom: 0.9rem; }
-.cfg-opts { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-.cfg-opt { font-size: 0.78rem; letter-spacing: 0.06em; padding: 0.6rem 1.2rem; border: 1px solid var(--av-humo); background: #fff; border-radius: var(--radius); color: var(--av-grafito); transition: all 0.3s var(--ease); }
-.cfg-opt:hover { border-color: var(--av-oro); }
-.cfg-opt.active { background: var(--av-azul-700); border-color: var(--av-azul-700); color: #fff; }
-.cfg-fabrics { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 0.7rem; }
-.cfg-fabric { border: 1px solid var(--av-humo); background: #fff; border-radius: var(--radius); padding: 0.55rem; text-align: center; transition: all 0.3s var(--ease); }
-.cfg-fabric:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
-.cfg-fabric.active { border-color: var(--av-oro); box-shadow: 0 0 0 1px var(--av-oro); }
-.cfg-fabric-chip { height: 44px; border-radius: 2px; margin-bottom: 0.5rem; }
-.cfg-fabric span { display: block; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--av-grafito); line-height: 1.3; }
-.cfg-summary { background: var(--av-azul-800); color: #fff; border-radius: var(--radius); padding: 1.6rem 1.8rem; }
-.cfg-summary h3 { color: var(--av-oro-claro); font-size: 1.15rem; margin-bottom: 0.9rem; }
-.cfg-summary ul { display: grid; gap: 0.45rem; margin-bottom: 1.4rem; }
-.cfg-summary li { font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.85); display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px dashed rgba(255,255,255,0.12); padding-bottom: 0.4rem; }
-.cfg-summary li b { font-weight: 500; color: #fff; text-align: right; }
-.cfg-note { font-size: 0.75rem; color: var(--av-gris); margin-top: 0.8rem; font-weight: 300; }
+/* ---------- Entrada ---------- */
+.rev { opacity: 0; transform: translateY(22px); transition: opacity 0.85s var(--ease), transform 0.85s var(--ease); }
+.rev.ver { opacity: 1; transform: none; }
+.rev[data-d="1"] { transition-delay: 0.08s; }
+.rev[data-d="2"] { transition-delay: 0.16s; }
+.rev[data-d="3"] { transition-delay: 0.24s; }
+@media (prefers-reduced-motion: reduce) {
+  .rev { opacity: 1; transform: none; transition: none; }
+  * { scroll-behavior: auto !important; }
+}
 </style>
 </head>
 <body>
-<div class="app hero-mode">
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <nav class="nav container">
-      <div class="brand" data-nav="home">
-        <span class="brand__name">Andrés Vargas</span>
-        <span class="brand__tag">Sastrería · Est. 1994</span>
-      </div>
-      <ul class="nav__menu">
-        <li><a class="nav__link active" data-nav="home">Inicio</a></li>
-        <li><a class="nav__link" data-nav="telas">Telas</a></li>
-        <li><a class="nav__link" data-nav="camisas">Camisas</a></li>
-        <li><a class="nav__link" data-nav="trajes">Trajes</a></li>
-        <li><a class="nav__link" data-nav="corporativo">Corporativo</a></li>
-        <li><a class="nav__link" data-nav="blog">Blog</a></li>
-        <li><a class="btn btn--gold nav__cta" data-nav="home" data-scroll="cita">Reservar cita</a></li>
-      </ul>
-      <button class="nav__toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
-    </nav>
-  </header>
+<div class="app">
 
-  <!-- ===================== HOME ===================== -->
-  <main class="page active" data-page="home">
-    <section class="hero">
-      <div class="container hero__inner">
-        <span class="eyebrow eyebrow--claro">Sastrería a medida · Lima, Perú</span>
-        <h1 class="display-xl">El arte de vestir<br />con distinción</h1>
-        <p class="lead">Trajes, camisas y telas confeccionados puntada a puntada para quienes entienden que la elegancia no se improvisa. Bienvenido a la casa Andrés Vargas.</p>
-        <div class="hero__actions">
-          <a class="btn btn--gold" data-nav="home" data-scroll="configurador">Diseña tu prenda a medida</a>
-          <a class="btn btn--ghost-light" data-nav="home" data-scroll="cita">Agenda tu visita</a>
-        </div>
-      </div>
-      <div class="hero__scroll">Desliza</div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head center">
-          <div class="rule"><span></span><span class="diamond"></span><span></span></div>
-          <span class="eyebrow">La casa</span>
-          <h2 class="display-md">Tres décadas vistiendo la excelencia</h2>
-          <p class="lead" style="margin-top:1rem;">Desde 1994, cada prenda que sale de nuestro taller nace de la conversación entre el cliente, la aguja y la tradición sartorial europea.</p>
-        </div>
-        <div class="grid grid-3">
-          <div class="feature reveal"><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2 5 5 .5-4 3.5 1.5 5-4.5-3-4.5 3 1.5-5-4-3.5 5-.5z"/></svg></div><h3>Hecho a mano</h3><p>Cada corte, ojal y forro se elabora artesanalmente en nuestro atelier, sin atajos industriales.</p></div>
-          <div class="feature reveal" data-delay="1"><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v16"/></svg></div><h3>400+ telas en biblioteca</h3><p>Una de las bibliotecas de tejidos italianos e ingleses más grandes del Perú: lanas Super 100's a 180's, algodones egipcios, linos y sedas.</p></div>
-          <div class="feature reveal" data-delay="2"><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg></div><h3>Ajuste perfecto</h3><p>Hasta tres pruebas por prenda para lograr una caída impecable, hecha exclusivamente para tu cuerpo.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section bg-crema">
-      <div class="container split">
-        <div class="showcase__media reveal">
-          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=900&q=80" alt="Sastre midiendo un traje a medida" />
-          <div class="showcase__badge"><strong>+30</strong><span>Años de oficio</span></div>
-        </div>
-        <div class="reveal" data-delay="1">
-          <div class="rule rule--left"><span></span><span class="diamond"></span></div>
-          <span class="eyebrow">Nuestra filosofía</span>
-          <h2 class="display-md">Una prenda que cuenta quién eres</h2>
-          <p class="lead" style="margin:1.2rem 0;">No confeccionamos ropa: construimos una segunda piel. Escuchamos tu historia, tu profesión y tu manera de moverte por el mundo para traducirla en tela y silueta.</p>
-          <ul class="checklist"><li>Asesoría personalizada de imagen y colorimetría.</li><li>Patronaje individual, nunca tallas estándar.</li><li>Garantía de ajuste de por vida sobre cada prenda.</li></ul>
-          <div class="mt-2"><a class="link-arrow" data-nav="trajes">Conocer el proceso</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head center"><span class="eyebrow">Colecciones</span><h2 class="display-md">Nuestro universo sartorial</h2></div>
-        <div class="grid grid-3">
-          <div class="card reveal" data-nav="trajes"><div class="card__media"><span class="card__tag">Insignia</span><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt="Traje a medida" /></div><div class="card__body"><h3>Trajes</h3><p>El corazón de la casa. Trajes de dos y tres piezas confeccionados a medida para cada ocasión.</p><span class="link-arrow">Ver trajes</span></div></div>
-          <div class="card reveal" data-delay="1" data-nav="camisas"><div class="card__media"><span class="card__tag">Esencial</span><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80" alt="Camisa a medida" /></div><div class="card__body"><h3>Camisas</h3><p>Cuellos, puños y siluetas diseñados al milímetro en algodón egipcio y linos frescos.</p><span class="link-arrow">Ver camisas</span></div></div>
-          <div class="card reveal" data-delay="2" data-nav="telas"><div class="card__media"><span class="card__tag">Materia prima</span><img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=700&q=80" alt="Telas de sastrería" /></div><div class="card__body"><h3>Telas</h3><p>Una biblioteca viva de lanas, algodones y sedas de las mejores tejedurías del mundo.</p><span class="link-arrow">Ver telas</span></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--tight stats">
-      <div class="container"><div class="grid grid-4">
-        <div class="reveal"><div class="stat__num">30+</div><div class="stat__label">Años de oficio</div></div>
-        <div class="reveal" data-delay="1"><div class="stat__num">12.000</div><div class="stat__label">Trajes confeccionados</div></div>
-        <div class="reveal" data-delay="2"><div class="stat__num">400+</div><div class="stat__label">Telas disponibles</div></div>
-        <div class="reveal" data-delay="3"><div class="stat__num">3</div><div class="stat__label">Pruebas por prenda</div></div>
-      </div></div>
-    </section>
-
-    <!-- LA CONFECCIÓN: punto fuerte de la casa -->
-    <section class="section craft">
-      <div class="container">
-        <div class="split" style="align-items:start;">
-          <div class="reveal">
-            <div class="rule rule--left"><span></span><span class="diamond"></span></div>
-            <span class="eyebrow eyebrow--claro">Nuestro punto fuerte</span>
-            <h2 class="display-md">La confección lo es todo</h2>
-            <p class="lead" style="margin-top:1.2rem;">Cualquiera puede vender un traje. Muy pocos pueden construirlo. En nuestro taller de Lima, cada prenda pasa por más de 60 horas de trabajo artesanal y por las manos de maestros sastres con décadas de oficio.</p>
-            <div class="mt-2"><a class="btn btn--gold" data-nav="home" data-scroll="configurador">Diseña tu prenda</a></div>
-          </div>
-          <div class="reveal" data-delay="1">
-            <div class="craft-item"><span class="craft-num">I</span><h3>Entretela flotante cosida a mano</h3><p>El pecho del saco se construye con crin y lana cosidos a mano, nunca fusionados con pegamento. Así la prenda se amolda a tu cuerpo con los años.</p></div>
-            <div class="craft-item"><span class="craft-num">II</span><h3>Ojal milanés y botones funcionales</h3><p>Ojales bordados a mano con seda de cordonet y botones de la manga que abren de verdad: la firma silenciosa de la alta sastrería.</p></div>
-            <div class="craft-item"><span class="craft-num">III</span><h3>Hombro a tu anatomía</h3><p>Construcción de hombro natural, con rollino o napolitana según tu postura y tu forma de moverte.</p></div>
-            <div class="craft-item"><span class="craft-num">IV</span><h3>Patrón archivado de por vida</h3><p>Tu patrón en papel y tus medidas quedan registrados digitalmente. Tu segunda prenda se inicia con una llamada.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONFIGURADOR A MEDIDA -->
-    <section class="section cfg" id="configurador">
-      <div class="container">
-        <div class="section-head center">
-          <div class="rule"><span></span><span class="diamond"></span><span></span></div>
-          <span class="eyebrow">Atelier digital</span>
-          <h2 class="display-md">Diseña tu prenda a medida</h2>
-          <p class="lead" style="margin-top:1rem;">Elige la prenda, la tela y los detalles. Es el mismo recorrido que haremos juntos en el atelier, para que llegues a tu cita con la idea clara.</p>
-        </div>
-        <div class="cfg-shell">
-          <div class="cfg-preview reveal">
-            <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" aria-label="Vista previa de la prenda">
-              <!-- TRAJE -->
-              <g id="cfg-svg-traje">
-                <path d="M112 330 L120 118 L104 62 L138 46 L150 66 L162 46 L196 62 L180 118 L188 330 Z" fill="#f6f4ee"/>
-                <path id="tr-tie" d="M150 70 L143 84 L147 170 L150 196 L153 170 L157 84 Z" fill="#7a1f3d"/>
-                <path id="tr-body-l" d="M96 60 L136 42 L150 224 L143 330 L92 330 Q84 236 88 150 Q90 92 96 60 Z" fill="#10305F"/>
-                <path id="tr-body-r" d="M204 60 L164 42 L150 224 L157 330 L208 330 Q216 236 212 150 Q210 92 204 60 Z" fill="#10305F"/>
-                <path id="tr-sleeve-l" d="M96 60 Q74 74 68 118 L58 220 L88 226 L96 150 Z" fill="#10305F"/>
-                <path id="tr-sleeve-r" d="M204 60 Q226 74 232 118 L242 220 L212 226 L204 150 Z" fill="#10305F"/>
-                <g id="tr-lapel-classic">
-                  <path id="tr-lc-l" d="M136 42 L150 66 L128 128 L114 96 Z" fill="#0B2148"/>
-                  <path id="tr-lc-r" d="M164 42 L150 66 L172 128 L186 96 Z" fill="#0B2148"/>
-                </g>
-                <g id="tr-lapel-peak" style="display:none;">
-                  <path id="tr-lp-l" d="M136 42 L150 66 L130 130 L104 92 L126 84 Z" fill="#0B2148"/>
-                  <path id="tr-lp-r" d="M164 42 L150 66 L170 130 L196 92 L174 84 Z" fill="#0B2148"/>
-                </g>
-                <circle id="tr-btn1" cx="149" cy="232" r="4" fill="#C4A15A"/>
-                <circle id="tr-btn2" cx="149" cy="256" r="4" fill="#C4A15A"/>
-                <rect id="tr-pocket" x="168" y="146" width="22" height="6" fill="#E4CE9C"/>
-                <path d="M138 46 Q150 38 162 46 L164 42 Q150 32 136 42 Z" fill="#0B2148" id="tr-collar"/>
-              </g>
-              <!-- CAMISA -->
-              <g id="cfg-svg-camisa" style="display:none;">
-                <path id="cm-body" d="M100 64 L138 44 L150 60 L162 44 L200 64 Q210 100 208 180 L204 352 L96 352 L92 180 Q90 100 100 64 Z" fill="#f4f1ea"/>
-                <path id="cm-sleeve-l" d="M100 64 Q76 80 70 126 L60 236 L90 242 L100 156 Z" fill="#f4f1ea"/>
-                <path id="cm-sleeve-r" d="M200 64 Q224 80 230 126 L240 236 L210 242 L200 156 Z" fill="#f4f1ea"/>
-                <rect id="cm-cuff-l" x="58" y="222" width="34" height="20" rx="2" fill="#e6e0d2"/>
-                <rect id="cm-cuff-r" x="208" y="222" width="34" height="20" rx="2" fill="#e6e0d2"/>
-                <rect id="cm-placket" x="145" y="60" width="10" height="292" fill="#eae4d6"/>
-                <circle cx="150" cy="96" r="2.6" fill="#C4A15A"/>
-                <circle cx="150" cy="136" r="2.6" fill="#C4A15A"/>
-                <circle cx="150" cy="176" r="2.6" fill="#C4A15A"/>
-                <circle cx="150" cy="216" r="2.6" fill="#C4A15A"/>
-                <circle cx="150" cy="256" r="2.6" fill="#C4A15A"/>
-                <circle cx="150" cy="296" r="2.6" fill="#C4A15A"/>
-                <g id="cm-collar-italiano">
-                  <path id="cm-ci-l" d="M138 44 L150 60 L132 84 L120 56 Z" fill="#eae4d6"/>
-                  <path id="cm-ci-r" d="M162 44 L150 60 L168 84 L180 56 Z" fill="#eae4d6"/>
-                </g>
-                <g id="cm-collar-bd" style="display:none;">
-                  <path id="cm-cb-l" d="M138 44 L150 60 L138 90 L124 60 Z" fill="#eae4d6"/>
-                  <path id="cm-cb-r" d="M162 44 L150 60 L162 90 L176 60 Z" fill="#eae4d6"/>
-                  <circle cx="138" cy="84" r="2" fill="#C4A15A"/>
-                  <circle cx="162" cy="84" r="2" fill="#C4A15A"/>
-                </g>
-                <g id="cm-collar-mao">
-                  <path id="cm-cm-band" d="M126 46 Q150 34 174 46 L170 60 Q150 50 130 60 Z" fill="#eae4d6" style="display:none;"/>
-                </g>
-                <path id="cm-yoke" d="M126 46 Q150 34 174 46 L172 52 Q150 42 128 52 Z" fill="#eae4d6"/>
-              </g>
-            </svg>
-            <div class="cfg-preview-label" id="cfg-label">Traje · Azul Marino Insignia</div>
-          </div>
-          <div class="cfg-panel reveal" data-delay="1">
-            <div class="cfg-group">
-              <h3>1 · La prenda</h3>
-              <div class="cfg-opts" id="cfg-garment">
-                <button class="cfg-opt active" data-garment="traje">Traje</button>
-                <button class="cfg-opt" data-garment="camisa">Camisa</button>
-              </div>
-            </div>
-            <div class="cfg-group">
-              <h3>2 · La tela <span style="font-weight:400;letter-spacing:0.05em;text-transform:none;color:var(--av-gris);">· de nuestra biblioteca de 400+ referencias</span></h3>
-              <div class="cfg-fabrics" id="cfg-fabrics"></div>
-            </div>
-            <div class="cfg-group" id="cfg-detail1-group">
-              <h3 id="cfg-detail1-title">3 · La solapa</h3>
-              <div class="cfg-opts" id="cfg-detail1"></div>
-            </div>
-            <div class="cfg-group" id="cfg-detail2-group">
-              <h3 id="cfg-detail2-title">4 · El acabado</h3>
-              <div class="cfg-opts" id="cfg-detail2"></div>
-            </div>
-            <div class="cfg-summary">
-              <h3>Tu diseño</h3>
-              <ul id="cfg-summary-list"></ul>
-              <a class="btn btn--gold" id="cfg-cta" href="#" style="width:100%;justify-content:center;">Solicitar cotización</a>
-              <p class="cfg-note" style="color:rgba(255,255,255,0.55);">Recibirás la cotización con opciones de tela reales de la biblioteca. La prenda final se define contigo en el atelier.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <blockquote class="quote reveal"><div class="rule"><span></span><span class="diamond"></span><span></span></div><p>“Llevo doce años vistiendo con Andrés Vargas. Cada traje se siente como si hubiera nacido conmigo. Es la diferencia entre estar vestido y estar hecho a medida.”</p><footer>— Ricardo Mejía · Director Ejecutivo</footer></blockquote>
-      </div>
-    </section>
-
-    <section class="section bg-crema">
-      <div class="container">
-        <div class="section-head"><span class="eyebrow">Diario sartorial</span><h2 class="display-md">Del blog</h2></div>
-        <div class="grid grid-3">
-          <div class="post reveal" data-nav="blog"><div class="post__media"><img src="https://images.unsplash.com/photo-1592878940526-0214b0f374f6?auto=format&fit=crop&w=700&q=80" alt="Guía de trajes" /></div><div class="post__body"><span class="post__meta">Guías · 5 min</span><h3>Cómo elegir tu primer traje a medida</h3><p>Todo lo que debes saber antes de tu primera cita en el atelier.</p></div></div>
-          <div class="post reveal" data-delay="1" data-nav="blog"><div class="post__media"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80" alt="Telas de temporada" /></div><div class="post__body"><span class="post__meta">Telas · 4 min</span><h3>Lanas de invierno: peso, caída y calidez</h3><p>La guía definitiva para entender los gramajes de temporada.</p></div></div>
-          <div class="post reveal" data-delay="2" data-nav="blog"><div class="post__media"><img src="https://images.unsplash.com/photo-1594938328870-9623159c8c99?auto=format&fit=crop&w=700&q=80" alt="Etiqueta masculina" /></div><div class="post__body"><span class="post__meta">Estilo · 6 min</span><h3>El código de la etiqueta: black tie descifrado</h3><p>Reglas modernas para el esmoquin y los eventos de gala.</p></div></div>
-        </div>
-        <div class="center mt-2"><a class="btn btn--ghost" data-nav="blog">Ver todo el blog</a></div>
-      </div>
-    </section>
-
-    <section class="section cta-band" id="cita">
-      <div class="container">
-        <div class="rule"><span></span><span class="diamond"></span><span></span></div>
-        <span class="eyebrow eyebrow--claro">Tu cita</span>
-        <h2 class="display-lg">Comienza tu traje hoy</h2>
-        <p>Reserva una consulta privada en nuestro atelier. Café en mano, hablaremos de tela, ocasión y de la prenda que siempre quisiste tener.</p>
-        <div class="hero__actions" style="justify-content:center;"><a href="mailto:citas@andresvargas.com" class="btn btn--gold">Reservar por correo</a><a href="tel:+5116000000" class="btn btn--ghost-light">+51 1 600 0000</a></div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===================== TELAS ===================== -->
-  <main class="page" data-page="telas">
-    <section class="page-hero"><div class="container">
-      <div class="breadcrumb"><a data-nav="home">Inicio</a> · Telas</div>
-      <span class="eyebrow eyebrow--claro">Materia prima</span>
-      <h1 class="display-lg">La biblioteca de telas</h1>
-      <p class="lead max-60">Más de 400 referencias de las tejedurías más prestigiosas de Italia e Inglaterra. Cada tela es el punto de partida de una obra a medida.</p>
-    </div></section>
-
-    <section class="section section--tight"><div class="container">
-      <div class="tag-row" data-filter-group data-filter-target="telas-grid">
-        <button class="chip active" data-cat="all">Todas</button>
-        <button class="chip" data-cat="lana">Lana</button>
-        <button class="chip" data-cat="algodon">Algodón</button>
-        <button class="chip" data-cat="lino">Lino</button>
-        <button class="chip" data-cat="seda">Seda</button>
-      </div>
-    </div></section>
-
-    <section class="section" style="padding-top:0;"><div class="container">
-      <div class="grid grid-4" id="telas-grid">
-        <article class="swatch reveal" data-cat="lana"><div class="swatch__color" style="background:linear-gradient(135deg,#10305F,#17417E);"><span>Super 120's</span></div><div class="swatch__body"><h4>Azul Marino Insignia</h4><p>Lana virgen italiana</p><div class="swatch__meta"><span>Lana</span><span>280 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="1" data-cat="lana"><div class="swatch__color" style="background:linear-gradient(135deg,#3b3f47,#5a5f68);"><span>Super 130's</span></div><div class="swatch__body"><h4>Gris Ejecutivo</h4><p>Lana peinada inglesa</p><div class="swatch__meta"><span>Lana</span><span>260 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="2" data-cat="lana"><div class="swatch__color" style="background:linear-gradient(135deg,#1b1e24,#33373f);"><span>Smoking</span></div><div class="swatch__body"><h4>Negro Medianoche</h4><p>Lana y mohair</p><div class="swatch__meta"><span>Lana</span><span>300 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="3" data-cat="lana"><div class="swatch__color" style="background:linear-gradient(135deg,#4a5a44,#647256);"><span>Príncipe de Gales</span></div><div class="swatch__body"><h4>Verde Oliva Cuadros</h4><p>Lana con textura</p><div class="swatch__meta"><span>Lana</span><span>310 g</span></div></div></article>
-        <article class="swatch reveal" data-cat="algodon"><div class="swatch__color" style="background:linear-gradient(135deg,#f4f1ea,#dcd6c8);"><span>Popelín</span></div><div class="swatch__body"><h4>Blanco Marfil</h4><p>Algodón egipcio 2 cabos</p><div class="swatch__meta"><span>Algodón</span><span>120 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="1" data-cat="algodon"><div class="swatch__color" style="background:linear-gradient(135deg,#cfe0f2,#a7c3e3);"><span>Oxford</span></div><div class="swatch__body"><h4>Azul Cielo</h4><p>Algodón texturizado</p><div class="swatch__meta"><span>Algodón</span><span>140 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="2" data-cat="lino"><div class="swatch__color" style="background:linear-gradient(135deg,#e8e2d3,#cabfa5);"><span>Verano</span></div><div class="swatch__body"><h4>Arena Natural</h4><p>Lino irlandés puro</p><div class="swatch__meta"><span>Lino</span><span>190 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="3" data-cat="lino"><div class="swatch__color" style="background:linear-gradient(135deg,#6d7b6a,#8a9885);"><span>Ligero</span></div><div class="swatch__body"><h4>Verde Salvia</h4><p>Lino y algodón</p><div class="swatch__meta"><span>Lino</span><span>210 g</span></div></div></article>
-        <article class="swatch reveal" data-cat="seda"><div class="swatch__color" style="background:linear-gradient(135deg,#7a1f3d,#a13456);"><span>Forro</span></div><div class="swatch__body"><h4>Burdeos Profundo</h4><p>Seda cupro italiana</p><div class="swatch__meta"><span>Seda</span><span>90 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="1" data-cat="seda"><div class="swatch__color" style="background:linear-gradient(135deg,#c4a15a,#e4ce9c);"><span>Corbatería</span></div><div class="swatch__body"><h4>Oro Champán</h4><p>Seda jacquard</p><div class="swatch__meta"><span>Seda</span><span>80 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="2" data-cat="lana"><div class="swatch__color" style="background:linear-gradient(135deg,#21569e,#3d74be);"><span>Fresco</span></div><div class="swatch__body"><h4>Azul Cobalto</h4><p>Lana fresco lana</p><div class="swatch__meta"><span>Lana</span><span>240 g</span></div></div></article>
-        <article class="swatch reveal" data-delay="3" data-cat="algodon"><div class="swatch__color" style="background:linear-gradient(135deg,#b0b7be,#d3d8dd);"><span>Franela</span></div><div class="swatch__body"><h4>Gris Perla</h4><p>Algodón cepillado</p><div class="swatch__meta"><span>Algodón</span><span>170 g</span></div></div></article>
-      </div>
-    </div></section>
-
-    <section class="section bg-crema"><div class="container split">
-      <div class="reveal">
-        <div class="rule rule--left"><span></span><span class="diamond"></span></div>
-        <span class="eyebrow">El origen</span>
-        <h2 class="display-md">De las mejores tejedurías del mundo</h2>
-        <p class="lead" style="margin:1.2rem 0;">Trabajamos directamente con casas centenarias de Biella y Huddersfield. Cada temporada viajamos para seleccionar personalmente las piezas que entrarán en nuestra biblioteca.</p>
-        <ul class="checklist"><li>Lanas Super 100's a Super 180's certificadas.</li><li>Algodón egipcio de fibra extra larga.</li><li>Linos irlandeses y sedas puras de temporada.</li><li>Trazabilidad completa de cada rollo de tela.</li></ul>
-      </div>
-      <div class="showcase__media reveal" data-delay="1"><img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=900&q=80" alt="Rollos de tela de sastrería" /></div>
-    </div></section>
-
-    <section class="section cta-band"><div class="container"><div class="rule"><span></span><span class="diamond"></span><span></span></div><h2 class="display-lg">¿Buscas la tela perfecta?</h2><p>Agenda una cita y explora la biblioteca completa en el atelier, con la asesoría de nuestro maestro sastre.</p><a class="btn btn--gold" data-nav="home" data-scroll="cita">Reservar cita</a></div></section>
-  </main>
-
-  <!-- ===================== CAMISAS ===================== -->
-  <main class="page" data-page="camisas">
-    <section class="page-hero"><div class="container">
-      <div class="breadcrumb"><a data-nav="home">Inicio</a> · Camisas</div>
-      <span class="eyebrow eyebrow--claro">A medida</span>
-      <h1 class="display-lg">Camisas que respiran contigo</h1>
-      <p class="lead max-60">La prenda que más contacto tiene con tu piel merece un patrón hecho exclusivamente para ti. Cada camisa se construye desde el cuello hasta el puño con precisión milimétrica.</p>
-    </div></section>
-
-    <section class="section"><div class="container split">
-      <div class="showcase__media reveal"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=900&q=80" alt="Camisa blanca a medida" /><div class="showcase__badge"><strong>17</strong><span>Medidas por camisa</span></div></div>
-      <div class="reveal" data-delay="1">
-        <div class="rule rule--left"><span></span><span class="diamond"></span></div>
-        <span class="eyebrow">El detalle</span>
-        <h2 class="display-md">Ni una arruga fuera de lugar</h2>
-        <p class="lead" style="margin:1.2rem 0;">Tomamos 17 medidas y estudiamos tu postura para lograr una camisa que se mantenga impecable de la mañana a la noche, dentro y fuera del saco.</p>
-        <ul class="checklist"><li>Costuras francesas y ojales cosidos a mano.</li><li>Botones de nácar auténtico.</li><li>Monograma bordado opcional.</li></ul>
-      </div>
-    </div></section>
-
-    <section class="section bg-crema"><div class="container">
-      <div class="section-head center"><span class="eyebrow">Personalización</span><h2 class="display-md">Cada detalle es tuyo</h2></div>
-      <div class="grid grid-4">
-        <div class="card reveal"><div class="card__media"><img src="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?auto=format&fit=crop&w=500&q=80" alt="Cuello de camisa" /></div><div class="card__body"><h3>Cuellos</h3><p>Italiano, inglés, button-down, mao o cutaway para cada ocasión.</p></div></div>
-        <div class="card reveal" data-delay="1"><div class="card__media"><img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=500&q=80" alt="Puño de camisa" /></div><div class="card__body"><h3>Puños</h3><p>De botón sencillo, doble o para gemelos, con el ajuste que prefieras.</p></div></div>
-        <div class="card reveal" data-delay="2"><div class="card__media"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=500&q=80" alt="Tela de camisa" /></div><div class="card__body"><h3>Tejidos</h3><p>Popelín, oxford, twill y lino en más de 120 referencias.</p></div></div>
-        <div class="card reveal" data-delay="3"><div class="card__media"><img src="https://images.unsplash.com/photo-1594938291221-94f18cbb5660?auto=format&fit=crop&w=500&q=80" alt="Detalle de bordado" /></div><div class="card__body"><h3>Detalles</h3><p>Monograma, contrastes internos y pespuntes a tu elección.</p></div></div>
-      </div>
-    </div></section>
-
-    <section class="section"><div class="container split">
-      <div class="reveal"><span class="eyebrow">El proceso</span><h2 class="display-md">De la medida a tu armario</h2><p class="lead" style="margin-top:1rem;">Un método probado durante tres décadas, pensado para que solo tengas que preocuparte por elegir la tela.</p></div>
-      <div class="reveal" data-delay="1">
-        <div class="step"><div class="step__num">1</div><h3>Toma de medidas</h3><p>17 medidas y análisis de postura en el atelier.</p></div>
-        <div class="step"><div class="step__num">2</div><h3>Elección de tela y estilo</h3><p>Seleccionas tejido, cuello, puños y detalles.</p></div>
-        <div class="step"><div class="step__num">3</div><h3>Confección y prueba</h3><p>Elaboramos tu patrón individual y ajustamos en prueba.</p></div>
-        <div class="step"><div class="step__num">4</div><h3>Entrega</h3><p>Recibes tu camisa lista, con tu patrón guardado para futuros pedidos.</p></div>
-      </div>
-    </div></section>
-
-    <section class="section cta-band"><div class="container"><div class="rule"><span></span><span class="diamond"></span><span></span></div><h2 class="display-lg">Tu camisa perfecta te espera</h2><p>Desde una unidad hasta un guardarropa completo. Agenda tu toma de medidas hoy mismo.</p><a class="btn btn--gold" data-nav="home" data-scroll="cita">Reservar cita</a></div></section>
-  </main>
-
-  <!-- ===================== TRAJES ===================== -->
-  <main class="page" data-page="trajes">
-    <section class="page-hero"><div class="container">
-      <div class="breadcrumb"><a data-nav="home">Inicio</a> · Trajes</div>
-      <span class="eyebrow eyebrow--claro">La colección insignia</span>
-      <h1 class="display-lg">Trajes hechos a tu medida</h1>
-      <p class="lead max-60">El corazón de la casa Andrés Vargas. Cada traje nace de un patrón individual y se construye con las técnicas de la sastrería napolitana e inglesa.</p>
-    </div></section>
-
-    <section class="section"><div class="container">
-      <div class="section-head center"><span class="eyebrow">Estilos</span><h2 class="display-md">Para cada momento de tu vida</h2></div>
-      <div class="grid grid-3">
-        <article class="card reveal"><div class="card__media"><span class="card__tag">Negocios</span><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt="Traje de negocios" /></div><div class="card__body"><h3>Traje de dos piezas</h3><p>La base de todo guardarropa. Versátil, sobrio y perfecto para el día a día ejecutivo.</p></div></article>
-        <article class="card reveal" data-delay="1"><div class="card__media"><span class="card__tag">Ocasión</span><img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0?auto=format&fit=crop&w=700&q=80" alt="Traje de tres piezas" /></div><div class="card__body"><h3>Traje de tres piezas</h3><p>Con chaleco a juego, para quien busca un aire clásico y una presencia impecable.</p></div></article>
-        <article class="card reveal" data-delay="2"><div class="card__media"><span class="card__tag">Gala</span><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80" alt="Esmoquin" /></div><div class="card__body"><h3>Esmoquin & Chaqué</h3><p>Para bodas y galas. Solapas de raso, detalles de gala y una elegancia sin concesiones.</p></div></article>
-      </div>
-    </div></section>
-
-    <section class="section bg-crema"><div class="container split">
-      <div class="showcase__media reveal"><img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=900&q=80" alt="Sastre trabajando un traje" /><div class="showcase__badge"><strong>60+</strong><span>Horas de trabajo</span></div></div>
-      <div class="reveal" data-delay="1">
-        <div class="rule rule--left"><span></span><span class="diamond"></span></div>
-        <span class="eyebrow">El proceso a medida</span>
-        <h2 class="display-md">Cuatro citas hacia la perfección</h2>
-        <div style="margin-top:1.5rem;">
-          <div class="step"><div class="step__num">1</div><h3>Consulta & medidas</h3><p>Estudiamos tu figura, postura y estilo de vida con más de 25 medidas.</p></div>
-          <div class="step"><div class="step__num">2</div><h3>Diseño de la prenda</h3><p>Eliges tela, forma de solapa, botones, forro y cada detalle.</p></div>
-          <div class="step"><div class="step__num">3</div><h3>Pruebas de ajuste</h3><p>Hasta tres pruebas para afinar la caída al milímetro.</p></div>
-          <div class="step"><div class="step__num">4</div><h3>Entrega final</h3><p>Tu traje, con patrón archivado de por vida para futuros encargos.</p></div>
-        </div>
-      </div>
-    </div></section>
-
-    <section class="section"><div class="container">
-      <div class="section-head center"><span class="eyebrow">Colecciones a medida</span><h2 class="display-md">Elige tu nivel de confección</h2><p class="lead" style="margin-top:1rem;">Precios de referencia por traje de dos piezas. Cada proyecto se cotiza según tela y complejidad.</p></div>
-      <div class="grid grid-3">
-        <div class="pricing reveal"><h3>Made to Measure</h3><div class="price">S/ 2,490<small> desde</small></div><ul><li>Patrón base ajustado a tus medidas</li><li>Selección de 150+ telas</li><li>Una prueba de ajuste</li><li>Entrega en 3 semanas</li></ul><a class="btn btn--ghost" style="width:100%;justify-content:center;" data-nav="home" data-scroll="cita">Reservar</a></div>
-        <div class="pricing pricing--featured reveal" data-delay="1"><span class="pricing__badge">Más elegido</span><h3>Bespoke Insignia</h3><div class="price">S/ 4,890<small> desde</small></div><ul><li>Patrón individual desde cero</li><li>Biblioteca completa de 400+ telas</li><li>Tres pruebas de ajuste</li><li>Interior y ojales cosidos a mano</li><li>Garantía de ajuste de por vida</li></ul><a class="btn btn--gold" style="width:100%;justify-content:center;" data-nav="home" data-scroll="cita">Reservar</a></div>
-        <div class="pricing reveal" data-delay="2"><h3>Gala & Ceremonia</h3><div class="price">S/ 6,590<small> desde</small></div><ul><li>Esmoquin o chaqué bespoke</li><li>Telas y sedas de gala</li><li>Camisa de etiqueta incluida</li><li>Asesoría de protocolo completa</li></ul><a class="btn btn--ghost" style="width:100%;justify-content:center;" data-nav="home" data-scroll="cita">Reservar</a></div>
-      </div>
-    </div></section>
-
-    <section class="section bg-crema"><div class="container"><blockquote class="quote reveal"><div class="rule"><span></span><span class="diamond"></span><span></span></div><p>“El día de mi boda me sentí, por primera vez, completamente yo. Ese traje no lo compré: lo construimos juntos.”</p><footer>— Daniel Ospina · Cliente desde 2019</footer></blockquote></div></section>
-
-    <section class="section cta-band"><div class="container"><div class="rule"><span></span><span class="diamond"></span><span></span></div><h2 class="display-lg">Tu próximo traje empieza con una conversación</h2><p>Reserva una consulta privada y descubre lo que significa vestir algo hecho verdaderamente para ti.</p><a class="btn btn--gold" data-nav="home" data-scroll="cita">Reservar cita</a></div></section>
-  </main>
-
-  <!-- ===================== CORPORATIVO ===================== -->
-  <main class="page" data-page="corporativo">
-    <section class="page-hero"><div class="container">
-      <div class="breadcrumb"><a data-nav="home">Inicio</a> · Corporativo</div>
-      <span class="eyebrow eyebrow--claro">Para empresas</span>
-      <h1 class="display-lg">Vista a su equipo con distinción</h1>
-      <p class="lead max-60">Programas de vestuario corporativo a medida que proyectan la identidad de su marca. Desde la alta dirección hasta el equipo comercial, con la misma excelencia de siempre.</p>
-    </div></section>
-
-    <section class="section"><div class="container">
-      <div class="section-head center"><span class="eyebrow">Soluciones</span><h2 class="display-md">Sastrería pensada para su organización</h2></div>
-      <div class="grid grid-3">
-        <div class="feature reveal"><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M16 21v-2a4 4 0 00-8 0v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div><h3>Dotación ejecutiva</h3><p>Trajes y camisas a medida para directivos, con la imagen coherente que su cargo exige.</p></div>
-        <div class="feature reveal" data-delay="1"><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Uniformes de equipo</h3><p>Vestuario homogéneo para equipos comerciales, hoteleros y de atención al cliente.</p></div>
-        <div class="feature reveal" data-delay="2"><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.5 5.5L20 8l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg></div><h3>Imagen de marca</h3><p>Colores corporativos, forros personalizados y bordado de logotipo en cada prenda.</p></div>
-      </div>
-    </div></section>
-
-    <section class="section bg-crema"><div class="container split">
-      <div class="reveal">
-        <div class="rule rule--left"><span></span><span class="diamond"></span></div>
-        <span class="eyebrow">Por qué elegirnos</span>
-        <h2 class="display-md">Un solo proveedor, imagen impecable</h2>
-        <p class="lead" style="margin:1.2rem 0;">Coordinamos todo el proceso: toma de medidas en sus instalaciones, gestión de tallas y entregas programadas, sin interrumpir la operación de su empresa.</p>
-        <ul class="checklist"><li>Toma de medidas en sitio para todo el equipo.</li><li>Telas de alta durabilidad y fácil cuidado.</li><li>Condiciones y plazos ajustados a volumen.</li><li>Reposición y mantenimiento del patrón de cada colaborador.</li></ul>
-        <div class="mt-2"><a class="link-arrow" data-nav="corporativo" data-scroll="contacto-corp">Solicitar propuesta</a></div>
-      </div>
-      <div class="showcase__media reveal" data-delay="1"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Equipo corporativo con traje a medida" /></div>
-    </div></section>
-
-    <section class="section"><div class="container">
-      <div class="section-head center"><span class="eyebrow">Cómo trabajamos</span><h2 class="display-md">Un programa llave en mano</h2></div>
-      <div class="grid grid-4">
-        <div class="feature reveal"><div class="feature__icon"><strong style="font-family:var(--font-display);font-size:1.3rem;">1</strong></div><h3>Diagnóstico</h3><p>Analizamos su marca y necesidades de imagen.</p></div>
-        <div class="feature reveal" data-delay="1"><div class="feature__icon"><strong style="font-family:var(--font-display);font-size:1.3rem;">2</strong></div><h3>Propuesta</h3><p>Diseñamos el vestuario y las telas adecuadas.</p></div>
-        <div class="feature reveal" data-delay="2"><div class="feature__icon"><strong style="font-family:var(--font-display);font-size:1.3rem;">3</strong></div><h3>Medidas en sitio</h3><p>Visitamos su empresa para medir a cada colaborador.</p></div>
-        <div class="feature reveal" data-delay="3"><div class="feature__icon"><strong style="font-family:var(--font-display);font-size:1.3rem;">4</strong></div><h3>Entrega & soporte</h3><p>Confección, entrega programada y reposiciones.</p></div>
-      </div>
-    </div></section>
-
-    <section class="section section--tight stats"><div class="container"><div class="grid grid-3">
-      <div class="reveal"><div class="stat__num">120+</div><div class="stat__label">Empresas atendidas</div></div>
-      <div class="reveal" data-delay="1"><div class="stat__num">8.000+</div><div class="stat__label">Prendas corporativas al año</div></div>
-      <div class="reveal" data-delay="2"><div class="stat__num">100%</div><div class="stat__label">A medida, sin excepción</div></div>
-    </div></div></section>
-
-    <section class="section cta-band" id="contacto-corp"><div class="container"><div class="rule"><span></span><span class="diamond"></span><span></span></div><h2 class="display-lg">Hablemos de su programa corporativo</h2><p>Cuéntenos sobre su equipo y le prepararemos una propuesta a medida, sin compromiso.</p><div class="hero__actions" style="justify-content:center;"><a href="mailto:corporativo@andresvargas.com" class="btn btn--gold">Solicitar propuesta</a><a href="tel:+5116000000" class="btn btn--ghost-light">+51 1 600 0000</a></div></div></section>
-  </main>
-
-  <!-- ===================== BLOG ===================== -->
-  <main class="page" data-page="blog">
-    <section class="page-hero"><div class="container">
-      <div class="breadcrumb"><a data-nav="home">Inicio</a> · Blog</div>
-      <span class="eyebrow eyebrow--claro">Diario sartorial</span>
-      <h1 class="display-lg">El arte de vestir, en palabras</h1>
-      <p class="lead max-60">Guías de estilo, secretos del oficio y todo lo que necesitas saber para sacar el máximo partido a tu guardarropa a medida.</p>
-    </div></section>
-
-    <section class="section"><div class="container">
-      <article class="post post--featured reveal">
-        <div class="post__media"><img src="https://images.unsplash.com/photo-1592878940526-0214b0f374f6?auto=format&fit=crop&w=900&q=80" alt="Primer traje a medida" /></div>
-        <div class="post__body"><span class="post__meta">Destacado · Guías · 5 min de lectura</span><h3>Cómo elegir tu primer traje a medida</h3><p>Dar el paso de la confección industrial a la sastrería puede parecer intimidante. En esta guía te acompañamos desde la elección de la tela hasta la última prueba, para que tu primera experiencia sea memorable.</p><div class="mt-2"><span class="link-arrow">Leer artículo</span></div></div>
-      </article>
-    </div></section>
-
-    <section class="section section--tight" style="padding-top:0;"><div class="container">
-      <div class="tag-row" data-filter-group data-filter-target="blog-grid">
-        <button class="chip active" data-cat="all">Todo</button>
-        <button class="chip" data-cat="guias">Guías</button>
-        <button class="chip" data-cat="telas">Telas</button>
-        <button class="chip" data-cat="estilo">Estilo</button>
-        <button class="chip" data-cat="cuidado">Cuidado</button>
-      </div>
-    </div></section>
-
-    <section class="section" style="padding-top:0;"><div class="container">
-      <div class="grid grid-3" id="blog-grid">
-        <article class="post reveal" data-cat="telas"><div class="post__media"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80" alt="Lanas de invierno" /></div><div class="post__body"><span class="post__meta">Telas · 4 min</span><h3>Lanas de invierno: peso, caída y calidez</h3><p>La guía definitiva para entender los gramajes y elegir la lana ideal para la temporada fría.</p><span class="link-arrow">Leer</span></div></article>
-        <article class="post reveal" data-delay="1" data-cat="estilo"><div class="post__media"><img src="https://images.unsplash.com/photo-1594938328870-9623159c8c99?auto=format&fit=crop&w=700&q=80" alt="Black tie" /></div><div class="post__body"><span class="post__meta">Estilo · 6 min</span><h3>El código black tie descifrado</h3><p>Reglas modernas para el esmoquin y los eventos de gala sin cometer errores.</p><span class="link-arrow">Leer</span></div></article>
-        <article class="post reveal" data-delay="2" data-cat="cuidado"><div class="post__media"><img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=700&q=80" alt="Cuidado de trajes" /></div><div class="post__body"><span class="post__meta">Cuidado · 3 min</span><h3>Cómo prolongar la vida de tu traje</h3><p>Colgado, cepillado y descanso: los tres hábitos que multiplican la duración de tus prendas.</p><span class="link-arrow">Leer</span></div></article>
-        <article class="post reveal" data-cat="guias"><div class="post__media"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=700&q=80" alt="Guía de ajuste" /></div><div class="post__body"><span class="post__meta">Guías · 5 min</span><h3>Anatomía de un traje bien ajustado</h3><p>Hombros, largo de manga y caída del pantalón: qué mirar en el espejo.</p><span class="link-arrow">Leer</span></div></article>
-        <article class="post reveal" data-delay="1" data-cat="estilo"><div class="post__media"><img src="https://images.unsplash.com/photo-1520367745676-56196632073f?auto=format&fit=crop&w=700&q=80" alt="Combinar colores" /></div><div class="post__body"><span class="post__meta">Estilo · 4 min</span><h3>El azul como color base del guardarropa</h3><p>Por qué el azul marino es la inversión más versátil que puedes hacer.</p><span class="link-arrow">Leer</span></div></article>
-        <article class="post reveal" data-delay="2" data-cat="telas"><div class="post__media"><img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=700&q=80" alt="Lino de verano" /></div><div class="post__body"><span class="post__meta">Telas · 4 min</span><h3>Lino y frescolana: vestir con calor</h3><p>Las telas que te mantienen elegante cuando sube la temperatura.</p><span class="link-arrow">Leer</span></div></article>
-      </div>
-    </div></section>
-
-    <section class="section cta-band"><div class="container"><div class="rule"><span></span><span class="diamond"></span><span></span></div><h2 class="display-lg">Recibe el diario sartorial</h2><p>Un correo al mes con guías de estilo, novedades de temporada y consejos del maestro sastre.</p><form class="newsletter" style="max-width:420px;margin:0 auto;border-color:rgba(255,255,255,0.4);"><input type="email" placeholder="Tu correo" required aria-label="Correo" /><button type="submit" aria-label="Suscribir">→</button></form></div></section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <span class="brand__name">Andrés Vargas</span>
-          <p>Sastrería a medida desde 1994. Elegancia atemporal confeccionada en el corazón de Lima.</p>
-          <div class="footer__social">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg></a>
-            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5A1.94 1.94 0 113 5a1.94 1.94 0 013.94 0zM3.5 8.5h3v12h-3zM10 8.5h2.9v1.6h.04c.4-.76 1.4-1.6 2.9-1.6 3.1 0 3.66 2 3.66 4.7v7.3h-3v-6.5c0-1.55-.03-3.55-2.16-3.55-2.16 0-2.5 1.7-2.5 3.44v6.6H10z"/></svg></a>
-          </div>
-        </div>
-        <div class="footcol"><h4>Colecciones</h4><ul><li><a data-nav="trajes">Trajes</a></li><li><a data-nav="camisas">Camisas</a></li><li><a data-nav="telas">Telas</a></li><li><a data-nav="corporativo">Corporativo</a></li></ul></div>
-        <div class="footcol"><h4>Casa</h4><ul><li><a data-nav="home">Inicio</a></li><li><a data-nav="blog">Blog</a></li><li><a data-nav="home" data-scroll="cita">Reservar cita</a></li><li><a href="mailto:citas@andresvargas.com">Contacto</a></li></ul></div>
-        <div class="footcol"><h4>Boletín sartorial</h4><p style="font-weight:300;font-size:0.9rem;">Consejos de estilo y novedades de temporada, una vez al mes.</p><form class="newsletter"><input type="email" placeholder="Tu correo" required aria-label="Correo" /><button type="submit" aria-label="Suscribir">→</button></form></div>
-      </div>
-      <div class="footer__bottom"><span>© 2026 Sastrería Andrés Vargas. Todos los derechos reservados.</span><span>Miraflores · Lima, Perú</span></div>
+<!-- ==================== CABECERA ==================== -->
+<header class="cabecera">
+  <nav class="nav caja">
+    <div class="logo" data-ir="inicio">
+      <img src="assets/escudo-blanco.png" alt="" id="marca">
+      <span class="logo-txt"><b>Andrés Vargas</b><i>Sastrería · Since 1982</i></span>
     </div>
-  </footer>
+    <ul class="menu">
+      <li><a class="on" data-ir="inicio">Inicio</a></li>
+      <li><a data-ir="trajes">Trajes</a></li>
+      <li><a data-ir="camisas">Camisas</a></li>
+      <li><a data-ir="telas">Telas</a></li>
+      <li><a data-ir="novios">Novios</a></li>
+      <li><a data-ir="corporativo">Corporativo</a></li>
+      <li><a data-ir="blog">Blog</a></li>
+      <li><a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a></li>
+    </ul>
+    <button class="hamburguesa" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ==================== INICIO ==================== -->
+<main class="pagina activa" data-pag="inicio">
+
+  <section class="hero">
+    <div class="hero-panel sobre-azul">
+      <img src="assets/escudo-blanco.png" alt="Escudo Andrés Vargas" class="hero-escudo">
+      <span class="rotulo">Sastrería a medida · Lima</span>
+      <p class="hero-slogan">Cada prenda que hacemos guarda <em>la medida exacta del carácter</em> de quien la viste.</p>
+      <div class="hero-firma">
+        <div class="acciones">
+          <a class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
+          <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+        </div>
+        <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Surco y Cercado de Lima</p>
+      </div>
+    </div>
+    <div class="hero-foto">
+      <img src="assets/editorial-esmoquin-marfil.jpg" alt="Saco de smoking marfil confeccionado a medida">
+    </div>
+  </section>
+
+  <!-- LA CASA -->
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt=""><i></i></div>
+        <span class="rotulo">La casa</span>
+        <h2 class="t-xl">Cuarenta y cuatro años<br>tomando medidas</h2>
+        <p class="lead" style="margin-top:1.25rem;">Desde 1982 vestimos a Lima. Con nosotros el cliente vive el proceso completo de crear su traje desde cero, guiado por sastres que llevan décadas en el oficio.</p>
+      </div>
+      <div class="rejilla r3">
+        <article class="pilar doble-filete rev">
+          <span class="num">01</span>
+          <h3>Desde cero, contigo</h3>
+          <p>No adaptamos una talla: construimos la prenda. El cliente participa en cada decisión, del primer boceto a la última prueba.</p>
+        </article>
+        <article class="pilar doble-filete rev" data-d="1">
+          <span class="num">02</span>
+          <h3>Asesoría de sastres expertos</h3>
+          <p>Nuestros sastres te guían en la elección de telas, colores, cortes y acabados para que el resultado sea el correcto.</p>
+        </article>
+        <article class="pilar doble-filete rev" data-d="2">
+          <span class="num">03</span>
+          <h3>Diseñado a tu medida</h3>
+          <p>Cada prenda se diseña sobre tus gustos, tus necesidades y tus medidas. Nada es estándar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TELAS: el diferenciador real -->
+  <section class="seccion fondo-azul sobre-azul">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">Nuestra ventaja</span>
+        <h2 class="t-xl">Distribuidores oficiales de telas</h2>
+        <p class="lead" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas. Eso significa dos cosas para ti: una variedad que pocas sastrerías del país pueden ofrecer, y mejores precios, porque la tela no pasa por intermediarios.</p>
+        <ul class="lista">
+          <li>Telas nacionales e importadas en una misma casa.</li>
+          <li>Precio directo, sin sobrecosto de intermediarios.</li>
+          <li>Asesoría para elegir el tejido según ocasión, clima y caída.</li>
+        </ul>
+        <div style="margin-top:2rem;"><a class="enlace" data-ir="telas">Ver las telas</a></div>
+      </div>
+      <div class="rev" data-d="1">
+        <img src="assets/editorial-duo.jpg" alt="Dos trajes de gala confeccionados a medida">
+      </div>
+    </div>
+  </section>
+
+  <!-- CIFRAS -->
+  <section class="seccion-corta fondo-profundo sobre-azul">
+    <div class="caja rejilla r3">
+      <div class="cifra rev"><b>1982</b><span>Año de fundación</span></div>
+      <div class="cifra rev" data-d="1"><b>44</b><span>Años de oficio</span></div>
+      <div class="cifra rev" data-d="2"><b>2</b><span>Tiendas en Lima</span></div>
+    </div>
+  </section>
+
+  <!-- CONFIGURADOR -->
+  <section class="seccion fondo-lino" id="configurador">
+    <div class="caja">
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt=""><i></i></div>
+        <span class="rotulo">Atelier digital</span>
+        <h2 class="t-xl">Diseña tu prenda</h2>
+        <p class="lead" style="margin-top:1rem;">Elige la prenda, el color de tela y los detalles. Es el mismo recorrido que haremos juntos en la tienda, para que llegues a tu cita con la idea clara.</p>
+      </div>
+      <div class="cfg">
+        <div class="cfg-vista rev">
+          <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" aria-label="Vista previa de la prenda">
+            <g id="sv-traje">
+              <path d="M112 330 L120 118 L104 62 L138 46 L150 66 L162 46 L196 62 L180 118 L188 330 Z" fill="#f6f4ee"/>
+              <path d="M150 70 L143 84 L147 170 L150 196 L153 170 L157 84 Z" fill="#1E1E1C"/>
+              <path id="tr-cuerpo-i" d="M96 60 L136 42 L150 224 L143 330 L92 330 Q84 236 88 150 Q90 92 96 60 Z" fill="#1A2744"/>
+              <path id="tr-cuerpo-d" d="M204 60 L164 42 L150 224 L157 330 L208 330 Q216 236 212 150 Q210 92 204 60 Z" fill="#1A2744"/>
+              <path id="tr-manga-i" d="M96 60 Q74 74 68 118 L58 220 L88 226 L96 150 Z" fill="#1A2744"/>
+              <path id="tr-manga-d" d="M204 60 Q226 74 232 118 L242 220 L212 226 L204 150 Z" fill="#1A2744"/>
+              <g id="tr-solapa-clasica">
+                <path id="tr-sc-i" d="M136 42 L150 66 L128 128 L114 96 Z" fill="#172740"/>
+                <path id="tr-sc-d" d="M164 42 L150 66 L172 128 L186 96 Z" fill="#172740"/>
+              </g>
+              <g id="tr-solapa-pico" style="display:none;">
+                <path id="tr-sp-i" d="M136 42 L150 66 L130 130 L104 92 L126 84 Z" fill="#172740"/>
+                <path id="tr-sp-d" d="M164 42 L150 66 L170 130 L196 92 L174 84 Z" fill="#172740"/>
+              </g>
+              <circle cx="149" cy="232" r="3.6" fill="#F2EEE7"/>
+              <circle cx="149" cy="256" r="3.6" fill="#F2EEE7"/>
+              <rect id="tr-panuelo" x="168" y="146" width="22" height="6" fill="#FCFBF8"/>
+              <path id="tr-cuello" d="M138 46 Q150 38 162 46 L164 42 Q150 32 136 42 Z" fill="#172740"/>
+            </g>
+            <g id="sv-camisa" style="display:none;">
+              <path id="cm-cuerpo" d="M100 64 L138 44 L150 60 L162 44 L200 64 Q210 100 208 180 L204 352 L96 352 L92 180 Q90 100 100 64 Z" fill="#F2EEE7"/>
+              <path id="cm-manga-i" d="M100 64 Q76 80 70 126 L60 236 L90 242 L100 156 Z" fill="#F2EEE7"/>
+              <path id="cm-manga-d" d="M200 64 Q224 80 230 126 L240 236 L210 242 L200 156 Z" fill="#F2EEE7"/>
+              <rect id="cm-puno-i" x="58" y="222" width="34" height="20" fill="#E5DFD4"/>
+              <rect id="cm-puno-d" x="208" y="222" width="34" height="20" fill="#E5DFD4"/>
+              <rect id="cm-tapeta" x="145" y="60" width="10" height="292" fill="#E5DFD4"/>
+              <circle cx="150" cy="100" r="2.4" fill="#1A2744"/><circle cx="150" cy="140" r="2.4" fill="#1A2744"/>
+              <circle cx="150" cy="180" r="2.4" fill="#1A2744"/><circle cx="150" cy="220" r="2.4" fill="#1A2744"/>
+              <circle cx="150" cy="260" r="2.4" fill="#1A2744"/><circle cx="150" cy="300" r="2.4" fill="#1A2744"/>
+              <g id="cm-cuello-italiano">
+                <path id="cm-ci-i" d="M138 44 L150 60 L132 84 L120 56 Z" fill="#E5DFD4"/>
+                <path id="cm-ci-d" d="M162 44 L150 60 L168 84 L180 56 Z" fill="#E5DFD4"/>
+              </g>
+              <g id="cm-cuello-bd" style="display:none;">
+                <path id="cm-cb-i" d="M138 44 L150 60 L138 90 L124 60 Z" fill="#E5DFD4"/>
+                <path id="cm-cb-d" d="M162 44 L150 60 L162 90 L176 60 Z" fill="#E5DFD4"/>
+                <circle cx="138" cy="84" r="2" fill="#1A2744"/><circle cx="162" cy="84" r="2" fill="#1A2744"/>
+              </g>
+              <path id="cm-banda" d="M126 46 Q150 34 174 46 L170 60 Q150 50 130 60 Z" fill="#E5DFD4" style="display:none;"/>
+              <path id="cm-hombro" d="M126 46 Q150 34 174 46 L172 52 Q150 42 128 52 Z" fill="#E5DFD4"/>
+            </g>
+          </svg>
+          <div class="cfg-pie" id="cfg-pie">Traje · Azul Marino</div>
+        </div>
+        <div class="cfg-panel rev" data-d="1">
+          <div class="cfg-grupo">
+            <h3>01 · La prenda</h3>
+            <div class="chips" id="cfg-prenda">
+              <button class="chip on" data-prenda="traje">Traje</button>
+              <button class="chip" data-prenda="camisa">Camisa</button>
+            </div>
+          </div>
+          <div class="cfg-grupo">
+            <h3>02 · La tela <em>· nacionales e importadas</em></h3>
+            <div class="cfg-telas" id="cfg-telas"></div>
+          </div>
+          <div class="cfg-grupo">
+            <h3 id="cfg-t1">03 · La solapa</h3>
+            <div class="chips" id="cfg-d1"></div>
+          </div>
+          <div class="cfg-grupo">
+            <h3 id="cfg-t2">04 · El acabado</h3>
+            <div class="chips" id="cfg-d2"></div>
+          </div>
+          <div class="cfg-resumen">
+            <h3>Tu diseño</h3>
+            <ul id="cfg-lista"></ul>
+            <a class="btn btn-claro" id="cfg-cta" href="https://wa.me/51959370397" target="_blank" rel="noopener" style="width:100%;">Enviar por WhatsApp</a>
+            <p class="cfg-nota">Te responderemos con las opciones de tela disponibles. La prenda final se define contigo en la tienda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLECCIONES -->
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc">
+        <span class="rotulo">Colecciones</span>
+        <h2 class="t-xl">Lo que confeccionamos</h2>
+      </div>
+      <div class="rejilla r4">
+        <article class="ficha rev" data-ir="trajes">
+          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Smoking negro a medida"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Trajes</h3><p>De dos y tres piezas, para oficina, ocasión y gala.</p></div>
+        </article>
+        <article class="ficha rev" data-d="1" data-ir="camisas">
+          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Saco gris perla con camisa a medida"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Camisas</h3><p>Cuello, puño y silueta a tu medida.</p></div>
+        </article>
+        <article class="ficha rev" data-d="2" data-ir="novios">
+          <div class="ficha-img"><img src="assets/novios-novio.jpg" alt="Novio con esmoquin a medida"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Novios</h3><p>El traje del día más fotografiado de tu vida.</p></div>
+        </article>
+        <article class="ficha rev" data-d="3" data-ir="telas">
+          <div class="ficha-img"><img src="assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo a medida"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Telas</h3><p>Nacionales e importadas, a precio directo.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVIOS -->
+  <section class="seccion fondo-lino">
+    <div class="caja dos-col">
+      <div class="rev"><img src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida"></div>
+      <div class="rev" data-d="1">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">Servicio de novios</span>
+        <h2 class="t-xl">Para el día que sí se recuerda</h2>
+        <p class="lead" style="margin-top:1.25rem;">Un paquete pensado para el novio y su cortejo, con todo resuelto desde la primera medida hasta el último gemelo.</p>
+        <ul class="lista">
+          <li>Traje de dos o tres piezas, a medida.</li>
+          <li>Camisa a medida personalizada.</li>
+          <li>Corbata, pajarita, pañuelos y gemelos.</li>
+        </ul>
+        <div style="margin-top:2rem;"><a class="enlace" data-ir="novios">Ver el servicio de novios</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Diario</span><h2 class="t-xl">Del blog</h2></div>
+      <div class="rejilla r3">
+        <article class="nota rev" data-ir="blog">
+          <div class="nota-img"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Guías</span><h3>Cómo elegir tu primer traje a medida</h3><p>Qué esperar de tu primera visita a la tienda.</p></div>
+        </article>
+        <article class="nota rev" data-d="1" data-ir="blog">
+          <div class="nota-img"><img src="assets/traje-petroleo.jpg" alt="Traje verde petróleo"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Telas</span><h3>Nacional o importada: cómo decidir</h3><p>Las diferencias que de verdad importan al elegir tejido.</p></div>
+        </article>
+        <article class="nota rev" data-d="2" data-ir="blog">
+          <div class="nota-img"><img src="assets/novios-duo.jpg" alt="Trajes de novio"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Novios</span><h3>Calendario del novio: cuándo empezar</h3><p>Los tiempos reales para llegar tranquilo a la boda.</p></div>
+        </article>
+      </div>
+      <div class="centro" style="margin-top:2.5rem;"><a class="btn btn-linea" data-ir="blog">Ver el blog</a></div>
+    </div>
+  </section>
+
+  <!-- TIENDAS -->
+  <section class="seccion fondo-azul sobre-azul" id="tiendas">
+    <div class="caja">
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+        <span class="rotulo">Visítanos</span>
+        <h2 class="t-xl">Dos tiendas en Lima</h2>
+        <p class="lead" style="margin-top:1rem;">Escríbenos por WhatsApp y coordinamos tu cita en la tienda que te quede más cerca.</p>
+      </div>
+      <div class="rejilla r2" style="max-width:900px;margin-inline:auto;">
+        <div class="tienda rev">
+          <h3>Surco</h3>
+          <p>Avenida Primavera 252<br>Santiago de Surco, Lima</p>
+        </div>
+        <div class="tienda rev" data-d="1">
+          <h3>Cercado de Lima</h3>
+          <p>Jirón Ucayali 115 · 119 · 121<br>Cercado de Lima</p>
+        </div>
+      </div>
+      <div class="centro" style="margin-top:2.5rem;">
+        <div class="acciones" style="justify-content:center;">
+          <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
+          <a class="btn btn-linea-clara" href="mailto:servicioalcliente@andresvargas.pe">Escríbenos un correo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== TRAJES ==================== -->
+<main class="pagina" data-pag="trajes">
+  <section class="pag-hero sobre-azul">
+    <div class="caja">
+      <div class="miga"><span data-ir="inicio">Inicio</span> · Trajes</div>
+      <span class="rotulo">La prenda insignia</span>
+      <h1 class="t-hero">Trajes a medida</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">De dos o tres piezas, para la oficina, una ocasión o una gala. Diseñados sobre tus medidas, tus gustos y la tela que elijas con nuestros sastres.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Colección</span><h2 class="t-xl">Confeccionados en nuestro taller</h2></div>
+      <div class="rejilla r4">
+        <article class="ficha rev">
+          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Smoking negro con solapa de raso"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Smoking negro</h3><p>Solapa de raso, para gala y etiqueta.</p></div>
+        </article>
+        <article class="ficha rev" data-d="1">
+          <div class="ficha-img"><img src="assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Cruzado petróleo</h3><p>Doble botonadura, presencia y carácter.</p></div>
+        </article>
+        <article class="ficha rev" data-d="2">
+          <div class="ficha-img"><img src="assets/traje-burdeos.jpg" alt="Traje cruzado burdeos"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Cruzado burdeos</h3><p>Para quien quiere salir del negro sin estridencias.</p></div>
+        </article>
+        <article class="ficha rev" data-d="3">
+          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Saco de fiesta gris perla"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Saco gris perla</h3><p>Chaqueta de fiesta con pantalón de contraste.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-lino">
+    <div class="caja dos-col">
+      <div class="rev"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro a medida"></div>
+      <div class="rev" data-d="1">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El proceso</span>
+        <h2 class="t-xl">De la medida a la entrega</h2>
+        <div style="margin-top:1.5rem;">
+          <div class="paso"><b>01</b><div><h3>Asesoría y medidas</h3><p>Conversamos sobre la ocasión y tu estilo, y tomamos tus medidas en la tienda.</p></div></div>
+          <div class="paso"><b>02</b><div><h3>Elección de tela y detalles</h3><p>Eliges el tejido entre nuestras telas nacionales e importadas, con el color, corte y acabado que prefieras.</p></div></div>
+          <div class="paso"><b>03</b><div><h3>Confección y pruebas</h3><p>Nuestros sastres confeccionan la prenda y la ajustamos contigo en las pruebas necesarias.</p></div></div>
+          <div class="paso"><b>04</b><div><h3>Entrega</h3><p>Recibes tu prenda terminada, lista para usar.</p></div></div>
+        </div>
+        <div style="margin-top:2rem;">
+          <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta">
+    <div class="caja"><div class="aviso rev" style="max-width:64ch;margin-inline:auto;">
+      <b>Sobre los precios</b>
+      El precio depende de la tela elegida y del detalle de la prenda. Al ser distribuidores oficiales de telas, trabajamos con precio directo. Escríbenos por WhatsApp y te damos una cotización según lo que tengas en mente.
+    </div></div>
+  </section>
+</main>
+
+<!-- ==================== CAMISAS ==================== -->
+<main class="pagina" data-pag="camisas">
+  <section class="pag-hero sobre-azul">
+    <div class="caja">
+      <div class="miga"><span data-ir="inicio">Inicio</span> · Camisas</div>
+      <span class="rotulo">A medida</span>
+      <h1 class="t-hero">Camisas</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">La prenda que está en contacto con tu piel todo el día merece un patrón propio. Cuello, puño y silueta se definen contigo.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev"><img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla"></div>
+      <div class="rev" data-d="1">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El detalle</span>
+        <h2 class="t-xl">Tu camisa, tu patrón</h2>
+        <p class="lead" style="margin-top:1.25rem;">Cada camisa se diseña sobre tus medidas y tus gustos: el tipo de cuello, la caída del cuerpo, el puño y la tela. Nuestros sastres te asesoran en cada elección.</p>
+        <ul class="lista">
+          <li>Cuello italiano, button-down o mao.</li>
+          <li>Puño simple o doble para gemelos.</li>
+          <li>Telas nacionales e importadas a elección.</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <div class="acciones">
+            <a class="btn btn-azul" data-ir="inicio" data-scroll="configurador">Diseña tu camisa</a>
+            <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-azul sobre-azul">
+    <div class="caja">
+      <div class="enc centro"><span class="rotulo">Personalización</span><h2 class="t-xl">Lo que puedes elegir</h2></div>
+      <div class="rejilla r3">
+        <article class="pilar doble-filete rev"><span class="num">01</span><h3>El cuello</h3><p>Define el carácter de la camisa y cómo se ve con o sin corbata.</p></article>
+        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><h3>El puño</h3><p>Simple para el día a día, doble para gemelos en ocasiones formales.</p></article>
+        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><h3>La tela</h3><p>Del popelín liso al lino fresco, según el clima y la ocasión.</p></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== TELAS ==================== -->
+<main class="pagina" data-pag="telas">
+  <section class="pag-hero sobre-azul">
+    <div class="caja">
+      <div class="miga"><span data-ir="inicio">Inicio</span> · Telas</div>
+      <span class="rotulo">Distribuidores oficiales</span>
+      <h1 class="t-hero">Telas</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas. Una variedad amplia, a precio directo, con la asesoría de sastres que saben qué tejido pide cada prenda.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Ventajas</span><h2 class="t-xl">Por qué la tela importa</h2></div>
+      <div class="rejilla r3">
+        <article class="pilar doble-filete rev"><span class="num">01</span><h3>Variedad real</h3><p>Nacionales e importadas en una misma casa, para que compares y elijas con criterio.</p></article>
+        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><h3>Precio directo</h3><p>Al ser distribuidores oficiales, la tela no pasa por intermediarios y eso se refleja en lo que pagas.</p></article>
+        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><h3>Asesoría honesta</h3><p>Te decimos qué tejido conviene según la ocasión, el clima de Lima y la caída que buscas.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-lino">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Muestrario</span><h2 class="t-xl">Colores y familias</h2>
+        <p class="lead" style="margin-top:1rem;">Una muestra de los tonos con los que trabajamos. El muestrario completo está en la tienda: es mucho más amplio de lo que cabe en una pantalla.</p>
+      </div>
+      <div class="chips" data-filtro-grupo data-filtro-destino="grid-telas" style="margin-bottom:2rem;">
+        <button class="chip on" data-cat="all">Todas</button>
+        <button class="chip" data-cat="oscuros">Oscuros</button>
+        <button class="chip" data-cat="grises">Grises</button>
+        <button class="chip" data-cat="color">Color</button>
+        <button class="chip" data-cat="claros">Claros</button>
+      </div>
+      <div class="rejilla r4" id="grid-telas">
+        <article class="tela rev" data-cat="oscuros"><div class="tela-color" style="background:#1A2744"></div><div class="tela-info"><h4>Azul Marino</h4><p>El azul de la casa</p></div></article>
+        <article class="tela rev" data-d="1" data-cat="oscuros"><div class="tela-color" style="background:#1E1E1C"></div><div class="tela-info"><h4>Negro</h4><p>Etiqueta y gala</p></div></article>
+        <article class="tela rev" data-d="2" data-cat="oscuros"><div class="tela-color" style="background:#293661"></div><div class="tela-info"><h4>Azul Medio</h4><p>Oficina y diario</p></div></article>
+        <article class="tela rev" data-d="3" data-cat="grises"><div class="tela-color" style="background:#4A4F58"></div><div class="tela-info"><h4>Gris Plomo</h4><p>Sobrio y versátil</p></div></article>
+        <article class="tela rev" data-cat="grises"><div class="tela-color" style="background:#8A8F98"></div><div class="tela-info"><h4>Gris Medio</h4><p>Para climas templados</p></div></article>
+        <article class="tela rev" data-d="1" data-cat="grises"><div class="tela-color" style="background:#B6BAC0"></div><div class="tela-info"><h4>Gris Perla</h4><p>Chaqueta de fiesta</p></div></article>
+        <article class="tela rev" data-d="2" data-cat="color"><div class="tela-color" style="background:#1F4B4A"></div><div class="tela-info"><h4>Verde Petróleo</h4><p>Carácter sin estridencia</p></div></article>
+        <article class="tela rev" data-d="3" data-cat="color"><div class="tela-color" style="background:#5C2233"></div><div class="tela-info"><h4>Burdeos</h4><p>Ocasión y noche</p></div></article>
+        <article class="tela rev" data-cat="color"><div class="tela-color" style="background:#3E4C2F"></div><div class="tela-info"><h4>Verde Oliva</h4><p>Con textura, informal</p></div></article>
+        <article class="tela rev" data-d="1" data-cat="claros"><div class="tela-color" style="background:#F2EDE0"></div><div class="tela-info"><h4>Marfil</h4><p>Gala de verano</p></div></article>
+        <article class="tela rev" data-d="2" data-cat="claros"><div class="tela-color" style="background:#D8CDB4"></div><div class="tela-info"><h4>Arena</h4><p>Lino y frescos</p></div></article>
+        <article class="tela rev" data-d="3" data-cat="claros"><div class="tela-color" style="background:#A9BBD0"></div><div class="tela-info"><h4>Celeste</h4><p>Camisería</p></div></article>
+      </div>
+      <div class="aviso rev" style="margin-top:2.5rem;">
+        <b>Nota</b>
+        Los tonos mostrados son de referencia y pueden variar respecto a la tela física según tu pantalla. El muestrario real, con composiciones y pesos, se revisa en la tienda con nuestros sastres.
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-azul sobre-azul">
+    <div class="caja centro">
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+      <h2 class="t-xl">Ven a ver el muestrario</h2>
+      <p class="lead medida centro" style="margin-top:1rem;">Coordinamos una visita en Surco o en el Cercado de Lima y revisamos las telas contigo.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== NOVIOS ==================== -->
+<main class="pagina" data-pag="novios">
+  <section class="pag-hero sobre-azul">
+    <div class="caja">
+      <div class="miga"><span data-ir="inicio">Inicio</span> · Novios</div>
+      <span class="rotulo">Servicio de novios</span>
+      <h1 class="t-hero">El traje del novio</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Es el día en que más fotos te van a tomar en la vida. Nos encargamos de que el traje esté a la altura, del primer boceto al último gemelo.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev"><img src="assets/novios-novio.jpg" alt="Novio con esmoquin negro a medida"></div>
+      <div class="rev" data-d="1">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">Qué incluye</span>
+        <h2 class="t-xl">Todo resuelto</h2>
+        <p class="lead" style="margin-top:1.25rem;">El paquete de novios reúne la prenda principal y los complementos, para que no tengas que ir juntando piezas de sitios distintos.</p>
+        <ul class="lista">
+          <li>Traje de dos o tres piezas, confeccionado a tu medida.</li>
+          <li>Camisa a medida personalizada.</li>
+          <li>Corbata, pajarita, pañuelos y gemelos.</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar el paquete</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-lino">
+    <div class="caja">
+      <div class="enc centro"><span class="rotulo">También para el cortejo</span><h2 class="t-xl">Padrinos y familia</h2>
+        <p class="lead medida centro" style="margin-top:1rem;">Vestimos también a padrinos, padres y hermanos, para que el conjunto se vea coherente en las fotos.</p>
+      </div>
+      <div class="rejilla r3">
+        <div class="rev"><img src="assets/novios-trio.jpg" alt="Novio con dos padrinos"></div>
+        <div class="rev" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida"></div>
+        <div class="rev" data-d="2"><img src="assets/novios-trio-wide.jpg" alt="Grupo de novio y padrinos"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-azul sobre-azul">
+    <div class="caja centro">
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+      <h2 class="t-xl">Empecemos con tiempo</h2>
+      <p class="lead medida centro" style="margin-top:1rem;">Escríbenos con la fecha de tu boda y coordinamos el calendario de medidas y pruebas sin apuros.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== CORPORATIVO ==================== -->
+<main class="pagina" data-pag="corporativo">
+  <section class="pag-hero sobre-azul">
+    <div class="caja">
+      <div class="miga"><span data-ir="inicio">Inicio</span> · Corporativo</div>
+      <span class="rotulo">Para empresas</span>
+      <h1 class="t-hero">Corporativo</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Vestuario a medida para equipos y directivos. La misma confección de siempre, coordinada para varias personas.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Soluciones</span><h2 class="t-xl">Cómo trabajamos con empresas</h2></div>
+      <div class="rejilla r3">
+        <article class="pilar doble-filete rev"><span class="num">01</span><h3>Directivos</h3><p>Trajes y camisas a medida para la plana gerencial, con la imagen que el cargo pide.</p></article>
+        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><h3>Equipos</h3><p>Vestuario coherente para equipos comerciales y de atención, con la misma línea para todos.</p></article>
+        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><h3>Tela a precio directo</h3><p>Al ser distribuidores oficiales, en pedidos por volumen la diferencia en la tela se nota.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-lino">
+    <div class="caja dos-col">
+      <div class="rev"><img src="assets/editorial-duo.jpg" alt="Dos trajes a medida"></div>
+      <div class="rev" data-d="1">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">Coordinación</span>
+        <h2 class="t-xl">Un solo proveedor</h2>
+        <p class="lead" style="margin-top:1.25rem;">Coordinamos la toma de medidas de todo el equipo y los plazos de entrega, para que la operación de la empresa no se interrumpa.</p>
+        <ul class="lista">
+          <li>Toma de medidas coordinada para todo el equipo.</li>
+          <li>Una línea de tela y corte para toda la organización.</li>
+          <li>Plazos y condiciones según el volumen del pedido.</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <a class="btn btn-azul" href="mailto:servicioalcliente@andresvargas.pe?subject=Consulta%20corporativa">Solicitar una propuesta</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta">
+    <div class="caja"><div class="aviso rev" style="max-width:64ch;margin-inline:auto;">
+      <b>Cotización a medida</b>
+      Cada programa corporativo se cotiza según el número de personas, las prendas y la tela elegida. Cuéntanos sobre tu equipo por correo o WhatsApp y preparamos una propuesta.
+    </div></div>
+  </section>
+</main>
+
+<!-- ==================== BLOG ==================== -->
+<main class="pagina" data-pag="blog">
+  <section class="pag-hero sobre-azul">
+    <div class="caja">
+      <div class="miga"><span data-ir="inicio">Inicio</span> · Blog</div>
+      <span class="rotulo">Diario</span>
+      <h1 class="t-hero">Blog</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Lo que hemos aprendido en 44 años, contado sin tecnicismos: cómo elegir, cómo cuidar y cuándo empezar.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="aviso rev" style="margin-bottom:2.5rem;">
+        <b>En preparación</b>
+        Estamos escribiendo los primeros artículos. Los temas de abajo son los que vienen; muy pronto podrás leerlos completos.
+      </div>
+      <div class="rejilla r3">
+        <article class="nota rev">
+          <div class="nota-img"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Guías · Próximamente</span><h3>Cómo elegir tu primer traje a medida</h3><p>Qué esperar de tu primera visita y cómo llegar preparado.</p></div>
+        </article>
+        <article class="nota rev" data-d="1">
+          <div class="nota-img"><img src="assets/traje-petroleo.jpg" alt="Traje verde petróleo"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Telas · Próximamente</span><h3>Nacional o importada: cómo decidir</h3><p>Las diferencias que de verdad importan al elegir el tejido.</p></div>
+        </article>
+        <article class="nota rev" data-d="2">
+          <div class="nota-img"><img src="assets/novios-duo.jpg" alt="Trajes de novio"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Novios · Próximamente</span><h3>Calendario del novio: cuándo empezar</h3><p>Los tiempos reales para llegar tranquilo al día de la boda.</p></div>
+        </article>
+        <article class="nota rev">
+          <div class="nota-img"><img src="assets/traje-negro.jpg" alt="Smoking negro"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Estilo · Próximamente</span><h3>Etiqueta: qué se espera de un código de vestimenta</h3><p>Traducción práctica de lo que dice la invitación.</p></div>
+        </article>
+        <article class="nota rev" data-d="1">
+          <div class="nota-img"><img src="assets/traje-burdeos.jpg" alt="Traje burdeos"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Cuidado · Próximamente</span><h3>Cómo cuidar un traje para que dure</h3><p>Colgado, cepillado y descanso: lo que sí funciona.</p></div>
+        </article>
+        <article class="nota rev" data-d="2">
+          <div class="nota-img"><img src="assets/traje-gris.jpg" alt="Saco gris perla"></div>
+          <div class="nota-cuerpo doble-filete"><span class="nota-meta">Estilo · Próximamente</span><h3>Salir del negro sin equivocarse</h3><p>Colores que funcionan en Lima y con qué combinarlos.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== PIE ==================== -->
+<footer class="pie">
+  <div class="caja">
+    <div class="pie-rejilla">
+      <div class="pie-logo">
+        <img src="assets/logo-blanco.png" alt="Andrés Vargas Sastrería">
+        <p>Sastrería a medida en Lima desde 1982. Distribuidores oficiales de telas nacionales e importadas.</p>
+        <div class="redes">
+          <a href="https://www.instagram.com/andres_vargas_sastreria/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.tiktok.com/@andresvargasboutique" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3h-2.7v11.2a2.6 2.6 0 11-2.6-2.6c.2 0 .4 0 .6.1V9a5.4 5.4 0 102 4.2V8.1a5 5 0 002.7.8V6.2a2.7 2.7 0 01-2.7-2.7 2 2 0 010-.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a data-ir="trajes">Trajes</a></li>
+          <li><a data-ir="camisas">Camisas</a></li>
+          <li><a data-ir="telas">Telas</a></li>
+          <li><a data-ir="novios">Novios</a></li>
+          <li><a data-ir="corporativo">Corporativo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Tiendas</h4>
+        <ul>
+          <li>Av. Primavera 252<br>Santiago de Surco</li>
+          <li>Jr. Ucayali 115 · 119 · 121<br>Cercado de Lima</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a></li>
+          <li><a href="mailto:servicioalcliente@andresvargas.pe">servicioalcliente@andresvargas.pe</a></li>
+          <li><a href="https://www.andresvargas.pe/" target="_blank" rel="noopener">andresvargas.pe</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie-base">
+      <span>© 2026 Andrés Vargas Sastrería · Since 1982</span>
+      <span>Lima, Perú</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/51959370397" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>
+</a>
+
 </div>
 
 <script>
 (function () {
   "use strict";
-  var app = document.querySelector(".app");
-  var header = document.querySelector(".site-header");
-  var pages = document.querySelectorAll(".page");
-  var navLinks = document.querySelectorAll(".nav__menu .nav__link");
+  var WA = '51959370397';
+  var cab = document.querySelector('.cabecera');
+  var pags = document.querySelectorAll('.pagina');
+  var menuLinks = document.querySelectorAll('.menu a[data-ir]');
+  var marca = document.getElementById('marca');
 
-  function applyReveal(scope) {
-    var reveals = (scope || document).querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
-      reveals.forEach(function (el) { io.observe(el); });
-    } else {
-      reveals.forEach(function (el) { el.classList.add("visible"); });
-    }
+  function animar(ambito) {
+    var els = (ambito || document).querySelectorAll('.rev');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('ver'); }); return; }
+    var io = new IntersectionObserver(function (ent) {
+      ent.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('ver'); io.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    els.forEach(function (e) { io.observe(e); });
   }
 
-  function showPage(name, scrollId) {
-    pages.forEach(function (p) { p.classList.toggle("active", p.getAttribute("data-page") === name); });
-    navLinks.forEach(function (l) { l.classList.toggle("active", l.getAttribute("data-nav") === name); });
-    app.classList.toggle("hero-mode", name === "home");
-    // reset reveal state on the shown page so animations replay
-    var active = document.querySelector('.page[data-page="' + name + '"]');
-    if (active) {
-      active.querySelectorAll(".reveal").forEach(function (el) { el.classList.remove("visible"); });
-      applyReveal(active);
-    }
-    if (scrollId) {
-      var target = document.getElementById(scrollId);
-      if (target) { setTimeout(function () { target.scrollIntoView({ behavior: "smooth" }); }, 60); return; }
-    }
-    window.scrollTo({ top: 0, behavior: "auto" });
+  function actualizarMarca() {
+    marca.src = cab.classList.contains('fijo') ? 'assets/escudo-azul.png' : 'assets/escudo-blanco.png';
   }
 
-  document.addEventListener("click", function (e) {
-    var el = e.target.closest("[data-nav]");
-    if (el) {
-      e.preventDefault();
-      showPage(el.getAttribute("data-nav"), el.getAttribute("data-scroll"));
-      var menu = document.querySelector(".nav__menu");
-      var toggle = document.querySelector(".nav__toggle");
-      if (menu && menu.classList.contains("open")) {
-        menu.classList.remove("open"); toggle.classList.remove("active"); document.body.style.overflow = "";
-      }
+  function ir(nombre, ancla) {
+    pags.forEach(function (p) { p.classList.toggle('activa', p.dataset.pag === nombre); });
+    menuLinks.forEach(function (a) { a.classList.toggle('on', a.dataset.ir === nombre); });
+
+    var act = document.querySelector('.pagina[data-pag="' + nombre + '"]');
+    if (act) { act.querySelectorAll('.rev').forEach(function (e) { e.classList.remove('ver'); }); animar(act); }
+    if (ancla) {
+      var t = document.getElementById(ancla);
+      if (t) { setTimeout(function () { t.scrollIntoView({ behavior: 'smooth' }); }, 60); actualizarMarca(); return; }
     }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    actualizarMarca();
+  }
+
+  document.addEventListener('click', function (ev) {
+    var el = ev.target.closest('[data-ir]');
+    if (!el) return;
+    if (el.tagName === 'A' && el.getAttribute('href')) return;
+    ev.preventDefault();
+    ir(el.dataset.ir, el.dataset.scroll);
+    var m = document.querySelector('.menu'), h = document.querySelector('.hamburguesa');
+    if (m.classList.contains('abierto')) { m.classList.remove('abierto'); h.classList.remove('x'); document.body.style.overflow = ''; }
   });
 
-  var onScroll = function () { header.classList.toggle("scrolled", window.scrollY > 40); };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  var toggle = document.querySelector(".nav__toggle");
-  var menu = document.querySelector(".nav__menu");
-  if (toggle && menu) {
-    toggle.addEventListener("click", function () {
-      var open = menu.classList.toggle("open");
-      toggle.classList.toggle("active", open);
-      document.body.style.overflow = open ? "hidden" : "";
-    });
+  function alScroll() {
+    cab.classList.toggle('fijo', window.scrollY > 40);
+    actualizarMarca();
   }
+  window.addEventListener('scroll', alScroll, { passive: true });
+  alScroll();
 
-  document.querySelectorAll("[data-filter-group]").forEach(function (group) {
-    var chips = group.querySelectorAll(".chip");
-    var targetId = group.getAttribute("data-filter-target");
-    var container = document.getElementById(targetId);
-    if (!container) return;
-    var items = container.querySelectorAll("[data-cat]");
-    chips.forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        chips.forEach(function (c) { c.classList.remove("active"); });
-        chip.classList.add("active");
-        var cat = chip.getAttribute("data-cat");
-        items.forEach(function (item) {
-          item.style.display = (cat === "all" || item.getAttribute("data-cat") === cat) ? "" : "none";
+  var ham = document.querySelector('.hamburguesa'), menu = document.querySelector('.menu');
+  ham.addEventListener('click', function () {
+    var ab = menu.classList.toggle('abierto');
+    ham.classList.toggle('x', ab);
+    document.body.style.overflow = ab ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('[data-filtro-grupo]').forEach(function (g) {
+    var chips = g.querySelectorAll('.chip');
+    var cont = document.getElementById(g.dataset.filtroDestino);
+    if (!cont) return;
+    var items = cont.querySelectorAll('[data-cat]');
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        chips.forEach(function (x) { x.classList.remove('on'); });
+        c.classList.add('on');
+        items.forEach(function (i) {
+          i.style.display = (c.dataset.cat === 'all' || i.dataset.cat === c.dataset.cat) ? '' : 'none';
         });
       });
     });
   });
 
-  document.querySelectorAll(".newsletter").forEach(function (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var input = form.querySelector("input");
-      if (input && input.value) { input.value = ""; input.placeholder = "¡Gracias por suscribirte!"; }
-    });
-  });
-
-  /* ============ Configurador a medida ============ */
+  /* ================= CONFIGURADOR ================= */
   var CFG = {
-    garment: "traje",
-    fabrics: {
+    prenda: 'traje',
+    telas: {
       traje: [
-        { id: "marino", name: "Marino Insignia", sub: "Lana Super 120's", base: "#10305F", dark: "#0B2148" },
-        { id: "gris", name: "Gris Ejecutivo", sub: "Lana peinada inglesa", base: "#5a5f68", dark: "#3b3f47" },
-        { id: "carbon", name: "Carbón", sub: "Lana y mohair", base: "#33373f", dark: "#1b1e24" },
-        { id: "cobalto", name: "Azul Cobalto", sub: "Fresco lana italiano", base: "#21569e", dark: "#17417E" },
-        { id: "oliva", name: "Verde Oliva", sub: "Lana con textura", base: "#4a5a44", dark: "#38452f" },
-        { id: "camel", name: "Camel", sub: "Lana y cachemir", base: "#a5854f", dark: "#7d6238" }
+        { n: 'Azul Marino', base: '#1A2744', osc: '#131D33' },
+        { n: 'Negro', base: '#252523', osc: '#131312' },
+        { n: 'Azul Medio', base: '#293661', osc: '#1D2747' },
+        { n: 'Gris Plomo', base: '#4A4F58', osc: '#343841' },
+        { n: 'Verde Petróleo', base: '#1F4B4A', osc: '#153434' },
+        { n: 'Burdeos', base: '#5C2233', osc: '#411722' }
       ],
       camisa: [
-        { id: "marfil", name: "Blanco Marfil", sub: "Popelín egipcio", base: "#f4f1ea", dark: "#dcd6c8" },
-        { id: "celeste", name: "Celeste Oxford", sub: "Algodón texturizado", base: "#c9dcef", dark: "#a7c3e3" },
-        { id: "francia", name: "Azul Francia", sub: "Popelín 2 cabos", base: "#89a9ce", dark: "#6c8fb8" },
-        { id: "rosa", name: "Rosa Empolvado", sub: "Popelín egipcio", base: "#ecd6d6", dark: "#d8b8b8" },
-        { id: "arena", name: "Arena", sub: "Lino irlandés", base: "#e6dfcd", dark: "#cabfa5" },
-        { id: "perla", name: "Gris Perla", sub: "Franela de algodón", base: "#d9dde1", dark: "#b0b7be" }
+        { n: 'Blanco', base: '#F7F5F0', osc: '#E2DCD0' },
+        { n: 'Celeste', base: '#C8D9EA', osc: '#A9BBD0' },
+        { n: 'Azul Francia', base: '#8CA8C8', osc: '#6E8CAF' },
+        { n: 'Rosa Palo', base: '#EBD6D4', osc: '#D6B8B6' },
+        { n: 'Arena', base: '#E6DECC', osc: '#CDBFA4' },
+        { n: 'Gris Perla', base: '#DADDE1', osc: '#B6BAC0' }
       ]
     },
-    detail1: {
-      traje: { title: "3 · La solapa", opts: ["Clásica", "De pico"] },
-      camisa: { title: "3 · El cuello", opts: ["Italiano", "Button-down", "Mao"] }
+    d1: {
+      traje: { t: '03 · La solapa', o: ['Clásica', 'De pico'] },
+      camisa: { t: '03 · El cuello', o: ['Italiano', 'Button-down', 'Mao'] }
     },
-    detail2: {
-      traje: { title: "4 · El acabado", opts: ["Pañuelo oro", "Pañuelo burdeos", "Sin pañuelo"] },
-      camisa: { title: "4 · El puño", opts: ["Simple", "Doble para gemelos"] }
+    d2: {
+      traje: { t: '04 · El acabado', o: ['Con pañuelo', 'Sin pañuelo'] },
+      camisa: { t: '04 · El puño', o: ['Simple', 'Doble para gemelos'] }
     },
-    state: { traje: { fabric: 0, d1: 0, d2: 0 }, camisa: { fabric: 0, d1: 0, d2: 0 } }
+    est: { traje: { tela: 0, a: 0, b: 0 }, camisa: { tela: 0, a: 0, b: 0 } }
   };
-
   var $ = function (id) { return document.getElementById(id); };
-  if ($("cfg-garment")) {
 
-    function fill(id, color) { var el = $(id); if (el) el.setAttribute("fill", color); }
+  if ($('cfg-prenda')) {
+    var pinta = function (id, c) { var e = $(id); if (e) e.setAttribute('fill', c); };
 
-    function renderOptions() {
-      var g = CFG.garment, st = CFG.state[g];
-      var fabricsEl = $("cfg-fabrics");
-      fabricsEl.innerHTML = "";
-      CFG.fabrics[g].forEach(function (f, i) {
-        var b = document.createElement("button");
-        b.className = "cfg-fabric" + (i === st.fabric ? " active" : "");
-        b.innerHTML = '<div class="cfg-fabric-chip" style="background:linear-gradient(135deg,' + f.base + "," + f.dark + ');"></div><span>' + f.name + "</span>";
-        b.addEventListener("click", function () { st.fabric = i; renderOptions(); paint(); });
-        fabricsEl.appendChild(b);
+    var opciones = function () {
+      var g = CFG.prenda, st = CFG.est[g];
+      var cont = $('cfg-telas'); cont.innerHTML = '';
+      CFG.telas[g].forEach(function (t, i) {
+        var b = document.createElement('button');
+        b.className = 'cfg-tela' + (i === st.tela ? ' on' : '');
+        b.innerHTML = '<i style="background:linear-gradient(150deg,' + t.base + ',' + t.osc + ')"></i><span>' + t.n + '</span>';
+        b.addEventListener('click', function () { st.tela = i; opciones(); dibuja(); });
+        cont.appendChild(b);
       });
-      ["detail1", "detail2"].forEach(function (key, idx) {
-        var conf = CFG[key][g];
-        $("cfg-" + key + "-title").textContent = conf.title;
-        var wrap = $("cfg-" + key);
-        wrap.innerHTML = "";
-        conf.opts.forEach(function (label, i) {
-          var b = document.createElement("button");
-          var stKey = idx === 0 ? "d1" : "d2";
-          b.className = "cfg-opt" + (i === st[stKey] ? " active" : "");
-          b.textContent = label;
-          b.addEventListener("click", function () { st[stKey] = i; renderOptions(); paint(); });
-          wrap.appendChild(b);
+      [['d1', 'a'], ['d2', 'b']].forEach(function (par, idx) {
+        var conf = CFG[par[0]][g];
+        $('cfg-t' + (idx + 1)).textContent = conf.t;
+        var w = $('cfg-' + par[0]); w.innerHTML = '';
+        conf.o.forEach(function (lab, i) {
+          var b = document.createElement('button');
+          b.className = 'chip' + (i === st[par[1]] ? ' on' : '');
+          b.textContent = lab;
+          b.addEventListener('click', function () { st[par[1]] = i; opciones(); dibuja(); });
+          w.appendChild(b);
         });
       });
-    }
+    };
 
-    function paint() {
-      var g = CFG.garment, st = CFG.state[g];
-      var f = CFG.fabrics[g][st.fabric];
-      $("cfg-svg-traje").style.display = g === "traje" ? "" : "none";
-      $("cfg-svg-camisa").style.display = g === "camisa" ? "" : "none";
+    var dibuja = function () {
+      var g = CFG.prenda, st = CFG.est[g], t = CFG.telas[g][st.tela];
+      $('sv-traje').style.display = g === 'traje' ? '' : 'none';
+      $('sv-camisa').style.display = g === 'camisa' ? '' : 'none';
 
-      if (g === "traje") {
-        ["tr-body-l", "tr-body-r", "tr-sleeve-l", "tr-sleeve-r"].forEach(function (id) { fill(id, f.base); });
-        ["tr-lc-l", "tr-lc-r", "tr-lp-l", "tr-lp-r", "tr-collar"].forEach(function (id) { fill(id, f.dark); });
-        $("tr-lapel-classic").style.display = st.d1 === 0 ? "" : "none";
-        $("tr-lapel-peak").style.display = st.d1 === 1 ? "" : "none";
-        var pocket = $("tr-pocket");
-        pocket.style.display = st.d2 === 2 ? "none" : "";
-        pocket.setAttribute("fill", st.d2 === 1 ? "#7a1f3d" : "#E4CE9C");
+      if (g === 'traje') {
+        ['tr-cuerpo-i', 'tr-cuerpo-d', 'tr-manga-i', 'tr-manga-d'].forEach(function (id) { pinta(id, t.base); });
+        ['tr-sc-i', 'tr-sc-d', 'tr-sp-i', 'tr-sp-d', 'tr-cuello'].forEach(function (id) { pinta(id, t.osc); });
+        $('tr-solapa-clasica').style.display = st.a === 0 ? '' : 'none';
+        $('tr-solapa-pico').style.display = st.a === 1 ? '' : 'none';
+        $('tr-panuelo').style.display = st.b === 1 ? 'none' : '';
       } else {
-        ["cm-body", "cm-sleeve-l", "cm-sleeve-r"].forEach(function (id) { fill(id, f.base); });
-        ["cm-cuff-l", "cm-cuff-r", "cm-placket", "cm-yoke", "cm-ci-l", "cm-ci-r", "cm-cb-l", "cm-cb-r", "cm-cm-band"].forEach(function (id) { fill(id, f.dark); });
-        $("cm-collar-italiano").style.display = st.d1 === 0 ? "" : "none";
-        $("cm-collar-bd").style.display = st.d1 === 1 ? "" : "none";
-        $("cm-cm-band").style.display = st.d1 === 2 ? "" : "none";
+        ['cm-cuerpo', 'cm-manga-i', 'cm-manga-d'].forEach(function (id) { pinta(id, t.base); });
+        ['cm-puno-i', 'cm-puno-d', 'cm-tapeta', 'cm-hombro', 'cm-ci-i', 'cm-ci-d', 'cm-cb-i', 'cm-cb-d', 'cm-banda'].forEach(function (id) { pinta(id, t.osc); });
+        $('cm-cuello-italiano').style.display = st.a === 0 ? '' : 'none';
+        $('cm-cuello-bd').style.display = st.a === 1 ? '' : 'none';
+        $('cm-banda').style.display = st.a === 2 ? '' : 'none';
       }
 
-      var d1Label = CFG.detail1[g].opts[st.d1];
-      var d2Label = CFG.detail2[g].opts[st.d2];
-      var garmentName = g === "traje" ? "Traje" : "Camisa";
-      $("cfg-label").textContent = garmentName + " · " + f.name;
-
-      var rows = [
-        ["Prenda", garmentName + " a medida"],
-        ["Tela", f.name + " (" + f.sub + ")"],
-        [g === "traje" ? "Solapa" : "Cuello", d1Label],
-        [g === "traje" ? "Acabado" : "Puño", d2Label]
+      var nombre = g === 'traje' ? 'Traje' : 'Camisa';
+      $('cfg-pie').textContent = nombre + ' · ' + t.n;
+      var filas = [
+        ['Prenda', nombre + ' a medida'],
+        ['Tela', t.n],
+        [g === 'traje' ? 'Solapa' : 'Cuello', CFG.d1[g].o[st.a]],
+        [g === 'traje' ? 'Acabado' : 'Puño', CFG.d2[g].o[st.b]]
       ];
-      $("cfg-summary-list").innerHTML = rows.map(function (r) {
-        return "<li><span>" + r[0] + "</span><b>" + r[1] + "</b></li>";
-      }).join("");
+      $('cfg-lista').innerHTML = filas.map(function (f) {
+        return '<li><span>' + f[0] + '</span><b>' + f[1] + '</b></li>';
+      }).join('');
 
-      var body = "Hola, quiero cotizar una prenda a medida:%0D%0A%0D%0A" +
-        rows.map(function (r) { return "- " + r[0] + ": " + r[1]; }).join("%0D%0A") +
-        "%0D%0A%0D%0AMi nombre:%0D%0AMi teléfono:";
-      $("cfg-cta").setAttribute("href", "mailto:citas@andresvargas.com?subject=" + encodeURIComponent("Cotización " + garmentName.toLowerCase() + " a medida — " + f.name) + "&body=" + body);
-    }
+      var msg = 'Hola, quiero cotizar una prenda a medida:\n\n' +
+        filas.map(function (f) { return '· ' + f[0] + ': ' + f[1]; }).join('\n') +
+        '\n\n¿Me pueden dar más información?';
+      $('cfg-cta').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+    };
 
-    $("cfg-garment").querySelectorAll(".cfg-opt").forEach(function (b) {
-      b.addEventListener("click", function () {
-        CFG.garment = b.getAttribute("data-garment");
-        $("cfg-garment").querySelectorAll(".cfg-opt").forEach(function (x) { x.classList.toggle("active", x === b); });
-        renderOptions(); paint();
+    $('cfg-prenda').querySelectorAll('.chip').forEach(function (b) {
+      b.addEventListener('click', function () {
+        CFG.prenda = b.dataset.prenda;
+        $('cfg-prenda').querySelectorAll('.chip').forEach(function (x) { x.classList.toggle('on', x === b); });
+        opciones(); dibuja();
       });
     });
-
-    renderOptions();
-    paint();
+    opciones(); dibuja();
   }
 
-  applyReveal(document.querySelector('.page[data-page="home"]'));
+  animar(document.querySelector('.pagina[data-pag="inicio"]'));
 })();
 </script>
 </body>

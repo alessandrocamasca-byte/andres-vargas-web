@@ -12,30 +12,41 @@ Web del cliente Andrés Vargas Boutique, sastrería a medida en Lima, Perú. Obj
 
 - **`index.html` es la ÚNICA fuente de verdad.** Un solo archivo autocontenido (CSS y JS inline) que funciona como SPA con las 6 secciones (home, telas, camisas, trajes, corporativo, blog) más el configurador interactivo de prendas. Tiene doctype, viewport, lang, meta SEO/Open Graph y favicon inline.
 - Decisión 30 jul 2026: se eliminaron `site.html` y la versión multipágina (`telas.html`, `camisas.html`, `trajes.html`, `corporativo.html`, `blog.html`, `css/`, `js/`) para evitar dos fuentes desincronizadas. Siguen en el historial de git (commit 2659660) si hiciera falta recuperarlas.
-- Al servirse desde hosting propio sí carga Google Fonts (Playfair Display + Montserrat). El artifact de Claude no los permite por CSP, ahí caen a los fallbacks del sistema.
-- Artifact de Claude (preview compartible): https://claude.ai/code/artifact/c849f2a7-2caf-48f9-8085-cd46b5bd802a
+- `assets/`: logos y fotos reales del cliente, optimizados a sRGB sin perfiles ICC (2.5MB en total). Ya no se usa ninguna imagen de stock.
+- Al servirse desde hosting propio sí carga Google Fonts (Oswald + Montserrat). El artifact de Claude no los permite por CSP.
+- `DESIGN-SYSTEM.md`: el sistema de diseño completo y su trazabilidad al manual de marca.
 - `NOTAS.md`: memoria viva del proyecto (decisiones, pendientes, incidencias). Actualizarlo en cada sesión de trabajo.
 
 ## Design system del cliente
 
-- **Azul característico:** `#10305F` (paleta completa de `#071633` a `#3D74BE`, tokens `--av-azul-*` en el CSS).
-- **Acento oro champán:** `#C4A15A` / `#E4CE9C` / `#9B7C3C`.
-- **Neutros:** hueso `#FBFAF7`, crema `#F4F1EA`, humo `#EBE7DF`, carbón `#1B1E24`.
-- **Tipografía:** serif display (Playfair Display con fallback Georgia) + sans del sistema para cuerpo. En el artifact solo fallbacks del sistema (CSP bloquea CDNs de fuentes).
-- **Tono:** elegancia sartorial clásica, sin estridencias. Detalles: divisores con diamante, eyebrows con letter-spacing amplio, radius 2px.
+**Fuente de verdad: `DESIGN-SYSTEM.md`** en este repo. Derivado del Manual de Marca oficial. Resumen:
+
+- **Los tres azules del manual, y solo esos:** `--azul #1A2744` (rgb 26,39,68), `--azul-medio #293661` (41,54,97), `--azul-profundo #172740` (23,39,64). El manual dice literalmente que se usen únicamente los colores primarios.
+- **NO usar oro ni ningún acento metálico.** Se eliminó el `#C4A15A` que se había inventado antes de tener el manual.
+- **Neutros cálidos** derivados de la fotografía de marca: papel `#FCFBF8`, lino `#F2EEE7`, arena `#E5DFD4`, piedra `#8A8378`, tinta `#1E1E1C`.
+- **Tipografía:** el manual pide **Big Noodle Titling** (display) + **Gotham** (texto). Sin webfont gratuita, así que se usan **Oswald** y **Montserrat** como sustitutos. Titulares en Oswald mayúsculas peso 300.
+- **Motivo estructural:** doble filete (`.doble-filete`), tomado del doble contorno del escudo del logo. El escudo se usa como glifo divisor.
+- **Tono:** heráldico y estructurado (corona, escudo, Since 1982), no atelier italiano. Alto contraste azul/papel, mayúsculas condensadas con tracking amplio, mucho aire, la fotografía carga la emoción.
+- **Logo:** no distorsionar, no recolorear, no añadir efectos. El escudo no baja de 28px de ancho en pantalla.
 
 ## Mensajes clave del negocio
 
-1. **La confección es el punto fuerte:** entretela flotante cosida a mano, ojal milanés, botones funcionales, patrón archivado de por vida, 60+ horas por traje.
-2. **Biblioteca de 400+ telas** italianas e inglesas, de las más grandes del Perú.
-3. A medida de verdad: patrón individual, hasta 3 pruebas.
+1. **Distribuidores oficiales de telas nacionales e importadas.** Es el diferenciador real: variedad amplia y mejores precios porque no hay intermediarios.
+2. **44 años de oficio** (desde 1982). El cliente vive el proceso de crear su traje desde cero.
+3. **Asesoría de sastres expertos** en telas, colores, cortes y acabados. Cada prenda sobre los gustos, necesidades y medidas del cliente.
+4. **Servicio de novios** como línea propia: traje de 2 o 3 piezas, camisa a medida, corbata, pajarita, pañuelos y gemelos.
 
-## Datos del negocio (estado)
+## Datos del negocio (confirmados por el cliente)
 
-- Ubicación: Lima, Perú (Miraflores como placeholder, CONFIRMAR dirección real).
-- Teléfono `+51 1 600 0000` y correos `citas@` / `corporativo@andresvargas.com` son PLACEHOLDERS, confirmar con el cliente antes del go-live.
-- Precios de referencia en soles (S/ 2,490 / 4,890 / 6,590): validar con el cliente.
-- Logo y fotos: por ahora tipografía + fotos de Unsplash. Pendiente recibir assets reales del cliente.
+- **Slogan:** "Cada prenda que hacemos, guarda la medida exacta del carácter de quién la viste"
+- **Fundación:** 1982 · más de 44 años de experiencia
+- **WhatsApp:** 959 370 397 · **Correo:** servicioalcliente@andresvargas.pe · **Web:** andresvargas.pe
+- **Tiendas:** Av. Primavera 252, Santiago de Surco · Jr. Ucayali 115 · 119 · 121, Cercado de Lima
+- **Redes:** IG @andres_vargas_sastreria · TikTok @andresvargasboutique · Facebook "Andres Vargas" (falta URL exacta)
+
+## Regla de honestidad de datos
+
+**No inventar nada sobre el cliente.** En una versión anterior se inventaron precios, dos testimonios con nombres de personas inexistentes y cifras de producción; todo se eliminó. Lo que el cliente no ha confirmado no se publica: se deja fuera o se explica con una caja `.aviso` (por ejemplo, los precios se cotizan por WhatsApp, y los artículos del blog están marcados "Próximamente").
 
 ## Cómo trabajar en local
 
