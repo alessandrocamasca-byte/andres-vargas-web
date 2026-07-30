@@ -12,8 +12,8 @@ Memoria viva del proyecto. Se actualiza en cada sesión.
 
 ## Pendientes (backlog)
 
-1. Crear el repo remoto en GitHub y hacer el primer push (en curso).
-2. Conectar Cloudflare Pages al repo (preguntar cuenta de Cloudflare a usar, regla de rigor).
+1. ~~Crear el repo remoto en GitHub y hacer el primer push.~~ HECHO 30 jul 2026: https://github.com/alessandrocamasca-byte/andres-vargas-web (privado, commit 2659660).
+2. Conectar Cloudflare Pages al repo (preguntar cuenta de Cloudflare a usar, regla de rigor). SIGUIENTE PASO.
 3. Recibir del cliente: logo real, fotos del taller y prendas, dirección exacta, teléfono, correos, precios validados.
 4. Botón flotante de WhatsApp (clave de conversión en Perú).
 5. Agenda de citas real (Calendly o similar, como Firenze).
