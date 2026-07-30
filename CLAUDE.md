@@ -10,8 +10,10 @@ Web del cliente Andrés Vargas Boutique, sastrería a medida en Lima, Perú. Obj
 
 ## Estructura y fuente de verdad
 
-- **`site.html` es la fuente de verdad actual.** Es una SPA autocontenida (CSS y JS inline) con las 6 secciones (home, telas, camisas, trajes, corporativo, blog) y el configurador interactivo de prendas. Se publica también como artifact de Claude: https://claude.ai/code/artifact/c849f2a7-2caf-48f9-8085-cd46b5bd802a
-- Los archivos multipágina (`index.html`, `telas.html`, `camisas.html`, `trajes.html`, `corporativo.html`, `blog.html` + `css/styles.css` + `js/main.js`) fueron la primera versión y están DESACTUALIZADOS respecto a `site.html` (les falta: configurador, sección confección, Lima en vez de Bogotá, precios en soles). Antes del deploy real hay que sincronizarlos desde `site.html` o decidir publicar la SPA.
+- **`index.html` es la ÚNICA fuente de verdad.** Un solo archivo autocontenido (CSS y JS inline) que funciona como SPA con las 6 secciones (home, telas, camisas, trajes, corporativo, blog) más el configurador interactivo de prendas. Tiene doctype, viewport, lang, meta SEO/Open Graph y favicon inline.
+- Decisión 30 jul 2026: se eliminaron `site.html` y la versión multipágina (`telas.html`, `camisas.html`, `trajes.html`, `corporativo.html`, `blog.html`, `css/`, `js/`) para evitar dos fuentes desincronizadas. Siguen en el historial de git (commit 2659660) si hiciera falta recuperarlas.
+- Al servirse desde hosting propio sí carga Google Fonts (Playfair Display + Montserrat). El artifact de Claude no los permite por CSP, ahí caen a los fallbacks del sistema.
+- Artifact de Claude (preview compartible): https://claude.ai/code/artifact/c849f2a7-2caf-48f9-8085-cd46b5bd802a
 - `NOTAS.md`: memoria viva del proyecto (decisiones, pendientes, incidencias). Actualizarlo en cada sesión de trabajo.
 
 ## Design system del cliente

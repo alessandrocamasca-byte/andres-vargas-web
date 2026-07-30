@@ -5,7 +5,8 @@ Memoria viva del proyecto. Se actualiza en cada sesión.
 ## Decisiones tomadas
 
 - **30 jul 2026 · Repo:** `alessandrocamasca-byte/andres-vargas-web`, privado, cuenta personal de Alessandro. Se migra a `hag240401` si Hernán lo pide.
-- **30 jul 2026 · Fuente de verdad:** `site.html` (SPA autocontenida). La versión multipágina quedó desactualizada y se sincronizará antes del deploy real.
+- **30 jul 2026 · Fuente de verdad:** `index.html`, un solo archivo. Se convirtió `site.html` en página de producción (doctype, viewport, lang, meta SEO y Open Graph, favicon) y se eliminó la versión multipágina para no mantener dos fuentes desincronizadas. Recuperables desde el commit 2659660.
+- **30 jul 2026 · Tipografía:** al servirse desde hosting propio sí cargan Playfair Display y Montserrat desde Google Fonts. Verificado en local.
 - **30 jul 2026 · Ubicación corregida:** la web decía Bogotá por error, ahora todo es Lima, Perú. Precios en soles.
 - **18 jul 2026 · Identidad visual:** azul característico #10305F + oro champán #C4A15A, serif display + sans de sistema.
 - **30 jul 2026 · Referencia de mercado:** firenze.pe/pages/sastreria como estándar a igualar o superar. No se copian sus assets (logo, fotos, textos) por derechos de marca.
