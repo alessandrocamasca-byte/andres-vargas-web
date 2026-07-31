@@ -6,29 +6,47 @@ Sistema de diseño de la web, derivado del **Manual de Marca oficial** del clien
 
 ## 1. Color
 
-El manual es explícito: *"se deberá utilizar únicamente los colores primarios especificados"*. Son tres azules, definidos en RGB decimal.
+El manual es explícito: *"se deberá utilizar únicamente los colores primarios especificados"*. Son tres azules, etiquetados en el manual en RGB decimal.
 
 | Token | HEX | RGB | Uso |
 |---|---|---|---|
 | `--azul` | `#1A2744` | 26, 39, 68 | **Primario.** Titulares, fondos de banda, botones. |
-| `--azul-medio` | `#293661` | 41, 54, 97 | Secundario. Hover, rótulos, numeración, filetes activos. |
+| `--azul-medio` | `#293661` | 41, 54, 97 | Secundario. Hover, rótulos, numeración. |
 | `--azul-profundo` | `#172740` | 23, 39, 64 | Fondos más profundos: pie de página, franja de cifras. |
-| `--azul-tenue` | `#E7EAF0` | derivado | Superficie suave y texto de énfasis sobre azul. |
 
-Verificación: el logo real medido con muestreo de píxeles da `#18243F`, coincidente con la especificación del manual (la mínima diferencia es conversión de perfil de color). El token del sitio usa el valor del manual, que es la autoridad.
+### Cómo se verificaron (triple comprobación)
 
-### Neutros
+1. **Etiqueta impresa en el manual:** la página "Esquema de colores · Colores planos" imprime `26.39.68`, `41.54.97` y `23.39.64` junto a cada muestra.
+2. **Píxeles del logo real:** muestreo del PNG oficial da `#18243F`, coincidente dentro del margen de conversión de perfil.
+3. **Operadores de color del propio PDF:** extrayendo los `scn` de los flujos de contenido, las muestras se dibujan con `0.036 0.134 0.263` y `0.112 0.199 0.386` en el espacio de trabajo del documento, consistentes con las etiquetas.
 
-El manual no define neutros (un manual de marca cubre identidad, no interfaz). Se derivaron de la **fotografía oficial de la marca**: el muro de piedra y el saco marfil de la sesión editorial, que son cálidos. Por eso los neutros tienen sesgo cálido y no gris puro.
+### Tintes que el manual usa en su propia maquetación
+
+Al extraer todos los operadores de color del PDF aparecieron dos azules desaturados usados **26 veces cada uno**, además de los primarios (50 y 47 usos). Forman parte del lenguaje visual real de la marca:
 
 | Token | HEX | Uso |
 |---|---|---|
-| `--papel` | `#FCFBF8` | Fondo base de la web. |
-| `--lino` | `#F2EEE7` | Secciones alternas, superficies de reposo. |
-| `--arena` | `#E5DFD4` | Filetes, bordes, separadores. |
-| `--piedra` | `#8A8378` | Texto secundario. |
-| `--grafito` | `#4A4A46` | Texto de párrafo sobre fondo claro. |
-| `--tinta` | `#1E1E1C` | Texto base. |
+| `--azul-pizarra` | `#505D7F` | Rótulos y metadatos sobre fondo claro. Contraste 6.3:1. |
+| `--azul-claro` | `#9FAAC0` | Rótulos sobre azul. Contraste 6.3:1. |
+| `--azul-bruma` | `#74819A` | El valor del manual tal cual. **Solo decorativo:** 3.8:1, no apto para texto. |
+| `--azul-tenue` | `#E7EAF0` | Énfasis sobre azul. |
+
+### Neutros
+
+El manual no define neutros de interfaz, pero **sí revela su familia**: su maquetación usa gris neutro (`0.506` → `#818181`) y gris frío para filetes (`0.642 0.653 0.661` → `#A4A7A9`), nunca cálidos. Los neutros de la web siguen esa familia fría.
+
+> Corrección registrada: una versión anterior usaba neutros cálidos (crema y arena) derivados de la fotografía. Se cambiaron a fríos al comprobar que el manual trabaja en gris neutro y azulado.
+
+| Token | HEX | Uso | Contraste sobre papel |
+|---|---|---|---|
+| `--papel` | `#FBFBFC` | Fondo base. | — |
+| `--nube` | `#F1F3F6` | Secciones alternas. | — |
+| `--filete` | `#DFE3EA` | Bordes y separadores. | — |
+| `--piedra` | `#676D79` | Texto secundario. | 5.0:1 |
+| `--grafito` | `#4A4F58` | Texto de párrafo. | 8.0:1 |
+| `--tinta` | `#1E2128` | Texto base. | 15.6:1 |
+
+**Nota sobre el gris del manual:** su `#818181` es de documento impreso y en pantalla da 3.8:1, por debajo del mínimo AA de 4.5:1. Para texto se usa `#676D79`, la misma familia una parada más oscura. Es la única desviación deliberada del manual, y es por accesibilidad.
 
 ### Sin acento metálico (decisión)
 
@@ -100,6 +118,9 @@ El escudo completo (`assets/escudo-*.png`) se usa además como glifo divisor cen
 | Cifra | `.cifra` | Oswald peso 200 a gran tamaño sobre azul profundo. |
 | Aviso | `.aviso` | Caja de lino para notas honestas (precios, alcance, estado). |
 | Configurador | `.cfg` | Vista SVG pegajosa + panel de opciones. |
+| Proyecto / prueba social | `.proyecto` | Tarjeta de institución o marca cliente. Variante `.proyecto--claro` para fondo claro. |
+| Local | `.local` | Tienda con zona, dirección y enlace a Google Maps. |
+| Marca de tela | `.marca-tela` | Casa de tejido. Se rellena desde el arreglo `MARCAS_TELA` del script; **si está vacío, el bloque entero se oculta**, para no publicar una caja vacía. |
 
 **Numeración:** los `01/02/03` se usan solo donde el orden significa algo (los pasos del proceso) o donde hay exactamente tres pilares paralelos. No se numera por decorar.
 

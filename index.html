@@ -25,19 +25,25 @@
    Motivo estructural: doble filete, del doble contorno del escudo.
    ============================================================ */
 :root {
-  /* --- Azules de marca (Manual de Marca, colores planos) --- */
-  --azul:          #1A2744;  /* rgb(26,39,68)  primario */
+  /* --- Azules de marca (Manual de Marca, pág. "Esquema de colores") --- */
+  --azul:          #1A2744;  /* rgb(26,39,68)  primario   */
   --azul-medio:    #293661;  /* rgb(41,54,97)  secundario */
-  --azul-profundo: #172740;  /* rgb(23,39,64)  fondos profundos */
-  --azul-tenue:    #E7EAF0;  /* derivado para superficies suaves */
+  --azul-profundo: #172740;  /* rgb(23,39,64)  terciario  */
+  /* Tintes que el propio manual usa en su maquetación (26 usos cada uno) */
+  --azul-pizarra:  #505D7F;  /* rótulos sobre fondo claro, 6.3:1 */
+  --azul-bruma:    #74819A;  /* solo decorativo: 3.8:1, no apto para texto */
+  --azul-claro:    #9FAAC0;  /* rótulos sobre azul, 6.3:1 */
+  --azul-tenue:    #E7EAF0;
 
-  /* --- Neutros cálidos, derivados de la fotografía de marca --- */
-  --papel:  #FCFBF8;
-  --lino:   #F2EEE7;
-  --arena:  #E5DFD4;
-  --piedra: #8A8378;
-  --grafito:#4A4A46;
-  --tinta:  #1E1E1C;
+  /* --- Neutros. El manual trabaja en gris neutro y frío, nunca cálido.
+     Su gris de texto (#818181) es de documento impreso y en pantalla da 3.8:1,
+     así que para texto se usa una versión más oscura de la misma familia. --- */
+  --papel:  #FBFBFC;
+  --nube:   #F1F3F6;
+  --filete: #DFE3EA;
+  --piedra: #676D79;  /* texto secundario, 5.0:1 */
+  --grafito:#4A4F58;  /* texto de párrafo, 8.0:1 */
+  --tinta:  #1E2128;
   --blanco: #FFFFFF;
 
   /* --- Tipografía --- */
@@ -94,7 +100,7 @@ h1, h2, h3, h4 {
 .seccion-corta { padding-block: clamp(2.5rem, 5vw, 4rem); }
 .fondo-azul { background: var(--azul); }
 .fondo-profundo { background: var(--azul-profundo); }
-.fondo-lino { background: var(--lino); }
+.fondo-nube { background: var(--nube); }
 .centro { text-align: center; }
 .medida { max-width: 62ch; }
 .medida.centro { margin-inline: auto; }
@@ -110,13 +116,13 @@ h1, h2, h3, h4 {
 @media (max-width: 900px) { .dos-col { grid-template-columns: 1fr; } }
 
 /* ---------- Doble filete: motivo del contorno del escudo ---------- */
-.doble-filete { border-top: 1px solid var(--arena); position: relative; padding-top: 4px; }
-.doble-filete::before { content: ""; position: absolute; left: 0; right: 0; top: 3px; height: 1px; background: var(--arena); }
+.doble-filete { border-top: 1px solid var(--filete); position: relative; padding-top: 4px; }
+.doble-filete::before { content: ""; position: absolute; left: 0; right: 0; top: 3px; height: 1px; background: var(--filete); }
 .sobre-azul .doble-filete { border-top-color: rgba(255,255,255,0.22); }
 .sobre-azul .doble-filete::before { background: rgba(255,255,255,0.22); }
 
 .marca-div { display: flex; align-items: center; justify-content: center; gap: var(--e3); margin-bottom: var(--e4); }
-.marca-div i { display: block; width: 46px; height: 1px; background: var(--arena); }
+.marca-div i { display: block; width: 46px; height: 1px; background: var(--filete); }
 .marca-div img { width: 26px; opacity: 0.9; }
 .sobre-azul .marca-div i { background: rgba(255,255,255,0.32); }
 .marca-div.izq { justify-content: flex-start; }
@@ -152,7 +158,7 @@ h1, h2, h3, h4 {
   position: fixed; inset: 0 0 auto 0; z-index: 100; padding-block: var(--e3);
   transition: background 0.4s var(--ease), padding 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.cabecera.fijo { background: rgba(252,251,248,0.96); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--arena); padding-block: 0.6rem; }
+.cabecera.fijo { background: rgba(252,251,248,0.96); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--filete); padding-block: 0.6rem; }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--e4); }
 .logo { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
 .logo img { width: 34px; transition: width 0.4s var(--ease); }
@@ -223,7 +229,7 @@ h1, h2, h3, h4 {
 }
 .hero-slogan em { font-style: normal; color: var(--azul-tenue); }
 .hero-firma { margin-top: var(--e5); }
-.hero-foto { position: relative; background: var(--arena); }
+.hero-foto { position: relative; background: var(--filete); }
 .hero-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; min-height: 0; }
@@ -258,7 +264,7 @@ h1, h2, h3, h4 {
 
 /* ---------- Ficha de prenda ---------- */
 .ficha { cursor: pointer; }
-.ficha-img { position: relative; overflow: hidden; background: var(--lino); aspect-ratio: 3/4; }
+.ficha-img { position: relative; overflow: hidden; background: var(--nube); aspect-ratio: 3/4; }
 .ficha-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
 .ficha:hover .ficha-img img { transform: scale(1.045); }
 .ficha-cuerpo { padding-top: var(--e3); margin-top: var(--e3); }
@@ -273,23 +279,23 @@ h1, h2, h3, h4 {
 .sobre-azul .lista li::before { border-color: rgba(255,255,255,0.6); }
 
 /* ---------- Pasos ---------- */
-.paso { display: grid; grid-template-columns: auto 1fr; gap: var(--e4); padding-block: var(--e4); border-top: 1px solid var(--arena); }
+.paso { display: grid; grid-template-columns: auto 1fr; gap: var(--e4); padding-block: var(--e4); border-top: 1px solid var(--filete); }
 .paso b { font-family: var(--display); font-weight: 200; font-size: 1.9rem; color: var(--azul-medio); line-height: 1; }
 .paso h3 { font-size: 1.08rem; letter-spacing: 0.05em; font-weight: 400; margin-bottom: 0.3rem; }
 .paso p { font-size: 0.93rem; font-weight: 300; color: var(--grafito); }
 
 /* ---------- Telas ---------- */
-.tela { border: 1px solid var(--arena); background: var(--blanco); transition: border-color 0.35s var(--ease); }
+.tela { border: 1px solid var(--filete); background: var(--blanco); transition: border-color 0.35s var(--ease); }
 .tela:hover { border-color: var(--azul-medio); }
 .tela-color { aspect-ratio: 4/3; }
-.tela-info { padding: var(--e3); border-top: 1px solid var(--arena); }
+.tela-info { padding: var(--e3); border-top: 1px solid var(--filete); }
 .tela-info h4 { font-family: var(--display); font-weight: 400; font-size: 0.93rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--azul); }
 .tela-info p { font-size: 0.78rem; color: var(--piedra); font-weight: 300; margin-top: 0.15rem; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .chip {
   font-family: var(--display); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
-  padding: 0.55rem 1.15rem; border: 1px solid var(--arena); color: var(--azul); background: var(--blanco);
+  padding: 0.55rem 1.15rem; border: 1px solid var(--filete); color: var(--azul); background: var(--blanco);
   transition: all 0.3s var(--ease);
 }
 .chip:hover { border-color: var(--azul-medio); }
@@ -298,7 +304,7 @@ h1, h2, h3, h4 {
 /* ---------- Configurador ---------- */
 .cfg { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
 @media (max-width: 940px) { .cfg { grid-template-columns: 1fr; } }
-.cfg-vista { background: var(--blanco); border: 1px solid var(--arena); padding: clamp(1.25rem, 3vw, 2.25rem); position: sticky; top: 84px; text-align: center; }
+.cfg-vista { background: var(--blanco); border: 1px solid var(--filete); padding: clamp(1.25rem, 3vw, 2.25rem); position: sticky; top: 84px; text-align: center; }
 @media (max-width: 940px) { .cfg-vista { position: static; } }
 .cfg-vista svg { width: min(100%, 330px); margin-inline: auto; }
 .cfg-pie { margin-top: var(--e3); font-family: var(--display); font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-medio); }
@@ -306,7 +312,7 @@ h1, h2, h3, h4 {
 .cfg-grupo h3 { font-family: var(--display); font-size: 0.78rem; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul); margin-bottom: var(--e3); }
 .cfg-grupo h3 em { font-style: normal; font-family: var(--texto); font-size: 0.73rem; letter-spacing: 0.02em; text-transform: none; color: var(--piedra); }
 .cfg-telas { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 0.6rem; }
-.cfg-tela { border: 1px solid var(--arena); background: var(--blanco); padding: 0.45rem; text-align: center; transition: all 0.3s var(--ease); }
+.cfg-tela { border: 1px solid var(--filete); background: var(--blanco); padding: 0.45rem; text-align: center; transition: all 0.3s var(--ease); }
 .cfg-tela:hover { border-color: var(--azul-medio); }
 .cfg-tela.on { border-color: var(--azul); box-shadow: inset 0 0 0 1px var(--azul); }
 .cfg-tela i { display: block; height: 40px; margin-bottom: 0.4rem; }
@@ -320,7 +326,7 @@ h1, h2, h3, h4 {
 
 /* ---------- Nota / Blog ---------- */
 .nota { cursor: pointer; }
-.nota-img { overflow: hidden; aspect-ratio: 16/10; background: var(--lino); }
+.nota-img { overflow: hidden; aspect-ratio: 16/10; background: var(--nube); }
 .nota-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
 .nota:hover .nota-img img { transform: scale(1.04); }
 .nota-cuerpo { padding-top: var(--e3); margin-top: var(--e3); }
@@ -329,7 +335,7 @@ h1, h2, h3, h4 {
 .nota-cuerpo p { font-size: 0.88rem; font-weight: 300; color: var(--piedra); }
 
 /* ---------- Aviso ---------- */
-.aviso { border: 1px solid var(--arena); background: var(--lino); padding: var(--e4); font-size: 0.86rem; font-weight: 300; color: #55524c; }
+.aviso { border: 1px solid var(--filete); background: var(--nube); padding: var(--e4); font-size: 0.86rem; font-weight: 300; color: #4A4F58; }
 .aviso b { font-family: var(--display); font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.78rem; color: var(--azul); display: block; margin-bottom: 0.4rem; }
 
 /* ---------- Tienda ---------- */
@@ -358,6 +364,43 @@ h1, h2, h3, h4 {
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--e2);
   font-size: 0.78rem; color: rgba(255,255,255,0.45);
 }
+
+/* ---------- Prueba social: proyectos y clientes ---------- */
+.proyecto {
+  border: 1px solid rgba(255,255,255,0.18); padding: var(--e4);
+  display: flex; flex-direction: column; gap: var(--e2); min-height: 100%;
+  transition: border-color 0.35s var(--ease), background 0.35s var(--ease);
+}
+.proyecto:hover { border-color: rgba(255,255,255,0.42); background: rgba(255,255,255,0.03); }
+.proyecto .tipo { font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--azul-claro); }
+.proyecto h3 { font-size: 1.32rem; letter-spacing: 0.04em; font-weight: 400; }
+.proyecto p { font-size: 0.9rem; font-weight: 300; color: rgba(255,255,255,0.7); }
+.proyecto--claro { border-color: var(--filete); }
+.proyecto--claro:hover { border-color: var(--azul-pizarra); background: transparent; }
+.proyecto--claro .tipo { color: var(--azul-pizarra); }
+.proyecto--claro p { color: var(--grafito); }
+
+/* ---------- Locales ---------- */
+.local { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; gap: var(--e2); }
+.local .zona { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--azul-pizarra); }
+.local h3 { font-size: 1.22rem; letter-spacing: 0.05em; font-weight: 400; }
+.local address { font-style: normal; font-size: 0.94rem; font-weight: 300; color: var(--grafito); line-height: 1.65; }
+.local .acciones { margin-top: var(--e2); }
+.local .btn { padding: 0.7rem 1.3rem; font-size: 0.72rem; }
+.sobre-azul .local { border-top-color: rgba(255,255,255,0.22); }
+.sobre-azul .local .zona { color: var(--azul-claro); }
+.sobre-azul .local address { color: rgba(255,255,255,0.75); }
+
+/* ---------- Marcas de tela ---------- */
+.marcas-tela { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1px; background: var(--filete); border: 1px solid var(--filete); }
+.marca-tela {
+  background: var(--blanco); padding: var(--e4) var(--e3); text-align: center;
+  display: flex; flex-direction: column; justify-content: center; gap: 0.3rem; min-height: 104px;
+  transition: background 0.3s var(--ease);
+}
+.marca-tela:hover { background: var(--nube); }
+.marca-tela b { font-family: var(--display); font-weight: 400; font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--azul); }
+.marca-tela span { font-size: 0.72rem; font-weight: 300; color: var(--piedra); }
 
 /* ---------- WhatsApp flotante ---------- */
 .wa {
@@ -486,8 +529,38 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
+  <!-- PRUEBA SOCIAL: PROYECTOS -->
+  <section class="seccion fondo-azul sobre-azul">
+    <div class="caja">
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+        <span class="rotulo">Nos han confiado su imagen</span>
+        <h2 class="t-xl">Instituciones que visten con nosotros</h2>
+        <p class="lead" style="margin-top:1rem;">En 44 años hemos vestido a clubes, elencos y empresas. Estos son algunos de los proyectos de los que estamos orgullosos.</p>
+      </div>
+      <div class="rejilla r3">
+        <article class="proyecto rev">
+          <span class="tipo">Club deportivo</span>
+          <h3>Universitario de Deportes</h3>
+          <p>Vestuario formal para el club.</p>
+        </article>
+        <article class="proyecto rev" data-d="1">
+          <span class="tipo">Artes escénicas</span>
+          <h3>Teatro</h3>
+          <p>Vestuario a medida para producción teatral.</p>
+        </article>
+        <article class="proyecto rev" data-d="2">
+          <span class="tipo">Marca</span>
+          <h3>Barrington</h3>
+          <p>Proyecto de confección para la marca.</p>
+        </article>
+      </div>
+      <div class="centro" style="margin-top:2.5rem;"><a class="enlace" data-ir="corporativo">Ver el servicio corporativo</a></div>
+    </div>
+  </section>
+
   <!-- CONFIGURADOR -->
-  <section class="seccion fondo-lino" id="configurador">
+  <section class="seccion fondo-nube" id="configurador">
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt=""><i></i></div>
@@ -499,8 +572,8 @@ h1, h2, h3, h4 {
         <div class="cfg-vista rev">
           <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" aria-label="Vista previa de la prenda">
             <g id="sv-traje">
-              <path d="M112 330 L120 118 L104 62 L138 46 L150 66 L162 46 L196 62 L180 118 L188 330 Z" fill="#f6f4ee"/>
-              <path d="M150 70 L143 84 L147 170 L150 196 L153 170 L157 84 Z" fill="#1E1E1C"/>
+              <path d="M112 330 L120 118 L104 62 L138 46 L150 66 L162 46 L196 62 L180 118 L188 330 Z" fill="#f4f6f9"/>
+              <path d="M150 70 L143 84 L147 170 L150 196 L153 170 L157 84 Z" fill="#1E2128"/>
               <path id="tr-cuerpo-i" d="M96 60 L136 42 L150 224 L143 330 L92 330 Q84 236 88 150 Q90 92 96 60 Z" fill="#1A2744"/>
               <path id="tr-cuerpo-d" d="M204 60 L164 42 L150 224 L157 330 L208 330 Q216 236 212 150 Q210 92 204 60 Z" fill="#1A2744"/>
               <path id="tr-manga-i" d="M96 60 Q74 74 68 118 L58 220 L88 226 L96 150 Z" fill="#1A2744"/>
@@ -513,32 +586,32 @@ h1, h2, h3, h4 {
                 <path id="tr-sp-i" d="M136 42 L150 66 L130 130 L104 92 L126 84 Z" fill="#172740"/>
                 <path id="tr-sp-d" d="M164 42 L150 66 L170 130 L196 92 L174 84 Z" fill="#172740"/>
               </g>
-              <circle cx="149" cy="232" r="3.6" fill="#F2EEE7"/>
-              <circle cx="149" cy="256" r="3.6" fill="#F2EEE7"/>
-              <rect id="tr-panuelo" x="168" y="146" width="22" height="6" fill="#FCFBF8"/>
+              <circle cx="149" cy="232" r="3.6" fill="#F1F3F6"/>
+              <circle cx="149" cy="256" r="3.6" fill="#F1F3F6"/>
+              <rect id="tr-panuelo" x="168" y="146" width="22" height="6" fill="#FBFBFC"/>
               <path id="tr-cuello" d="M138 46 Q150 38 162 46 L164 42 Q150 32 136 42 Z" fill="#172740"/>
             </g>
             <g id="sv-camisa" style="display:none;">
-              <path id="cm-cuerpo" d="M100 64 L138 44 L150 60 L162 44 L200 64 Q210 100 208 180 L204 352 L96 352 L92 180 Q90 100 100 64 Z" fill="#F2EEE7"/>
-              <path id="cm-manga-i" d="M100 64 Q76 80 70 126 L60 236 L90 242 L100 156 Z" fill="#F2EEE7"/>
-              <path id="cm-manga-d" d="M200 64 Q224 80 230 126 L240 236 L210 242 L200 156 Z" fill="#F2EEE7"/>
-              <rect id="cm-puno-i" x="58" y="222" width="34" height="20" fill="#E5DFD4"/>
-              <rect id="cm-puno-d" x="208" y="222" width="34" height="20" fill="#E5DFD4"/>
-              <rect id="cm-tapeta" x="145" y="60" width="10" height="292" fill="#E5DFD4"/>
+              <path id="cm-cuerpo" d="M100 64 L138 44 L150 60 L162 44 L200 64 Q210 100 208 180 L204 352 L96 352 L92 180 Q90 100 100 64 Z" fill="#F1F3F6"/>
+              <path id="cm-manga-i" d="M100 64 Q76 80 70 126 L60 236 L90 242 L100 156 Z" fill="#F1F3F6"/>
+              <path id="cm-manga-d" d="M200 64 Q224 80 230 126 L240 236 L210 242 L200 156 Z" fill="#F1F3F6"/>
+              <rect id="cm-puno-i" x="58" y="222" width="34" height="20" fill="#DFE3EA"/>
+              <rect id="cm-puno-d" x="208" y="222" width="34" height="20" fill="#DFE3EA"/>
+              <rect id="cm-tapeta" x="145" y="60" width="10" height="292" fill="#DFE3EA"/>
               <circle cx="150" cy="100" r="2.4" fill="#1A2744"/><circle cx="150" cy="140" r="2.4" fill="#1A2744"/>
               <circle cx="150" cy="180" r="2.4" fill="#1A2744"/><circle cx="150" cy="220" r="2.4" fill="#1A2744"/>
               <circle cx="150" cy="260" r="2.4" fill="#1A2744"/><circle cx="150" cy="300" r="2.4" fill="#1A2744"/>
               <g id="cm-cuello-italiano">
-                <path id="cm-ci-i" d="M138 44 L150 60 L132 84 L120 56 Z" fill="#E5DFD4"/>
-                <path id="cm-ci-d" d="M162 44 L150 60 L168 84 L180 56 Z" fill="#E5DFD4"/>
+                <path id="cm-ci-i" d="M138 44 L150 60 L132 84 L120 56 Z" fill="#DFE3EA"/>
+                <path id="cm-ci-d" d="M162 44 L150 60 L168 84 L180 56 Z" fill="#DFE3EA"/>
               </g>
               <g id="cm-cuello-bd" style="display:none;">
-                <path id="cm-cb-i" d="M138 44 L150 60 L138 90 L124 60 Z" fill="#E5DFD4"/>
-                <path id="cm-cb-d" d="M162 44 L150 60 L162 90 L176 60 Z" fill="#E5DFD4"/>
+                <path id="cm-cb-i" d="M138 44 L150 60 L138 90 L124 60 Z" fill="#DFE3EA"/>
+                <path id="cm-cb-d" d="M162 44 L150 60 L162 90 L176 60 Z" fill="#DFE3EA"/>
                 <circle cx="138" cy="84" r="2" fill="#1A2744"/><circle cx="162" cy="84" r="2" fill="#1A2744"/>
               </g>
-              <path id="cm-banda" d="M126 46 Q150 34 174 46 L170 60 Q150 50 130 60 Z" fill="#E5DFD4" style="display:none;"/>
-              <path id="cm-hombro" d="M126 46 Q150 34 174 46 L172 52 Q150 42 128 52 Z" fill="#E5DFD4"/>
+              <path id="cm-banda" d="M126 46 Q150 34 174 46 L170 60 Q150 50 130 60 Z" fill="#DFE3EA" style="display:none;"/>
+              <path id="cm-hombro" d="M126 46 Q150 34 174 46 L172 52 Q150 42 128 52 Z" fill="#DFE3EA"/>
             </g>
           </svg>
           <div class="cfg-pie" id="cfg-pie">Traje · Azul Marino</div>
@@ -603,7 +676,7 @@ h1, h2, h3, h4 {
   </section>
 
   <!-- NOVIOS -->
-  <section class="seccion fondo-lino">
+  <section class="seccion fondo-nube">
     <div class="caja dos-col">
       <div class="rev"><img src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida"></div>
       <div class="rev" data-d="1">
@@ -652,17 +725,25 @@ h1, h2, h3, h4 {
         <h2 class="t-xl">Dos tiendas en Lima</h2>
         <p class="lead" style="margin-top:1rem;">Escríbenos por WhatsApp y coordinamos tu cita en la tienda que te quede más cerca.</p>
       </div>
-      <div class="rejilla r2" style="max-width:900px;margin-inline:auto;">
-        <div class="tienda rev">
-          <h3>Surco</h3>
-          <p>Avenida Primavera 252<br>Santiago de Surco, Lima</p>
+      <div class="rejilla r2" style="max-width:940px;margin-inline:auto;">
+        <div class="local rev">
+          <span class="zona">Santiago de Surco</span>
+          <h3>Tienda Primavera</h3>
+          <address>Avenida Primavera 252<br>Santiago de Surco, Lima</address>
+          <div class="acciones">
+            <a class="btn btn-linea-clara" href="https://www.google.com/maps/search/?api=1&query=Avenida+Primavera+252+Santiago+de+Surco+Lima" target="_blank" rel="noopener">Cómo llegar</a>
+          </div>
         </div>
-        <div class="tienda rev" data-d="1">
-          <h3>Cercado de Lima</h3>
-          <p>Jirón Ucayali 115 · 119 · 121<br>Cercado de Lima</p>
+        <div class="local rev" data-d="1">
+          <span class="zona">Cercado de Lima</span>
+          <h3>Tienda Ucayali</h3>
+          <address>Jirón Ucayali 115 · 119 · 121<br>Cercado de Lima</address>
+          <div class="acciones">
+            <a class="btn btn-linea-clara" href="https://www.google.com/maps/search/?api=1&query=Jiron+Ucayali+115+Cercado+de+Lima" target="_blank" rel="noopener">Cómo llegar</a>
+          </div>
         </div>
       </div>
-      <div class="centro" style="margin-top:2.5rem;">
+      <div class="centro" style="margin-top:3rem;">
         <div class="acciones" style="justify-content:center;">
           <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
           <a class="btn btn-linea-clara" href="mailto:servicioalcliente@andresvargas.pe">Escríbenos un correo</a>
@@ -707,7 +788,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-lino">
+  <section class="seccion fondo-nube">
     <div class="caja dos-col">
       <div class="rev"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro a medida"></div>
       <div class="rev" data-d="1">
@@ -803,8 +884,15 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-lino">
+  <section class="seccion fondo-nube">
     <div class="caja">
+      <div id="bloque-marcas" style="display:none;margin-bottom:4rem;">
+        <div class="enc"><span class="rotulo">Las casas</span><h2 class="t-xl">Marcas con las que trabajamos</h2>
+          <p class="lead" style="margin-top:1rem;">Como distribuidores oficiales trabajamos directamente con las casas de tejido, nacionales e importadas.</p>
+        </div>
+        <div class="marcas-tela rev" id="marcas-tela"></div>
+      </div>
+
       <div class="enc"><span class="rotulo">Muestrario</span><h2 class="t-xl">Colores y familias</h2>
         <p class="lead" style="margin-top:1rem;">Una muestra de los tonos con los que trabajamos. El muestrario completo está en la tienda: es mucho más amplio de lo que cabe en una pantalla.</p>
       </div>
@@ -817,7 +905,7 @@ h1, h2, h3, h4 {
       </div>
       <div class="rejilla r4" id="grid-telas">
         <article class="tela rev" data-cat="oscuros"><div class="tela-color" style="background:#1A2744"></div><div class="tela-info"><h4>Azul Marino</h4><p>El azul de la casa</p></div></article>
-        <article class="tela rev" data-d="1" data-cat="oscuros"><div class="tela-color" style="background:#1E1E1C"></div><div class="tela-info"><h4>Negro</h4><p>Etiqueta y gala</p></div></article>
+        <article class="tela rev" data-d="1" data-cat="oscuros"><div class="tela-color" style="background:#1E2128"></div><div class="tela-info"><h4>Negro</h4><p>Etiqueta y gala</p></div></article>
         <article class="tela rev" data-d="2" data-cat="oscuros"><div class="tela-color" style="background:#293661"></div><div class="tela-info"><h4>Azul Medio</h4><p>Oficina y diario</p></div></article>
         <article class="tela rev" data-d="3" data-cat="grises"><div class="tela-color" style="background:#4A4F58"></div><div class="tela-info"><h4>Gris Plomo</h4><p>Sobrio y versátil</p></div></article>
         <article class="tela rev" data-cat="grises"><div class="tela-color" style="background:#8A8F98"></div><div class="tela-info"><h4>Gris Medio</h4><p>Para climas templados</p></div></article>
@@ -879,7 +967,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-lino">
+  <section class="seccion fondo-nube">
     <div class="caja">
       <div class="enc centro"><span class="rotulo">También para el cortejo</span><h2 class="t-xl">Padrinos y familia</h2>
         <p class="lead medida centro" style="margin-top:1rem;">Vestimos también a padrinos, padres y hermanos, para que el conjunto se vea coherente en las fotos.</p>
@@ -917,6 +1005,31 @@ h1, h2, h3, h4 {
 
   <section class="seccion">
     <div class="caja">
+      <div class="enc"><span class="rotulo">Nos han confiado su imagen</span><h2 class="t-xl">Proyectos</h2>
+        <p class="lead" style="margin-top:1rem;">Clubes, elencos y marcas que han vestido con Andrés Vargas.</p>
+      </div>
+      <div class="rejilla r3">
+        <article class="proyecto proyecto--claro rev">
+          <span class="tipo">Club deportivo</span>
+          <h3>Universitario de Deportes</h3>
+          <p>Vestuario formal para el club.</p>
+        </article>
+        <article class="proyecto proyecto--claro rev" data-d="1">
+          <span class="tipo">Artes escénicas</span>
+          <h3>Teatro</h3>
+          <p>Vestuario a medida para producción teatral.</p>
+        </article>
+        <article class="proyecto proyecto--claro rev" data-d="2">
+          <span class="tipo">Marca</span>
+          <h3>Barrington</h3>
+          <p>Proyecto de confección para la marca.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
       <div class="enc"><span class="rotulo">Soluciones</span><h2 class="t-xl">Cómo trabajamos con empresas</h2></div>
       <div class="rejilla r3">
         <article class="pilar doble-filete rev"><span class="num">01</span><h3>Directivos</h3><p>Trajes y camisas a medida para la plana gerencial, con la imagen que el cargo pide.</p></article>
@@ -926,7 +1039,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-lino">
+  <section class="seccion">
     <div class="caja dos-col">
       <div class="rev"><img src="assets/editorial-duo.jpg" alt="Dos trajes a medida"></div>
       <div class="rev" data-d="1">
@@ -1127,6 +1240,22 @@ h1, h2, h3, h4 {
       });
     });
   });
+
+  /* ================= MARCAS DE TELA =================
+     Rellenar con las casas de tejido reales del cliente.
+     Formato: { n: 'Nombre de la casa', o: 'Origen' }
+     Mientras el arreglo esté vacío, el bloque no se muestra. */
+  var MARCAS_TELA = [];
+
+  (function () {
+    var cont = document.getElementById('marcas-tela');
+    var bloque = document.getElementById('bloque-marcas');
+    if (!cont || !bloque || !MARCAS_TELA.length) return;
+    cont.innerHTML = MARCAS_TELA.map(function (m) {
+      return '<div class="marca-tela"><b>' + m.n + '</b><span>' + (m.o || '') + '</span></div>';
+    }).join('');
+    bloque.style.display = '';
+  })();
 
   /* ================= CONFIGURADOR ================= */
   var CFG = {

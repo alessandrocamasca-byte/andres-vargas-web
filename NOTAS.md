@@ -15,14 +15,27 @@ Memoria viva del proyecto. Se actualiza en cada sesión.
 - **30 jul 2026 · Fuente de verdad:** `index.html`, un solo archivo. La versión multipágina se eliminó (recuperable en el commit 2659660).
 - **30 jul 2026 · Referencia de mercado:** firenze.pe como estándar a igualar. No se copian sus assets ni textos.
 
+## Sesión del 30 jul 2026 (segunda parte)
+
+- **Auditoría de color contra el manual, más a fondo:** se extrajeron los operadores `scn` de los flujos de contenido del PDF. Resultado: los tres azules quedan confirmados por triple vía, y aparecieron dos tintes azul grisáceo que el manual usa 26 veces cada uno (`#505D7F` y `#74819A`). **Los neutros cálidos que había puesto eran una desviación**: el manual trabaja en gris neutro y frío. Corregidos.
+- **Contraste:** el gris de texto del manual (`#818181`) da 3.8:1 en pantalla y falla AA. Se usa `#676D79` para texto, misma familia. Es la única desviación deliberada del manual y está documentada.
+- **Decisión sobre testimonios (Alessandro, 30 jul):** no se publican testimonios de personas inventadas. En su lugar, prueba social real con los proyectos institucionales.
+- **Nuevo:** sección de proyectos (inicio y corporativo), locales con enlace a Google Maps, bloque de marcas de tela (oculto hasta tener la lista).
+- **No se publica ningún precio.** Confirmado por Alessandro.
+
 ## Pendientes (backlog)
 
 1. ~~Crear el repo remoto y primer push.~~ HECHO: https://github.com/alessandrocamasca-byte/andres-vargas-web
 2. ~~Conectar Cloudflare Pages.~~ HECHO: https://andres-vargas-web.pages.dev · Push a `main` = deploy en ~20s.
 3. ~~Recibir logo y fotos reales del cliente.~~ HECHO 30 jul 2026, ya integrados.
 4. ~~Botón de WhatsApp.~~ HECHO: flotante + CTAs en todas las páginas, número real 959370397.
-5. **Confirmar con el cliente:** ¿los precios se publican o se manejan solo por WhatsApp? Ahora la web no muestra precios y explica que se cotiza según tela y detalle.
-6. **Pedir al cliente:** testimonios reales de clientes (con autorización), y cifras que quiera comunicar (número de trajes, clientes, empresas) para poder usarlas.
+5. ~~¿Se publican precios?~~ RESUELTO: **no se publica ningún precio.**
+6. **DATOS QUE FALTAN PARA COMPLETAR LA WEB** (bloquean secciones ya construidas):
+   - **Cifras:** número de ternos confeccionados, de camisas confeccionadas y de novios vestidos. Las tres tienen su componente listo; falta el número. No se inventan.
+   - **Marcas de telas:** la lista de casas de tejido con las que trabajan. El bloque existe y se rellena desde el arreglo `MARCAS_TELA` en el script; mientras esté vacío el bloque no se muestra.
+   - **Proyectos:** confirmar el nombre oficial de cada uno (¿"Universitario de Deportes"?, ¿qué teatro exactamente?, ¿"Barrington" es la grafía correcta?) y una línea real de qué se hizo en cada proyecto. Ahora hay una descripción mínima y genérica, sin inventar detalles.
+   - **Locales:** el documento del cliente lista dos direcciones. Confirmar si hay más locales activos y sus direcciones, horarios y teléfono por local.
+   - **Autorización de marca:** confirmar que el cliente puede nombrar públicamente a Universitario, el teatro y Barrington como clientes.
 7. **Escribir los artículos del blog.** Los seis temas están maquetados y marcados "Próximamente" con un aviso honesto. Falta el contenido.
 8. **Dominio:** el cliente ya tiene `andresvargas.pe` con una web activa. Decidir si esta reemplaza la actual, y si va al dominio raíz o a un subdominio para revisión.
 9. **Licencia de fuentes:** preguntar si tienen Big Noodle Titling y Gotham para web.
