@@ -22,6 +22,9 @@ Memoria viva del proyecto. Se actualiza en cada sesión.
 - **Decisión sobre testimonios (Alessandro, 30 jul):** no se publican testimonios de personas inventadas. En su lugar, prueba social real con los proyectos institucionales.
 - **Nuevo:** sección de proyectos (inicio y corporativo), locales con enlace a Google Maps, bloque de marcas de tela (oculto hasta tener la lista).
 - **No se publica ningún precio.** Confirmado por Alessandro.
+- **Tarjeta de caso (30 jul, tarde):** a pedido de Alessandro, la sección de proyectos se rehizo con el formato de caso de e-Qapla (foto con degradado, badge, métrica grande, cuerpo con chips) pero traducido al manual de Andrés Vargas: esquinas rectas, azul del manual, Oswald y el escudo como firma sobre la foto. Se alimenta del arreglo `PROYECTOS` en el script, que sirve a inicio y a corporativo a la vez. **La métrica es opcional**: sin ella la tarjeta muestra el nombre del proyecto en grande, para no verse incompleta mientras faltan las cifras.
+- **Bug corregido:** el escudo sobre la foto salía a pantalla completa porque `.caso-visual img` (0,1,1) le ganaba en especificidad a `.caso-escudo` (0,1,0). La foto ahora tiene su propia clase `.caso-foto`.
+- **Fotos de los casos:** por ahora cada tarjeta usa una foto del catálogo del cliente, no del proyecto concreto. Pedir fotos reales de cada proyecto para sustituirlas.
 
 ## Pendientes (backlog)
 

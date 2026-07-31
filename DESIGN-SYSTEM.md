@@ -118,11 +118,38 @@ El escudo completo (`assets/escudo-*.png`) se usa además como glifo divisor cen
 | Cifra | `.cifra` | Oswald peso 200 a gran tamaño sobre azul profundo. |
 | Aviso | `.aviso` | Caja de lino para notas honestas (precios, alcance, estado). |
 | Configurador | `.cfg` | Vista SVG pegajosa + panel de opciones. |
-| Proyecto / prueba social | `.proyecto` | Tarjeta de institución o marca cliente. Variante `.proyecto--claro` para fondo claro. |
+| Caso / proyecto | `.caso` | Tarjeta de proyecto con foto, escudo, badge, métrica y cuerpo con chips. Ver abajo. |
 | Local | `.local` | Tienda con zona, dirección y enlace a Google Maps. |
 | Marca de tela | `.marca-tela` | Casa de tejido. Se rellena desde el arreglo `MARCAS_TELA` del script; **si está vacío, el bloque entero se oculta**, para no publicar una caja vacía. |
 
 **Numeración:** los `01/02/03` se usan solo donde el orden significa algo (los pasos del proceso) o donde hay exactamente tres pilares paralelos. No se numera por decorar.
+
+### La tarjeta de caso (`.caso`)
+
+Estructura de tarjeta de proyecto, inspirada en el formato de caso de e-Qapla pero traducida al lenguaje de Andrés Vargas: esquinas rectas en vez de redondeadas, azul del manual en vez de gradientes de color, Oswald en los rótulos y el escudo como firma sobre la foto.
+
+```
+.caso
+  .caso-visual         foto 4/3 + degradado azul profundo de abajo hacia arriba
+    .caso-foto         la fotografía (clase propia: si se usa .caso-visual img,
+                       la regla también alcanza al escudo y lo estira a pantalla completa)
+    .caso-escudo       escudo blanco, 30px, arriba a la izquierda
+    .caso-badge        píldora con borde, arriba a la derecha
+    .caso-meta         bloque inferior:
+      .caso-rotulo     rótulo del dato, en --azul-claro
+      .caso-valor      la métrica, Oswald 200 a gran tamaño
+      .caso-sub        línea de apoyo
+      .caso-nombre     alternativa cuando no hay métrica
+  .caso-cuerpo
+    .caso-cat          categoría, en --azul-pizarra
+    h3                 titular del proyecto
+    p                  descripción
+    .caso-chips        etiquetas de lo que se hizo
+```
+
+**La métrica es opcional y el componente degrada con elegancia.** Se rellena desde el arreglo `PROYECTOS` del script, que alimenta a la vez la sección de inicio y la de corporativo. Si el campo `valor` está vacío, la tarjeta muestra el nombre del proyecto en grande sobre la foto en lugar del número, de modo que se ve intencional y no incompleta. Cuando el cliente entregue las cifras, basta con rellenar `rotulo`, `valor` y `sub`.
+
+Variante `.sobre-azul .caso` para cuando la sección va sobre banda azul: fondo translúcido y texto en blanco.
 
 ---
 
