@@ -283,6 +283,18 @@ Ahora lleva un **resumen de las tres tiendas** bajo un doble filete: zona, nombr
   - Se añadieron campos explícitos `calle` y `distrito`. La primera versión los deducía troceando la dirección y fallaba en Primavera: ponía el distrito como "Lima" en vez de "Santiago de Surco".
   - Ucayali solo declara lunes a viernes, que es lo confirmado. Cuando llegue el horario de fin de semana hay que añadirlo en `aperturas`.
 
+### Auditoría completa del sitio (7 ago 2026)
+
+Alessandro pidió revisar que todo fuera acorde a lo pedido. Se auditó el sitio real en navegador, no de memoria. **Cinco defectos encontrados y corregidos:**
+
+1. **El inicio no tenía `<h1>`.** La página más importante no declaraba encabezado principal: el slogan era un `<p>`. Ahora es `h1` y mantiene su aspecto (la clase gana en especificidad a la regla de encabezados). Las siete páginas interiores sí lo tenían.
+2. **Salto de nivel en Telas:** h2 → h4 en los nombres de tela. Pasaron a h3.
+3. **Salto de nivel en Blog:** h1 → h3. Se añadió el encabezado de sección "Los primeros artículos".
+4. **42 imágenes sin carga diferida.** Ahora solo quedan dos sin ella, y a propósito: el hero y el escudo de la cabecera, que están sobre el pliegue. En una SPA con las ocho páginas en el DOM esto importa: sin `lazy`, el visitante descarga imágenes de páginas que quizá no visite.
+5. **Blog y Corporativo no tenían salida a WhatsApp.** Blog no tenía ninguna vía de contacto y Corporativo solo correo. Ahora Blog cierra con "Pregúntale al sastre" y Corporativo ofrece WhatsApp junto al correo.
+
+Verificado tras el arreglo: las ocho páginas con exactamente un `h1`, cero saltos de nivel, cero ids duplicados, cero imágenes sin `alt` y todas con salida a WhatsApp.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.
