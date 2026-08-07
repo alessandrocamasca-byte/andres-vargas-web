@@ -197,6 +197,35 @@ A pedido de Alessandro, el hero pasa de panel partido a **una sola imagen de anc
 - **La composición manda:** el sujeto queda a la izquierda y el muro de piedra a la derecha, así que el texto va **a la derecha** y el velo oscurece por ese lado. No se espejó la foto para poner el sujeto a la derecha, porque el cruce de la solapa quedaría al revés y en una sastrería eso se nota.
 - **La foto empieza debajo de la banda**, no detrás: si va detrás, el encabezado de 232px corta la cabeza del modelo. Se resolvió con la variable `--alto-cabecera`, que el script sincroniza con la altura real y que usan también las cabeceras de página interior.
 
+### Reordenado el inicio y nueva página de Tiendas (misma sesión)
+
+Alessandro preguntó si el orden del inicio estaba bien. Revisado, **no lo estaba**, por tres motivos:
+
+1. **El producto aparecía en séptimo lugar.** Se veía filosofía, telas, cifras, clientes y el configurador antes de una sola prenda.
+2. **El configurador iba antes que las colecciones**, o sea, se pedía diseñar una prenda antes de mostrar las prendas.
+3. **Tres bandas oscuras seguidas** (azul, profundo, azul), un tramo largo sin respiro visual.
+
+Orden nuevo, con el ritmo de fondos rebalanceado:
+
+| # | Fondo | Sección |
+|---|---|---|
+| 1 | foto | Hero |
+| 2 | papel | Colecciones (lo que confeccionamos) |
+| 3 | nube | La casa (el oficio) |
+| 4 | azul | Telas: la ventaja |
+| 5 | profundo | Cifras |
+| 6 | papel | Configurador |
+| 7 | nube | Novios |
+| 8 | azul | Proyectos |
+| 9 | papel | Blog |
+| 10 | azul | Visítanos |
+
+También se quitó una repetición: el titular de "La casa" decía "Cuarenta y cuatro años tomando medidas" justo debajo de un hero que ya dice "44 años de oficio". Ahora es "El oficio, sin atajos".
+
+**Nueva página Tiendas** (octava): las dos fichas con zona, dirección, qué encuentras en cada una y botones de Cómo llegar y WhatsApp, más un bloque de tres pasos sobre cómo es la visita. Enlazada desde el menú, el pie y el bloque "Visítanos" del inicio. El escudo va de marca de agua en cada ficha.
+
+**Falta:** horarios de atención por local. Se dice "atención previa cita", que es cierto, pero unos horarios darían más confianza.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.

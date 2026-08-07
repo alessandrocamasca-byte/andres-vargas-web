@@ -455,6 +455,25 @@ h1, h2, h3, h4 {
 .sobre-azul .caso-cat { color: var(--azul-claro); }
 .sobre-azul .caso-chips span { color: rgba(255,255,255,0.86); border-color: rgba(255,255,255,0.26); }
 
+/* ---------- Ficha de tienda (página Tiendas) ---------- */
+.tienda-ficha {
+  border: 1px solid var(--filete); background: var(--blanco); padding: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex; flex-direction: column; gap: var(--e2); position: relative; overflow: hidden;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.tienda-ficha:hover { border-color: var(--azul-pizarra); box-shadow: 0 14px 40px rgba(23,39,64,0.10); }
+.tienda-ficha .sello {
+  position: absolute; right: -18px; bottom: -22px; width: 132px; opacity: 0.05; pointer-events: none;
+}
+.tienda-ficha > * { position: relative; z-index: 1; }
+.tienda-ficha .zona { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul-pizarra); }
+.tienda-ficha h3 { font-size: 1.5rem; letter-spacing: 0.05em; font-weight: 400; }
+.tienda-ficha address { font-style: normal; font-size: 1rem; font-weight: 300; color: var(--grafito); line-height: 1.7; }
+.tienda-ficha .lista { margin-top: var(--e2); gap: 0.6rem; }
+.tienda-ficha .lista li { font-size: 0.9rem; }
+.tienda-ficha .acciones { margin-top: var(--e4); }
+.tienda-ficha .btn { padding: 0.8rem 1.5rem; font-size: 0.74rem; }
+
 /* ---------- Locales ---------- */
 .local { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; gap: var(--e2); }
 .local .zona { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--azul-pizarra); }
@@ -520,6 +539,7 @@ h1, h2, h3, h4 {
       <li><a data-ir="telas">Telas</a></li>
       <li><a data-ir="novios">Novios</a></li>
       <li><a data-ir="corporativo">Corporativo</a></li>
+      <li><a data-ir="tiendas">Tiendas</a></li>
       <li><a data-ir="blog">Blog</a></li>
       <li><a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a></li>
     </ul>
@@ -548,13 +568,39 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <!-- LA CASA -->
   <section class="seccion">
+    <div class="caja">
+      <div class="enc">
+        <span class="rotulo">Colecciones</span>
+        <h2 class="t-xl">Lo que confeccionamos</h2>
+      </div>
+      <div class="rejilla r4">
+        <article class="ficha rev" data-ir="trajes">
+          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Smoking negro a medida"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Trajes</h3><p>De dos y tres piezas, para oficina, ocasión y gala.</p></div>
+        </article>
+        <article class="ficha rev" data-d="1" data-ir="camisas">
+          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Saco gris perla con camisa a medida"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Camisas</h3><p>Cuello, puño y silueta a tu medida.</p></div>
+        </article>
+        <article class="ficha rev" data-d="2" data-ir="novios">
+          <div class="ficha-img"><img src="assets/novios-novio.jpg" alt="Novio con esmoquin a medida"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Novios</h3><p>El traje del día más fotografiado de tu vida.</p></div>
+        </article>
+        <article class="ficha rev" data-d="3" data-ir="telas">
+          <div class="ficha-img"><img src="assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo a medida"></div>
+          <div class="ficha-cuerpo doble-filete"><h3>Telas</h3><p>Nacionales e importadas, a precio directo.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt=""><i></i></div>
         <span class="rotulo">La casa</span>
-        <h2 class="t-xl">Cuarenta y cuatro años<br>tomando medidas</h2>
+        <h2 class="t-xl">El oficio, sin atajos</h2>
         <p class="lead" style="margin-top:1.25rem;">Desde 1982 vestimos a Lima. Con nosotros el cliente vive el proceso completo de crear su traje desde cero, guiado por sastres que llevan décadas en el oficio.</p>
       </div>
       <div class="rejilla r3">
@@ -577,7 +623,6 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <!-- TELAS: el diferenciador real -->
   <section class="seccion fondo-azul sobre-azul">
     <div class="caja dos-col">
       <div class="rev">
@@ -598,7 +643,6 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <!-- CIFRAS -->
   <section class="seccion-corta fondo-profundo sobre-azul">
     <div class="caja rejilla r3">
       <div class="cifra rev"><b>1982</b><span>Año de fundación</span></div>
@@ -607,22 +651,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <!-- PRUEBA SOCIAL: PROYECTOS -->
-  <section class="seccion fondo-azul sobre-azul">
-    <div class="caja">
-      <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
-        <span class="rotulo">Nos han confiado su imagen</span>
-        <h2 class="t-xl">Instituciones que visten con nosotros</h2>
-        <p class="lead" style="margin-top:1rem;">En 44 años hemos vestido a clubes, elencos y empresas. Estos son algunos de los proyectos de los que estamos orgullosos.</p>
-      </div>
-      <div class="rejilla r3" id="casos-inicio"></div>
-      <div class="centro" style="margin-top:2.5rem;"><a class="enlace" data-ir="corporativo">Ver el servicio corporativo</a></div>
-    </div>
-  </section>
-
-  <!-- CONFIGURADOR -->
-  <section class="seccion fondo-nube" id="configurador">
+  <section class="seccion" id="configurador">
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt=""><i></i></div>
@@ -709,35 +738,6 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <!-- COLECCIONES -->
-  <section class="seccion">
-    <div class="caja">
-      <div class="enc">
-        <span class="rotulo">Colecciones</span>
-        <h2 class="t-xl">Lo que confeccionamos</h2>
-      </div>
-      <div class="rejilla r4">
-        <article class="ficha rev" data-ir="trajes">
-          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Smoking negro a medida"></div>
-          <div class="ficha-cuerpo doble-filete"><h3>Trajes</h3><p>De dos y tres piezas, para oficina, ocasión y gala.</p></div>
-        </article>
-        <article class="ficha rev" data-d="1" data-ir="camisas">
-          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Saco gris perla con camisa a medida"></div>
-          <div class="ficha-cuerpo doble-filete"><h3>Camisas</h3><p>Cuello, puño y silueta a tu medida.</p></div>
-        </article>
-        <article class="ficha rev" data-d="2" data-ir="novios">
-          <div class="ficha-img"><img src="assets/novios-novio.jpg" alt="Novio con esmoquin a medida"></div>
-          <div class="ficha-cuerpo doble-filete"><h3>Novios</h3><p>El traje del día más fotografiado de tu vida.</p></div>
-        </article>
-        <article class="ficha rev" data-d="3" data-ir="telas">
-          <div class="ficha-img"><img src="assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo a medida"></div>
-          <div class="ficha-cuerpo doble-filete"><h3>Telas</h3><p>Nacionales e importadas, a precio directo.</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOVIOS -->
   <section class="seccion fondo-nube">
     <div class="caja dos-col">
       <div class="rev"><img src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida"></div>
@@ -756,7 +756,19 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <!-- BLOG -->
+  <section class="seccion fondo-azul sobre-azul">
+    <div class="caja">
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+        <span class="rotulo">Nos han confiado su imagen</span>
+        <h2 class="t-xl">Instituciones que visten con nosotros</h2>
+        <p class="lead" style="margin-top:1rem;">En 44 años hemos vestido a clubes, elencos y empresas. Estos son algunos de los proyectos de los que estamos orgullosos.</p>
+      </div>
+      <div class="rejilla r3" id="casos-inicio"></div>
+      <div class="centro" style="margin-top:2.5rem;"><a class="enlace" data-ir="corporativo">Ver el servicio corporativo</a></div>
+    </div>
+  </section>
+
   <section class="seccion">
     <div class="caja">
       <div class="enc"><span class="rotulo">Diario</span><h2 class="t-xl">Del blog</h2></div>
@@ -778,7 +790,6 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <!-- TIENDAS -->
   <section class="seccion fondo-azul sobre-azul" id="tiendas">
     <div class="caja">
       <div class="enc centro">
@@ -808,7 +819,7 @@ h1, h2, h3, h4 {
       <div class="centro" style="margin-top:3rem;">
         <div class="acciones" style="justify-content:center;">
           <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
-          <a class="btn btn-linea-clara" href="mailto:servicioalcliente@andresvargas.pe">Escríbenos un correo</a>
+          <a class="btn btn-linea-clara" data-ir="tiendas">Ver las tiendas</a>
         </div>
       </div>
     </div>
@@ -1213,6 +1224,101 @@ h1, h2, h3, h4 {
   </section>
 </main>
 
+<!-- ==================== TIENDAS ==================== -->
+<main class="pagina" data-pag="tiendas">
+  <section class="pag-hero sobre-azul">
+    <div class="caja">
+      <div class="miga"><span data-ir="inicio">Inicio</span> · Tiendas</div>
+      <span class="rotulo">Dónde estamos</span>
+      <h1 class="t-hero">Tiendas</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Dos direcciones en Lima, una en Surco y otra en el Cercado. Atendemos previa cita, para dedicarle a cada prenda el tiempo que necesita.</p>
+      <div class="acciones" style="margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc">
+        <span class="rotulo">Nuestros locales</span>
+        <h2 class="t-xl">Ven a vernos</h2>
+        <p class="lead" style="margin-top:1rem;">En ambas tiendas encuentras el muestrario completo de telas y a nuestros sastres para asesorarte.</p>
+      </div>
+      <div class="rejilla r2">
+        <article class="tienda-ficha rev">
+          <img src="assets/escudo-azul.png" alt="" class="sello">
+          <span class="zona">Santiago de Surco</span>
+          <h3>Tienda Primavera</h3>
+          <address>Avenida Primavera 252<br>Santiago de Surco, Lima</address>
+          <ul class="lista">
+            <li>Atención previa cita.</li>
+            <li>Muestrario completo de telas.</li>
+            <li>Toma de medidas y pruebas.</li>
+          </ul>
+          <div class="acciones">
+            <a class="btn btn-azul" href="https://www.google.com/maps/search/?api=1&query=Avenida+Primavera+252+Santiago+de+Surco+Lima" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escribir</a>
+          </div>
+        </article>
+        <article class="tienda-ficha rev" data-d="1">
+          <img src="assets/escudo-azul.png" alt="" class="sello">
+          <span class="zona">Cercado de Lima</span>
+          <h3>Tienda Ucayali</h3>
+          <address>Jirón Ucayali 115 · 119 · 121<br>Cercado de Lima</address>
+          <ul class="lista">
+            <li>Atención previa cita.</li>
+            <li>Muestrario completo de telas.</li>
+            <li>Toma de medidas y pruebas.</li>
+          </ul>
+          <div class="acciones">
+            <a class="btn btn-azul" href="https://www.google.com/maps/search/?api=1&query=Jiron+Ucayali+115+Cercado+de+Lima" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escribir</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-azul sobre-azul">
+    <div class="caja">
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+        <span class="rotulo">La visita</span>
+        <h2 class="t-xl">Cómo es venir al atelier</h2>
+      </div>
+      <div class="rejilla r3">
+        <article class="pilar doble-filete rev">
+          <span class="num">01</span>
+          <h3>Coordina tu cita</h3>
+          <p>Escríbenos por WhatsApp y acordamos día y hora en la tienda que te quede más cerca.</p>
+        </article>
+        <article class="pilar doble-filete rev" data-d="1">
+          <span class="num">02</span>
+          <h3>Conversamos y eliges</h3>
+          <p>Vemos la ocasión, revisamos el muestrario y decides tela, color, corte y acabados con nuestros sastres.</p>
+        </article>
+        <article class="pilar doble-filete rev" data-d="2">
+          <span class="num">03</span>
+          <h3>Medidas y pruebas</h3>
+          <p>Tomamos tus medidas y coordinamos las pruebas necesarias hasta que la caída sea la correcta.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja centro">
+      <h2 class="t-lg">¿Prefieres escribirnos antes?</h2>
+      <p class="lead medida centro" style="margin-top:1rem;">Cuéntanos qué necesitas y te orientamos por WhatsApp o por correo, sin compromiso.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
+        <a class="btn btn-linea" href="mailto:servicioalcliente@andresvargas.pe">servicioalcliente@andresvargas.pe</a>
+      </div>
+    </div>
+  </section>
+</main>
+
 <!-- ==================== PIE ==================== -->
 <footer class="pie">
   <div class="caja">
@@ -1233,6 +1339,7 @@ h1, h2, h3, h4 {
           <li><a data-ir="telas">Telas</a></li>
           <li><a data-ir="novios">Novios</a></li>
           <li><a data-ir="corporativo">Corporativo</a></li>
+          <li><a data-ir="tiendas">Tiendas</a></li>
         </ul>
       </div>
       <div>
