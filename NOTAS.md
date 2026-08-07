@@ -193,7 +193,11 @@ Alessandro ajustó el cuadro y pidió: quitar el bloque de recomendaciones (ya l
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.
 
-Resuelto con un archivo `_redirects` que devuelve 404 en los `.md` de raíz y en `/pauta/*`. **Verificar tras cada despliegue** que siguen devolviendo 404, y recordar que cualquier archivo nuevo en la raíz es público por defecto.
+**`_redirects` NO sirve para esto.** Se probó primero y falló: en Cloudflare Pages los archivos estáticos tienen prioridad sobre las reglas de redirección, así que los `.md` se seguían sirviendo con 200.
+
+Resuelto con `functions/_middleware.js`, que sí se ejecuta antes que el archivo estático. Bloquea los `.md` de raíz, `/pauta/*` y `/.git/*`. Verificado en producción: los documentos dan 404 y la web sigue en 200.
+
+**Dos cosas para no olvidar:** cualquier archivo nuevo en la raíz del repo es público por defecto, así que si se agrega documentación hay que sumarla al middleware. Y `/pauta/*` ya está bloqueado de antemano, así que esa carpeta se puede commitear sin quedar expuesta (aunque sigue siendo mejor decidir su destino final).
 
 ## Pendientes (backlog)
 
