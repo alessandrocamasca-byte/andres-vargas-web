@@ -543,6 +543,60 @@ h1, h2, h3, h4 {
 .casa h3 { font-size: 1.02rem; letter-spacing: 0.09em; font-weight: 400; }
 .casa p { font-size: 0.85rem; font-weight: 300; color: var(--grafito); line-height: 1.8; }
 
+/* ---------- Banda azul con fotografía de fondo ----------
+   Evita los bloques de azul plano. La foto va en la variable --foto por
+   sección, y el velo la mantiene lo bastante oscura para leer encima. */
+.con-foto {
+  position: relative; background-color: var(--azul);
+  background-image:
+    linear-gradient(rgba(23,39,64,0.93), rgba(23,39,64,0.93)),
+    var(--foto, none);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+.con-foto.velo-suave {
+  background-image:
+    linear-gradient(rgba(23,39,64,0.88), rgba(23,39,64,0.88)),
+    var(--foto, none);
+}
+
+/* ---------- Formulario ---------- */
+.formulario {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.4vw, 1.8rem);
+  max-width: 780px; margin-inline: auto;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.18);
+  padding: clamp(1.6rem, 3.5vw, 2.8rem);
+}
+@media (max-width: 680px) { .formulario { grid-template-columns: 1fr; } }
+.campo { display: flex; flex-direction: column; gap: 0.5rem; }
+.campo-ancho { grid-column: 1 / -1; }
+.campo label {
+  font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--azul-claro);
+}
+.campo input, .campo textarea, .campo select {
+  font-family: var(--texto); font-size: 0.92rem; font-weight: 300; color: var(--blanco);
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.22);
+  padding: 0.85rem 1rem; width: 100%; transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.campo textarea { resize: vertical; line-height: 1.7; }
+.campo input::placeholder, .campo textarea::placeholder { color: rgba(255,255,255,0.42); }
+.campo input:focus, .campo textarea:focus, .campo select:focus {
+  outline: none; border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1);
+}
+/* la flecha del select, dibujada aparte para no depender del estilo del sistema */
+.select-caja { position: relative; }
+.select-caja::after {
+  content: ""; position: absolute; right: 1rem; top: 50%; width: 7px; height: 7px;
+  border-right: 1px solid rgba(255,255,255,0.6); border-bottom: 1px solid rgba(255,255,255,0.6);
+  transform: translateY(-70%) rotate(45deg); pointer-events: none;
+}
+.campo select { appearance: none; -webkit-appearance: none; padding-right: 2.4rem; cursor: pointer; }
+.campo select option { color: var(--tinta); background: var(--blanco); }
+.campo-nota { font-size: 0.74rem; font-weight: 300; color: rgba(255,255,255,0.5); }
+.form-acciones { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--e2); }
+.form-error { font-size: 0.82rem; color: #FFC9C9; font-weight: 300; }
+
 /* ---------- Cierre con fotografía de fondo ---------- */
 .cierre { position: relative; overflow: hidden; background: var(--azul); padding-block: clamp(4.5rem, 9vw, 8rem); }
 .cierre-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
@@ -761,7 +815,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial-esmoquin-negro.jpg');">
     <div class="caja dos-col">
       <div class="rev">
         <div class="marca-div izq"><i></i></div>
@@ -781,7 +835,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion-corta fondo-profundo sobre-azul">
+  <section class="seccion-corta fondo-profundo sobre-azul con-foto" style="--foto:url('assets/editorial-esmoquin-marfil.jpg');">
     <div class="caja rejilla r3">
       <div class="cifra rev"><b>1982</b><span>Año de fundación</span></div>
       <div class="cifra rev" data-d="1"><b>44</b><span>Años de oficio</span></div>
@@ -894,7 +948,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial-duo.jpg');">
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
@@ -928,7 +982,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul" id="tiendas">
+  <section class="seccion fondo-azul sobre-azul con-foto" id="tiendas" style="--foto:url('assets/hero.jpg');">
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
@@ -1024,7 +1078,7 @@ h1, h2, h3, h4 {
   </section>
 
   <!-- El proceso -->
-  <section class="seccion fondo-azul sobre-azul">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/traje-burdeos.jpg');">
     <div class="caja dos-col">
       <div class="rev">
         <div class="marca-div izq"><i></i></div>
@@ -1181,7 +1235,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/traje-gris.jpg');">
     <div class="caja">
       <div class="enc centro"><span class="rotulo">Personalización</span><h2 class="t-xl">Lo que puedes elegir</h2></div>
       <div class="rejilla r3">
@@ -1266,47 +1320,42 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion">
+  <!-- CONSULTA DE TELA -->
+  <section class="seccion con-foto sobre-azul" id="consulta-tela" style="--foto:url('assets/editorial-duo.jpg');">
     <div class="caja">
-      <div class="enc"><span class="rotulo">Muestrario</span><h2 class="t-xl">Colores y familias</h2>
-        <p class="lead" style="margin-top:1rem;">Una muestra de los tonos con los que trabajamos. El muestrario completo está en la tienda: es mucho más amplio de lo que cabe en una pantalla.</p>
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+        <span class="rotulo">Consúltanos</span>
+        <h2 class="t-xl">¿Quieres tela de alguna de estas casas?</h2>
+        <p class="lead medida centro" style="margin-top:1rem;">Déjanos tus datos y te respondemos con disponibilidad, colores y lo que necesites saber. Sin compromiso.</p>
       </div>
-      <div class="chips" data-filtro-grupo data-filtro-destino="grid-telas" style="margin-bottom:2rem;">
-        <button class="chip on" data-cat="all">Todas</button>
-        <button class="chip" data-cat="oscuros">Oscuros</button>
-        <button class="chip" data-cat="grises">Grises</button>
-        <button class="chip" data-cat="color">Color</button>
-        <button class="chip" data-cat="claros">Claros</button>
-      </div>
-      <div class="rejilla r4" id="grid-telas">
-        <article class="tela rev" data-cat="oscuros"><div class="tela-color" style="background:#1A2744"></div><div class="tela-info"><h3>Azul Marino</h3><p>El azul de la casa</p></div></article>
-        <article class="tela rev" data-d="1" data-cat="oscuros"><div class="tela-color" style="background:#1E2128"></div><div class="tela-info"><h3>Negro</h3><p>Etiqueta y gala</p></div></article>
-        <article class="tela rev" data-d="2" data-cat="oscuros"><div class="tela-color" style="background:#293661"></div><div class="tela-info"><h3>Azul Medio</h3><p>Oficina y diario</p></div></article>
-        <article class="tela rev" data-d="3" data-cat="grises"><div class="tela-color" style="background:#4A4F58"></div><div class="tela-info"><h3>Gris Plomo</h3><p>Sobrio y versátil</p></div></article>
-        <article class="tela rev" data-cat="grises"><div class="tela-color" style="background:#8A8F98"></div><div class="tela-info"><h3>Gris Medio</h3><p>Para climas templados</p></div></article>
-        <article class="tela rev" data-d="1" data-cat="grises"><div class="tela-color" style="background:#B6BAC0"></div><div class="tela-info"><h3>Gris Perla</h3><p>Chaqueta de fiesta</p></div></article>
-        <article class="tela rev" data-d="2" data-cat="color"><div class="tela-color" style="background:#1F4B4A"></div><div class="tela-info"><h3>Verde Petróleo</h3><p>Carácter sin estridencia</p></div></article>
-        <article class="tela rev" data-d="3" data-cat="color"><div class="tela-color" style="background:#5C2233"></div><div class="tela-info"><h3>Burdeos</h3><p>Ocasión y noche</p></div></article>
-        <article class="tela rev" data-cat="color"><div class="tela-color" style="background:#3E4C2F"></div><div class="tela-info"><h3>Verde Oliva</h3><p>Con textura, informal</p></div></article>
-        <article class="tela rev" data-d="1" data-cat="claros"><div class="tela-color" style="background:#F2EDE0"></div><div class="tela-info"><h3>Marfil</h3><p>Gala de verano</p></div></article>
-        <article class="tela rev" data-d="2" data-cat="claros"><div class="tela-color" style="background:#D8CDB4"></div><div class="tela-info"><h3>Arena</h3><p>Lino y frescos</p></div></article>
-        <article class="tela rev" data-d="3" data-cat="claros"><div class="tela-color" style="background:#A9BBD0"></div><div class="tela-info"><h3>Celeste</h3><p>Camisería</p></div></article>
-      </div>
-      <div class="aviso rev" style="margin-top:2.5rem;">
-        <b>Nota</b>
-        Los tonos mostrados son de referencia y pueden variar respecto a la tela física según tu pantalla. El muestrario real, con composiciones y pesos, se revisa en la tienda con nuestros sastres.
-      </div>
-    </div>
-  </section>
 
-  <section class="seccion fondo-azul sobre-azul">
-    <div class="caja centro">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
-      <h2 class="t-xl">Ven a ver el muestrario</h2>
-      <p class="lead medida centro" style="margin-top:1rem;">Coordinamos una visita en Surco o en el Cercado de Lima y revisamos las telas contigo.</p>
-      <div class="acciones" style="justify-content:center;margin-top:2rem;">
-        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
-      </div>
+      <form class="formulario rev" id="form-tela" novalidate>
+        <div class="campo">
+          <label for="f-nombre">Nombre</label>
+          <input type="text" id="f-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required>
+        </div>
+        <div class="campo">
+          <label for="f-contacto">Teléfono o correo</label>
+          <input type="text" id="f-contacto" name="contacto" autocomplete="tel" placeholder="Para poder responderte">
+        </div>
+        <div class="campo campo-ancho">
+          <label for="f-casa">Casa de tela que te interesa</label>
+          <div class="select-caja">
+            <select id="f-casa" name="casa"></select>
+          </div>
+        </div>
+        <div class="campo campo-ancho">
+          <label for="f-mensaje">Tu mensaje</label>
+          <textarea id="f-mensaje" name="mensaje" rows="4"></textarea>
+          <span class="campo-nota">Ya viene escrito. Cámbialo si quieres contarnos algo más.</span>
+        </div>
+        <div class="form-acciones campo-ancho">
+          <button type="submit" class="btn btn-claro">Enviar por WhatsApp</button>
+          <button type="button" class="btn btn-linea-clara" id="f-correo">Enviar por correo</button>
+        </div>
+        <p class="form-error campo-ancho" id="f-error" hidden>Escribe tu nombre para poder responderte.</p>
+      </form>
     </div>
   </section>
 </main>
@@ -1348,7 +1397,7 @@ h1, h2, h3, h4 {
   </section>
 
   <!-- Tres pilares de la experiencia -->
-  <section class="seccion fondo-azul sobre-azul">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/novios-duo.jpg');">
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
@@ -1630,7 +1679,7 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/novios-trio-wide.jpg');">
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
@@ -1834,22 +1883,6 @@ h1, h2, h3, h4 {
     var ab = menu.classList.toggle('abierto');
     ham.classList.toggle('x', ab);
     document.body.style.overflow = ab ? 'hidden' : '';
-  });
-
-  document.querySelectorAll('[data-filtro-grupo]').forEach(function (g) {
-    var chips = g.querySelectorAll('.chip');
-    var cont = document.getElementById(g.dataset.filtroDestino);
-    if (!cont) return;
-    var items = cont.querySelectorAll('[data-cat]');
-    chips.forEach(function (c) {
-      c.addEventListener('click', function () {
-        chips.forEach(function (x) { x.classList.remove('on'); });
-        c.classList.add('on');
-        items.forEach(function (i) {
-          i.style.display = (c.dataset.cat === 'all' || i.dataset.cat === c.dataset.cat) ? '' : 'none';
-        });
-      });
-    });
   });
 
   /* ================= TIENDAS =================
@@ -2106,6 +2139,60 @@ h1, h2, h3, h4 {
         '</article>';
       }).join('');
     }
+  })();
+
+  /* ================= FORMULARIO DE CONSULTA =================
+     No hay backend, así que el formulario compone el mensaje y lo abre en
+     WhatsApp o en el correo. Es lo que de verdad usa el cliente y no exige
+     servidor ni credenciales. */
+  (function () {
+    var form = document.getElementById('form-tela');
+    if (!form) return;
+    var WA = '51959370397';
+    var sel = document.getElementById('f-casa');
+    var msg = document.getElementById('f-mensaje');
+    var err = document.getElementById('f-error');
+
+    sel.innerHTML = '<option value="Aún no lo sé">Aún no lo sé, quiero asesoría</option>' +
+      CASAS.map(function (c) { return '<option value="' + c.n + '">' + c.n + '</option>'; }).join('');
+
+    function predeterminado() {
+      var casa = sel.value;
+      return casa === 'Aún no lo sé'
+        ? 'Hola, quisiera asesoría para elegir una tela. ¿Me pueden orientar?'
+        : 'Hola, me interesa consultar por telas de ' + casa + '. ¿Qué disponibilidad y colores tienen?';
+    }
+    // Solo se reescribe si el visitante no lo ha tocado
+    var tocado = false;
+    msg.addEventListener('input', function () { tocado = true; });
+    msg.value = predeterminado();
+    sel.addEventListener('change', function () { if (!tocado) msg.value = predeterminado(); });
+
+    function datos() {
+      var nombre = document.getElementById('f-nombre').value.trim();
+      if (!nombre) { err.hidden = false; document.getElementById('f-nombre').focus(); return null; }
+      err.hidden = true;
+      var contacto = document.getElementById('f-contacto').value.trim();
+      return {
+        nombre: nombre,
+        cuerpo: msg.value.trim() +
+          '\n\nNombre: ' + nombre +
+          (contacto ? '\nContacto: ' + contacto : '') +
+          '\nCasa de interés: ' + sel.value
+      };
+    }
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var d = datos(); if (!d) return;
+      window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(d.cuerpo), '_blank', 'noopener');
+    });
+    document.getElementById('f-correo').addEventListener('click', function () {
+      var d = datos(); if (!d) return;
+      window.location.href = 'mailto:servicioalcliente@andresvargas.pe' +
+        '?subject=' + encodeURIComponent('Consulta de tela · ' + d.nombre) +
+        '&body=' + encodeURIComponent(d.cuerpo);
+    });
   })();
 
   /* ================= CONFIGURADOR ================= */

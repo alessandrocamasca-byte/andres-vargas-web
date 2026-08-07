@@ -343,6 +343,20 @@ Alessandro sumó **Albini** y **Brunello Cucinelli** (archivos en Descargas: `im
 
 **Bug de rejilla:** el bloque de marcas usaba `repeat(auto-fill, ...)`, que dejaba columnas vacías a la derecha con solo cuatro marcas. Con `auto-fit` las columnas se reparten el ancho.
 
+### Formulario de consulta y fin del azul plano (7 ago 2026)
+
+**Fuera el muestrario de colores.** Alessandro lo pidió quitar. Con él se fueron los filtros por familia y el código genérico de `[data-filtro-grupo]`, que ya no tenía usuarios.
+
+**En su lugar, formulario de consulta de tela** (`#consulta-tela`): nombre, teléfono o correo, selector de casa (se llena solo desde `CASAS`) y un mensaje **predeterminado que cambia según la casa elegida**. Si el visitante edita el mensaje, deja de reescribirse.
+
+- **No hay backend, y no hace falta:** el formulario compone el texto y lo abre en **WhatsApp** o en el **correo**. Es lo que de verdad usa este cliente y no exige servidor, credenciales ni servicio de terceros. Si algún día se quiere recibir los envíos en una bandeja, habría que montar una función de Pages más un servicio de correo.
+- Validación mínima: sin nombre no deja enviar, porque sin nombre no se puede responder.
+
+**Fin de las bandas de azul plano.** Alessandro: "no quiero estas partes solo de azul, que la web se sienta viva". Las **nueve** secciones azules planas pasan a llevar fotografía de fondo con velo.
+
+- Se resolvió con una clase `.con-foto` y una variable `--foto` por sección, en vez de reestructurar el HTML de cada una: `background-image: linear-gradient(velo), var(--foto)`. Añadir foto a una sección nueva es una clase y un `style`.
+- El velo va al 0,93 para que el texto siga legible; existe `.velo-suave` al 0,88 para secciones con poco texto.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.
