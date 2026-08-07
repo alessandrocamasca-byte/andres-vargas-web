@@ -253,6 +253,15 @@ Alessandro pidió que se viera más exclusivo y que la letra era grande.
 - **Cierre rediseñado.** El bloque "¿Prefieres escribirnos antes?" era el más flojo de la página. Ahora es "¿Cómo te gustaría agendar?", sobre fotografía con velo azul denso, con dos tarjetas de canal (WhatsApp y correo) con icono, explicación y el dato. Se aplicó el mismo componente al cierre de Novios.
 - **Experiencia de novios en Chacarilla.** Sección propia en la página de Novios con la dirección, los horarios y dos CTA, más un distintivo "Experiencia novios" sobre la foto de esa tienda en la página de Tiendas. Dato dado por Alessandro.
 
+### Cabeceras interiores con fotografía (7 ago 2026)
+
+Alessandro: "solo letras y el color azul no es muy llamativo, hazlo en todos". Las siete páginas interiores abrían con azul plano.
+
+- Ahora **cada una tiene su propia fotografía de fondo** con velo direccional: fuerte donde va el texto, abierto a la derecha para que la imagen se vea. En móvil el velo pasa a vertical uniforme.
+- Se afinó el velo en dos pasadas: la primera quedó demasiado densa y la foto casi no se leía, que era justo lo que Alessandro quería evitar.
+- El distintivo de Chacarilla pasa a **"Única con experiencia de novios"**, texto de Alessandro.
+- Se quitó la textura diagonal de las cabeceras interiores: con fotografía detrás competía y ensuciaba.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.

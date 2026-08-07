@@ -280,9 +280,23 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Cabecera de página interior ---------- */
-.pag-hero { background: var(--azul); padding: calc(var(--alto-cabecera) + clamp(2.5rem, 5vw, 4rem)) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
-.pag-hero::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M0 36L36 0M-9 9L9 -9M27 45L45 27' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'/%3E%3C/svg%3E"); }
-.pag-hero .caja { position: relative; z-index: 1; }
+.pag-hero {
+  background: var(--azul); position: relative; overflow: hidden;
+  padding: calc(var(--alto-cabecera) + clamp(3rem, 6vw, 5rem)) 0 clamp(3.5rem, 7vw, 6rem);
+}
+.pag-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pag-hero-velo {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(23,39,64,0.93) 0%, rgba(23,39,64,0.90) 46%, rgba(23,39,64,0.70) 60%, rgba(23,39,64,0.36) 80%, rgba(23,39,64,0.18) 100%),
+    linear-gradient(to bottom, rgba(23,39,64,0.38) 0%, transparent 34%, rgba(23,39,64,0.26) 100%);
+}
+.pag-hero .caja { position: relative; z-index: 2; }
+@media (max-width: 860px) {
+  .pag-hero-velo {
+    background: linear-gradient(to bottom, rgba(23,39,64,0.92) 0%, rgba(23,39,64,0.86) 55%, rgba(23,39,64,0.90) 100%);
+  }
+}
 .miga { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
 .miga span { cursor: pointer; }
 .miga span:hover { color: var(--blanco); }
@@ -866,6 +880,8 @@ h1, h2, h3, h4 {
 <!-- ==================== TRAJES ==================== -->
 <main class="pagina" data-pag="trajes">
   <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="assets/editorial-duo.jpg" alt="Trajes a medida de Andrés Vargas" style="object-position:50% 26%;" loading="lazy">
+    <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Trajes</div>
       <span class="rotulo">La prenda insignia</span>
@@ -929,6 +945,8 @@ h1, h2, h3, h4 {
 <!-- ==================== CAMISAS ==================== -->
 <main class="pagina" data-pag="camisas">
   <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="assets/traje-gris.jpg" alt="Camisa a medida" style="object-position:50% 18%;" loading="lazy">
+    <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Camisas</div>
       <span class="rotulo">A medida</span>
@@ -975,6 +993,8 @@ h1, h2, h3, h4 {
 <!-- ==================== TELAS ==================== -->
 <main class="pagina" data-pag="telas">
   <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="assets/editorial-esmoquin-negro.jpg" alt="Tejidos de sastrería" style="object-position:50% 38%;" loading="lazy">
+    <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Telas</div>
       <span class="rotulo">Distribuidores oficiales</span>
@@ -1049,6 +1069,8 @@ h1, h2, h3, h4 {
 <!-- ==================== NOVIOS ==================== -->
 <main class="pagina" data-pag="novios">
   <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida" style="object-position:50% 32%;" loading="lazy">
+    <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Novios</div>
       <span class="rotulo">Experiencia novio</span>
@@ -1189,6 +1211,8 @@ h1, h2, h3, h4 {
 <!-- ==================== CORPORATIVO ==================== -->
 <main class="pagina" data-pag="corporativo">
   <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="assets/editorial-esmoquin-marfil.jpg" alt="Vestuario formal a medida" style="object-position:50% 26%;" loading="lazy">
+    <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Corporativo</div>
       <span class="rotulo">Para empresas</span>
@@ -1248,6 +1272,8 @@ h1, h2, h3, h4 {
 <!-- ==================== BLOG ==================== -->
 <main class="pagina" data-pag="blog">
   <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="assets/traje-burdeos.jpg" alt="Traje burdeos a medida" style="object-position:50% 20%;" loading="lazy">
+    <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Blog</div>
       <span class="rotulo">Diario</span>
@@ -1295,6 +1321,8 @@ h1, h2, h3, h4 {
 <!-- ==================== TIENDAS ==================== -->
 <main class="pagina" data-pag="tiendas">
   <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="assets/hero.jpg" alt="Prendas a medida de Andrés Vargas" style="object-position:50% 44%;" loading="lazy">
+    <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Tiendas</div>
       <span class="rotulo">Dónde estamos</span>
@@ -1522,7 +1550,7 @@ h1, h2, h3, h4 {
       dir: 'Av. Primavera 252, Chacarilla<br>Santiago de Surco, Lima',
       mapa: 'Av.+Primavera+252+Chacarilla+Santiago+de+Surco+Lima',
       foto: 'assets/editorial-esmoquin-marfil.jpg',
-      destacado: 'Experiencia novios',
+      destacado: 'Única con experiencia de novios',
       horas: [['Lunes a sábado', '10 am a 8 pm'], ['Domingo', '10 am a 4 pm']]
     },
     {
