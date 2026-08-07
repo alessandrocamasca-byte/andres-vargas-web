@@ -307,6 +307,21 @@ Cerraba el único hueco real frente al pedido original: cuando Alessandro dio Fi
 - Sus migas ahora dicen `Inicio · A medida · Trajes`.
 - Al estar en Trajes o Camisas, el menú marca **"A medida"** como activo (mapa `padre` en `ir()`). Sin eso, no se iluminaría ningún ítem y el usuario perdería la referencia de dónde está.
 
+### Marcas de tela y cierre de Corporativo (7 ago 2026)
+
+**Marcas de tela.** Alessandro envió los logos de cuatro casas: Vitale Barberis Canonico, Reda, Thomas Mason y Barrington. El bloque `#bloque-marcas`, que llevaba oculto desde que se creó, ya está activo.
+
+- **El componente acepta logo o nombre.** Cada marca tiene un campo `logo`: si hay archivo se muestra la imagen, si no, el nombre en la tipografía de la casa. Hoy las cuatro van en tipografía. **PENDIENTE: pedir los archivos** (PNG o SVG con fondo transparente); es una línea por marca.
+- No se descargaron los logos de las webs de las tejedurías: dos de las tres devuelven 403 o no responden, y bajar marcas de terceros sin el archivo que el propio proveedor entrega es frágil y de licencia dudosa. Los proveedores suelen dar un kit de marca a sus distribuidores.
+- Orígenes puestos solo donde son verificables y aparecen en el propio logo: VBC (Italia, 1663), Reda (Italia, 1865), Thomas Mason (Inglaterra, 1796). **Barrington va sin origen porque no está confirmado.**
+- Copys actualizados en Telas, en el bloque de marcas y en el inicio: ahora dicen explícitamente **tela nacional, italiana e inglesa**, no solo "nacionales e importadas".
+
+**OJO, CONTRADICCIÓN PENDIENTE:** Barrington aparecía como **proyecto/cliente** en la sección de Proyectos ("Marca · Proyecto de confección para la marca"), por indicación anterior de Alessandro, y ahora llega como **marca de tela**. Las dos cosas no encajan. Hay que confirmar cuál es y corregir la que sobre.
+
+**Cierre de Corporativo.** El aviso de "Cotización a medida" quedaba como una caja suelta en medio de mucho espacio vacío, señalado por Alessandro. Se sustituyó por un cierre con fotografía y las dos tarjetas de canal, igual que en Blog, Novios, Tiendas y A medida. Ya no queda ningún `.aviso` huérfano en esa página.
+
+**Bug de rejilla:** el bloque de marcas usaba `repeat(auto-fill, ...)`, que dejaba columnas vacías a la derecha con solo cuatro marcas. Con `auto-fit` las columnas se reparten el ancho.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.

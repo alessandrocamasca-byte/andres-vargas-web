@@ -584,13 +584,16 @@ h1, h2, h3, h4 {
 .sobre-azul .local address { color: rgba(255,255,255,0.75); }
 
 /* ---------- Marcas de tela ---------- */
-.marcas-tela { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1px; background: var(--filete); border: 1px solid var(--filete); }
+/* auto-fit, no auto-fill: con auto-fill quedan columnas vacías a la derecha */
+.marcas-tela { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--filete); border: 1px solid var(--filete); }
 .marca-tela {
   background: var(--blanco); padding: var(--e4) var(--e3); text-align: center;
   display: flex; flex-direction: column; justify-content: center; gap: 0.3rem; min-height: 104px;
   transition: background 0.3s var(--ease);
 }
 .marca-tela:hover { background: var(--nube); }
+.marca-logo { max-width: 130px; max-height: 42px; width: auto; height: auto; object-fit: contain; margin-inline: auto; opacity: 0.82; transition: opacity 0.3s var(--ease); }
+.marca-tela:hover .marca-logo { opacity: 1; }
 .marca-tela b { font-family: var(--display); font-weight: 400; font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--azul); }
 .marca-tela span { font-size: 0.72rem; font-weight: 300; color: var(--piedra); }
 
@@ -726,9 +729,9 @@ h1, h2, h3, h4 {
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Nuestra ventaja</span>
         <h2 class="t-xl">Distribuidores oficiales de telas</h2>
-        <p class="lead" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas. Eso significa dos cosas para ti: una variedad que pocas sastrerías del país pueden ofrecer, y mejores precios, porque la tela no pasa por intermediarios.</p>
+        <p class="lead" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas: tejeduría peruana junto a casas italianas e inglesas. Eso significa dos cosas para ti: una variedad que pocas sastrerías del país pueden ofrecer, y mejores precios, porque la tela no pasa por intermediarios.</p>
         <ul class="lista">
-          <li>Telas nacionales e importadas en una misma casa.</li>
+          <li>Tela nacional, italiana e inglesa en una misma casa.</li>
           <li>Precio directo, sin sobrecosto de intermediarios.</li>
           <li>Asesoría para elegir el tejido según ocasión, clima y caída.</li>
         </ul>
@@ -1011,7 +1014,7 @@ h1, h2, h3, h4 {
         <h2 class="t-xl">Todo empieza por la tela</h2>
         <p class="lead" style="margin-top:1.25rem;">El corte define la forma, pero la tela define cómo se ve, cómo cae y cuánto dura. Es la primera decisión y la que más condiciona el resultado.</p>
         <ul class="lista">
-          <li>Nacionales e importadas, para comparar con criterio.</li>
+          <li>Nacional, italiana e inglesa, para comparar con criterio.</li>
           <li>Precio directo: somos distribuidores oficiales.</li>
           <li>Asesoría según la ocasión, el clima de Lima y la caída que buscas.</li>
         </ul>
@@ -1161,7 +1164,7 @@ h1, h2, h3, h4 {
       <div class="miga"><span data-ir="inicio">Inicio</span> · Telas</div>
       <span class="rotulo">Distribuidores oficiales</span>
       <h1 class="t-hero">Telas</h1>
-      <p class="lead medida" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas. Una variedad amplia, a precio directo, con la asesoría de sastres que saben qué tejido pide cada prenda.</p>
+      <p class="lead medida" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas. Trabajamos con tejeduría peruana y con casas italianas e inglesas, a precio directo y con la asesoría de sastres que saben qué tejido pide cada prenda.</p>
     </div>
   </section>
 
@@ -1169,7 +1172,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="enc"><span class="rotulo">Ventajas</span><h2 class="t-xl">Por qué la tela importa</h2></div>
       <div class="rejilla r3">
-        <article class="pilar doble-filete rev"><span class="num">01</span><h3>Variedad real</h3><p>Nacionales e importadas en una misma casa, para que compares y elijas con criterio.</p></article>
+        <article class="pilar doble-filete rev"><span class="num">01</span><h3>Variedad real</h3><p>Tejeduría peruana junto a casas italianas e inglesas, para que compares y elijas con criterio.</p></article>
         <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><h3>Precio directo</h3><p>Al ser distribuidores oficiales, la tela no pasa por intermediarios y eso se refleja en lo que pagas.</p></article>
         <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><h3>Asesoría honesta</h3><p>Te decimos qué tejido conviene según la ocasión, el clima de Lima y la caída que buscas.</p></article>
       </div>
@@ -1180,7 +1183,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div id="bloque-marcas" style="display:none;margin-bottom:4rem;">
         <div class="enc"><span class="rotulo">Las casas</span><h2 class="t-xl">Marcas con las que trabajamos</h2>
-          <p class="lead" style="margin-top:1rem;">Como distribuidores oficiales trabajamos directamente con las casas de tejido, nacionales e importadas.</p>
+          <p class="lead" style="margin-top:1rem;">Trabajamos con tela nacional y con casas italianas e inglesas. Al ser distribuidores oficiales tratamos directamente con las tejedurías, sin intermediarios.</p>
         </div>
         <div class="marcas-tela rev" id="marcas-tela"></div>
       </div>
@@ -1426,11 +1429,29 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion-corta">
-    <div class="caja"><div class="aviso rev" style="max-width:64ch;margin-inline:auto;">
-      <b>Cotización a medida</b>
-      Cada programa corporativo se cotiza según el número de personas, las prendas y la tela elegida. Cuéntanos sobre tu equipo por correo o WhatsApp y preparamos una propuesta.
-    </div></div>
+  <section class="cierre sobre-azul">
+    <img class="cierre-img" src="assets/editorial-esmoquin-marfil.jpg" alt="" loading="lazy">
+    <div class="cierre-velo"></div>
+    <div class="caja cierre-inner">
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+      <span class="rotulo">Cotización a medida</span>
+      <h2 class="t-xl">Hablemos de tu equipo</h2>
+      <p class="lead medida centro" style="margin-top:1rem;">Cada programa se cotiza según el número de personas, las prendas y la tela elegida. Cuéntanos qué necesitas y preparamos una propuesta.</p>
+      <div class="canales" style="margin-top:clamp(2rem,4vw,3rem);">
+        <a class="canal" href="https://wa.me/51959370397" target="_blank" rel="noopener">
+          <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 28l1.9-6.4A12 12 0 1110.5 26z"/><path d="M11.5 12.5c.6 3.7 4.3 7.4 8 8"/></svg>
+          <h3>WhatsApp</h3>
+          <p>Para resolver dudas rápido y coordinar una visita a tu empresa.</p>
+          <b>959 370 397</b>
+        </a>
+        <a class="canal" href="mailto:servicioalcliente@andresvargas.pe?subject=Consulta%20corporativa">
+          <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="7" width="26" height="18" rx="1.6"/><path d="M3.6 8.4L16 18 28.4 8.4"/></svg>
+          <h3>Correo</h3>
+          <p>Si prefieres enviarnos el detalle del equipo y las prendas.</p>
+          <b>servicioalcliente@andresvargas.pe</b>
+        </a>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -1965,14 +1986,23 @@ h1, h2, h3, h4 {
      Rellenar con las casas de tejido reales del cliente.
      Formato: { n: 'Nombre de la casa', o: 'Origen' }
      Mientras el arreglo esté vacío, el bloque no se muestra. */
-  var MARCAS_TELA = [];
+  var MARCAS_TELA = [
+    { n: 'Vitale Barberis Canonico', o: 'Italia · desde 1663', logo: '' },
+    { n: 'Reda',                     o: 'Italia · desde 1865', logo: '' },
+    { n: 'Thomas Mason',             o: 'Inglaterra · desde 1796', logo: '' },
+    { n: 'Barrington',               o: '', logo: '' }
+  ];
 
   (function () {
     var cont = document.getElementById('marcas-tela');
     var bloque = document.getElementById('bloque-marcas');
     if (!cont || !bloque || !MARCAS_TELA.length) return;
     cont.innerHTML = MARCAS_TELA.map(function (m) {
-      return '<div class="marca-tela"><b>' + m.n + '</b><span>' + (m.o || '') + '</span></div>';
+      // Si hay archivo de logo se usa; si no, el nombre en la tipografía de la casa
+      var marca = m.logo
+        ? '<img class="marca-logo" src="' + m.logo + '" alt="' + m.n + '" loading="lazy">'
+        : '<b>' + m.n + '</b>';
+      return '<div class="marca-tela">' + marca + (m.o ? '<span>' + m.o + '</span>' : '') + '</div>';
     }).join('');
     bloque.style.display = '';
   })();
