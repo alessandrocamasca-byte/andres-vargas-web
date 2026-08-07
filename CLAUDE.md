@@ -52,7 +52,8 @@ Los documentos de pauta son **HTML autocontenido**: CSS inline y los escudos inc
 - **Slogan:** "Cada prenda que hacemos, guarda la medida exacta del carácter de quién la viste"
 - **Fundación:** 1982 · más de 44 años de experiencia
 - **WhatsApp:** 959 370 397 · **Correo:** servicioalcliente@andresvargas.pe · **Web:** andresvargas.pe
-- **Tiendas:** Av. Primavera 252, Santiago de Surco · Jr. Ucayali 115 · 119 · 121, Cercado de Lima
+- **Tiendas (3):** Av. Primavera 252, Chacarilla, Surco · Jr. Huallaga 558 y 570, Cercado · Jr. Ucayali 115 · 119 · 121, Cercado.
+  Horarios: Primavera y Huallaga, lunes a sábado 10:00 a 20:00 y domingo 10:00 a 16:00. Ucayali, lunes a viernes 10:00 a 20:00; fin de semana por confirmar.
 - **Redes:** IG @andres_vargas_sastreria · TikTok @andresvargasboutique · Facebook "Andres Vargas" (falta URL exacta)
 
 ## Regla de honestidad de datos

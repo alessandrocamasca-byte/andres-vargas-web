@@ -224,7 +224,25 @@ También se quitó una repetición: el titular de "La casa" decía "Cuarenta y c
 
 **Nueva página Tiendas** (octava): las dos fichas con zona, dirección, qué encuentras en cada una y botones de Cómo llegar y WhatsApp, más un bloque de tres pasos sobre cómo es la visita. Enlazada desde el menú, el pie y el bloque "Visítanos" del inicio. El escudo va de marca de agua en cada ficha.
 
-**Falta:** horarios de atención por local. Se dice "atención previa cita", que es cierto, pero unos horarios darían más confianza.
+### Datos reales de tiendas (7 ago 2026, de Alessandro)
+
+**Son TRES tiendas, no dos.** La web decía dos porque el documento original del cliente solo listaba dos direcciones.
+
+| Tienda | Dirección | Horario |
+|---|---|---|
+| **Primavera** | Av. Primavera 252, Chacarilla, Santiago de Surco | Lun a Sáb 10:00 a 20:00 · Dom 10:00 a 16:00 |
+| **Huallaga** | Jr. Huallaga 558 y 570, Cercado de Lima | Lun a Sáb 10:00 a 20:00 · Dom 10:00 a 16:00 |
+| **Ucayali** | Jr. Ucayali 115 · 119 · 121, Cercado de Lima | Lun a Vie 10:00 a 20:00 · **fin de semana por confirmar** |
+
+**PENDIENTE:** el mensaje sobre Ucayali quedó cortado ("atiende en esos horarios de lunes a viernes pero los sábados."). No se inventó nada: la ficha muestra lunes a viernes confirmado y "Fin de semana · Consúltanos". Falta preguntar el horario de sábado y si abre domingo.
+
+Se actualizaron todos los sitios que decían dos tiendas: la cifra del inicio (2 → 3), el titular "Dos tiendas en Lima" → "Tres", el pie, la meta descripción y la firma del hero.
+
+**Fotos:** cada ficha lleva una foto general de prendas del cliente, no del local. Alessandro autorizó usar "una foto general". **Pedir fotos reales de cada tienda** para sustituirlas: en una página de tiendas, la foto del local es lo que genera confianza.
+
+Las tres fichas salen de un solo arreglo `TIENDAS` en el script, que alimenta a la vez la sección del inicio y la página. Añadir una tienda es añadir un objeto.
+
+**Bug corregido (tercera vez que aparece este patrón):** el escudo sobre la foto salía estirado porque `.tienda-foto img` (0,1,1) le gana a `.sello` (0,1,0). Regla general para este proyecto: **cuando haya dos imágenes dentro del mismo contenedor, nunca estilarlas con un selector de tipo `contenedor img`**; darle clase propia a cada una o scopear (`.tienda-foto img.sello`).
 
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 

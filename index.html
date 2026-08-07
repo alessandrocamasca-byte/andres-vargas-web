@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Andrés Vargas | Sastrería a Medida en Lima desde 1982</title>
-<meta name="description" content="Sastrería Andrés Vargas: 44 años confeccionando trajes y camisas a medida en Lima. Distribuidores oficiales de telas nacionales e importadas. Surco y Cercado de Lima.">
+<meta name="description" content="Sastrería Andrés Vargas: 44 años confeccionando trajes y camisas a medida en Lima. Distribuidores oficiales de telas nacionales e importadas. Tres tiendas en Lima.">
 <meta name="theme-color" content="#1A2744">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Andrés Vargas | Sastrería a Medida en Lima desde 1982">
@@ -455,24 +455,40 @@ h1, h2, h3, h4 {
 .sobre-azul .caso-cat { color: var(--azul-claro); }
 .sobre-azul .caso-chips span { color: rgba(255,255,255,0.86); border-color: rgba(255,255,255,0.26); }
 
-/* ---------- Ficha de tienda (página Tiendas) ---------- */
+/* ---------- Ficha de tienda ---------- */
 .tienda-ficha {
-  border: 1px solid var(--filete); background: var(--blanco); padding: clamp(1.5rem, 3vw, 2.5rem);
-  display: flex; flex-direction: column; gap: var(--e2); position: relative; overflow: hidden;
+  border: 1px solid var(--filete); background: var(--blanco);
+  display: flex; flex-direction: column; overflow: hidden; min-height: 100%;
   transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 .tienda-ficha:hover { border-color: var(--azul-pizarra); box-shadow: 0 14px 40px rgba(23,39,64,0.10); }
-.tienda-ficha .sello {
-  position: absolute; right: -18px; bottom: -22px; width: 132px; opacity: 0.05; pointer-events: none;
+.tienda-foto { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--azul); }
+.tienda-foto > img:first-child { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
+.tienda-ficha:hover .tienda-foto > img:first-child { transform: scale(1.04); }
+.tienda-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(23,39,64,0.78) 0%, rgba(23,39,64,0.30) 45%, rgba(23,39,64,0.10) 100%); }
+.tienda-foto .zona {
+  position: absolute; left: var(--e3); bottom: var(--e3); z-index: 2;
+  font-family: var(--display); font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--azul-claro);
 }
-.tienda-ficha > * { position: relative; z-index: 1; }
-.tienda-ficha .zona { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul-pizarra); }
-.tienda-ficha h3 { font-size: 1.5rem; letter-spacing: 0.05em; font-weight: 400; }
-.tienda-ficha address { font-style: normal; font-size: 1rem; font-weight: 300; color: var(--grafito); line-height: 1.7; }
-.tienda-ficha .lista { margin-top: var(--e2); gap: 0.6rem; }
-.tienda-ficha .lista li { font-size: 0.9rem; }
-.tienda-ficha .acciones { margin-top: var(--e4); }
-.tienda-ficha .btn { padding: 0.8rem 1.5rem; font-size: 0.74rem; }
+/* Especificidad: .tienda-foto img (0,1,1) le gana a .sello (0,1,0) y lo estira.
+   Por eso el sello se escribe scopeado y fija su propio alto. */
+.tienda-foto img.sello {
+  position: absolute; top: var(--e3); right: var(--e3); z-index: 2;
+  width: 26px; height: auto; object-fit: contain; opacity: 0.92;
+}
+.tienda-ficha:hover .tienda-foto img.sello { transform: none; }
+
+.tienda-cuerpo { padding: clamp(1.3rem, 2.4vw, 1.9rem); display: flex; flex-direction: column; gap: var(--e2); flex: 1; }
+.tienda-cuerpo h3 { font-size: 1.32rem; letter-spacing: 0.05em; font-weight: 400; }
+.tienda-cuerpo address { font-style: normal; font-size: 0.95rem; font-weight: 300; color: var(--grafito); line-height: 1.65; }
+
+.horario { border-top: 1px solid var(--filete); margin-top: var(--e2); padding-top: var(--e3); display: grid; gap: 0.38rem; }
+.horario > div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.88rem; }
+.horario span { font-weight: 300; color: var(--piedra); }
+.horario b { font-weight: 500; color: var(--tinta); font-variant-numeric: tabular-nums; text-align: right; }
+.horario .pendiente { color: var(--azul-pizarra); font-weight: 400; }
+.tienda-cuerpo .acciones { margin-top: auto; padding-top: var(--e4); }
+.tienda-cuerpo .btn { padding: 0.72rem 1.3rem; font-size: 0.72rem; }
 
 /* ---------- Locales ---------- */
 .local { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; gap: var(--e2); }
@@ -562,7 +578,7 @@ h1, h2, h3, h4 {
             <a class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
             <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
           </div>
-          <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Surco y Cercado de Lima</p>
+          <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Tres tiendas en Lima</p>
         </div>
       </div>
     </div>
@@ -647,7 +663,7 @@ h1, h2, h3, h4 {
     <div class="caja rejilla r3">
       <div class="cifra rev"><b>1982</b><span>Año de fundación</span></div>
       <div class="cifra rev" data-d="1"><b>44</b><span>Años de oficio</span></div>
-      <div class="cifra rev" data-d="2"><b>2</b><span>Tiendas en Lima</span></div>
+      <div class="cifra rev" data-d="2"><b>3</b><span>Tiendas en Lima</span></div>
     </div>
   </section>
 
@@ -795,27 +811,10 @@ h1, h2, h3, h4 {
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
         <span class="rotulo">Visítanos</span>
-        <h2 class="t-xl">Dos tiendas en Lima</h2>
-        <p class="lead" style="margin-top:1rem;">Atendemos previa cita, para dedicarte el tiempo que la prenda necesita. Escríbenos por WhatsApp y coordinamos en la tienda que te quede más cerca.</p>
+        <h2 class="t-xl">Tres tiendas en Lima</h2>
+        <p class="lead" style="margin-top:1rem;">Una en Chacarilla y dos en el Cercado de Lima. Escríbenos por WhatsApp y coordinamos en la que te quede más cerca.</p>
       </div>
-      <div class="rejilla r2" style="max-width:940px;margin-inline:auto;">
-        <div class="local rev">
-          <span class="zona">Santiago de Surco</span>
-          <h3>Tienda Primavera</h3>
-          <address>Avenida Primavera 252<br>Santiago de Surco, Lima</address>
-          <div class="acciones">
-            <a class="btn btn-linea-clara" href="https://www.google.com/maps/search/?api=1&query=Avenida+Primavera+252+Santiago+de+Surco+Lima" target="_blank" rel="noopener">Cómo llegar</a>
-          </div>
-        </div>
-        <div class="local rev" data-d="1">
-          <span class="zona">Cercado de Lima</span>
-          <h3>Tienda Ucayali</h3>
-          <address>Jirón Ucayali 115 · 119 · 121<br>Cercado de Lima</address>
-          <div class="acciones">
-            <a class="btn btn-linea-clara" href="https://www.google.com/maps/search/?api=1&query=Jiron+Ucayali+115+Cercado+de+Lima" target="_blank" rel="noopener">Cómo llegar</a>
-          </div>
-        </div>
-      </div>
+      <div class="rejilla r3" id="tiendas-inicio"></div>
       <div class="centro" style="margin-top:3rem;">
         <div class="acciones" style="justify-content:center;">
           <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
@@ -1231,7 +1230,7 @@ h1, h2, h3, h4 {
       <div class="miga"><span data-ir="inicio">Inicio</span> · Tiendas</div>
       <span class="rotulo">Dónde estamos</span>
       <h1 class="t-hero">Tiendas</h1>
-      <p class="lead medida" style="margin-top:1.25rem;">Dos direcciones en Lima, una en Surco y otra en el Cercado. Atendemos previa cita, para dedicarle a cada prenda el tiempo que necesita.</p>
+      <p class="lead medida" style="margin-top:1.25rem;">Tres direcciones en Lima: una en Chacarilla, Surco, y dos en el Cercado de Lima. En todas encuentras el muestrario completo y a nuestros sastres.</p>
       <div class="acciones" style="margin-top:2rem;">
         <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
       </div>
@@ -1243,40 +1242,9 @@ h1, h2, h3, h4 {
       <div class="enc">
         <span class="rotulo">Nuestros locales</span>
         <h2 class="t-xl">Ven a vernos</h2>
-        <p class="lead" style="margin-top:1rem;">En ambas tiendas encuentras el muestrario completo de telas y a nuestros sastres para asesorarte.</p>
+        <p class="lead" style="margin-top:1rem;">En las tres tiendas encuentras el muestrario completo de telas y a nuestros sastres para asesorarte.</p>
       </div>
-      <div class="rejilla r2">
-        <article class="tienda-ficha rev">
-          <img src="assets/escudo-azul.png" alt="" class="sello">
-          <span class="zona">Santiago de Surco</span>
-          <h3>Tienda Primavera</h3>
-          <address>Avenida Primavera 252<br>Santiago de Surco, Lima</address>
-          <ul class="lista">
-            <li>Atención previa cita.</li>
-            <li>Muestrario completo de telas.</li>
-            <li>Toma de medidas y pruebas.</li>
-          </ul>
-          <div class="acciones">
-            <a class="btn btn-azul" href="https://www.google.com/maps/search/?api=1&query=Avenida+Primavera+252+Santiago+de+Surco+Lima" target="_blank" rel="noopener">Cómo llegar</a>
-            <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escribir</a>
-          </div>
-        </article>
-        <article class="tienda-ficha rev" data-d="1">
-          <img src="assets/escudo-azul.png" alt="" class="sello">
-          <span class="zona">Cercado de Lima</span>
-          <h3>Tienda Ucayali</h3>
-          <address>Jirón Ucayali 115 · 119 · 121<br>Cercado de Lima</address>
-          <ul class="lista">
-            <li>Atención previa cita.</li>
-            <li>Muestrario completo de telas.</li>
-            <li>Toma de medidas y pruebas.</li>
-          </ul>
-          <div class="acciones">
-            <a class="btn btn-azul" href="https://www.google.com/maps/search/?api=1&query=Jiron+Ucayali+115+Cercado+de+Lima" target="_blank" rel="noopener">Cómo llegar</a>
-            <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escribir</a>
-          </div>
-        </article>
-      </div>
+      <div class="rejilla r3" id="tiendas-pagina"></div>
     </div>
   </section>
 
@@ -1345,7 +1313,8 @@ h1, h2, h3, h4 {
       <div>
         <h4>Tiendas</h4>
         <ul>
-          <li>Av. Primavera 252<br>Santiago de Surco</li>
+          <li>Av. Primavera 252, Chacarilla<br>Santiago de Surco</li>
+          <li>Jr. Huallaga 558 y 570<br>Cercado de Lima</li>
           <li>Jr. Ucayali 115 · 119 · 121<br>Cercado de Lima</li>
         </ul>
       </div>
@@ -1456,6 +1425,66 @@ h1, h2, h3, h4 {
       });
     });
   });
+
+  /* ================= TIENDAS =================
+     Origen único: alimenta la sección del inicio y la página de Tiendas.
+     `horas` es una lista de pares [tramo, horario]. */
+  var TIENDAS = [
+    {
+      nombre: 'Tienda Primavera',
+      zona: 'Chacarilla · Surco',
+      dir: 'Av. Primavera 252, Chacarilla<br>Santiago de Surco, Lima',
+      mapa: 'Av.+Primavera+252+Chacarilla+Santiago+de+Surco+Lima',
+      foto: 'assets/editorial-esmoquin-marfil.jpg',
+      horas: [['Lunes a sábado', '10:00 a 20:00'], ['Domingo', '10:00 a 16:00']]
+    },
+    {
+      nombre: 'Tienda Huallaga',
+      zona: 'Cercado de Lima',
+      dir: 'Jr. Huallaga 558 y 570<br>Cercado de Lima',
+      mapa: 'Jiron+Huallaga+558+Cercado+de+Lima',
+      foto: 'assets/editorial-duo.jpg',
+      horas: [['Lunes a sábado', '10:00 a 20:00'], ['Domingo', '10:00 a 16:00']]
+    },
+    {
+      nombre: 'Tienda Ucayali',
+      zona: 'Cercado de Lima',
+      dir: 'Jr. Ucayali 115 · 119 · 121<br>Cercado de Lima',
+      mapa: 'Jiron+Ucayali+115+Cercado+de+Lima',
+      foto: 'assets/editorial-esmoquin-negro.jpg',
+      horas: [['Lunes a viernes', '10:00 a 20:00'], ['Fin de semana', 'Consúltanos']]
+    }
+  ];
+
+  (function () {
+    function ficha(t, i) {
+      var horas = t.horas.map(function (h) {
+        var pend = /consúltanos/i.test(h[1]) ? ' class="pendiente"' : '';
+        return '<div><span>' + h[0] + '</span><b' + pend + '>' + h[1] + '</b></div>';
+      }).join('');
+      return '<article class="tienda-ficha rev"' + (i ? ' data-d="' + i + '"' : '') + '>' +
+        '<div class="tienda-foto">' +
+          '<img src="' + t.foto + '" alt="Prendas a medida de Andrés Vargas" loading="lazy">' +
+          '<img src="assets/escudo-blanco.png" alt="" class="sello">' +
+          '<span class="zona">' + t.zona + '</span>' +
+        '</div>' +
+        '<div class="tienda-cuerpo">' +
+          '<h3>' + t.nombre + '</h3>' +
+          '<address>' + t.dir + '</address>' +
+          '<div class="horario">' + horas + '</div>' +
+          '<div class="acciones">' +
+            '<a class="btn btn-azul" href="https://www.google.com/maps/search/?api=1&query=' + t.mapa + '" target="_blank" rel="noopener">Cómo llegar</a>' +
+            '<a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escribir</a>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+    }
+    var html = TIENDAS.map(ficha).join('');
+    ['tiendas-inicio', 'tiendas-pagina'].forEach(function (id) {
+      var c = document.getElementById(id);
+      if (c) c.innerHTML = html;
+    });
+  })();
 
   /* ================= PROYECTOS / CASOS =================
      Un solo origen de datos para inicio y corporativo.
