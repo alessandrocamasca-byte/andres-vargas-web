@@ -64,7 +64,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 body {
   margin: 0; background: var(--papel); color: var(--tinta);
-  font-family: var(--texto); font-weight: 400; font-size: 16px; line-height: 1.75;
+  font-family: var(--texto); font-weight: 400; font-size: 15.5px; line-height: 1.8;
   overflow-x: hidden; -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
@@ -80,16 +80,16 @@ h1, h2, h3, h4 {
   text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.03;
   color: var(--azul); text-wrap: balance;
 }
-.t-hero { font-size: clamp(2.5rem, 6.6vw, 5.2rem); }
-.t-xl   { font-size: clamp(2rem, 4.4vw, 3.4rem); }
-.t-lg   { font-size: clamp(1.55rem, 2.8vw, 2.2rem); }
+.t-hero { font-size: clamp(2.05rem, 5vw, 4.1rem); font-weight: 200; letter-spacing: 0.008em; }
+.t-xl   { font-size: clamp(1.65rem, 3.4vw, 2.6rem); font-weight: 200; letter-spacing: 0.012em; }
+.t-lg   { font-size: clamp(1.32rem, 2.2vw, 1.78rem); font-weight: 300; }
 .rotulo {
-  font-family: var(--display); font-size: 0.76rem; font-weight: 400;
-  text-transform: uppercase; letter-spacing: 0.34em; color: var(--azul-medio);
+  font-family: var(--display); font-size: 0.67rem; font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.42em; color: var(--azul-medio);
   display: block; margin-bottom: var(--e3);
 }
-.lead { font-size: clamp(1.02rem, 1.3vw, 1.15rem); font-weight: 300; color: var(--grafito); }
-.mini { font-size: 0.86rem; font-weight: 300; color: var(--piedra); }
+.lead { font-size: clamp(0.96rem, 1.1vw, 1.05rem); font-weight: 300; color: var(--grafito); line-height: 1.82; }
+.mini { font-size: 0.79rem; font-weight: 300; color: var(--piedra); letter-spacing: 0.015em; }
 .sobre-azul, .sobre-azul h1, .sobre-azul h2, .sobre-azul h3, .sobre-azul h4 { color: var(--blanco); }
 .sobre-azul .lead { color: rgba(255,255,255,0.78); }
 .sobre-azul .rotulo { color: rgba(255,255,255,0.62); }
@@ -97,7 +97,7 @@ h1, h2, h3, h4 {
 
 /* ---------- Layout ---------- */
 .caja { max-width: var(--ancho); margin-inline: auto; padding-inline: var(--margen); }
-.seccion { padding-block: clamp(3.5rem, 8vw, 7rem); }
+.seccion { padding-block: clamp(4rem, 9vw, 8.5rem); }
 .seccion-corta { padding-block: clamp(2.5rem, 5vw, 4rem); }
 .fondo-azul { background: var(--azul); }
 .fondo-profundo { background: var(--azul-profundo); }
@@ -131,9 +131,9 @@ h1, h2, h3, h4 {
 /* ---------- Botones ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
-  font-family: var(--display); font-size: 0.82rem; font-weight: 400;
-  text-transform: uppercase; letter-spacing: 0.2em;
-  padding: 1.02rem 2.05rem; transition: all 0.35s var(--ease); border: 1px solid transparent;
+  font-family: var(--display); font-size: 0.71rem; font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.24em;
+  padding: 1.05rem 2.15rem; transition: all 0.35s var(--ease); border: 1px solid transparent;
 }
 .btn-azul { background: var(--azul); color: var(--blanco); }
 .btn-azul:hover { background: var(--azul-medio); }
@@ -146,7 +146,7 @@ h1, h2, h3, h4 {
 .acciones { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
 .enlace {
-  font-family: var(--display); font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+  font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase;
   color: var(--azul-medio); display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
   transition: gap 0.3s var(--ease);
 }
@@ -200,14 +200,14 @@ h1, h2, h3, h4 {
 
 .menu { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2.1rem); }
 .menu a {
-  font-family: var(--display); font-size: 0.8rem; font-weight: 300; text-transform: uppercase;
-  letter-spacing: 0.16em; color: rgba(255,255,255,0.88); cursor: pointer; position: relative; padding-block: 3px;
+  font-family: var(--display); font-size: 0.74rem; font-weight: 300; text-transform: uppercase;
+  letter-spacing: 0.19em; color: rgba(255,255,255,0.88); cursor: pointer; position: relative; padding-block: 3px;
   transition: color 0.3s var(--ease);
 }
 .menu a:hover { color: var(--blanco); }
 .menu a::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0; background: var(--blanco); transition: width 0.35s var(--ease); }
 .menu a:hover::after, .menu a.on::after { width: 100%; }
-.menu .btn { padding: 0.58rem 1.2rem; font-size: 0.7rem; }
+.menu .btn { padding: 0.6rem 1.25rem; font-size: 0.65rem; }
 .menu .btn::after { display: none; }
 /* .menu a fija el color en blanco: hay que devolvérselo al botón claro */
 .menu .btn-claro { color: var(--azul); }
@@ -265,7 +265,7 @@ h1, h2, h3, h4 {
 .hero-texto { max-width: 34rem; }
 .hero-slogan {
   font-family: var(--display); font-weight: 200; text-transform: none;
-  font-size: clamp(1.5rem, 2.7vw, 2.35rem); line-height: 1.28; color: var(--blanco);
+  font-size: clamp(1.32rem, 2.3vw, 2rem); line-height: 1.34; color: var(--blanco); letter-spacing: 0.004em;
 }
 .hero-slogan em { font-style: normal; color: var(--azul-tenue); }
 .hero-firma { margin-top: var(--e5); }
@@ -283,7 +283,7 @@ h1, h2, h3, h4 {
 .pag-hero { background: var(--azul); padding: calc(var(--alto-cabecera) + clamp(2.5rem, 5vw, 4rem)) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
 .pag-hero::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M0 36L36 0M-9 9L9 -9M27 45L45 27' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'/%3E%3C/svg%3E"); }
 .pag-hero .caja { position: relative; z-index: 1; }
-.miga { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
+.miga { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
 .miga span { cursor: pointer; }
 .miga span:hover { color: var(--blanco); }
 
@@ -294,13 +294,13 @@ h1, h2, h3, h4 {
 /* ---------- Cifras ---------- */
 .cifra { text-align: center; padding: var(--e4) var(--e2); }
 .cifra b { display: block; font-family: var(--display); font-weight: 200; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1; color: var(--blanco); }
-.cifra span { display: block; font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: var(--e2); }
+.cifra span { display: block; font-family: var(--display); font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: var(--e2); }
 
 /* ---------- Pilar ---------- */
 .pilar { padding-top: var(--e4); }
-.pilar .num { font-family: var(--display); font-size: 0.78rem; letter-spacing: 0.24em; color: var(--azul-medio); display: block; margin-bottom: var(--e2); }
-.pilar h3 { font-size: 1.2rem; letter-spacing: 0.05em; margin-bottom: var(--e2); font-weight: 400; }
-.pilar p { font-size: 0.95rem; font-weight: 300; color: var(--grafito); }
+.pilar .num { font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.3em; color: var(--azul-medio); display: block; margin-bottom: var(--e2); }
+.pilar h3 { font-size: 1.02rem; letter-spacing: 0.09em; margin-bottom: var(--e2); font-weight: 400; }
+.pilar p { font-size: 0.88rem; font-weight: 300; color: var(--grafito); line-height: 1.82; }
 .sobre-azul .pilar .num { color: rgba(255,255,255,0.6); }
 .sobre-azul .pilar p { color: rgba(255,255,255,0.72); }
 
@@ -310,12 +310,12 @@ h1, h2, h3, h4 {
 .ficha-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
 .ficha:hover .ficha-img img { transform: scale(1.045); }
 .ficha-cuerpo { padding-top: var(--e3); margin-top: var(--e3); }
-.ficha-cuerpo h3 { font-size: 1.04rem; letter-spacing: 0.07em; font-weight: 400; }
-.ficha-cuerpo p { font-size: 0.86rem; font-weight: 300; color: var(--piedra); margin-top: 0.25rem; }
+.ficha-cuerpo h3 { font-size: 0.96rem; letter-spacing: 0.11em; font-weight: 400; }
+.ficha-cuerpo p { font-size: 0.81rem; font-weight: 300; color: var(--piedra); margin-top: 0.35rem; line-height: 1.72; }
 
 /* ---------- Lista ---------- */
 .lista { display: grid; gap: var(--e3); margin-top: var(--e4); }
-.lista li { display: grid; grid-template-columns: auto 1fr; gap: 0.85rem; font-weight: 300; color: var(--grafito); font-size: 0.96rem; }
+.lista li { display: grid; grid-template-columns: auto 1fr; gap: 0.9rem; font-weight: 300; color: var(--grafito); font-size: 0.89rem; line-height: 1.8; }
 .lista li::before { content: ""; width: 7px; height: 7px; margin-top: 0.62rem; border: 1px solid var(--azul-medio); }
 .sobre-azul .lista li { color: rgba(255,255,255,0.78); }
 .sobre-azul .lista li::before { border-color: rgba(255,255,255,0.6); }
@@ -323,8 +323,8 @@ h1, h2, h3, h4 {
 /* ---------- Pasos ---------- */
 .paso { display: grid; grid-template-columns: auto 1fr; gap: var(--e4); padding-block: var(--e4); border-top: 1px solid var(--filete); }
 .paso b { font-family: var(--display); font-weight: 200; font-size: 1.9rem; color: var(--azul-medio); line-height: 1; }
-.paso h3 { font-size: 1.08rem; letter-spacing: 0.05em; font-weight: 400; margin-bottom: 0.3rem; }
-.paso p { font-size: 0.93rem; font-weight: 300; color: var(--grafito); }
+.paso h3 { font-size: 0.98rem; letter-spacing: 0.09em; font-weight: 400; margin-bottom: 0.35rem; }
+.paso p { font-size: 0.86rem; font-weight: 300; color: var(--grafito); line-height: 1.8; }
 
 /* ---------- Telas ---------- */
 .tela { border: 1px solid var(--filete); background: var(--blanco); transition: border-color 0.35s var(--ease); }
@@ -373,8 +373,8 @@ h1, h2, h3, h4 {
 .nota:hover .nota-img img { transform: scale(1.04); }
 .nota-cuerpo { padding-top: var(--e3); margin-top: var(--e3); }
 .nota-meta { font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-medio); }
-.nota-cuerpo h3 { font-size: 1.06rem; letter-spacing: 0.05em; font-weight: 400; margin: 0.45rem 0; }
-.nota-cuerpo p { font-size: 0.88rem; font-weight: 300; color: var(--piedra); }
+.nota-cuerpo h3 { font-size: 0.98rem; letter-spacing: 0.09em; font-weight: 400; margin: 0.5rem 0; }
+.nota-cuerpo p { font-size: 0.82rem; font-weight: 300; color: var(--piedra); line-height: 1.75; }
 
 /* ---------- Aviso ---------- */
 .aviso { border: 1px solid var(--filete); background: var(--nube); padding: var(--e4); font-size: 0.86rem; font-weight: 300; color: #4A4F58; }
@@ -440,8 +440,8 @@ h1, h2, h3, h4 {
 
 .caso-cuerpo { padding: var(--e4); display: flex; flex-direction: column; gap: var(--e2); flex: 1; }
 .caso-cat { font-family: var(--display); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--azul-pizarra); }
-.caso-cuerpo h3 { font-size: 1.1rem; letter-spacing: 0.03em; font-weight: 400; line-height: 1.25; }
-.caso-cuerpo p { font-size: 0.9rem; font-weight: 300; color: var(--grafito); flex: 1; }
+.caso-cuerpo h3 { font-size: 1rem; letter-spacing: 0.07em; font-weight: 400; line-height: 1.3; }
+.caso-cuerpo p { font-size: 0.84rem; font-weight: 300; color: var(--grafito); flex: 1; line-height: 1.78; }
 .caso-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: var(--e2); }
 .caso-chips span {
   font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
@@ -454,6 +454,38 @@ h1, h2, h3, h4 {
 .sobre-azul .caso-cuerpo p { color: rgba(255,255,255,0.72); }
 .sobre-azul .caso-cat { color: var(--azul-claro); }
 .sobre-azul .caso-chips span { color: rgba(255,255,255,0.86); border-color: rgba(255,255,255,0.26); }
+
+/* ---------- Cierre con fotografía de fondo ---------- */
+.cierre { position: relative; overflow: hidden; background: var(--azul); padding-block: clamp(4.5rem, 9vw, 8rem); }
+.cierre-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.cierre-velo {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(23,39,64,0.93) 0%, rgba(23,39,64,0.88) 45%, rgba(23,39,64,0.94) 100%);
+}
+.cierre-inner { position: relative; z-index: 2; text-align: center; }
+
+/* ---------- Icono de trazo fino ---------- */
+.icono {
+  width: 34px; height: 34px; margin-bottom: var(--e4); display: block;
+  stroke: var(--azul-medio); stroke-width: 1; fill: none;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.sobre-azul .icono { stroke: var(--azul-claro); }
+.pilar .icono { margin-bottom: var(--e3); }
+
+/* ---------- Canal de contacto ---------- */
+.canales { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2vw, 1.5rem); max-width: 780px; margin-inline: auto; }
+@media (max-width: 640px) { .canales { grid-template-columns: 1fr; } }
+.canal {
+  border: 1px solid rgba(255,255,255,0.22); padding: clamp(1.6rem, 3vw, 2.2rem);
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.55rem;
+  transition: border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.canal:hover { border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.04); transform: translateY(-3px); }
+.canal .icono { stroke: var(--azul-claro); width: 30px; height: 30px; margin-bottom: var(--e2); }
+.canal h3 { font-family: var(--display); font-size: 0.92rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blanco); }
+.canal p { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.66); line-height: 1.75; }
+.canal b { font-family: var(--display); font-weight: 400; font-size: 0.8rem; letter-spacing: 0.12em; color: var(--blanco); margin-top: 0.3rem; }
 
 /* ---------- Ficha de tienda ---------- */
 .tienda-ficha {
@@ -478,12 +510,18 @@ h1, h2, h3, h4 {
 }
 .tienda-ficha:hover .tienda-foto img.sello { transform: none; }
 
+.tienda-badge {
+  position: absolute; left: var(--e3); top: var(--e3); z-index: 2;
+  font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--blanco); border: 1px solid rgba(255,255,255,0.5); padding: 0.28rem 0.7rem;
+  background: rgba(23,39,64,0.34); backdrop-filter: blur(6px);
+}
 .tienda-cuerpo { padding: clamp(1.3rem, 2.4vw, 1.9rem); display: flex; flex-direction: column; gap: var(--e2); flex: 1; }
-.tienda-cuerpo h3 { font-size: 1.32rem; letter-spacing: 0.05em; font-weight: 400; }
-.tienda-cuerpo address { font-style: normal; font-size: 0.95rem; font-weight: 300; color: var(--grafito); line-height: 1.65; }
+.tienda-cuerpo h3 { font-size: 1.14rem; letter-spacing: 0.1em; font-weight: 400; }
+.tienda-cuerpo address { font-style: normal; font-size: 0.88rem; font-weight: 300; color: var(--grafito); line-height: 1.65; }
 
 .horario { border-top: 1px solid var(--filete); margin-top: var(--e2); padding-top: var(--e3); display: grid; gap: 0.38rem; }
-.horario > div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.88rem; }
+.horario > div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.82rem; }
 .horario span { font-weight: 300; color: var(--piedra); }
 .horario b { font-weight: 500; color: var(--tinta); font-variant-numeric: tabular-nums; text-align: right; }
 .horario .pendiente { color: var(--azul-pizarra); font-weight: 400; }
@@ -1105,12 +1143,43 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul">
-    <div class="caja centro">
+  <!-- La experiencia de novios se vive en Chacarilla -->
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">Dónde se vive</span>
+        <h2 class="t-xl">La experiencia de novios<br>es en Chacarilla</h2>
+        <p class="lead" style="margin-top:1.25rem;">Nuestra tienda de Chacarilla es la sede del servicio de novios. Es el espacio donde te tomas el tiempo: vienes acompañado, revisas telas con calma y decides sin apuro.</p>
+        <div class="lista" style="margin-top:1.8rem;">
+          <div class="local" style="border-top:none;padding-top:0;">
+            <span class="zona">Chacarilla · Surco</span>
+            <h3 style="font-size:1.12rem;letter-spacing:0.1em;font-weight:400;">Tienda Primavera</h3>
+            <address style="font-style:normal;font-size:0.9rem;font-weight:300;color:var(--grafito);line-height:1.7;">Av. Primavera 252, Chacarilla<br>Santiago de Surco, Lima</address>
+            <div class="horario" style="max-width:22rem;">
+              <div><span>Lunes a sábado</span><b>10 am a 8 pm</b></div>
+              <div><span>Domingo</span><b>10 am a 4 pm</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita de novio</a>
+          <a class="btn btn-linea" href="https://www.google.com/maps/search/?api=1&query=Av.+Primavera+252+Chacarilla+Santiago+de+Surco+Lima" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida"></div>
+    </div>
+  </section>
+
+  <section class="cierre sobre-azul">
+    <img class="cierre-img" src="assets/novios-trio-wide.jpg" alt="" loading="lazy">
+    <div class="cierre-velo"></div>
+    <div class="caja cierre-inner">
       <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+      <span class="rotulo">Tu fecha</span>
       <h2 class="t-xl">Empecemos con tiempo</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Escríbenos con la fecha de tu boda y coordinamos el calendario de medidas y pruebas sin apuros.</p>
-      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+      <div class="acciones" style="justify-content:center;margin-top:2.5rem;">
         <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
       </div>
     </div>
@@ -1258,16 +1327,19 @@ h1, h2, h3, h4 {
       <div class="rejilla r3">
         <article class="pilar doble-filete rev">
           <span class="num">01</span>
+          <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="21"/><path d="M4 13h24M11 4v6M21 4v6"/><circle cx="16" cy="20" r="2.4"/></svg>
           <h3>Coordina tu cita</h3>
           <p>Escríbenos por WhatsApp y acordamos día y hora en la tienda que te quede más cerca.</p>
         </article>
         <article class="pilar doble-filete rev" data-d="1">
           <span class="num">02</span>
+          <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 27V9l7-4 3 3 3-3 7 4v18z"/><path d="M13 5l3 6 3-6M16 11v16"/></svg>
           <h3>Conversamos y eliges</h3>
           <p>Vemos la ocasión, revisamos el muestrario y decides tela, color, corte y acabados con nuestros sastres.</p>
         </article>
         <article class="pilar doble-filete rev" data-d="2">
           <span class="num">03</span>
+          <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><rect x="2.5" y="11" width="27" height="10" rx="1.6"/><path d="M8 11v4M13 11v6M18 11v4M23 11v6"/></svg>
           <h3>Medidas y pruebas</h3>
           <p>Tomamos tus medidas y coordinamos las pruebas necesarias hasta que la caída sea la correcta.</p>
         </article>
@@ -1275,13 +1347,27 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-nube">
-    <div class="caja centro">
-      <h2 class="t-lg">¿Prefieres escribirnos antes?</h2>
-      <p class="lead medida centro" style="margin-top:1rem;">Cuéntanos qué necesitas y te orientamos por WhatsApp o por correo, sin compromiso.</p>
-      <div class="acciones" style="justify-content:center;margin-top:2rem;">
-        <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
-        <a class="btn btn-linea" href="mailto:servicioalcliente@andresvargas.pe">servicioalcliente@andresvargas.pe</a>
+  <section class="cierre sobre-azul">
+    <img class="cierre-img" src="assets/editorial-esmoquin-negro.jpg" alt="" loading="lazy">
+    <div class="cierre-velo"></div>
+    <div class="caja cierre-inner">
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+      <span class="rotulo">Tu visita</span>
+      <h2 class="t-xl">¿Cómo te gustaría agendar?</h2>
+      <p class="lead medida centro" style="margin-top:1rem;">Elige el canal que prefieras. Te respondemos con los horarios disponibles en la tienda que te quede más cerca.</p>
+      <div class="canales" style="margin-top:clamp(2rem,4vw,3rem);">
+        <a class="canal" href="https://wa.me/51959370397" target="_blank" rel="noopener">
+          <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 28l1.9-6.4A12 12 0 1110.5 26z"/><path d="M11.5 12.5c.6 3.7 4.3 7.4 8 8"/></svg>
+          <h3>WhatsApp</h3>
+          <p>La vía más rápida. Coordinamos día y hora en el momento.</p>
+          <b>959 370 397</b>
+        </a>
+        <a class="canal" href="mailto:servicioalcliente@andresvargas.pe?subject=Quiero%20agendar%20una%20visita">
+          <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="7" width="26" height="18" rx="1.6"/><path d="M3.6 8.4L16 18 28.4 8.4"/></svg>
+          <h3>Correo</h3>
+          <p>Si prefieres escribirnos con calma y contarnos el detalle.</p>
+          <b>servicioalcliente@andresvargas.pe</b>
+        </a>
       </div>
     </div>
   </section>
@@ -1436,6 +1522,7 @@ h1, h2, h3, h4 {
       dir: 'Av. Primavera 252, Chacarilla<br>Santiago de Surco, Lima',
       mapa: 'Av.+Primavera+252+Chacarilla+Santiago+de+Surco+Lima',
       foto: 'assets/editorial-esmoquin-marfil.jpg',
+      destacado: 'Experiencia novios',
       horas: [['Lunes a sábado', '10 am a 8 pm'], ['Domingo', '10 am a 4 pm']]
     },
     {
@@ -1467,6 +1554,7 @@ h1, h2, h3, h4 {
           '<img src="' + t.foto + '" alt="Prendas a medida de Andrés Vargas" loading="lazy">' +
           '<img src="assets/escudo-blanco.png" alt="" class="sello">' +
           '<span class="zona">' + t.zona + '</span>' +
+          (t.destacado ? '<span class="tienda-badge">' + t.destacado + '</span>' : '') +
         '</div>' +
         '<div class="tienda-cuerpo">' +
           '<h3>' + t.nombre + '</h3>' +

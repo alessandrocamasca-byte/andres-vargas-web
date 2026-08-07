@@ -71,14 +71,21 @@ Ninguna de las dos está disponible como webfont gratuita, así que la web usa s
 
 ### Escala
 
-| Clase | Tamaño | Uso |
-|---|---|---|
-| `.t-hero` | `clamp(2.5rem, 6.6vw, 5.2rem)` | Titular de página interior. |
-| `.t-xl` | `clamp(2rem, 4.4vw, 3.4rem)` | Titular de sección. |
-| `.t-lg` | `clamp(1.55rem, 2.8vw, 2.2rem)` | Subtitular. |
-| `.rotulo` | `0.76rem`, tracking `0.34em` | Rótulo superior de sección, en Oswald mayúsculas. |
-| `.lead` | `clamp(1.02rem, 1.3vw, 1.15rem)`, peso 300 | Párrafo de entrada. |
-| `.mini` | `0.86rem`, peso 300 | Nota al pie, dato secundario. |
+Afinada el 7 ago 2026: la escala anterior se sentía grande y restaba elegancia. El criterio del ajuste fue **tipo más pequeña, más ligera y con más aire**, que es como se comportan las casas de lujo. Todo bajó entre un 15 y un 20 %, los titulares grandes pasaron a peso 200 y el tracking de los rótulos subió.
+
+| Clase | Tamaño | Peso | Uso |
+|---|---|---|---|
+| `.t-hero` | `clamp(2.05rem, 5vw, 4.1rem)` | 200 | Titular de página interior. |
+| `.t-xl` | `clamp(1.65rem, 3.4vw, 2.6rem)` | 200 | Titular de sección. |
+| `.t-lg` | `clamp(1.32rem, 2.2vw, 1.78rem)` | 300 | Subtitular. |
+| `.rotulo` | `0.67rem`, tracking `0.42em` | 400 | Rótulo superior, en Oswald mayúsculas. |
+| `.lead` | `clamp(0.96rem, 1.1vw, 1.05rem)`, interlínea 1.82 | 300 | Párrafo de entrada. |
+| `.mini` | `0.79rem` | 300 | Nota al pie, dato secundario. |
+| `.btn` | `0.71rem`, tracking `0.24em` | 400 | Botones. |
+
+Base del cuerpo: **15.5px con interlínea 1.8**. Los párrafos de componente van entre `0.82` y `0.89rem` con interlínea `1.75` a `1.82`. Las secciones ganaron aire: `padding-block` de `clamp(4rem, 9vw, 8.5rem)`.
+
+**Regla:** en Oswald, cuanto más grande el texto, más ligero el peso y menos tracking; cuanto más pequeño, más peso y más tracking. Por eso `.t-hero` va en 200 con `0.008em` y `.rotulo` en 400 con `0.42em`.
 
 Reglas: los titulares van en Oswald **mayúsculas**, peso 300, `line-height: 1.03` y `text-wrap: balance`. El cuerpo va en Montserrat peso 300–400 con `line-height: 1.75`. El slogan del hero es la excepción: Oswald peso 200 en **caja baja**, porque es una frase, no un rótulo.
 
@@ -139,6 +146,10 @@ La cabecera es **azul sólido en todos los estados**. Esto elimina de raíz la c
 | Configurador | `.cfg` | Vista SVG pegajosa + panel de opciones. |
 | Caso / proyecto | `.caso` | Tarjeta de proyecto con foto, escudo, badge, métrica y cuerpo con chips. Ver abajo. |
 | Local | `.local` | Tienda con zona, dirección y enlace a Google Maps. |
+| Icono | `.icono` | SVG de trazo fino de 1px, 34px, sin contenedor. Hereda el color de la sección (`--azul-medio` en claro, `--azul-claro` sobre azul). Dibujados a mano, no de librería, para que el trazo sea igual de fino que los filetes. |
+| Canal de contacto | `.canal` | Tarjeta con icono, nombre, explicación y el dato. Se usan en el cierre para que el visitante elija cómo agendar. |
+| Cierre | `.cierre` | Sección de cierre con fotografía de fondo y velo azul denso (0.88 a 0.94). Reemplaza a los cierres planos: la foto da profundidad sin restar legibilidad. |
+| Distintivo de tienda | `.tienda-badge` | Píldora sobre la foto. Marca Chacarilla como sede de la experiencia de novios. |
 | Marca de tela | `.marca-tela` | Casa de tejido. Se rellena desde el arreglo `MARCAS_TELA` del script; **si está vacío, el bloque entero se oculta**, para no publicar una caja vacía. |
 
 **Numeración:** los `01/02/03` se usan solo donde el orden significa algo (los pasos del proceso) o donde hay exactamente tres pilares paralelos. No se numera por decorar.

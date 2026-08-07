@@ -244,6 +244,15 @@ Las tres fichas salen de un solo arreglo `TIENDAS` en el script, que alimenta a 
 
 **Bug corregido (tercera vez que aparece este patrón):** el escudo sobre la foto salía estirado porque `.tienda-foto img` (0,1,1) le gana a `.sello` (0,1,0). Regla general para este proyecto: **cuando haya dos imágenes dentro del mismo contenedor, nunca estilarlas con un selector de tipo `contenedor img`**; darle clase propia a cada una o scopear (`.tienda-foto img.sello`).
 
+### Refinamiento visual (7 ago 2026)
+
+Alessandro pidió que se viera más exclusivo y que la letra era grande.
+
+- **Tipografía afinada en todo el sitio, 30 ajustes.** Criterio: más pequeña, más ligera y con más aire. Todo bajó entre 15 y 20 %, el cuerpo de 16 a 15.5px con interlínea 1.8, los titulares grandes a peso 200 y más tracking en los rótulos (0.34em a 0.42em). Las secciones ganaron aire. Detalle y regla en `DESIGN-SYSTEM.md`.
+- **Iconos de trazo fino** en los tres pasos de la visita y en los canales de contacto. Dibujados a mano en SVG con `stroke-width: 1`, no de librería, para que el trazo pese lo mismo que los filetes del sistema.
+- **Cierre rediseñado.** El bloque "¿Prefieres escribirnos antes?" era el más flojo de la página. Ahora es "¿Cómo te gustaría agendar?", sobre fotografía con velo azul denso, con dos tarjetas de canal (WhatsApp y correo) con icono, explicación y el dato. Se aplicó el mismo componente al cierre de Novios.
+- **Experiencia de novios en Chacarilla.** Sección propia en la página de Novios con la dirección, los horarios y dos CTA, más un distintivo "Experiencia novios" sobre la foto de esa tienda en la página de Tiendas. Dato dado por Alessandro.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.
