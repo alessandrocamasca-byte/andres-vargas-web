@@ -275,6 +275,14 @@ Ahora lleva un **resumen de las tres tiendas** bajo un doble filete: zona, nombr
 
 `desplazarA()` reemplaza también al `scrollIntoView` que usaba la navegación por ancla, que tenía el mismo problema latente.
 
+### Horario rotulado, referencia y datos estructurados (7 ago 2026)
+
+- **Rótulo "Horario de atención"** sobre la tabla de horarios de cada ficha. Antes las horas aparecían sueltas, sin decir qué eran.
+- **Campo `ref`** para la referencia de ubicación de cada tienda, muy usada en Perú ("frente a", "a media cuadra de"). Está en la estructura y se pinta solo si tiene contenido, así que hoy no se muestra. **PENDIENTE: pedir las tres referencias al cliente.**
+- **Datos estructurados Schema.org (`ClothingStore`)** para las tres tiendas, generados del mismo arreglo `TIENDAS` para que no puedan quedar desfasados. Incluyen dirección, distrito, teléfono, correo y **horario legible por buscadores** (`openingHoursSpecification`). Sirve para que Google muestre cada tienda con su horario en la búsqueda y en Maps.
+  - Se añadieron campos explícitos `calle` y `distrito`. La primera versión los deducía troceando la dirección y fallaba en Primavera: ponía el distrito como "Lima" en vez de "Santiago de Surco".
+  - Ucayali solo declara lunes a viernes, que es lo confirmado. Cuando llegue el horario de fin de semana hay que añadirlo en `aperturas`.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.

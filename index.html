@@ -556,7 +556,15 @@ h1, h2, h3, h4 {
 .tienda-cuerpo h3 { font-size: 1.14rem; letter-spacing: 0.1em; font-weight: 400; }
 .tienda-cuerpo address { font-style: normal; font-size: 0.88rem; font-weight: 300; color: var(--grafito); line-height: 1.65; }
 
+.referencia {
+  font-size: 0.8rem; font-weight: 300; color: var(--piedra); line-height: 1.6;
+  padding-left: 0.85rem; border-left: 1px solid var(--filete); margin-top: 0.15rem;
+}
 .horario { border-top: 1px solid var(--filete); margin-top: var(--e2); padding-top: var(--e3); display: grid; gap: 0.38rem; }
+.horario-rotulo {
+  font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--azul-pizarra); margin-bottom: 0.3rem;
+}
 .horario > div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.82rem; }
 .horario span { font-weight: 300; color: var(--piedra); }
 .horario b { font-weight: 500; color: var(--tinta); font-variant-numeric: tabular-nums; text-align: right; }
@@ -1595,26 +1603,46 @@ h1, h2, h3, h4 {
       nombre: 'Tienda Primavera',
       zona: 'Chacarilla · Surco',
       dir: 'Av. Primavera 252, Chacarilla<br>Santiago de Surco, Lima',
+      calle: 'Av. Primavera 252, Chacarilla',
+      distrito: 'Santiago de Surco',
+      ref: '',            // referencia de ubicación, pendiente del cliente
       mapa: 'Av.+Primavera+252+Chacarilla+Santiago+de+Surco+Lima',
       foto: 'assets/editorial-esmoquin-marfil.jpg',
       destacado: 'Única con experiencia de novios',
-      horas: [['Lunes a sábado', '10 am a 8 pm'], ['Domingo', '10 am a 4 pm']]
+      horas: [['Lunes a sábado', '10 am a 8 pm'], ['Domingo', '10 am a 4 pm']],
+      aperturas: [
+        { dias: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], abre: '10:00', cierra: '20:00' },
+        { dias: ['Sunday'], abre: '10:00', cierra: '16:00' }
+      ]
     },
     {
       nombre: 'Tienda Huallaga',
       zona: 'Cercado de Lima',
       dir: 'Jr. Huallaga 558 y 570<br>Cercado de Lima',
+      calle: 'Jr. Huallaga 558 y 570',
+      distrito: 'Cercado de Lima',
+      ref: '',
       mapa: 'Jiron+Huallaga+558+Cercado+de+Lima',
       foto: 'assets/editorial-duo.jpg',
-      horas: [['Lunes a sábado', '10 am a 8 pm'], ['Domingo', '10 am a 4 pm']]
+      horas: [['Lunes a sábado', '10 am a 8 pm'], ['Domingo', '10 am a 4 pm']],
+      aperturas: [
+        { dias: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], abre: '10:00', cierra: '20:00' },
+        { dias: ['Sunday'], abre: '10:00', cierra: '16:00' }
+      ]
     },
     {
       nombre: 'Tienda Ucayali',
       zona: 'Cercado de Lima',
       dir: 'Jr. Ucayali 115 · 119 · 121<br>Cercado de Lima',
+      calle: 'Jr. Ucayali 115, 119 y 121',
+      distrito: 'Cercado de Lima',
+      ref: '',
       mapa: 'Jiron+Ucayali+115+Cercado+de+Lima',
       foto: 'assets/editorial-esmoquin-negro.jpg',
-      horas: [['Lunes a viernes', '10 am a 8 pm'], ['Fin de semana', 'Consúltanos']]
+      horas: [['Lunes a viernes', '10 am a 8 pm'], ['Fin de semana', 'Consúltanos']],
+      aperturas: [
+        { dias: ['Monday','Tuesday','Wednesday','Thursday','Friday'], abre: '10:00', cierra: '20:00' }
+      ]
     }
   ];
 
@@ -1634,7 +1662,8 @@ h1, h2, h3, h4 {
         '<div class="tienda-cuerpo">' +
           '<h3>' + t.nombre + '</h3>' +
           '<address>' + t.dir + '</address>' +
-          '<div class="horario">' + horas + '</div>' +
+          (t.ref ? '<p class="referencia">' + t.ref + '</p>' : '') +
+          '<div class="horario"><span class="horario-rotulo">Horario de atención</span>' + horas + '</div>' +
           '<div class="acciones">' +
             '<a class="btn btn-azul" href="https://www.google.com/maps/search/?api=1&query=' + t.mapa + '" target="_blank" rel="noopener">Cómo llegar</a>' +
             '<a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escribir</a>' +
@@ -1647,6 +1676,44 @@ h1, h2, h3, h4 {
       var c = document.getElementById(id);
       if (c) c.innerHTML = html;
     });
+
+    /* Datos estructurados: permiten que Google muestre cada tienda con su
+       dirección y su horario en la búsqueda y en Maps. Se generan del mismo
+       arreglo, así que no pueden quedar desfasados respecto a lo que se ve. */
+    (function () {
+      var fichas = TIENDAS.map(function (t) {
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'ClothingStore',
+          name: 'Andrés Vargas Sastrería · ' + t.nombre,
+          description: 'Sastrería a medida en Lima desde 1982. Trajes y camisas a medida, distribuidores oficiales de telas nacionales e importadas.',
+          image: location.origin + '/' + t.foto,
+          url: location.origin + '/',
+          telephone: '+51959370397',
+          email: 'servicioalcliente@andresvargas.pe',
+          priceRange: '$$$',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: t.calle,
+            addressLocality: t.distrito,
+            addressRegion: 'Lima',
+            addressCountry: 'PE'
+          },
+          openingHoursSpecification: (t.aperturas || []).map(function (a) {
+            return {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: a.dias,
+              opens: a.abre,
+              closes: a.cierra
+            };
+          })
+        };
+      });
+      var et = document.createElement('script');
+      et.type = 'application/ld+json';
+      et.textContent = JSON.stringify(fichas);
+      document.head.appendChild(et);
+    })();
 
     // Resumen dentro de la cabecera: orienta sin obligar a bajar
     var res = document.getElementById('resumen-tiendas');
