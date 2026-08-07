@@ -189,6 +189,14 @@ Alessandro ajustó el cuadro y pidió: quitar el bloque de recomendaciones (ya l
 - **Locales:** se añade "atendemos previa cita", que es el patrón de Firenze y además es cierto aquí.
 - **NO se copiaron imágenes de Firenze.** Sus fotos llevan cajas y etiquetas con el logo FIRENZE impreso, y además son material con derechos de un competidor directo. Se usan solo las fotos del propio cliente.
 
+### Hero a sangre completa (misma sesión)
+
+A pedido de Alessandro, el hero pasa de panel partido a **una sola imagen de ancho total**, como Firenze.
+
+- **Problema resuelto:** las fotos de marca son verticales (3012×3307) y no se pueden recortar a panorámico sin cortar al modelo. La única horizontal era la de novios, pero encuadraba toda la marca como "novios". Se optó por recortar `portada.tif` conservando cabeza y torso: 1900×1008, 291 KB.
+- **La composición manda:** el sujeto queda a la izquierda y el muro de piedra a la derecha, así que el texto va **a la derecha** y el velo oscurece por ese lado. No se espejó la foto para poner el sujeto a la derecha, porque el cruce de la solapa quedaría al revés y en una sastrería eso se nota.
+- **La foto empieza debajo de la banda**, no detrás: si va detrás, el encabezado de 232px corta la cabeza del modelo. Se resolvió con la variable `--alto-cabecera`, que el script sincroniza con la altura real y que usan también las cabeceras de página interior.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.

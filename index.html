@@ -58,6 +58,7 @@
   --ancho: 1280px;
   --margen: clamp(1.25rem, 5vw, 4rem);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --alto-cabecera: 232px; /* lo actualiza el script segun la cabecera real */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -242,36 +243,44 @@ h1, h2, h3, h4 {
 .pagina { display: none; }
 .pagina.activa { display: block; }
 
-/* ---------- Hero partido ---------- */
-.hero { display: grid; grid-template-columns: 1.02fr 0.98fr; min-height: 100svh; }
-.hero-panel {
-  background: var(--azul); display: flex; flex-direction: column; justify-content: center;
-  padding: clamp(8rem, 12vw, 9.5rem) clamp(1.5rem, 5vw, 4.5rem) clamp(2.5rem, 5vw, 4rem);
-  position: relative; overflow: hidden;
+/* ---------- Hero a sangre completa ----------
+   La foto está compuesta con el sujeto a la izquierda y el muro de piedra a
+   la derecha, así que el texto va sobre el muro y el velo oscurece por ese lado. */
+.hero {
+  position: relative; margin-top: var(--alto-cabecera);
+  min-height: calc(100svh - var(--alto-cabecera));
+  display: flex; align-items: center; overflow: hidden; background: var(--azul);
 }
-.hero-panel::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M0 36L36 0M-9 9L9 -9M27 45L45 27' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'/%3E%3C/svg%3E");
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 26% 34%; }
+.hero-velo {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to left, rgba(23,39,64,0.95) 0%, rgba(23,39,64,0.90) 26%, rgba(23,39,64,0.58) 52%, rgba(23,39,64,0.20) 78%, rgba(23,39,64,0.10) 100%),
+    linear-gradient(to top, rgba(23,39,64,0.42) 0%, transparent 42%);
 }
-.hero-panel > * { position: relative; z-index: 1; }
-.hero-escudo { width: 56px; margin-bottom: var(--e4); }
+.hero-inner {
+  position: relative; z-index: 2; width: 100%; display: flex; justify-content: flex-end;
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+.hero-texto { max-width: 34rem; }
 .hero-slogan {
   font-family: var(--display); font-weight: 200; text-transform: none;
-  font-size: clamp(1.42rem, 2.4vw, 2.1rem); line-height: 1.3; color: var(--blanco);
-  max-width: 23ch;
+  font-size: clamp(1.5rem, 2.7vw, 2.35rem); line-height: 1.28; color: var(--blanco);
 }
 .hero-slogan em { font-style: normal; color: var(--azul-tenue); }
 .hero-firma { margin-top: var(--e5); }
-.hero-foto { position: relative; background: var(--filete); }
-.hero-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; min-height: 0; }
-  .hero-foto { height: 60vh; }
-  .hero-panel { padding-top: 7.5rem; }
+  .hero { min-height: calc(88svh - var(--alto-cabecera)); align-items: flex-end; }
+  .hero-img { object-position: 32% 30%; }
+  .hero-velo {
+    background: linear-gradient(to top, rgba(23,39,64,0.96) 0%, rgba(23,39,64,0.88) 34%, rgba(23,39,64,0.55) 62%, rgba(23,39,64,0.22) 100%);
+  }
+  .hero-inner { justify-content: flex-start; }
+  .hero-texto { max-width: none; }
 }
 
 /* ---------- Cabecera de página interior ---------- */
-.pag-hero { background: var(--azul); padding: clamp(10rem, 16vw, 13rem) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
+.pag-hero { background: var(--azul); padding: calc(var(--alto-cabecera) + clamp(2.5rem, 5vw, 4rem)) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
 .pag-hero::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M0 36L36 0M-9 9L9 -9M27 45L45 27' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'/%3E%3C/svg%3E"); }
 .pag-hero .caja { position: relative; z-index: 1; }
 .miga { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
@@ -521,20 +530,21 @@ h1, h2, h3, h4 {
 <!-- ==================== INICIO ==================== -->
 <main class="pagina activa" data-pag="inicio">
 
-  <section class="hero">
-    <div class="hero-panel sobre-azul">
-      <span class="rotulo">Sastrería a medida · Lima</span>
-      <p class="hero-slogan">Cada prenda que hacemos guarda <em>la medida exacta del carácter</em> de quien la viste.</p>
-      <div class="hero-firma">
-        <div class="acciones">
-          <a class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
-          <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+  <section class="hero sobre-azul">
+    <img class="hero-img" src="assets/hero.jpg" alt="Smoking marfil confeccionado a medida en el atelier de Andrés Vargas" fetchpriority="high">
+    <div class="hero-velo"></div>
+    <div class="caja hero-inner">
+      <div class="hero-texto">
+        <span class="rotulo">Sastrería a medida · Lima</span>
+        <p class="hero-slogan">Cada prenda que hacemos guarda <em>la medida exacta del carácter</em> de quien la viste.</p>
+        <div class="hero-firma">
+          <div class="acciones">
+            <a class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
+            <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+          </div>
+          <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Surco y Cercado de Lima</p>
         </div>
-        <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Surco y Cercado de Lima</p>
       </div>
-    </div>
-    <div class="hero-foto">
-      <img src="assets/editorial-esmoquin-marfil.jpg" alt="Saco de smoking marfil confeccionado a medida">
     </div>
   </section>
 
@@ -1302,6 +1312,14 @@ h1, h2, h3, h4 {
     var m = document.querySelector('.menu'), h = document.querySelector('.hamburguesa');
     if (m.classList.contains('abierto')) { m.classList.remove('abierto'); h.classList.remove('x'); document.body.style.overflow = ''; }
   });
+
+  function medirCabecera() {
+    if (cab.classList.contains('fijo')) return;
+    document.documentElement.style.setProperty('--alto-cabecera', Math.round(cab.getBoundingClientRect().height) + 'px');
+  }
+  medirCabecera();
+  window.addEventListener('resize', medirCabecera);
+  window.addEventListener('load', medirCabecera);
 
   function alScroll() {
     cab.classList.toggle('fijo', window.scrollY > 40);

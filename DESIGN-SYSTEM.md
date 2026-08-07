@@ -112,7 +112,11 @@ La cabecera es **azul sólido en todos los estados**. Esto elimina de raíz la c
 ## 4. Layout
 
 - Ancho máximo `1280px`, margen lateral `clamp(1.25rem, 5vw, 4rem)`.
-- **Hero partido asimétrico**: panel azul con el slogan (`1.02fr`) + foto editorial a altura completa (`0.98fr`). Resuelve que la fotografía de marca sea vertical, que se recortaría mal en un hero a sangre. Apila en móvil.
+- **Hero a sangre completa** (`assets/hero.jpg`): una sola fotografía de ancho total, que empieza **debajo** de la banda de cabecera, no detrás. Es el patrón de Firenze y evita que el encabezado corte la cabeza del modelo.
+  - La foto está compuesta con el **sujeto a la izquierda y el muro de piedra a la derecha**, así que el bloque de texto va a la derecha y el velo oscurece por ese lado. No es una decisión arbitraria: es la composición de la foto la que manda.
+  - En móvil el velo pasa a vertical (de abajo hacia arriba) y el texto se alinea a la izquierda.
+  - Se recortó desde `portada.tif` (3012×3307) a 1900×1008. Las fotos de marca son verticales, así que el recorte panorámico se hizo conservando la cabeza con aire y sacrificando las piernas.
+- **`--alto-cabecera`**: variable que el script mantiene sincronizada con la altura real de la cabecera (232px en escritorio, ~60px en móvil). La usan el hero (`margin-top` y `min-height`) y las cabeceras de página interior (`padding-top`). Se mide al cargar y al redimensionar, siempre en estado no condensado.
 - Bandas alternas: papel → azul → profundo → lino. Cada página interior abre con una banda azul (`.pag-hero`), por eso la cabecera sin scroll va siempre en blanco.
 - Espaciado por escala `--e1` a `--e7` (0.5rem a 4rem), con `gap` en flex y grid, nunca márgenes por elemento.
 
