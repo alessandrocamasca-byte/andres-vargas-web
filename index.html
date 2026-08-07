@@ -491,6 +491,56 @@ h1, h2, h3, h4 {
 }
 .resumen-item em::after { content: "↓"; }
 
+/* ---------- Slider continuo de casas de tela ---------- */
+.slider-marcas { position: relative; overflow: hidden; padding-block: clamp(1.5rem, 3vw, 2.5rem); }
+.slider-marcas::before, .slider-marcas::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 110px); z-index: 2; pointer-events: none;
+}
+.slider-marcas::before { left: 0; background: linear-gradient(to right, var(--nube), transparent); }
+.slider-marcas::after  { right: 0; background: linear-gradient(to left,  var(--nube), transparent); }
+.slider-marcas.sobre-papel::before { background: linear-gradient(to right, var(--papel), transparent); }
+.slider-marcas.sobre-papel::after  { background: linear-gradient(to left,  var(--papel), transparent); }
+.slider-pista {
+  display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 6rem);
+  width: max-content; animation: correr 44s linear infinite;
+}
+.slider-marcas:hover .slider-pista { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .slider-pista { animation: none; } }
+.slider-pista img {
+  height: clamp(34px, 4vw, 48px); width: auto; max-width: 170px; object-fit: contain;
+  mix-blend-mode: multiply; filter: brightness(1.13); opacity: 0.6;
+  transition: opacity 0.35s var(--ease);
+}
+.slider-pista img:hover { opacity: 1; }
+
+/* ---------- Casa destacada ---------- */
+.casa-destacada { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+@media (max-width: 900px) { .casa-destacada { grid-template-columns: 1fr; } }
+.casa-placa {
+  position: relative; background: var(--blanco); border: 1px solid var(--filete);
+  padding: clamp(2.2rem, 5vw, 3.6rem) clamp(1.5rem, 3vw, 2.5rem);
+  display: flex; flex-direction: column; align-items: center; gap: var(--e4); text-align: center;
+}
+/* doble filete interior, el motivo del escudo */
+.casa-placa::after {
+  content: ""; position: absolute; inset: 7px; border: 1px solid var(--filete); pointer-events: none;
+}
+.casa-placa img { max-width: 230px; width: 100%; height: auto; mix-blend-mode: multiply; filter: brightness(1.13); }
+.casa-placa .sello-txt {
+  font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--azul-pizarra); border-top: 1px solid var(--filete); padding-top: var(--e3); width: 100%;
+}
+
+/* ---------- Ficha de casa ---------- */
+.casa { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; gap: 0.5rem; }
+.casa-logo {
+  height: 40px; width: auto; max-width: 140px; object-fit: contain; align-self: flex-start;
+  mix-blend-mode: multiply; filter: brightness(1.13); opacity: 0.85; margin-bottom: var(--e2);
+}
+.casa .origen { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul-pizarra); }
+.casa h3 { font-size: 1.02rem; letter-spacing: 0.09em; font-weight: 400; }
+.casa p { font-size: 0.85rem; font-weight: 300; color: var(--grafito); line-height: 1.8; }
+
 /* ---------- Cierre con fotografía de fondo ---------- */
 .cierre { position: relative; overflow: hidden; background: var(--azul); padding-block: clamp(4.5rem, 9vw, 8rem); }
 .cierre-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
@@ -582,27 +632,6 @@ h1, h2, h3, h4 {
 .sobre-azul .local { border-top-color: rgba(255,255,255,0.22); }
 .sobre-azul .local .zona { color: var(--azul-claro); }
 .sobre-azul .local address { color: rgba(255,255,255,0.75); }
-
-/* ---------- Marcas de tela ---------- */
-/* auto-fit, no auto-fill: con auto-fill quedan columnas vacías a la derecha */
-.marcas-tela { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--filete); border: 1px solid var(--filete); }
-.marca-tela {
-  background: var(--blanco); padding: var(--e4) var(--e3); text-align: center;
-  display: flex; flex-direction: column; justify-content: center; gap: 0.55rem; min-height: 146px;
-  transition: background 0.3s var(--ease);
-}
-.marca-tela:hover { background: var(--nube); }
-.marca-logo {
-  max-width: 150px; max-height: 70px; width: auto; height: auto; object-fit: contain;
-  margin-inline: auto; opacity: 0.8; transition: opacity 0.35s var(--ease);
-  /* Los archivos traen fondo blanco o crema, no transparente. `multiply` funde ese
-     fondo con la tarjeta, y el brillo empuja el crema de Thomas Mason hasta blanco
-     sin oscurecer perceptiblemente las marcas, que son casi negras. */
-  mix-blend-mode: multiply; filter: brightness(1.07);
-}
-.marca-tela:hover .marca-logo { opacity: 1; }
-.marca-tela b { font-family: var(--display); font-weight: 400; font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--azul); }
-.marca-tela span { font-size: 0.72rem; font-weight: 300; color: var(--piedra); }
 
 /* ---------- WhatsApp flotante ---------- */
 .wa {
@@ -1175,7 +1204,56 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
+  <!-- LAS CASAS -->
+  <section class="seccion" id="las-casas">
+    <div class="caja">
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy"><i></i></div>
+        <span class="rotulo">Las casas</span>
+        <h2 class="t-xl">Con quién trabajamos</h2>
+        <p class="lead" style="margin-top:1rem;">Tejeduría peruana junto a algunas de las casas más antiguas de Italia e Inglaterra. Al ser distribuidores oficiales tratamos directo con ellas, sin intermediarios de por medio.</p>
+      </div>
+    </div>
+    <div class="slider-marcas sobre-papel"><div class="slider-pista" id="slider-marcas"></div></div>
+  </section>
+
+  <!-- BARRINGTON, LA CASA PRINCIPAL -->
+  <section class="seccion fondo-nube">
+    <div class="caja casa-destacada">
+      <div class="casa-placa rev">
+        <img src="assets/tela-barrington.png" alt="Barrington" loading="lazy">
+        <span class="sello-txt">Distribuidor oficial</span>
+      </div>
+      <div class="rev" data-d="1">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">Nuestra casa principal</span>
+        <h2 class="t-xl">La relación más cercana<br>la tenemos con Barrington</h2>
+        <p class="lead" style="margin-top:1.25rem;">De todas las casas con las que trabajamos, Barrington es con la que tenemos el vínculo más estrecho. Ser distribuidores oficiales no es un título: es tratar directo con la casa, y eso cambia lo que podemos ofrecerte.</p>
+        <ul class="lista">
+          <li>Acceso a la colección completa, no a una selección recortada.</li>
+          <li>Disponibilidad para reponer una tela cuando hace falta.</li>
+          <li>Precio directo, sin el sobrecosto de pasar por terceros.</li>
+        </ul>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar telas Barrington</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETALLE DE CADA CASA -->
   <section class="seccion">
+    <div class="caja">
+      <div class="enc">
+        <span class="rotulo">Una por una</span>
+        <h2 class="t-xl">Las demás casas</h2>
+        <p class="lead" style="margin-top:1rem;">Cada una aporta algo distinto al muestrario: lana para traje, algodón para camisería, tejidos de temporada.</p>
+      </div>
+      <div class="rejilla r3" id="casas-detalle"></div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
     <div class="caja">
       <div class="enc"><span class="rotulo">Ventajas</span><h2 class="t-xl">Por qué la tela importa</h2></div>
       <div class="rejilla r3">
@@ -1186,15 +1264,8 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <section class="seccion fondo-nube">
+  <section class="seccion">
     <div class="caja">
-      <div id="bloque-marcas" style="display:none;margin-bottom:4rem;">
-        <div class="enc"><span class="rotulo">Las casas</span><h2 class="t-xl">Marcas con las que trabajamos</h2>
-          <p class="lead" style="margin-top:1rem;">Trabajamos con tela nacional y con casas italianas e inglesas. Al ser distribuidores oficiales tratamos directamente con las tejedurías, sin intermediarios.</p>
-        </div>
-        <div class="marcas-tela rev" id="marcas-tela"></div>
-      </div>
-
       <div class="enc"><span class="rotulo">Muestrario</span><h2 class="t-xl">Colores y familias</h2>
         <p class="lead" style="margin-top:1rem;">Una muestra de los tonos con los que trabajamos. El muestrario completo está en la tienda: es mucho más amplio de lo que cabe en una pantalla.</p>
       </div>
@@ -1993,25 +2064,46 @@ h1, h2, h3, h4 {
      Rellenar con las casas de tejido reales del cliente.
      Formato: { n: 'Nombre de la casa', o: 'Origen' }
      Mientras el arreglo esté vacío, el bloque no se muestra. */
-  var MARCAS_TELA = [
-    { n: 'Vitale Barberis Canonico', o: 'Italia · desde 1663',     logo: 'assets/tela-vbc.png' },
-    { n: 'Reda',                     o: 'Italia · desde 1865',     logo: 'assets/tela-reda.png' },
-    { n: 'Thomas Mason',             o: 'Inglaterra · desde 1796', logo: 'assets/tela-thomasmason.png' },
-    { n: 'Barrington',               o: '',                        logo: 'assets/tela-barrington.png' }
+  /* ================= CASAS DE TELA =================
+     `destacada: true` la saca de la rejilla de detalle: Barrington tiene su
+     propio bloque. El slider sí las muestra todas. */
+  var CASAS = [
+    { n: 'Barrington', logo: 'assets/tela-barrington.png', origen: '', destacada: true,
+      d: '' },
+    { n: 'Vitale Barberis Canonico', logo: 'assets/tela-vbc.png', origen: 'Italia · 1663',
+      d: 'Una de las tejedurías de lana más antiguas del mundo que sigue en actividad, en Biella. En manos de la misma familia desde el siglo XVII.' },
+    { n: 'Reda', logo: 'assets/tela-reda.png', origen: 'Italia · 1865',
+      d: 'Lana merino de Biella. Controla toda la cadena, del vellón al tejido, y es de las casas más reconocidas por su trazabilidad.' },
+    { n: 'Albini', logo: 'assets/tela-albini.png', origen: 'Italia · 1876',
+      d: 'Uno de los mayores grupos camiseros de Europa. Referencia en algodones finos para camisería a medida.' },
+    { n: 'Thomas Mason', logo: 'assets/tela-thomasmason.png', origen: 'Inglaterra · 1796',
+      d: 'El archivo camisero inglés por excelencia, con más de dos siglos de diseños. Forma parte del grupo Albini.' },
+    { n: 'Brunello Cucinelli', logo: 'assets/tela-cucinelli.png', origen: 'Italia · Solomeo',
+      d: 'La casa italiana de Solomeo, reconocida en todo el mundo por su trabajo con el cachemir y las fibras nobles.' }
   ];
 
   (function () {
-    var cont = document.getElementById('marcas-tela');
-    var bloque = document.getElementById('bloque-marcas');
-    if (!cont || !bloque || !MARCAS_TELA.length) return;
-    cont.innerHTML = MARCAS_TELA.map(function (m) {
-      // Si hay archivo de logo se usa; si no, el nombre en la tipografía de la casa
-      var marca = m.logo
-        ? '<img class="marca-logo" src="' + m.logo + '" alt="' + m.n + '" loading="lazy">'
-        : '<b>' + m.n + '</b>';
-      return '<div class="marca-tela">' + marca + (m.o ? '<span>' + m.o + '</span>' : '') + '</div>';
-    }).join('');
-    bloque.style.display = '';
+    // Slider: la pista se duplica para que el bucle no dé saltos
+    var pista = document.getElementById('slider-marcas');
+    if (pista) {
+      var uno = CASAS.map(function (c) {
+        return '<img src="' + c.logo + '" alt="' + c.n + '" loading="lazy">';
+      }).join('');
+      pista.innerHTML = uno + uno;
+    }
+
+    // Fichas de detalle: todas menos la destacada
+    var grid = document.getElementById('casas-detalle');
+    if (grid) {
+      grid.innerHTML = CASAS.filter(function (c) { return !c.destacada; }).map(function (c, i) {
+        return '<article class="casa rev"' + (i % 3 ? ' data-d="' + (i % 3) + '"' : '') + '>' +
+          '<img class="casa-logo" src="' + c.logo + '" alt="' + c.n + '" loading="lazy">' +
+          '<span class="origen">' + c.origen + '</span>' +
+          '<h3>' + c.n + '</h3>' +
+          '<p>' + c.d + '</p>' +
+        '</article>';
+      }).join('');
+    }
   })();
 
   /* ================= CONFIGURADOR ================= */

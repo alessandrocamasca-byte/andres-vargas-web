@@ -317,6 +317,21 @@ Cerraba el único hueco real frente al pedido original: cuando Alessandro dio Fi
 - Orígenes puestos solo donde son verificables y aparecen en el propio logo: VBC (Italia, 1663), Reda (Italia, 1865), Thomas Mason (Inglaterra, 1796). **Barrington va sin origen porque no está confirmado.**
 - Copys actualizados en Telas, en el bloque de marcas y en el inicio: ahora dicen explícitamente **tela nacional, italiana e inglesa**, no solo "nacionales e importadas".
 
+### Sección "Las casas" con slider (7 ago 2026)
+
+Alessandro sumó **Albini** y **Brunello Cucinelli** (archivos en Descargas: `images.jpeg` y `851bef...jpg`) y pidió slider, una sección que cuente todas las marcas, y **destacar Barrington**.
+
+**Estructura en la página Telas:**
+1. `Las casas · Con quién trabajamos` con **slider continuo** de los seis logos. La pista se duplica para que el bucle no dé saltos, se pausa al pasar el ratón y respeta `prefers-reduced-motion`. Bordes con degradado para que los logos entren y salgan sin corte seco.
+2. **Barrington destacado**, bloque propio: placa con doble filete interior (el motivo del escudo), sello "Distribuidor oficial" y tres puntos sobre lo que aporta la relación. Sale de `CASAS` con `destacada: true`, que además lo excluye de la rejilla de abajo para no repetirlo.
+3. `Las demás casas`: ficha por casa con logo, origen, año y una línea de detalle.
+
+**Sobre el contenido de cada casa:** solo se escribió lo verificable (VBC 1663 Biella, Reda 1865 lana merino, Albini 1876 camisería, Thomas Mason 1796 y su pertenencia al grupo Albini, Brunello Cucinelli de Solomeo y el cachemir). **De Barrington no se inventó historia**: el texto habla de lo que Alessandro sí confirmó, que la relación es la más cercana y que son distribuidores oficiales. Falta pedirle los datos reales (desde cuándo, si hay exclusividad, origen de la casa).
+
+**Fondos de los logos:** solo VBC y Barrington venían en blanco puro; Albini llegaba a `#ECECEC` por compresión JPEG, y se veía un recuadro gris. Se subió el filtro a `brightness(1.13)`: como el filtro es multiplicativo, 236 × 1,13 satura en blanco mientras el negro de la marca sigue en negro. Combinado con `mix-blend-mode: multiply` los seis quedan sin recuadro.
+
+**Limpieza:** el componente anterior (`.marca-tela`, `.marcas-tela`, `.marca-logo`) quedó huérfano al sustituirlo y se eliminó su CSS, 1.323 caracteres.
+
 **OJO, CONTRADICCIÓN PENDIENTE:** Barrington aparecía como **proyecto/cliente** en la sección de Proyectos ("Marca · Proyecto de confección para la marca"), por indicación anterior de Alessandro, y ahora llega como **marca de tela**. Las dos cosas no encajan. Hay que confirmar cuál es y corregir la que sobre.
 
 **Cierre de Corporativo.** El aviso de "Cotización a medida" quedaba como una caja suelta en medio de mucho espacio vacío, señalado por Alessandro. Se sustituyó por un cierre con fotografía y las dos tarjetas de canal, igual que en Blog, Novios, Tiendas y A medida. Ya no queda ningún `.aviso` huérfano en esa página.
