@@ -311,8 +311,9 @@ Cerraba el único hueco real frente al pedido original: cuando Alessandro dio Fi
 
 **Marcas de tela.** Alessandro envió los logos de cuatro casas: Vitale Barberis Canonico, Reda, Thomas Mason y Barrington. El bloque `#bloque-marcas`, que llevaba oculto desde que se creó, ya está activo.
 
-- **El componente acepta logo o nombre.** Cada marca tiene un campo `logo`: si hay archivo se muestra la imagen, si no, el nombre en la tipografía de la casa. Hoy las cuatro van en tipografía. **PENDIENTE: pedir los archivos** (PNG o SVG con fondo transparente); es una línea por marca.
-- No se descargaron los logos de las webs de las tejedurías: dos de las tres devuelven 403 o no responden, y bajar marcas de terceros sin el archivo que el propio proveedor entrega es frágil y de licencia dudosa. Los proveedores suelen dar un kit de marca a sus distribuidores.
+- **Los cuatro logos ya están puestos** (`assets/tela-vbc.png`, `tela-reda.png`, `tela-thomasmason.png`, `tela-barrington.png`). El componente acepta logo o nombre: si hay archivo muestra la imagen, si no, el nombre en la tipografía de la casa.
+- **De dónde salieron:** Alessandro los pegó en el chat, pero una imagen pegada en el chat no llega al disco, así que no se podían copiar a `assets/`. Los había descargado a `~/Downloads` con nombres genéricos (`images.png`, `images (1).png`, `images (2).png`, `THOMAS.webp`) y desde ahí se procesaron. **Para la próxima: basta con que los deje en Descargas o el Escritorio.**
+- **Tratamiento:** los archivos vienen con fondo blanco o crema, no transparente. Se resuelve con `mix-blend-mode: multiply` (funde el fondo con la tarjeta) más `filter: brightness(1.07)`, que empuja el crema de Thomas Mason hasta blanco sin oscurecer perceptiblemente las marcas, que son casi negras. Se recortaron los márgenes sobrantes de Barrington, Reda y Thomas Mason para que todos pesen visualmente parecido.
 - Orígenes puestos solo donde son verificables y aparecen en el propio logo: VBC (Italia, 1663), Reda (Italia, 1865), Thomas Mason (Inglaterra, 1796). **Barrington va sin origen porque no está confirmado.**
 - Copys actualizados en Telas, en el bloque de marcas y en el inicio: ahora dicen explícitamente **tela nacional, italiana e inglesa**, no solo "nacionales e importadas".
 
