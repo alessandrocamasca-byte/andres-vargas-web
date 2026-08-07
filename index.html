@@ -469,6 +469,28 @@ h1, h2, h3, h4 {
 .sobre-azul .caso-cat { color: var(--azul-claro); }
 .sobre-azul .caso-chips span { color: rgba(255,255,255,0.86); border-color: rgba(255,255,255,0.26); }
 
+/* ---------- Resumen de tiendas dentro de la cabecera ---------- */
+.pag-resumen {
+  margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2.5rem); border-top: 1px solid rgba(255,255,255,0.22); position: relative; padding-top: 4px;
+}
+.pag-resumen::before { content: ""; position: absolute; left: 0; right: 0; top: 3px; height: 1px; background: rgba(255,255,255,0.22); }
+@media (max-width: 780px) { .pag-resumen { grid-template-columns: 1fr; gap: 0; } }
+.resumen-item {
+  padding-top: var(--e4); padding-bottom: var(--e2); display: flex; flex-direction: column; gap: 0.3rem;
+  cursor: pointer; transition: opacity 0.3s var(--ease);
+}
+@media (max-width: 780px) { .resumen-item { border-bottom: 1px solid rgba(255,255,255,0.14); padding-block: var(--e3); } .resumen-item:last-child { border-bottom: none; } }
+.resumen-item:hover { opacity: 0.72; }
+.resumen-item .zona { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--azul-claro); }
+.resumen-item b { font-family: var(--display); font-weight: 400; font-size: 1.02rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--blanco); }
+.resumen-item span.dir { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.68); line-height: 1.6; }
+.resumen-item em {
+  font-style: normal; font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--blanco); margin-top: 0.35rem; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.resumen-item em::after { content: "↓"; }
+
 /* ---------- Cierre con fotografía de fondo ---------- */
 .cierre { position: relative; overflow: hidden; background: var(--azul); padding-block: clamp(4.5rem, 9vw, 8rem); }
 .cierre-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
@@ -1331,6 +1353,7 @@ h1, h2, h3, h4 {
       <div class="acciones" style="margin-top:2rem;">
         <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
       </div>
+      <div class="pag-resumen" id="resumen-tiendas"></div>
     </div>
   </section>
 
@@ -1471,6 +1494,30 @@ h1, h2, h3, h4 {
     els.forEach(function (e) { io.observe(e); });
   }
 
+  /* Desplazamiento propio. `scrollIntoView({behavior:'smooth'})` no es fiable en
+     todos los motores (en algunos no hace nada), así que se anima a mano. */
+  function desplazarA(el, centrar) {
+    if (!el) return;
+    var r = el.getBoundingClientRect();
+    var tope = window.scrollY + r.top - (centrar ? Math.max(0, (window.innerHeight - r.height) / 2) : 90);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    tope = Math.max(0, Math.min(tope, max));
+    // Si la pestaña está oculta, requestAnimationFrame no corre y la animación
+    // nunca avanzaría: en ese caso, y con movimiento reducido, se salta directo.
+    if (document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, tope); return;
+    }
+    var ini = window.scrollY, delta = tope - ini, t0 = null, dur = 620;
+    function paso(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      var e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+      window.scrollTo(0, ini + delta * e);
+      if (p < 1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+
   /* La cinta se duplica para que el desplazamiento sea continuo */
   (function () {
     var lemas = ['Prendas a medida', 'Telas nacionales e importadas', 'Distribuidores oficiales', 'Sastrería en Lima desde 1982'];
@@ -1488,7 +1535,7 @@ h1, h2, h3, h4 {
     if (act) { act.querySelectorAll('.rev').forEach(function (e) { e.classList.remove('ver'); }); animar(act); }
     if (ancla) {
       var t = document.getElementById(ancla);
-      if (t) { setTimeout(function () { t.scrollIntoView({ behavior: "smooth" }); }, 60); return; }
+      if (t) { setTimeout(function () { desplazarA(t, false); }, 60); return; }
     }
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
@@ -1600,6 +1647,27 @@ h1, h2, h3, h4 {
       var c = document.getElementById(id);
       if (c) c.innerHTML = html;
     });
+
+    // Resumen dentro de la cabecera: orienta sin obligar a bajar
+    var res = document.getElementById('resumen-tiendas');
+    if (res) {
+      res.innerHTML = TIENDAS.map(function (t, i) {
+        var corta = t.dir.split('<br>')[0];
+        return '<a class="resumen-item" data-tienda="' + i + '">' +
+          '<span class="zona">' + t.zona + '</span>' +
+          '<b>' + t.nombre + '</b>' +
+          '<span class="dir">' + corta + '</span>' +
+          '<em>' + (t.destacado ? t.destacado : 'Ver horarios') + '</em>' +
+        '</a>';
+      }).join('');
+      res.addEventListener('click', function (ev) {
+        var el = ev.target.closest('[data-tienda]');
+        if (!el) return;
+        // Ojo: el mismo renderizador alimenta inicio y la página, así que no se
+        // pueden usar ids (quedarían duplicados). Se busca por índice dentro de la página.
+        desplazarA(document.querySelectorAll('#tiendas-pagina .tienda-ficha')[el.dataset.tienda], true);
+      });
+    }
   })();
 
   /* ================= PROYECTOS / CASOS =================

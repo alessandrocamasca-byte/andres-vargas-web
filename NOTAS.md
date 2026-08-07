@@ -262,6 +262,19 @@ Alessandro: "solo letras y el color azul no es muy llamativo, hazlo en todos". L
 - El distintivo de Chacarilla pasa a **"Única con experiencia de novios"**, texto de Alessandro.
 - Se quitó la textura diagonal de las cabeceras interiores: con fotografía detrás competía y ensuciaba.
 
+### Resumen de tiendas en la cabecera (7 ago 2026)
+
+Alessandro notó que la cabecera de Tiendas tenía muy pocos datos. Era cierto: era la única con un botón suelto y mucho aire vacío.
+
+Ahora lleva un **resumen de las tres tiendas** bajo un doble filete: zona, nombre, dirección corta y un enlace que baja a la ficha. Sale del mismo arreglo `TIENDAS`, así que no hay nada que mantener por duplicado. La de Chacarilla muestra "Única con experiencia de novios" en lugar de "Ver horarios".
+
+**Dos bugs reales encontrados al probarlo:**
+
+1. **Ids duplicados.** Como el mismo renderizador alimenta el inicio y la página, las fichas salían con el mismo `id` dos veces y `getElementById` devolvía la del inicio, que está oculta. Se resolvió buscando por índice dentro de `#tiendas-pagina`, sin ids.
+2. **El desplazamiento no ocurría si la pestaña está oculta.** `scrollIntoView({behavior:'smooth'})` no hacía nada en el panel de previsualización. Investigado: el panel reporta `visibilityState: "hidden"` y `requestAnimationFrame` da **0 fotogramas**, así que ni el desplazamiento nativo ni una animación propia avanzan. Se escribió `desplazarA()` con animación propia y **salvaguarda: si `document.hidden` o hay movimiento reducido, salta directo a la posición**. Así la navegación funciona siempre, con o sin animación.
+
+`desplazarA()` reemplaza también al `scrollIntoView` que usaba la navegación por ancla, que tenía el mismo problema latente.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.
