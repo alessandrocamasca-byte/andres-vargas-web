@@ -17,6 +17,17 @@ Web del cliente Andrés Vargas Boutique, sastrería a medida en Lima, Perú. Obj
 - `DESIGN-SYSTEM.md`: el sistema de diseño completo y su trazabilidad al manual de marca.
 - `NOTAS.md`: memoria viva del proyecto (decisiones, pendientes, incidencias). Actualizarlo en cada sesión de trabajo.
 
+### `pauta/`: la pauta de Meta, separada de la web
+
+La web (`index.html` + `assets/`) y la pauta son dos cosas distintas y no se mezclan. Todo lo de campañas vive en `pauta/`, con dos subcarpetas según hacia dónde mira el documento:
+
+- **`pauta/planificacion/`**: lo que se va a hacer. Un archivo por mes, nombre `AAAA-MM-plan-mensual.html`, para que ordene solo por fecha. El de agosto 2026 (`2026-08-plan-mensual.html`) trae el embudo de conversión, el reparto del presupuesto, la estructura de campañas, el semáforo de decisión y la regla de crecimiento.
+- **`pauta/reportes/`**: lo que pasó. Resultados de campaña ya corridos, misma convención de nombre (`AAAA-MM-reporte.html`). Se crea cuando haya el primer mes cerrado con datos.
+
+Los documentos de pauta son **HTML autocontenido**: CSS inline y los escudos incrustados en base64, cero rutas a `assets/`. Así se pueden mover o enviar sueltos sin romperse. Usan el design system del cliente (`DESIGN-SYSTEM.md`), no el de e-Qapla.
+
+**Cuidado al commitear:** el repo está conectado a Cloudflare Pages y despliega la raíz, así que cualquier cosa dentro de `pauta/` que llegue a `main` queda accesible en `andres-vargas-web.pages.dev/pauta/...`. Son documentos internos con presupuestos. Antes de pushear, decidir destino (rama aparte, repo privado propio o exclusión del deploy).
+
 ## Design system del cliente
 
 **Fuente de verdad: `DESIGN-SYSTEM.md`** en este repo. Derivado del Manual de Marca oficial. Resumen:
@@ -50,8 +61,8 @@ Web del cliente Andrés Vargas Boutique, sastrería a medida en Lima, Perú. Obj
 
 ## Cómo trabajar en local
 
-- Servidor de prueba: config `andres-vargas` en `~/Claude/.claude/launch.json` (python3 http.server, puerto 8765). Abrir `http://localhost:8765/site.html`.
-- El artifact se actualiza republicando `site.html` (mismo path = mismo URL).
+- Servidor de prueba: config `andres-vargas` en `~/Claude e-Qapla/.claude/launch.json` (python3 http.server, puerto 8765). Abrir `http://localhost:8765/` (sirve `index.html`, la única fuente de verdad).
+- Los documentos de `pauta/` son autocontenidos: se abren directo con `file://`, no necesitan servidor.
 
 ## Convenciones
 

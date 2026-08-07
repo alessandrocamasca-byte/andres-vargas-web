@@ -1,0 +1,12 @@
+# Cloudflare Pages despliega la raíz del repo, así que todo lo que vive aquí
+# queda accesible por URL. Estas reglas devuelven 404 en los documentos
+# internos para que no sean públicos en la web del cliente.
+#
+# Sintaxis: origen  destino  código
+
+/CLAUDE.md          /  404
+/NOTAS.md           /  404
+/DESIGN-SYSTEM.md   /  404
+/README.md          /  404
+/pauta              /  404
+/pauta/*            /  404

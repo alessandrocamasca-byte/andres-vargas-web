@@ -94,6 +94,21 @@ El escudo completo (`assets/escudo-*.png`) se usa además como glifo divisor cen
 
 ---
 
+## 3.b Cabecera maison
+
+Referencia tomada de Firenze: **logo centrado con el menú debajo**, sobre una banda de color sólido, y una cinta superior que repite la propuesta de valor.
+
+Encaja especialmente bien aquí porque el logotipo de Andrés Vargas **es un lockup vertical** (escudo sobre el nombre): centrarlo respeta su forma natural, mientras que alinearlo a la izquierda en horizontal la contradecía.
+
+- **Cinta (`.cinta`):** desplazamiento continuo con cuatro lemas reales de la casa. Se duplica el contenido cuatro veces para que el bucle no tenga saltos. Se oculta al hacer scroll y respeta `prefers-reduced-motion`.
+- **Estado normal:** `.nav` en columna, logo centrado con el escudo arriba, menú centrado debajo.
+- **Estado con scroll (`.fijo`):** `.nav` pasa a fila, el logo se vuelve horizontal y encoge, la cinta colapsa a altura cero.
+- **Móvil:** vuelve a fila siempre, con el menú a pantalla completa.
+
+La cabecera es **azul sólido en todos los estados**. Esto elimina de raíz la clase de bug que dio problemas antes (texto azul sobre fondo azul cuando la cabecera era transparente) y permite que el escudo sea siempre el blanco, sin intercambios por JavaScript.
+
+> Ojo de especificidad: `.menu a` fija el color en blanco con (0,1,1) y le gana a `.btn-claro` (0,1,0), lo que dejaba el botón "Agenda tu cita" en blanco sobre blanco. Se corrige con `.menu .btn-claro`.
+
 ## 4. Layout
 
 - Ancho máximo `1280px`, margen lateral `clamp(1.25rem, 5vw, 4rem)`.

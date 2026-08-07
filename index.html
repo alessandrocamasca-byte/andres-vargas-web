@@ -153,42 +153,75 @@ h1, h2, h3, h4 {
 .enlace:hover { gap: 0.9rem; }
 .sobre-azul .enlace { color: var(--blanco); }
 
-/* ---------- Cabecera ---------- */
+/* ---------- Cinta superior con la propuesta de valor ---------- */
+.cinta {
+  background: var(--azul-profundo); overflow: hidden; height: 34px;
+  display: flex; align-items: center; transition: height 0.4s var(--ease), opacity 0.3s var(--ease);
+}
+.cinta-pista { display: flex; gap: 0; white-space: nowrap; animation: correr 46s linear infinite; }
+.cinta-pista span {
+  font-family: var(--display); font-size: 0.66rem; font-weight: 300; letter-spacing: 0.28em;
+  text-transform: uppercase; color: rgba(255,255,255,0.72); padding-inline: 1.6rem;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+@keyframes correr { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .cinta-pista { animation: none; } }
+.cabecera.fijo .cinta { height: 0; opacity: 0; }
+
+/* ---------- Cabecera maison: logo centrado, menú debajo ---------- */
 .cabecera {
-  position: fixed; inset: 0 0 auto 0; z-index: 100; padding-block: var(--e3);
-  transition: background 0.4s var(--ease), padding 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  position: fixed; inset: 0 0 auto 0; z-index: 100; background: var(--azul);
+  transition: box-shadow 0.4s var(--ease);
 }
-.cabecera.fijo { background: rgba(252,251,248,0.96); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--filete); padding-block: 0.6rem; }
-.nav { display: flex; align-items: center; justify-content: space-between; gap: var(--e4); }
-.logo { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
-.logo img { width: 34px; transition: width 0.4s var(--ease); }
-.cabecera.fijo .logo img { width: 28px; }
-.logo-txt { display: flex; flex-direction: column; line-height: 1; }
-.logo-txt b { font-family: var(--display); font-weight: 400; font-size: 1.1rem; letter-spacing: 0.13em; color: var(--azul); text-transform: uppercase; }
-.logo-txt i { font-style: normal; font-family: var(--display); font-size: 0.55rem; letter-spacing: 0.34em; color: var(--piedra); margin-top: 3px; text-transform: uppercase; }
+.cabecera.fijo { box-shadow: 0 1px 0 rgba(255,255,255,0.12); }
+.nav {
+  display: flex; flex-direction: column; align-items: center; gap: 0.85rem;
+  padding-block: 1.15rem; transition: padding 0.4s var(--ease), gap 0.4s var(--ease);
+}
+.cabecera.fijo .nav { flex-direction: row; justify-content: space-between; gap: var(--e4); padding-block: 0.55rem; }
 
-.menu { display: flex; align-items: center; gap: clamp(0.9rem, 1.9vw, 1.85rem); }
+.logo { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; cursor: pointer; }
+.cabecera.fijo .logo { flex-direction: row; gap: 0.65rem; align-items: center; }
+.logo img { width: 40px; transition: width 0.4s var(--ease); }
+.cabecera.fijo .logo img { width: 27px; }
+.logo-txt { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.cabecera.fijo .logo-txt { align-items: flex-start; }
+.logo-txt b {
+  font-family: var(--display); font-weight: 400; font-size: 1.42rem; letter-spacing: 0.22em;
+  color: var(--blanco); text-transform: uppercase; transition: font-size 0.4s var(--ease), letter-spacing 0.4s var(--ease);
+  padding-left: 0.22em; /* compensa el tracking a la derecha */
+}
+.cabecera.fijo .logo-txt b { font-size: 1.02rem; letter-spacing: 0.13em; }
+.logo-txt i {
+  font-style: normal; font-family: var(--display); font-size: 0.56rem; letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.6); margin-top: 5px; text-transform: uppercase; padding-left: 0.4em;
+}
+
+.menu { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2.1rem); }
 .menu a {
-  font-family: var(--display); font-size: 0.8rem; font-weight: 400; text-transform: uppercase;
-  letter-spacing: 0.14em; color: var(--azul); cursor: pointer; position: relative; padding-block: 3px;
+  font-family: var(--display); font-size: 0.8rem; font-weight: 300; text-transform: uppercase;
+  letter-spacing: 0.16em; color: rgba(255,255,255,0.88); cursor: pointer; position: relative; padding-block: 3px;
+  transition: color 0.3s var(--ease);
 }
-.menu a::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0; background: var(--azul); transition: width 0.35s var(--ease); }
+.menu a:hover { color: var(--blanco); }
+.menu a::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0; background: var(--blanco); transition: width 0.35s var(--ease); }
 .menu a:hover::after, .menu a.on::after { width: 100%; }
-.menu .btn { padding: 0.62rem 1.25rem; font-size: 0.72rem; }
+.menu .btn { padding: 0.58rem 1.2rem; font-size: 0.7rem; }
 .menu .btn::after { display: none; }
-
-/* Toda página abre sobre una banda azul, así que la cabecera sin fondo va en blanco */
-.cabecera:not(.fijo) .logo-txt b,
-.cabecera:not(.fijo) .menu a { color: var(--blanco); }
-.cabecera:not(.fijo) .logo-txt i { color: rgba(255,255,255,0.6); }
-.cabecera:not(.fijo) .menu a::after { background: var(--blanco); }
-.cabecera:not(.fijo) .hamburguesa span { background: var(--blanco); }
-.cabecera:not(.fijo) .menu .btn-claro { color: var(--azul); }
+/* .menu a fija el color en blanco: hay que devolvérselo al botón claro */
+.menu .btn-claro { color: var(--azul); }
+.menu .btn-claro:hover { color: var(--azul); }
 
 .hamburguesa { display: none; flex-direction: column; gap: 5px; width: 28px; z-index: 130; }
-.hamburguesa span { display: block; height: 2px; background: var(--azul); transition: all 0.3s var(--ease); }
+.hamburguesa span { display: block; height: 2px; background: var(--blanco); transition: all 0.3s var(--ease); }
 @media (max-width: 1140px) {
   .hamburguesa { display: flex; }
+  /* En móvil la cabecera vuelve a fila: escudo y marca a la izquierda, menú a la derecha */
+  .nav, .cabecera.fijo .nav { flex-direction: row; justify-content: space-between; align-items: center; gap: var(--e3); padding-block: 0.7rem; }
+  .logo, .cabecera.fijo .logo { flex-direction: row; gap: 0.6rem; }
+  .logo img, .cabecera.fijo .logo img { width: 30px; }
+  .logo-txt, .cabecera.fijo .logo-txt { align-items: flex-start; }
+  .logo-txt b, .cabecera.fijo .logo-txt b { font-size: 1rem; letter-spacing: 0.13em; }
   .menu {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100svh;
     background: var(--azul); flex-direction: column; justify-content: center; align-items: center;
@@ -213,7 +246,7 @@ h1, h2, h3, h4 {
 .hero { display: grid; grid-template-columns: 1.02fr 0.98fr; min-height: 100svh; }
 .hero-panel {
   background: var(--azul); display: flex; flex-direction: column; justify-content: center;
-  padding: clamp(6rem, 10vw, 7rem) clamp(1.5rem, 5vw, 4.5rem) clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(8rem, 12vw, 9.5rem) clamp(1.5rem, 5vw, 4.5rem) clamp(2.5rem, 5vw, 4rem);
   position: relative; overflow: hidden;
 }
 .hero-panel::after {
@@ -238,7 +271,7 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Cabecera de página interior ---------- */
-.pag-hero { background: var(--azul); padding: clamp(8rem, 15vw, 11rem) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
+.pag-hero { background: var(--azul); padding: clamp(10rem, 16vw, 13rem) 0 clamp(3rem, 6vw, 5rem); position: relative; overflow: hidden; }
 .pag-hero::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Cpath d='M0 36L36 0M-9 9L9 -9M27 45L45 27' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1'/%3E%3C/svg%3E"); }
 .pag-hero .caja { position: relative; z-index: 1; }
 .miga { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
@@ -463,6 +496,9 @@ h1, h2, h3, h4 {
 
 <!-- ==================== CABECERA ==================== -->
 <header class="cabecera">
+  <div class="cinta" aria-hidden="true">
+    <div class="cinta-pista" id="cinta-pista"></div>
+  </div>
   <nav class="nav caja">
     <div class="logo" data-ir="inicio">
       <img src="assets/escudo-blanco.png" alt="" id="marca">
@@ -487,7 +523,6 @@ h1, h2, h3, h4 {
 
   <section class="hero">
     <div class="hero-panel sobre-azul">
-      <img src="assets/escudo-blanco.png" alt="Escudo Andrés Vargas" class="hero-escudo">
       <span class="rotulo">Sastrería a medida · Lima</span>
       <p class="hero-slogan">Cada prenda que hacemos guarda <em>la medida exacta del carácter</em> de quien la viste.</p>
       <div class="hero-firma">
@@ -740,7 +775,7 @@ h1, h2, h3, h4 {
         <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
         <span class="rotulo">Visítanos</span>
         <h2 class="t-xl">Dos tiendas en Lima</h2>
-        <p class="lead" style="margin-top:1rem;">Escríbenos por WhatsApp y coordinamos tu cita en la tienda que te quede más cerca.</p>
+        <p class="lead" style="margin-top:1rem;">Atendemos previa cita, para dedicarte el tiempo que la prenda necesita. Escríbenos por WhatsApp y coordinamos en la tienda que te quede más cerca.</p>
       </div>
       <div class="rejilla r2" style="max-width:940px;margin-inline:auto;">
         <div class="local rev">
@@ -958,9 +993,12 @@ h1, h2, h3, h4 {
   <section class="pag-hero sobre-azul">
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Novios</div>
-      <span class="rotulo">Servicio de novios</span>
-      <h1 class="t-hero">El traje del novio</h1>
-      <p class="lead medida" style="margin-top:1.25rem;">Es el día en que más fotos te van a tomar en la vida. Nos encargamos de que el traje esté a la altura, del primer boceto al último gemelo.</p>
+      <span class="rotulo">Experiencia novio</span>
+      <h1 class="t-hero">Todo lo que necesitas<br>para ese día, en un solo lugar</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Es el día en que más fotos te van a tomar en la vida. Del traje a los gemelos, lo resolvemos todo en el atelier, sin que tengas que ir juntando piezas de sitios distintos.</p>
+      <div class="acciones" style="margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+      </div>
     </div>
   </section>
 
@@ -970,8 +1008,8 @@ h1, h2, h3, h4 {
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Qué incluye</span>
-        <h2 class="t-xl">Todo resuelto</h2>
-        <p class="lead" style="margin-top:1.25rem;">El paquete de novios reúne la prenda principal y los complementos, para que no tengas que ir juntando piezas de sitios distintos.</p>
+        <h2 class="t-xl">El paquete del novio</h2>
+        <p class="lead" style="margin-top:1.25rem;">Una sola conversación, una sola medida, una sola entrega. Todo lo que vas a llevar puesto sale del mismo taller y combina entre sí.</p>
         <ul class="lista">
           <li>Traje de dos o tres piezas, confeccionado a tu medida.</li>
           <li>Camisa a medida personalizada.</li>
@@ -981,6 +1019,56 @@ h1, h2, h3, h4 {
           <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar el paquete</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Tres pilares de la experiencia -->
+  <section class="seccion fondo-azul sobre-azul">
+    <div class="caja">
+      <div class="enc centro">
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt=""><i></i></div>
+        <span class="rotulo">La experiencia</span>
+        <h2 class="t-xl">Cómo se vive en el atelier</h2>
+      </div>
+      <div class="rejilla r3">
+        <article class="pilar doble-filete rev">
+          <span class="num">01</span>
+          <h3>Ven acompañado</h3>
+          <p>Elegir el traje es parte de la boda. Ven con tu pareja, tu familia o tus padrinos: aquí se decide en conjunto, sin prisa.</p>
+        </article>
+        <article class="pilar doble-filete rev" data-d="1">
+          <span class="num">02</span>
+          <h3>Asesoría de sastres</h3>
+          <p>Nuestros sastres te guían en la tela, el color, el corte y los acabados según la hora, el lugar y el estilo de tu boda.</p>
+        </article>
+        <article class="pilar doble-filete rev" data-d="2">
+          <span class="num">03</span>
+          <h3>Ajuste hasta el final</h3>
+          <p>Tomamos medidas y ajustamos en las pruebas necesarias, para que el día de la boda la prenda caiga exacta.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendario -->
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev" data-d="1">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">Los tiempos</span>
+        <h2 class="t-xl">Empieza con calma</h2>
+        <p class="lead" style="margin-top:1.25rem;">Un traje a medida se construye con pruebas, y las pruebas necesitan calendario. Cuanto antes empecemos, más tranquilo llegas al día.</p>
+        <div style="margin-top:1.5rem;">
+          <div class="paso"><b>01</b><div><h3>Primera cita</h3><p>Conversamos sobre la boda, vemos telas y tomamos tus medidas.</p></div></div>
+          <div class="paso"><b>02</b><div><h3>Confección</h3><p>El taller construye la prenda sobre tu patrón.</p></div></div>
+          <div class="paso"><b>03</b><div><h3>Pruebas</h3><p>Ajustamos contigo hasta que la caída sea la correcta.</p></div></div>
+          <div class="paso"><b>04</b><div><h3>Entrega</h3><p>Recibes el traje y los complementos, listos para el día.</p></div></div>
+        </div>
+        <div style="margin-top:2rem;">
+          <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos con tu fecha</a>
+        </div>
+      </div>
+      <div class="rev"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro confeccionado a medida"></div>
     </div>
   </section>
 
@@ -1173,7 +1261,6 @@ h1, h2, h3, h4 {
   var cab = document.querySelector('.cabecera');
   var pags = document.querySelectorAll('.pagina');
   var menuLinks = document.querySelectorAll('.menu a[data-ir]');
-  var marca = document.getElementById('marca');
 
   function animar(ambito) {
     var els = (ambito || document).querySelectorAll('.rev');
@@ -1184,9 +1271,14 @@ h1, h2, h3, h4 {
     els.forEach(function (e) { io.observe(e); });
   }
 
-  function actualizarMarca() {
-    marca.src = cab.classList.contains('fijo') ? 'assets/escudo-azul.png' : 'assets/escudo-blanco.png';
-  }
+  /* La cinta se duplica para que el desplazamiento sea continuo */
+  (function () {
+    var lemas = ['Prendas a medida', 'Telas nacionales e importadas', 'Distribuidores oficiales', 'Sastrería en Lima desde 1982'];
+    var pista = document.getElementById('cinta-pista');
+    if (!pista) return;
+    var uno = lemas.map(function (t) { return '<span>' + t + '</span>'; }).join('');
+    pista.innerHTML = uno + uno + uno + uno;
+  })();
 
   function ir(nombre, ancla) {
     pags.forEach(function (p) { p.classList.toggle('activa', p.dataset.pag === nombre); });
@@ -1196,10 +1288,9 @@ h1, h2, h3, h4 {
     if (act) { act.querySelectorAll('.rev').forEach(function (e) { e.classList.remove('ver'); }); animar(act); }
     if (ancla) {
       var t = document.getElementById(ancla);
-      if (t) { setTimeout(function () { t.scrollIntoView({ behavior: 'smooth' }); }, 60); actualizarMarca(); return; }
+      if (t) { setTimeout(function () { t.scrollIntoView({ behavior: "smooth" }); }, 60); return; }
     }
     window.scrollTo({ top: 0, behavior: 'auto' });
-    actualizarMarca();
   }
 
   document.addEventListener('click', function (ev) {
@@ -1214,7 +1305,6 @@ h1, h2, h3, h4 {
 
   function alScroll() {
     cab.classList.toggle('fijo', window.scrollY > 40);
-    actualizarMarca();
   }
   window.addEventListener('scroll', alScroll, { passive: true });
   alScroll();
