@@ -304,7 +304,14 @@ Resuelto con `functions/_middleware.js`, que sí se ejecuta antes que el archivo
    - **Cifras:** número de ternos confeccionados, de camisas confeccionadas y de novios vestidos. Las tres tienen su componente listo; falta el número. No se inventan.
    - **Marcas de telas:** la lista de casas de tejido con las que trabajan. El bloque existe y se rellena desde el arreglo `MARCAS_TELA` en el script; mientras esté vacío el bloque no se muestra.
    - **Proyectos:** confirmar el nombre oficial de cada uno (¿"Universitario de Deportes"?, ¿qué teatro exactamente?, ¿"Barrington" es la grafía correcta?) y una línea real de qué se hizo en cada proyecto. Ahora hay una descripción mínima y genérica, sin inventar detalles.
-   - **Locales:** el documento del cliente lista dos direcciones. Confirmar si hay más locales activos y sus direcciones, horarios y teléfono por local.
+   - **FOTOS DE LOS TRES LOCALES (prioridad, decidida por Alessandro el 7 ago 2026).** Es lo que más confianza genera en la página de Tiendas. Especificaciones para pedirlas:
+     - **Horizontales**, se recortan a **16:10**. Nada vertical.
+     - Mínimo **1600 px de ancho**; sirve foto de celular moderno con buena luz.
+     - Una por tienda: **Primavera (Chacarilla), Huallaga y Ucayali**.
+     - Preferible **fachada con el letrero visible**, para que alguien la reconozca al llegar. Si el interior se ve mejor, sirve: mostrador, muestrario de telas o el taller.
+     - Luz de día, sin flash, cámara a la altura del pecho y de frente. Evitar contraluz y autos delante.
+     - El recorte deja libre la esquina superior derecha (escudo) e inferior izquierda (nombre de la zona): no poner ahí lo importante.
+     - **Cambio en la web: una línea por tienda**, el campo `foto` del arreglo `TIENDAS`. Yo las optimizo a sRGB y las meto en `assets/`.
    - **Autorización de marca:** confirmar que el cliente puede nombrar públicamente a Universitario, el teatro y Barrington como clientes.
 7. **Escribir los artículos del blog.** Los seis temas están maquetados y marcados "Próximamente" con un aviso honesto. Falta el contenido.
 8. **Dominio:** el cliente ya tiene `andresvargas.pe` con una web activa. Decidir si esta reemplaza la actual, y si va al dominio raíz o a un subdominio para revisión.
