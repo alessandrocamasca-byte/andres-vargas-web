@@ -230,9 +230,9 @@ También se quitó una repetición: el titular de "La casa" decía "Cuarenta y c
 
 | Tienda | Dirección | Horario |
 |---|---|---|
-| **Primavera** | Av. Primavera 252, Chacarilla, Santiago de Surco | Lun a Sáb 10:00 a 20:00 · Dom 10:00 a 16:00 |
-| **Huallaga** | Jr. Huallaga 558 y 570, Cercado de Lima | Lun a Sáb 10:00 a 20:00 · Dom 10:00 a 16:00 |
-| **Ucayali** | Jr. Ucayali 115 · 119 · 121, Cercado de Lima | Lun a Vie 10:00 a 20:00 · **fin de semana por confirmar** |
+| **Primavera** | Av. Primavera 252, Chacarilla, Santiago de Surco | Lun a Sáb 10 am a 8 pm · Dom 10 am a 4 pm |
+| **Huallaga** | Jr. Huallaga 558 y 570, Cercado de Lima | Lun a Sáb 10 am a 8 pm · Dom 10 am a 4 pm |
+| **Ucayali** | Jr. Ucayali 115 · 119 · 121, Cercado de Lima | Lun a Vie 10 am a 8 pm · **fin de semana por confirmar** |
 
 **PENDIENTE:** el mensaje sobre Ucayali quedó cortado ("atiende en esos horarios de lunes a viernes pero los sábados."). No se inventó nada: la ficha muestra lunes a viernes confirmado y "Fin de semana · Consúltanos". Falta preguntar el horario de sábado y si abre domingo.
 
