@@ -492,23 +492,25 @@ h1, h2, h3, h4 {
 .resumen-item em::after { content: "↓"; }
 
 /* ---------- Slider continuo de casas de tela ---------- */
-.slider-marcas { position: relative; overflow: hidden; padding-block: clamp(1.5rem, 3vw, 2.5rem); }
+.slider-marcas { position: relative; overflow: hidden; padding-block: clamp(2rem, 4vw, 3.5rem); }
 .slider-marcas::before, .slider-marcas::after {
-  content: ""; position: absolute; top: 0; bottom: 0; width: clamp(40px, 8vw, 110px); z-index: 2; pointer-events: none;
+  content: ""; position: absolute; top: 0; bottom: 0; width: clamp(110px, 18vw, 300px); z-index: 2; pointer-events: none;
 }
 .slider-marcas::before { left: 0; background: linear-gradient(to right, var(--nube), transparent); }
 .slider-marcas::after  { right: 0; background: linear-gradient(to left,  var(--nube), transparent); }
 .slider-marcas.sobre-papel::before { background: linear-gradient(to right, var(--papel), transparent); }
 .slider-marcas.sobre-papel::after  { background: linear-gradient(to left,  var(--papel), transparent); }
+.slider-marcas.sobre-papel .slider-pista { background: var(--papel); }
 .slider-pista {
-  display: flex; align-items: center; gap: clamp(2.5rem, 6vw, 6rem);
-  width: max-content; animation: correr 44s linear infinite;
+  display: flex; align-items: center; gap: clamp(3.5rem, 8vw, 8rem);
+  width: max-content; animation: correr 52s linear infinite;
+  background: var(--nube); padding-block: 0.5rem;
 }
 .slider-marcas:hover .slider-pista { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .slider-pista { animation: none; } }
 .slider-pista img {
-  height: clamp(34px, 4vw, 48px); width: auto; max-width: 170px; object-fit: contain;
-  mix-blend-mode: multiply; filter: brightness(1.13); opacity: 0.6;
+  height: clamp(50px, 5.6vw, 76px); width: auto; max-width: 250px; object-fit: contain;
+  mix-blend-mode: multiply; filter: brightness(1.16); opacity: 0.68;
   transition: opacity 0.35s var(--ease);
 }
 .slider-pista img:hover { opacity: 1; }

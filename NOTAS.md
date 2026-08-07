@@ -330,6 +330,11 @@ Alessandro sumó **Albini** y **Brunello Cucinelli** (archivos en Descargas: `im
 
 **Fondos de los logos:** solo VBC y Barrington venían en blanco puro; Albini llegaba a `#ECECEC` por compresión JPEG, y se veía un recuadro gris. Se subió el filtro a `brightness(1.13)`: como el filtro es multiplicativo, 236 × 1,13 satura en blanco mientras el negro de la marca sigue en negro. Combinado con `mix-blend-mode: multiply` los seis quedan sin recuadro.
 
+**Ajuste del slider (mismo día):** Alessandro pidió logos más grandes y que no se cortaran. Dos correcciones:
+
+- **El corte** venía de que el degradado del borde (110px) era más estrecho que un logo (hasta 250px), así que el logo llegaba al filo antes de haberse desvanecido. El degradado pasa a `clamp(110px, 18vw, 300px)`, siempre más ancho que el logo mayor. Altura de logo de 48 a 76px.
+- **Volvieron los recuadros blancos** al agrandarlos. Causa: `.slider-pista` lleva `animation`, y eso **crea un contexto de apilado que aísla el `mix-blend-mode`**: los logos dejaban de mezclarse con el fondo de la sección y se mezclaban con el de la pista, que era transparente. Se resuelve dándole a la pista el mismo fondo que la sección. **Regla para el futuro:** `mix-blend-mode` no atraviesa un contexto de apilado; si el padre anima, transforma o tiene opacidad, hay que darle fondo explícito.
+
 **Limpieza:** el componente anterior (`.marca-tela`, `.marcas-tela`, `.marca-logo`) quedó huérfano al sustituirlo y se eliminó su CSS, 1.323 caracteres.
 
 **OJO, CONTRADICCIÓN PENDIENTE:** Barrington aparecía como **proyecto/cliente** en la sección de Proyectos ("Marca · Proyecto de confección para la marca"), por indicación anterior de Alessandro, y ahora llega como **marca de tela**. Las dos cosas no encajan. Hay que confirmar cuál es y corregir la que sobre.
