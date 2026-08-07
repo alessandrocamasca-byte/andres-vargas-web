@@ -295,6 +295,18 @@ Alessandro pidió revisar que todo fuera acorde a lo pedido. Se auditó el sitio
 
 Verificado tras el arreglo: las ocho páginas con exactamente un `h1`, cero saltos de nivel, cero ids duplicados, cero imágenes sin `alt` y todas con salida a WhatsApp.
 
+### Página "A medida" (7 ago 2026)
+
+Cerraba el único hueco real frente al pedido original: cuando Alessandro dio Firenze como referencia nombró seis secciones, entre ellas **Hecho a medida**, y era la que faltaba. Existían Trajes y Camisas por separado, pero no el concepto paraguas que explica el proceso como experiencia.
+
+**Estructura:** cabecera con foto · qué cambia cuando es a medida (tres pilares con iconos) · las dos prendas, que enrutan a Trajes y Camisas · el proceso en cuatro pasos, común a ambas · la tela como primera decisión · cierre hacia el configurador.
+
+**Reorganización del menú:** "A medida" **sustituye** a Trajes y Camisas, que pasan a colgar de ella. El menú baja de 8 a 7 ítems y se parece más al de Firenze (Shop, Made to Measure, Novios, Club, Blog, Contacto).
+
+- Trajes y Camisas siguen existiendo como páginas y son accesibles desde "A medida", desde las tarjetas de Colecciones del inicio y desde el pie.
+- Sus migas ahora dicen `Inicio · A medida · Trajes`.
+- Al estar en Trajes o Camisas, el menú marca **"A medida"** como activo (mapa `padre` en `ir()`). Sin eso, no se iluminaría ningún ítem y el usuario perdería la referencia de dónde está.
+
 ### HALLAZGO DE SEGURIDAD: los documentos internos estaban públicos
 
 Cloudflare Pages despliega la raíz del repo, así que `NOTAS.md`, `CLAUDE.md` y `DESIGN-SYSTEM.md` respondían **HTTP 200** en `andres-vargas-web.pages.dev`. Cualquiera con la URL podía leer las notas internas del proyecto, incluida la nota sobre los datos que se inventaron en la primera versión.
