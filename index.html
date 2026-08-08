@@ -419,6 +419,30 @@ h1, h2, h3, h4 {
 .tarjeta-cta::after { content: "→"; transition: transform 0.3s var(--ease); }
 .tarjeta:hover .tarjeta-cta::after { transform: translateX(5px); }
 
+/* ---------- Tarjeta horizontal ----------
+   A dos columnas, una ficha vertical de proporción 3/4 se va a 630×840 px y
+   la sección se hace interminable. Con la foto al costado el mismo contenido
+   ocupa menos de la mitad de alto y la prenda se sigue viendo entera. */
+.duo {
+  display: grid; grid-template-columns: minmax(130px, 36%) 1fr; overflow: hidden;
+  background: var(--papel); border: 1px solid var(--filete);
+  min-height: clamp(280px, 30vw, 380px); cursor: pointer;
+  transition: border-color 0.35s var(--ease);
+}
+.duo:hover { border-color: var(--azul-bruma); }
+.duo-img { position: relative; overflow: hidden; background: var(--nube); }
+.duo-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 26%; transition: transform 0.9s var(--ease); }
+.duo:hover .duo-img img { transform: scale(1.05); }
+.duo-txt { padding: clamp(1.4rem, 3vw, 2.25rem); display: flex; flex-direction: column; justify-content: center; }
+.duo-txt h3 { font-family: var(--display); font-weight: 400; font-size: 1.05rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--azul); }
+.duo-txt p { font-size: 0.86rem; font-weight: 300; color: var(--grafito); line-height: 1.75; margin-top: 0.6rem; }
+.duo-txt .enlace { margin-top: var(--e3); }
+@media (max-width: 560px) {
+  .duo { grid-template-columns: 1fr; min-height: 0; }
+  .duo-img { aspect-ratio: 4/3; }
+  .duo-img img { object-position: 50% 22%; }
+}
+
 /* ---------- Franja de medios de pago ---------- */
 .pago { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.7rem clamp(1rem, 3vw, 2.25rem); }
 .pago b { font-family: var(--display); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blanco); }
@@ -1313,7 +1337,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · A medida</div>
       <span class="rotulo">El oficio</span>
-      <h1 class="t-hero">A medida</h1>
+      <h1 class="t-hero">Sastrería a medida en Lima</h1>
       <p class="lead medida" style="margin-top:1.25rem;">No adaptamos una talla: construimos la prenda. Desde 1982, cada traje y cada camisa que sale de nuestro taller nace de un patrón hecho sobre las medidas de una sola persona.</p>
       <div class="acciones" style="margin-top:2rem;">
         <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
@@ -1357,26 +1381,26 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="enc">
         <span class="rotulo">Las prendas</span>
-        <h2 class="t-xl">Qué confeccionamos a medida</h2>
+        <h2 class="t-xl">Ternos y camisas a medida</h2>
         <p class="lead" style="margin-top:1rem;">Dos oficios distintos bajo el mismo techo. Cada uno con su patrón, sus pruebas y sus decisiones.</p>
       </div>
       <div class="rejilla r2">
-        <article class="ficha rev" data-ir="trajes">
-          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Traje a medida" loading="lazy"></div>
-          <div class="ficha-cuerpo doble-filete">
-            <h3>Trajes</h3>
+        <a class="duo rev" data-ir="trajes">
+          <div class="duo-img"><img src="assets/traje-negro.jpg" alt="Terno negro a medida con solapa de pico" loading="lazy"></div>
+          <div class="duo-txt">
+            <h3>Ternos y trajes</h3>
             <p>De dos y tres piezas, para la oficina, una ocasión o una gala. Esmóquines y chaqués incluidos.</p>
-            <span class="enlace" style="margin-top:0.6rem;">Ver trajes</span>
+            <span class="enlace">Ver ternos</span>
           </div>
-        </article>
-        <article class="ficha rev" data-d="1" data-ir="camisas">
-          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Camisa a medida" loading="lazy"></div>
-          <div class="ficha-cuerpo doble-filete">
+        </a>
+        <a class="duo rev" data-d="1" data-ir="camisas">
+          <div class="duo-img"><img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy"></div>
+          <div class="duo-txt">
             <h3>Camisas</h3>
             <p>Cuello, puño y silueta definidos contigo. La prenda que más contacto tiene con tu piel.</p>
-            <span class="enlace" style="margin-top:0.6rem;">Ver camisas</span>
+            <span class="enlace">Ver camisas</span>
           </div>
-        </article>
+        </a>
       </div>
     </div>
   </section>
@@ -1432,7 +1456,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · <span data-ir="medida">A medida</span> · Trajes</div>
       <span class="rotulo">La prenda insignia</span>
-      <h1 class="t-hero">Trajes a medida</h1>
+      <h1 class="t-hero">Ternos y trajes a medida</h1>
       <p class="lead medida" style="margin-top:1.25rem;">De dos o tres piezas, para la oficina, una ocasión o una gala. Diseñados sobre tus medidas, tus gustos y la tela que elijas con nuestros sastres.</p>
     </div>
   </section>
@@ -1497,7 +1521,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · <span data-ir="medida">A medida</span> · Camisas</div>
       <span class="rotulo">A medida</span>
-      <h1 class="t-hero">Camisas</h1>
+      <h1 class="t-hero">Camisas a medida en Lima</h1>
       <p class="lead medida" style="margin-top:1.25rem;">La prenda que está en contacto con tu piel todo el día merece un patrón propio. Cuello, puño y silueta se definen contigo.</p>
     </div>
   </section>
@@ -1548,7 +1572,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Telas</div>
       <span class="rotulo">Distribuidores oficiales</span>
-      <h1 class="t-hero">Telas</h1>
+      <h1 class="t-hero">Telas para ternos y camisas</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas. Trabajamos con tejeduría peruana y con casas italianas e inglesas, a precio directo y con la asesoría de sastres que saben qué tejido pide cada prenda.</p>
     </div>
   </section>
@@ -1664,8 +1688,8 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Novios</div>
       <span class="rotulo">Experiencia novio</span>
-      <h1 class="t-hero">Todo lo que necesitas<br>para ese día, en un solo lugar</h1>
-      <p class="lead medida" style="margin-top:1.25rem;">Es el día en que más fotos te van a tomar en la vida. Del traje a los gemelos, lo resolvemos todo en el atelier, sin que tengas que ir juntando piezas de sitios distintos.</p>
+      <h1 class="t-hero">Trajes de novio<br>a medida en Lima</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Todo lo que necesitas para ese día, en un solo lugar. Es el día en que más fotos te van a tomar en la vida. Del traje a los gemelos, lo resolvemos todo en el atelier, sin que tengas que ir juntando piezas de sitios distintos.</p>
       <div class="acciones" style="margin-top:2rem;">
         <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
       </div>
@@ -1809,7 +1833,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Corporativo</div>
       <span class="rotulo">Para empresas</span>
-      <h1 class="t-hero">Corporativo</h1>
+      <h1 class="t-hero">Ternos y uniformes<br>corporativos a medida</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Vestuario a medida para equipos y directivos. La misma confección de siempre, coordinada para varias personas.</p>
     </div>
   </section>
@@ -1894,7 +1918,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Blog</div>
       <span class="rotulo">Diario</span>
-      <h1 class="t-hero">Blog</h1>
+      <h1 class="t-hero">Blog de sastrería</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Lo que hemos aprendido en 44 años, contado sin tecnicismos: cómo elegir, cómo cuidar y cuándo empezar.</p>
     </div>
   </section>
@@ -1957,7 +1981,7 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Tiendas</div>
       <span class="rotulo">Dónde estamos</span>
-      <h1 class="t-hero">Tiendas</h1>
+      <h1 class="t-hero">Tiendas de sastrería en Lima</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Tres direcciones en Lima: una en Chacarilla, Surco, y dos en el Cercado de Lima. En todas encuentras el muestrario completo y a nuestros sastres.</p>
       <div class="acciones" style="margin-top:2rem;">
         <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
@@ -2136,8 +2160,21 @@ h1, h2, h3, h4 {
     pista.innerHTML = uno + uno + uno + uno;
   })();
 
-  function ir(nombre, ancla) {
+  /* Cada sección tiene su URL propia. El middleware ya sirve el HTML con el
+     título correcto y marca `data-ruta` en el <body>; aquí solo hay que abrir
+     esa página al cargar y mantener la barra de direcciones al día. */
+  var RUTAS = {
+    inicio: '/', medida: '/a-medida', trajes: '/ternos-a-medida',
+    camisas: '/camisas-a-medida', telas: '/telas', novios: '/trajes-de-novio',
+    corporativo: '/corporativo', tiendas: '/tiendas', blog: '/blog'
+  };
+
+  function ir(nombre, ancla, sinHistorial) {
     pags.forEach(function (p) { p.classList.toggle('activa', p.dataset.pag === nombre); });
+    var ruta = RUTAS[nombre];
+    if (ruta && !sinHistorial && location.pathname !== ruta) {
+      history.pushState({ pagina: nombre }, '', ruta);
+    }
     // Trajes y Camisas cuelgan de "A medida", así que marcan ese ítem del menú
     var padre = { trajes: 'medida', camisas: 'medida' }[nombre] || nombre;
     menuLinks.forEach(function (a) { a.classList.toggle('on', a.dataset.ir === padre); });
@@ -2734,6 +2771,17 @@ h1, h2, h3, h4 {
 
     ir(0);
     arrancar();
+  })();
+
+  // Abrir la sección que pide la URL, y responder al botón «atrás».
+  (function () {
+    var inicial = document.body.dataset.ruta || 'inicio';
+    if (inicial !== 'inicio') ir(inicial, null, true);
+    window.addEventListener('popstate', function () {
+      var destino = 'inicio';
+      for (var k in RUTAS) { if (RUTAS[k] === location.pathname) { destino = k; break; } }
+      ir(destino, null, true);
+    });
   })();
 
   animar(document.querySelector('.pagina[data-pag="inicio"]'));
