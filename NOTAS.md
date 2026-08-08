@@ -432,3 +432,35 @@ Tiendas (fachada).
 derecho. El margen del contenedor (1280 px) solo lo libra a partir de 1352 px
 de ventana; por debajo el mando se aparta 100 px. En táctil las flechas se
 ocultan —se pasa deslizando— y las barras se van a la izquierda.
+
+### Inicio orientado a conversión + SEO/GEO (8 ago 2026)
+
+**Término principal.** El título abría con la marca. En Perú la búsqueda real
+es «terno», no «traje», así que ahora abre con *Ternos y Trajes a Medida en
+Lima* y deja la marca al final. Mismo criterio en los H2 del inicio.
+
+**FAQ.** Siete preguntas con `FAQPage` en JSON-LD **generado desde el propio
+HTML**, para que el dato estructurado no pueda separarse de lo que lee la
+persona. Son las que llegan por WhatsApp: dónde están, horarios, qué
+confeccionan, telas, novios, medios de pago y cómo agendar. Esto es lo que
+citan los asistentes de IA cuando alguien pregunta «sastrería en Lima».
+
+**Conversión.** Tarjetas de colección con texto sobre la foto (unifica los
+fondos dispares de las fotos de producto y ocupa la mitad de alto), franja de
+medios de pago arriba —la objeción del precio llega antes que el interés—, dos
+banners de salida a Telas y Novios, y los enlaces flojos de Novios y
+Corporativo convertidos en botones con mensaje de WhatsApp ya redactado.
+
+**PENDIENTE · logos de empresas.** La sección existe y se alimenta del array
+`EMPRESAS`, pero está **oculta** porque no hay ni un archivo de logo. Sin
+archivo no se dibuja un rótulo tipográfico que parezca su marca.
+
+Dos cosas que hay que resolver antes de publicarla:
+
+1. **Los archivos.** PNG con fondo transparente o SVG, del logo oficial.
+2. **La lista exacta.** El pedido decía «empresas como BCP, BBVA, Interbank,
+   Universitario, e-Qapla y otros». «Como» no es una lista cerrada, y publicar
+   la marca de un banco como cliente sin serlo es un problema legal para el
+   cliente, no un detalle de diseño. Hace falta confirmación explícita de
+   cuáles sí, y ojo con los contratos: algunas empresas exigen permiso escrito
+   para usar su logo como referencia comercial.
