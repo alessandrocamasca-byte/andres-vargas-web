@@ -464,3 +464,51 @@ Dos cosas que hay que resolver antes de publicarla:
    cliente, no un detalle de diseño. Hace falta confirmación explícita de
    cuáles sí, y ojo con los contratos: algunas empresas exigen permiso escrito
    para usar su logo como referencia comercial.
+
+### Una URL por sección (8 ago 2026) · el cambio de más peso para SEO
+
+La web es de una sola página. Google solo puede posicionar una URL, así que
+todo el contenido de Telas, Novios o Camisas no competía por nada: existía,
+pero no tenía dirección propia a la que mandar tráfico.
+
+Ahora cada sección tiene la suya y **el HTML llega ya con su `<title>`,
+descripción y canonical reescritos en el servidor** con `HTMLRewriter`, en
+`functions/_middleware.js`. Hacerlo ahí y no en el navegador importa: no
+depende de que el rastreador ejecute JavaScript. El middleware marca además
+`data-ruta` en el `<body>` y el script abre esa sección al cargar; el botón
+«atrás» funciona vía `popstate`.
+
+| Ruta | Sección |
+|---|---|
+| `/` | inicio |
+| `/a-medida` | medida |
+| `/ternos-a-medida` | trajes |
+| `/camisas-a-medida` | camisas |
+| `/telas` | telas |
+| `/trajes-de-novio` | novios |
+| `/corporativo` | corporativo |
+| `/tiendas` | tiendas |
+| `/blog` | blog |
+
+**Dos defectos que aparecieron al revisar esto:**
+
+1. `/robots.txt` devolvía la portada entera con `content-type: text/html`.
+   Cualquier rastreador pidiendo robots.txt recibía HTML. Ya hay `robots.txt`
+   y `sitemap.xml` reales.
+2. Cualquier ruta inventada respondía **200 con la portada completa**:
+   contenido duplicado en infinitas direcciones, que perjudica más que no
+   tener rutas. Ahora es 404. `/telas/` e `/index.html` redirigen 301.
+
+**Textos.** Los ocho H1 interiores eran etiquetas internas («Telas»,
+«Camisas», «Corporativo»). Reescritos con término + ciudad. La frase emocional
+de Novios baja al primer párrafo en vez de perderse.
+
+**Fotos.** Las cuatro `traje-*.jpg` traían franjas blancas de 54 a 75 px a cada
+lado —se veían como un marco sucio dentro de las tarjetas—. Recortadas en
+origen con `sips`, detectando las bandas con un escaneo de columnas sobre BMP
+(en esta máquina no hay PIL).
+
+**Recomendación no aplicada:** en Perú «casimir» es un término de búsqueda muy
+fuerte para tela de terno. No lo metí porque afirmar categorías de producto es
+decisión del cliente, no mía. Si Andrés Vargas confirma que vende casimir,
+entra en el H1 de Telas y en la FAQ.
