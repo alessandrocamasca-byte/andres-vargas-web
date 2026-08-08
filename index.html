@@ -579,8 +579,8 @@ body.tema-corporativo {
   }
 }
 .miga { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
-.miga span { cursor: pointer; }
-.miga span:hover { color: var(--blanco); }
+.miga a { cursor: pointer; color: inherit; }
+.miga a:hover { color: var(--blanco); }
 
 /* ---------- Encabezado de sección ---------- */
 .enc { margin-bottom: clamp(1.75rem, 3vw, 2.5rem); max-width: 64ch; }
@@ -1092,10 +1092,10 @@ body.tema-corporativo {
     <div class="cinta-pista" id="cinta-pista"></div>
   </div>
   <nav class="nav caja">
-    <div class="logo" data-ir="inicio">
+    <a class="logo" href="/" data-ir="inicio" aria-label="Andrés Vargas Boutique, ir al inicio">
       <img src="assets/escudo-blanco.png" alt="" id="marca" width="261" height="420">
       <span class="logo-txt"><b>Andrés Vargas</b><i>Sastrería · Since 1982</i></span>
-    </div>
+    </a>
     <ul class="menu">
       <li><a href="/" class="on" data-ir="inicio">Inicio</a></li>
       <li><a href="/a-medida" data-ir="medida">A medida</a></li>
@@ -1620,7 +1620,7 @@ body.tema-corporativo {
     <img class="pag-hero-img" src="assets/traje-petroleo.jpg" alt="Traje cruzado confeccionado a medida" style="object-position:50% 22%;" loading="lazy" width="412" height="1000">
     <div class="pag-hero-velo"></div>
     <div class="caja">
-      <div class="miga"><span data-ir="inicio">Inicio</span> · A medida</div>
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · A medida</div>
       <span class="rotulo">El oficio</span>
       <h1 class="t-hero">Sastrería a medida en Lima</h1>
       <p class="lead medida" style="margin-top:1.25rem;">No adaptamos una talla: construimos la prenda. Desde 1982, cada traje y cada camisa que sale de nuestro taller nace de un patrón hecho sobre las medidas de una sola persona.</p>
@@ -1739,7 +1739,7 @@ body.tema-corporativo {
     <img class="pag-hero-img" src="assets/editorial-duo.jpg" alt="Trajes a medida de Andrés Vargas" style="object-position:50% 26%;" loading="lazy" width="1275" height="1400">
     <div class="pag-hero-velo"></div>
     <div class="caja">
-      <div class="miga"><span data-ir="inicio">Inicio</span> · <span data-ir="medida">A medida</span> · Trajes</div>
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/a-medida" data-ir="medida">A medida</a> · Trajes</div>
       <span class="rotulo">La prenda insignia</span>
       <h1 class="t-hero">Ternos y trajes a medida</h1>
       <p class="lead medida" style="margin-top:1.25rem;">De dos o tres piezas, para la oficina, una ocasión o una gala. Diseñados sobre tus medidas, tus gustos y la tela que elijas con nuestros sastres.</p>
@@ -1804,7 +1804,7 @@ body.tema-corporativo {
     <img class="pag-hero-img" src="assets/traje-gris.jpg" alt="Camisa a medida" style="object-position:50% 18%;" loading="lazy" width="451" height="1000">
     <div class="pag-hero-velo"></div>
     <div class="caja">
-      <div class="miga"><span data-ir="inicio">Inicio</span> · <span data-ir="medida">A medida</span> · Camisas</div>
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/a-medida" data-ir="medida">A medida</a> · Camisas</div>
       <span class="rotulo">A medida</span>
       <h1 class="t-hero">Camisas a medida en Lima</h1>
       <p class="lead medida" style="margin-top:1.25rem;">La prenda que está en contacto con tu piel todo el día merece un patrón propio. Cuello, puño y silueta se definen contigo.</p>
@@ -1855,7 +1855,7 @@ body.tema-corporativo {
     <img class="pag-hero-img" src="assets/editorial-esmoquin-negro.jpg" alt="Tejidos de sastrería" style="object-position:50% 38%;" loading="lazy" width="659" height="1300">
     <div class="pag-hero-velo"></div>
     <div class="caja">
-      <div class="miga"><span data-ir="inicio">Inicio</span> · Telas</div>
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Telas</div>
       <span class="rotulo">Distribuidores oficiales</span>
       <h1 class="t-hero">Telas para ternos y camisas</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas. Trabajamos con tejeduría peruana y con casas italianas e inglesas, a precio directo y con la asesoría de sastres que saben qué tejido pide cada prenda.</p>
@@ -1971,7 +1971,7 @@ body.tema-corporativo {
     <img class="pag-hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida" style="object-position:50% 32%;" loading="lazy" width="1300" height="868">
     <div class="pag-hero-velo"></div>
     <div class="caja">
-      <div class="miga"><span data-ir="inicio">Inicio</span> · Novios</div>
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Novios</div>
       <span class="rotulo">Experiencia novio</span>
       <h1 class="t-hero">Trajes de novio<br>a medida en Lima</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Todo lo que necesitas para ese día, en un solo lugar. Es el día en que más fotos te van a tomar en la vida. Del traje a los gemelos, lo resolvemos todo en el atelier, sin que tengas que ir juntando piezas de sitios distintos.</p>
@@ -2116,7 +2116,7 @@ body.tema-corporativo {
     <img class="pag-hero-img" src="assets/editorial-esmoquin-marfil.jpg" alt="Vestuario formal a medida" style="object-position:50% 26%;" loading="lazy" width="1275" height="1400">
     <div class="pag-hero-velo"></div>
     <div class="caja">
-      <div class="miga"><span data-ir="inicio">Inicio</span> · Corporativo</div>
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Corporativo</div>
       <span class="rotulo">Para empresas</span>
       <h1 class="t-hero">Ternos y uniformes<br>corporativos a medida</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Vestuario a medida para equipos y directivos. La misma confección de siempre, coordinada para varias personas.</p>
@@ -2201,7 +2201,7 @@ body.tema-corporativo {
     <img class="pag-hero-img" src="assets/traje-burdeos.jpg" alt="Traje burdeos a medida" style="object-position:50% 20%;" loading="lazy" width="412" height="1000">
     <div class="pag-hero-velo"></div>
     <div class="caja">
-      <div class="miga"><span data-ir="inicio">Inicio</span> · Blog</div>
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Blog</div>
       <span class="rotulo">Diario</span>
       <h1 class="t-hero">Blog de sastrería</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Lo que hemos aprendido en 44 años, contado sin tecnicismos: cómo elegir, cómo cuidar y cuándo empezar.</p>
@@ -2264,7 +2264,7 @@ body.tema-corporativo {
     <img class="pag-hero-img" src="assets/hero.jpg" alt="Prendas a medida de Andrés Vargas" style="object-position:50% 44%;" loading="lazy" width="1900" height="1008">
     <div class="pag-hero-velo"></div>
     <div class="caja">
-      <div class="miga"><span data-ir="inicio">Inicio</span> · Tiendas</div>
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Tiendas</div>
       <span class="rotulo">Dónde estamos</span>
       <h1 class="t-hero">Tiendas de sastrería en Lima</h1>
       <p class="lead medida" style="margin-top:1.25rem;">Tres direcciones en Lima: una en Chacarilla, Surco, y dos en el Cercado de Lima. En todas encuentras el muestrario completo y a nuestros sastres.</p>
