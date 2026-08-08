@@ -3,14 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Andrés Vargas | Sastrería a Medida en Lima desde 1982</title>
-<meta name="description" content="Sastrería Andrés Vargas: 44 años confeccionando trajes y camisas a medida en Lima. Distribuidores oficiales de telas nacionales e importadas. Tres tiendas en Lima.">
+<!-- En Perú se busca «terno», no «traje»: el título abre con el término que la
+     gente escribe y deja la marca al final. -->
+<title>Ternos y Trajes a Medida en Lima | Sastrería Andrés Vargas</title>
+<meta name="description" content="Sastrería en Lima desde 1982. Ternos, trajes y camisas a medida, traje de novio y vestuario corporativo. Tres tiendas. Escríbenos por WhatsApp.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://andres-vargas-web.pages.dev/">
 <meta name="theme-color" content="#1A2744">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Andrés Vargas | Sastrería a Medida en Lima desde 1982">
-<meta property="og:description" content="Cada prenda que hacemos guarda la medida exacta del carácter de quien la viste. 44 años de oficio en Lima.">
+<meta property="og:site_name" content="Andrés Vargas Boutique">
+<meta property="og:url" content="https://andres-vargas-web.pages.dev/">
+<meta property="og:title" content="Ternos y Trajes a Medida en Lima | Sastrería Andrés Vargas">
+<meta property="og:description" content="Sastrería en Lima desde 1982. Ternos, camisas y trajes de novio a medida, con telas nacionales, italianas e inglesas.">
 <meta property="og:image" content="assets/editorial-esmoquin-marfil.jpg">
 <meta property="og:locale" content="es_PE">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/escudo-azul.png">
 <link rel="apple-touch-icon" href="assets/escudo-azul.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -384,6 +391,66 @@ h1, h2, h3, h4 {
 .ficha-cuerpo { padding-top: var(--e3); margin-top: var(--e3); }
 .ficha-cuerpo h3 { font-size: 0.96rem; letter-spacing: 0.11em; font-weight: 400; }
 .ficha-cuerpo p { font-size: 0.81rem; font-weight: 300; color: var(--piedra); margin-top: 0.35rem; line-height: 1.72; }
+
+/* ---------- Tarjeta de colección (inicio) ----------
+   El texto va encima de la foto, no debajo: las fotos de producto vienen con
+   fondos distintos —estudio y exterior— y el velo los iguala. De paso el
+   bloque ocupa la mitad de alto y cada tarjeta es un enlace, no un adorno. */
+.tarjeta {
+  position: relative; display: block; overflow: hidden; aspect-ratio: 3/4;
+  background: var(--azul); color: var(--blanco); cursor: pointer;
+}
+.tarjeta img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
+.tarjeta:hover img { transform: scale(1.055); }
+.tarjeta-velo {
+  position: absolute; inset: 0;
+  /* Las fotos de producto son de estudio, casi blancas. Con un velo suave el
+     título quedaba en 3.6:1 sobre ellas; el degradado tiene que llegar denso
+     hasta donde empieza el texto, no solo al borde inferior. */
+  background: linear-gradient(to top, rgba(23,39,64,0.96) 0%, rgba(23,39,64,0.86) 30%, rgba(23,39,64,0.30) 62%, rgba(23,39,64,0) 84%);
+}
+.tarjeta-txt { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--e4); display: flex; flex-direction: column; }
+.tarjeta-txt b { font-family: var(--display); font-weight: 400; font-size: 1.02rem; letter-spacing: 0.11em; text-transform: uppercase; }
+.tarjeta-txt em { font-style: normal; font-size: 0.79rem; font-weight: 300; color: rgba(255,255,255,0.78); line-height: 1.62; margin-top: 0.3rem; }
+.tarjeta-cta {
+  font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+  margin-top: var(--e3); display: inline-flex; align-items: center; gap: 0.45rem; font-style: normal;
+}
+.tarjeta-cta::after { content: "→"; transition: transform 0.3s var(--ease); }
+.tarjeta:hover .tarjeta-cta::after { transform: translateX(5px); }
+
+/* ---------- Franja de medios de pago ---------- */
+.pago { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.7rem clamp(1rem, 3vw, 2.25rem); }
+.pago b { font-family: var(--display); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blanco); }
+.pago span { font-size: 0.84rem; font-weight: 300; color: rgba(255,255,255,0.82); }
+.pago-medios { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pago-medio {
+  font-family: var(--display); font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--blanco); border: 1px solid rgba(255,255,255,0.34); padding: 0.42rem 0.85rem;
+}
+
+/* ---------- Muro de empresas ---------- */
+.empresas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--filete); border: 1px solid var(--filete); }
+.empresa { background: var(--papel); display: grid; place-items: center; padding: clamp(1.4rem, 3vw, 2.2rem) 1rem; min-height: 118px; }
+.empresa img { max-width: 100%; max-height: 46px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.62; transition: filter 0.4s var(--ease), opacity 0.4s var(--ease); }
+.empresa:hover img { filter: grayscale(0); opacity: 1; }
+/* Hueco a la espera del archivo: se ve que falta, no se disimula. */
+.empresa-falta { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--azul-bruma); text-align: center; }
+
+/* ---------- Preguntas frecuentes ---------- */
+.faq { border-top: 1px solid var(--filete); }
+.faq details { border-bottom: 1px solid var(--filete); }
+.faq summary {
+  cursor: pointer; list-style: none; padding-block: clamp(1rem, 2vw, 1.4rem);
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  font-family: var(--display); font-weight: 400; font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  letter-spacing: 0.05em; color: var(--azul);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-size: 1.3rem; font-weight: 300; color: var(--azul-pizarra); flex: none; }
+.faq details[open] summary::after { content: "−"; }
+.faq details > p { font-size: 0.88rem; font-weight: 300; color: var(--grafito); line-height: 1.78; padding-bottom: clamp(1rem, 2vw, 1.4rem); max-width: 62ch; }
+.faq summary:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
 
 /* ---------- Lista ---------- */
 .lista { display: grid; gap: var(--e3); margin-top: var(--e4); }
@@ -882,27 +949,61 @@ h1, h2, h3, h4 {
   <section class="seccion">
     <div class="caja">
       <div class="enc">
-        <span class="rotulo">Colecciones</span>
-        <h2 class="t-xl">Lo que confeccionamos</h2>
+        <span class="rotulo">Hecho a medida en Lima</span>
+        <h2 class="t-xl">Ternos, camisas y trajes de novio</h2>
       </div>
       <div class="rejilla r4">
-        <article class="ficha rev" data-ir="trajes">
-          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Smoking negro a medida" loading="lazy"></div>
-          <div class="ficha-cuerpo doble-filete"><h3>Trajes</h3><p>De dos y tres piezas, para oficina, ocasión y gala.</p></div>
-        </article>
-        <article class="ficha rev" data-d="1" data-ir="camisas">
-          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Saco gris perla con camisa a medida" loading="lazy"></div>
-          <div class="ficha-cuerpo doble-filete"><h3>Camisas</h3><p>Cuello, puño y silueta a tu medida.</p></div>
-        </article>
-        <article class="ficha rev" data-d="2" data-ir="novios">
-          <div class="ficha-img"><img src="assets/novios-novio.jpg" alt="Novio con esmoquin a medida" loading="lazy"></div>
-          <div class="ficha-cuerpo doble-filete"><h3>Novios</h3><p>El traje del día más fotografiado de tu vida.</p></div>
-        </article>
-        <article class="ficha rev" data-d="3" data-ir="telas">
-          <div class="ficha-img"><img src="assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo a medida" loading="lazy"></div>
-          <div class="ficha-cuerpo doble-filete"><h3>Telas</h3><p>Nacionales e importadas, a precio directo.</p></div>
-        </article>
+        <a class="tarjeta rev" data-ir="trajes">
+          <img src="assets/traje-negro.jpg" alt="Terno negro a medida confeccionado en Lima" loading="lazy">
+          <span class="tarjeta-velo"></span>
+          <span class="tarjeta-txt">
+            <b>Ternos y trajes</b>
+            <em>Dos y tres piezas, para oficina y gala.</em>
+            <em class="tarjeta-cta">Ver ternos</em>
+          </span>
+        </a>
+        <a class="tarjeta rev" data-d="1" data-ir="camisas">
+          <img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy">
+          <span class="tarjeta-velo"></span>
+          <span class="tarjeta-txt">
+            <b>Camisas</b>
+            <em>Cuello, puño y silueta a tu medida.</em>
+            <em class="tarjeta-cta">Ver camisas</em>
+          </span>
+        </a>
+        <a class="tarjeta rev" data-d="2" data-ir="novios">
+          <img src="assets/novios-novio.jpg" alt="Traje de novio a medida en Lima" loading="lazy">
+          <span class="tarjeta-velo"></span>
+          <span class="tarjeta-txt">
+            <b>Trajes de novio</b>
+            <em>El traje del día más fotografiado de tu vida.</em>
+            <em class="tarjeta-cta">Ver novios</em>
+          </span>
+        </a>
+        <a class="tarjeta rev" data-d="3" data-ir="telas">
+          <img src="assets/traje-petroleo.jpg" alt="Terno cruzado en tela importada" loading="lazy">
+          <span class="tarjeta-velo"></span>
+          <span class="tarjeta-txt">
+            <b>Telas</b>
+            <em>Nacionales, italianas e inglesas.</em>
+            <em class="tarjeta-cta">Ver telas</em>
+          </span>
+        </a>
       </div>
+    </div>
+  </section>
+
+  <!-- La objeción del precio aparece antes que el interés, así que los medios
+       de pago van arriba y no escondidos en el pie. -->
+  <section class="seccion-corta fondo-azul sobre-azul">
+    <div class="caja pago">
+      <b>Facilidades de pago</b>
+      <span>Paga como te resulte más cómodo</span>
+      <span class="pago-medios">
+        <span class="pago-medio">Mercado Pago</span>
+        <span class="pago-medio">Culqi</span>
+        <span class="pago-medio">Otros medios</span>
+      </span>
     </div>
   </section>
 
@@ -1065,7 +1166,10 @@ h1, h2, h3, h4 {
           <li>Camisa a medida personalizada.</li>
           <li>Corbata, pajarita, pañuelos y gemelos.</li>
         </ul>
-        <div style="margin-top:2rem;"><a class="enlace" data-ir="novios">Ver el servicio de novios</a></div>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-linea" data-ir="novios">Ver el servicio</a>
+          <a class="btn btn-azul" href="https://wa.me/51959370397?text=Hola%2C%20me%20caso%20y%20quiero%20informaci%C3%B3n%20del%20servicio%20de%20novios." target="_blank" rel="noopener">Escríbenos</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1079,7 +1183,39 @@ h1, h2, h3, h4 {
         <p class="lead" style="margin-top:1rem;">En 44 años hemos vestido a clubes, elencos y empresas. Estos son algunos de los proyectos de los que estamos orgullosos.</p>
       </div>
       <div class="rejilla r3" id="casos-inicio"></div>
-      <div class="centro" style="margin-top:2.5rem;"><a class="enlace" data-ir="corporativo">Ver el servicio corporativo</a></div>
+      <div class="centro" style="margin-top:2.5rem;">
+        <a class="btn btn-claro" data-ir="corporativo">Ver el servicio corporativo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Muro de empresas. Se alimenta del array EMPRESAS: cada logo que llegue
+       entra ahí y aparece aquí, sin tocar el maquetado. -->
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Confianza</span>
+        <h2 class="t-xl">Empresas que confiaron en nosotros</h2>
+      </div>
+      <div class="empresas" id="empresas"></div>
+    </div>
+  </section>
+
+  <!-- Dos salidas claras al final del recorrido de confianza. -->
+  <section class="seccion-corta">
+    <div class="caja">
+      <div class="rejilla r2">
+        <a class="banner rev" data-ir="telas" style="--foto:url('assets/editorial-esmoquin-negro.jpg');">
+          <span class="banner-rotulo">Distribuidores oficiales</span>
+          <span class="banner-titulo">Elige tu tela</span>
+          <span class="banner-cta">Ver las telas</span>
+        </a>
+        <a class="banner rev" data-d="1" data-ir="novios" style="--foto:url('assets/novios-duo.jpg');">
+          <span class="banner-rotulo">Experiencia novio</span>
+          <span class="banner-titulo">Tu traje de novio</span>
+          <span class="banner-cta">Ver la experiencia</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1101,6 +1237,52 @@ h1, h2, h3, h4 {
         </article>
       </div>
       <div class="centro" style="margin-top:2.5rem;"><a class="btn btn-linea" data-ir="blog">Ver el blog</a></div>
+    </div>
+  </section>
+
+  <!-- Preguntas frecuentes. Son las que de verdad llegan por WhatsApp, y de
+       paso son lo que buscadores y asistentes citan cuando alguien pregunta
+       «sastrería en Lima». El JSON-LD se genera desde este mismo HTML para que
+       no puedan discrepar. -->
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc">
+        <span class="rotulo">Antes de escribirnos</span>
+        <h2 class="t-xl">Preguntas frecuentes</h2>
+      </div>
+      <div class="faq" id="faq">
+        <details>
+          <summary>¿Dónde queda la sastrería en Lima?</summary>
+          <p>Tenemos tres tiendas. En el Cercado de Lima, en Jr. Ucayali 115, 119 y 121, y en Jr. Huallaga 558 y 570. En Santiago de Surco, en Av. Primavera 252, Chacarilla.</p>
+        </details>
+        <details>
+          <summary>¿Cuál es el horario de atención?</summary>
+          <p>Huallaga y Primavera (Chacarilla) atienden de lunes a sábado de 10 am a 8 pm, y domingos de 10 am a 4 pm. Ucayali atiende de lunes a viernes de 10 am a 8 pm; para el fin de semana, consúltanos.</p>
+        </details>
+        <details>
+          <summary>¿Qué prendas confeccionan a medida?</summary>
+          <p>Ternos y trajes de dos y tres piezas para oficina, ocasión y gala, camisas, trajes de novio y vestuario corporativo para equipos y directivos.</p>
+        </details>
+        <details>
+          <summary>¿Con qué telas trabajan?</summary>
+          <p>Somos distribuidores oficiales de telas nacionales e importadas: tejeduría peruana y casas italianas e inglesas, entre ellas Barrington, VBC, Reda, Albini, Thomas Mason y Brunello Cucinelli.</p>
+        </details>
+        <details>
+          <summary>¿Hacen trajes de novio?</summary>
+          <p>Sí. La experiencia de novios se vive en la tienda de Chacarilla, con el traje del novio y el de su cortejo resueltos en un solo lugar, desde la primera medida hasta los gemelos.</p>
+        </details>
+        <details>
+          <summary>¿Qué medios de pago aceptan?</summary>
+          <p>Trabajamos con Mercado Pago, Culqi y otros medios de pago, para que elijas el que te resulte más cómodo.</p>
+        </details>
+        <details>
+          <summary>¿Cómo agendo una cita?</summary>
+          <p>Escríbenos por WhatsApp al 959 370 397 y coordinamos el día y la tienda, o acércate directamente a cualquiera de las tres en el horario de atención.</p>
+        </details>
+      </div>
+      <div class="centro" style="margin-top:2.5rem;">
+        <a class="btn btn-azul" href="https://wa.me/51959370397?text=Hola%2C%20tengo%20una%20consulta%20sobre%20una%20prenda%20a%20medida." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      </div>
     </div>
   </section>
 
@@ -2196,6 +2378,48 @@ h1, h2, h3, h4 {
      Rellenar con las casas de tejido reales del cliente.
      Formato: { n: 'Nombre de la casa', o: 'Origen' }
      Mientras el arreglo esté vacío, el bloque no se muestra. */
+  /* ================= EMPRESAS QUE CONFIARON =================
+     Solo se pinta la empresa que tiene archivo de logo. Sin archivo no se
+     inventa un rótulo tipográfico que parezca su marca, y si no hay ninguno
+     la sección entera se oculta: mejor que no exista a que se vea a medias.
+
+     Para añadir una: deja el PNG/SVG en assets/ y pon la ruta en `logo`. */
+  var EMPRESAS = [
+    { n: 'Universitario de Deportes', logo: '' },
+    { n: 'BCP',                       logo: '' },
+    { n: 'BBVA',                      logo: '' },
+    { n: 'Interbank',                 logo: '' },
+    { n: 'e-Qapla',                   logo: '' }
+  ];
+  (function () {
+    var caja = document.getElementById('empresas');
+    if (!caja) return;
+    var conLogo = EMPRESAS.filter(function (e) { return e.logo; });
+    if (!conLogo.length) { caja.closest('section').hidden = true; return; }
+    caja.innerHTML = conLogo.map(function (e) {
+      return '<div class="empresa"><img src="' + e.logo + '" alt="' + e.n + '" loading="lazy"></div>';
+    }).join('');
+  })();
+
+  /* ================= PREGUNTAS FRECUENTES · JSON-LD =================
+     Se genera leyendo el propio HTML, así que el dato estructurado y lo que
+     lee la persona no pueden separarse nunca. */
+  (function () {
+    var faq = document.getElementById('faq');
+    if (!faq) return;
+    var items = [].map.call(faq.querySelectorAll('details'), function (d) {
+      return {
+        '@type': 'Question',
+        name: d.querySelector('summary').textContent.trim(),
+        acceptedAnswer: { '@type': 'Answer', text: d.querySelector('p').textContent.trim() }
+      };
+    });
+    var et = document.createElement('script');
+    et.type = 'application/ld+json';
+    et.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items });
+    document.head.appendChild(et);
+  })();
+
   /* ================= CASAS DE TELA =================
      `destacada: true` la saca de la rejilla de detalle: Barrington tiene su
      propio bloque. El slider sí las muestra todas. */
