@@ -32,46 +32,63 @@ const RUTAS = {
     pagina: 'inicio',
     titulo: 'Ternos y Trajes a Medida en Lima | Sastrería Andrés Vargas',
     desc: 'Sastrería en Lima desde 1982. Ternos, trajes y camisas a medida, traje de novio y vestuario corporativo. Tres tiendas. Escríbenos por WhatsApp.',
+    imagen: 'hero.jpg',
   },
   '/a-medida': {
     pagina: 'medida',
     titulo: 'Sastrería a Medida en Lima | Andrés Vargas',
     desc: 'Cómo se construye una prenda a medida: patrón propio sobre tus medidas, pruebas y elección de tela con nuestros sastres. En Lima desde 1982.',
+    imagen: 'traje-petroleo.jpg',
+    miga: 'A medida',
   },
   '/ternos-a-medida': {
     pagina: 'trajes',
     titulo: 'Ternos y Trajes a Medida en Lima | Andrés Vargas',
     desc: 'Ternos de dos y tres piezas, esmóquines y chaqués a medida, confeccionados en nuestro taller de Lima sobre tus medidas y la tela que elijas.',
+    imagen: 'editorial-duo.jpg',
+    miga: 'Ternos y trajes',
   },
   '/camisas-a-medida': {
     pagina: 'camisas',
     titulo: 'Camisas a Medida en Lima | Andrés Vargas',
     desc: 'Camisas a medida con patrón propio: cuello, puño y silueta se definen contigo. Sastrería en Lima desde 1982, con tres tiendas.',
+    imagen: 'traje-gris.jpg',
+    miga: 'Camisas',
   },
   '/telas': {
     pagina: 'telas',
     titulo: 'Telas para Ternos y Camisas en Lima | Andrés Vargas',
     desc: 'Distribuidores oficiales de telas nacionales e importadas: tejeduría peruana y casas italianas e inglesas, con asesoría de sastres.',
+    imagen: 'editorial-esmoquin-negro.jpg',
+    miga: 'Telas',
   },
   '/trajes-de-novio': {
     pagina: 'novios',
     titulo: 'Trajes de Novio a Medida en Lima | Andrés Vargas',
     desc: 'El traje del novio y el de su cortejo, resueltos en un solo lugar: de la primera medida a los gemelos. Experiencia de novios en Chacarilla, Surco.',
+    imagen: 'novios-trio-wide.jpg',
+    miga: 'Trajes de novio',
   },
   '/corporativo': {
     pagina: 'corporativo',
     titulo: 'Ternos y Uniformes Corporativos a Medida | Andrés Vargas',
     desc: 'Vestuario a medida para equipos y directivos, con la misma confección de siempre coordinada para varias personas. Sastrería en Lima desde 1982.',
+    imagen: 'editorial-esmoquin-marfil.jpg',
+    miga: 'Corporativo',
   },
   '/tiendas': {
     pagina: 'tiendas',
     titulo: 'Tiendas de Sastrería en Lima | Andrés Vargas',
     desc: 'Tres tiendas en Lima: Jr. Ucayali 115, 119 y 121 y Jr. Huallaga 558 y 570 en el Cercado, y Av. Primavera 252, Chacarilla, en Surco.',
+    imagen: 'hero.jpg',
+    miga: 'Tiendas',
   },
   '/blog': {
     pagina: 'blog',
     titulo: 'Blog de Sastrería | Andrés Vargas',
     desc: 'Cómo elegir, cómo cuidar y cuándo empezar. Lo que hemos aprendido en 44 años de oficio, contado sin tecnicismos.',
+    imagen: 'editorial-duo.jpg',
+    miga: 'Blog',
   },
 };
 
@@ -86,11 +103,57 @@ class Meta {
     const name = el.getAttribute('name');
     const prop = el.getAttribute('property');
     const rel = el.getAttribute('rel');
+    const img = SITIO + '/assets/' + this.r.imagen;
     if (name === 'description') el.setAttribute('content', this.r.desc);
     else if (prop === 'og:title') el.setAttribute('content', this.r.titulo);
     else if (prop === 'og:description') el.setAttribute('content', this.r.desc);
     else if (prop === 'og:url') el.setAttribute('content', this.url);
+    else if (prop === 'og:image') el.setAttribute('content', img);
+    else if (name === 'twitter:title') el.setAttribute('content', this.r.titulo);
+    else if (name === 'twitter:description') el.setAttribute('content', this.r.desc);
+    else if (name === 'twitter:image') el.setAttribute('content', img);
     else if (rel === 'canonical') el.setAttribute('href', this.url);
+    // og:image:width/height se quedan como están: cada foto tiene su tamaño,
+    // pero declararlo mal es peor que no declararlo, así que se eliminan
+    // cuando la imagen no es la de portada.
+    else if ((prop === 'og:image:width' || prop === 'og:image:height') && this.r.imagen !== 'hero.jpg') el.remove();
+  }
+}
+
+/* Miga de pan: es lo que Google usa para mostrar «andres-vargas › Telas» en
+   lugar de la URL cruda en el resultado de búsqueda. */
+class Miga {
+  constructor(ruta, url) { this.r = ruta; this.url = url; }
+  element(el) {
+    if (!this.r.miga) return;
+    const datos = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITIO + '/' },
+        { '@type': 'ListItem', position: 2, name: this.r.miga, item: this.url },
+      ],
+    };
+    el.append('<script type="application/ld+json">' + JSON.stringify(datos) + '</script>', { html: true });
+  }
+}
+
+/* Deja únicamente la sección que pide la URL.
+   Sin esto, las nueve direcciones servían el mismo HTML de 142 KB con las
+   nueve secciones dentro y solo cambiaba un atributo: para un buscador eran
+   nueve páginas casi idénticas, y para los rastreadores de IA —que en su
+   mayoría no ejecutan JavaScript— preguntar por «trajes de novio» devolvía
+   una página que hablaba sobre todo de otra cosa.
+
+   También pone `activa` en la que sobrevive: `.pagina` es `display:none` por
+   defecto, así que sin esta clase el contenido llegaría oculto, que es
+   justo lo que los buscadores descuentan. */
+class Podar {
+  constructor(pagina) { this.pagina = pagina; }
+  element(el) {
+    if (el.getAttribute('data-pag') !== this.pagina) { el.remove(); return; }
+    const clases = el.getAttribute('class') || '';
+    if (!/\bactiva\b/.test(clases)) el.setAttribute('class', (clases + ' activa').trim());
   }
 }
 
@@ -131,7 +194,9 @@ export async function onRequest(context) {
     html.headers.set('content-type', 'text/html; charset=utf-8');
     return new HTMLRewriter()
       .on('title, meta, link[rel="canonical"]', new Meta(conf, SITIO + (ruta === '/' ? '/' : ruta)))
+      .on('head', new Miga(conf, SITIO + (ruta === '/' ? '/' : ruta)))
       .on('body', new Cuerpo(conf.pagina))
+      .on('main[data-pag]', new Podar(conf.pagina))
       .transform(html);
   }
 

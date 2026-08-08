@@ -15,9 +15,192 @@
 <meta property="og:url" content="https://andres-vargas-web.pages.dev/">
 <meta property="og:title" content="Ternos y Trajes a Medida en Lima | Sastrería Andrés Vargas">
 <meta property="og:description" content="Sastrería en Lima desde 1982. Ternos, camisas y trajes de novio a medida, con telas nacionales, italianas e inglesas.">
-<meta property="og:image" content="assets/editorial-esmoquin-marfil.jpg">
+<!-- Absoluta y obligatorio: WhatsApp y Facebook no resuelven rutas relativas,
+     así que con «assets/…» el enlace se compartía sin imagen. hero.jpg mide
+     1900x1008, casi el 1.91:1 que piden. -->
+<meta property="og:image" content="https://andres-vargas-web.pages.dev/assets/hero.jpg">
+<meta property="og:image:width" content="1900">
+<meta property="og:image:height" content="1008">
+<meta property="og:image:alt" content="Esmoquin marfil confeccionado a medida en el atelier de Andrés Vargas">
 <meta property="og:locale" content="es_PE">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ternos y Trajes a Medida en Lima | Sastrería Andrés Vargas">
+<meta name="twitter:description" content="Sastrería en Lima desde 1982. Ternos, camisas y trajes de novio a medida.">
+<meta name="twitter:image" content="https://andres-vargas-web.pages.dev/assets/hero.jpg">
+<meta name="author" content="Andrés Vargas Boutique">
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
+<!-- Datos estructurados. Van escritos aquí y no generados por el script: los
+     rastreadores de IA (GPTBot, ClaudeBot, PerplexityBot y compañía) en su
+     mayoría NO ejecutan JavaScript, así que un JSON-LD inyectado por JS es
+     invisible justo para quien más lo aprovecharía.
+     OJO: si cambian las preguntas frecuentes o los datos de tienda del HTML,
+     hay que cambiarlos también aquí. El script avisa por consola si difieren. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://andres-vargas-web.pages.dev/#organizacion",
+      "name": "Andrés Vargas Boutique",
+      "alternateName": "Andrés Vargas Sastrería",
+      "description": "Sastrería a medida en Lima desde 1982. Ternos, trajes y camisas a medida, trajes de novio y vestuario corporativo. Distribuidores oficiales de telas nacionales e importadas.",
+      "url": "https://andres-vargas-web.pages.dev/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://andres-vargas-web.pages.dev/assets/logo-azul.png"
+      },
+      "image": "https://andres-vargas-web.pages.dev/assets/hero.jpg",
+      "foundingDate": "1982",
+      "telephone": "+51959370397",
+      "email": "servicioalcliente@andresvargas.pe",
+      "areaServed": {
+        "@type": "City",
+        "name": "Lima",
+        "addressCountry": "PE"
+      },
+      "knowsAbout": [
+        "Sastrería a medida",
+        "Ternos a medida",
+        "Camisas a medida",
+        "Trajes de novio",
+        "Vestuario corporativo",
+        "Telas italianas e inglesas"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://andres-vargas-web.pages.dev/#sitio",
+      "url": "https://andres-vargas-web.pages.dev/",
+      "name": "Andrés Vargas Boutique",
+      "inLanguage": "es-PE",
+      "publisher": {
+        "@id": "https://andres-vargas-web.pages.dev/#organizacion"
+      }
+    },
+    {
+      "@type": "ClothingStore",
+      "@id": "https://andres-vargas-web.pages.dev/tiendas#tienda-1",
+      "name": "Andrés Vargas Sastrería · Tienda Primavera",
+      "description": "Sastrería a medida en Lima desde 1982. Ternos, trajes y camisas a medida, trajes de novio y vestuario corporativo. Distribuidores oficiales de telas nacionales e importadas.",
+      "image": "https://andres-vargas-web.pages.dev/assets/editorial-esmoquin-marfil.jpg",
+      "url": "https://andres-vargas-web.pages.dev/tiendas",
+      "telephone": "+51959370397",
+      "email": "servicioalcliente@andresvargas.pe",
+      "parentOrganization": {
+        "@id": "https://andres-vargas-web.pages.dev/#organizacion"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Primavera 252, Chacarilla",
+        "addressLocality": "Santiago de Surco",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Sunday"
+          ],
+          "opens": "10:00",
+          "closes": "16:00"
+        }
+      ]
+    },
+    {
+      "@type": "ClothingStore",
+      "@id": "https://andres-vargas-web.pages.dev/tiendas#tienda-2",
+      "name": "Andrés Vargas Sastrería · Tienda Huallaga",
+      "description": "Sastrería a medida en Lima desde 1982. Ternos, trajes y camisas a medida, trajes de novio y vestuario corporativo. Distribuidores oficiales de telas nacionales e importadas.",
+      "image": "https://andres-vargas-web.pages.dev/assets/editorial-duo.jpg",
+      "url": "https://andres-vargas-web.pages.dev/tiendas",
+      "telephone": "+51959370397",
+      "email": "servicioalcliente@andresvargas.pe",
+      "parentOrganization": {
+        "@id": "https://andres-vargas-web.pages.dev/#organizacion"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jr. Huallaga 558 y 570",
+        "addressLocality": "Cercado de Lima",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Sunday"
+          ],
+          "opens": "10:00",
+          "closes": "16:00"
+        }
+      ]
+    },
+    {
+      "@type": "ClothingStore",
+      "@id": "https://andres-vargas-web.pages.dev/tiendas#tienda-3",
+      "name": "Andrés Vargas Sastrería · Tienda Ucayali",
+      "description": "Sastrería a medida en Lima desde 1982. Ternos, trajes y camisas a medida, trajes de novio y vestuario corporativo. Distribuidores oficiales de telas nacionales e importadas.",
+      "image": "https://andres-vargas-web.pages.dev/assets/editorial-esmoquin-negro.jpg",
+      "url": "https://andres-vargas-web.pages.dev/tiendas",
+      "telephone": "+51959370397",
+      "email": "servicioalcliente@andresvargas.pe",
+      "parentOrganization": {
+        "@id": "https://andres-vargas-web.pages.dev/#organizacion"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jr. Ucayali 115, 119 y 121",
+        "addressLocality": "Cercado de Lima",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "20:00"
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" href="assets/escudo-azul.png">
 <link rel="apple-touch-icon" href="assets/escudo-azul.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -910,17 +1093,17 @@ body.tema-corporativo {
   </div>
   <nav class="nav caja">
     <div class="logo" data-ir="inicio">
-      <img src="assets/escudo-blanco.png" alt="" id="marca">
+      <img src="assets/escudo-blanco.png" alt="" id="marca" width="261" height="420">
       <span class="logo-txt"><b>Andrés Vargas</b><i>Sastrería · Since 1982</i></span>
     </div>
     <ul class="menu">
-      <li><a class="on" data-ir="inicio">Inicio</a></li>
-      <li><a data-ir="medida">A medida</a></li>
-      <li><a data-ir="telas">Telas</a></li>
-      <li><a data-ir="novios">Novios</a></li>
-      <li><a data-ir="corporativo">Corporativo</a></li>
-      <li><a data-ir="tiendas">Tiendas</a></li>
-      <li><a data-ir="blog">Blog</a></li>
+      <li><a href="/" class="on" data-ir="inicio">Inicio</a></li>
+      <li><a href="/a-medida" data-ir="medida">A medida</a></li>
+      <li><a href="/telas" data-ir="telas">Telas</a></li>
+      <li><a href="/trajes-de-novio" data-ir="novios">Novios</a></li>
+      <li><a href="/corporativo" data-ir="corporativo">Corporativo</a></li>
+      <li><a href="/tiendas" data-ir="tiendas">Tiendas</a></li>
+      <li><a href="/blog" data-ir="blog">Blog</a></li>
       <li><a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a></li>
     </ul>
     <button class="hamburguesa" aria-label="Abrir menú"><span></span><span></span><span></span></button>
@@ -935,7 +1118,7 @@ body.tema-corporativo {
   <section class="hero sobre-azul" data-slider aria-roledescription="carrusel" aria-label="Andrés Vargas Boutique">
 
     <div class="hero-capa on" style="--pos:26% 34%;" aria-label="1 de 3">
-      <img class="hero-img" src="assets/hero.jpg" alt="Smoking marfil confeccionado a medida en el atelier de Andrés Vargas" fetchpriority="high">
+      <img class="hero-img" src="assets/hero.jpg" alt="Smoking marfil confeccionado a medida en el atelier de Andrés Vargas" fetchpriority="high" width="1900" height="1008">
       <div class="hero-velo"></div>
       <div class="caja hero-inner">
         <div class="hero-texto">
@@ -943,7 +1126,7 @@ body.tema-corporativo {
           <h1 class="hero-slogan">Cada prenda que hacemos guarda <em>la medida exacta del carácter</em> de quien la viste.</h1>
           <div class="hero-firma">
             <div class="acciones">
-              <a class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
+              <a href="/#configurador" class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
               <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
             </div>
             <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Tres tiendas en Lima</p>
@@ -953,7 +1136,7 @@ body.tema-corporativo {
     </div>
 
     <div class="hero-capa" style="--pos:50% 28%; --pos-movil:50% 24%;" aria-label="2 de 3">
-      <img class="hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida de Andrés Vargas" loading="lazy">
+      <img class="hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida de Andrés Vargas" loading="lazy" width="1300" height="868">
       <div class="hero-velo"></div>
       <div class="caja hero-inner">
         <div class="hero-texto">
@@ -961,7 +1144,7 @@ body.tema-corporativo {
           <p class="hero-slogan">Todo lo que necesitas para ese día, <em>en un solo lugar</em>.</p>
           <div class="hero-firma">
             <div class="acciones">
-              <a class="btn btn-claro" data-ir="novios">Ver la experiencia</a>
+              <a href="/trajes-de-novio" class="btn btn-claro" data-ir="novios">Ver la experiencia</a>
               <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
             </div>
             <p class="mini" style="margin-top:1.5rem;">Chacarilla · Única con experiencia de novios</p>
@@ -971,7 +1154,7 @@ body.tema-corporativo {
     </div>
 
     <div class="hero-capa" style="--pos:50% 12%; --pos-movil:50% 14%;" aria-label="3 de 3">
-      <img class="hero-img" src="assets/editorial-duo.jpg" alt="Dos esmóquines a medida en tejidos distintos" loading="lazy">
+      <img class="hero-img" src="assets/editorial-duo.jpg" alt="Dos esmóquines a medida en tejidos distintos" loading="lazy" width="1275" height="1400">
       <div class="hero-velo"></div>
       <div class="caja hero-inner">
         <div class="hero-texto">
@@ -979,7 +1162,7 @@ body.tema-corporativo {
           <p class="hero-slogan">Tela nacional, italiana e inglesa, <em>a precio directo</em>.</p>
           <div class="hero-firma">
             <div class="acciones">
-              <a class="btn btn-claro" data-ir="telas">Ver las telas</a>
+              <a href="/telas" class="btn btn-claro" data-ir="telas">Ver las telas</a>
               <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
             </div>
             <p class="mini" style="margin-top:1.5rem;">Tejeduría peruana y casas italianas e inglesas</p>
@@ -1010,8 +1193,8 @@ body.tema-corporativo {
         <h2 class="t-xl">Ternos, camisas y trajes de novio</h2>
       </div>
       <div class="rejilla r4">
-        <a class="tarjeta rev" data-ir="trajes">
-          <img src="assets/traje-negro.jpg" alt="Terno negro a medida confeccionado en Lima" loading="lazy">
+        <a href="/ternos-a-medida" class="tarjeta rev" data-ir="trajes">
+          <img src="assets/traje-negro.jpg" alt="Terno negro a medida confeccionado en Lima" loading="lazy" width="454" height="1000">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Ternos y trajes</b>
@@ -1019,8 +1202,8 @@ body.tema-corporativo {
             <em class="tarjeta-cta">Ver ternos</em>
           </span>
         </a>
-        <a class="tarjeta rev" data-d="1" data-ir="camisas">
-          <img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy">
+        <a href="/camisas-a-medida" class="tarjeta rev" data-d="1" data-ir="camisas">
+          <img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy" width="451" height="1000">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Camisas</b>
@@ -1028,8 +1211,8 @@ body.tema-corporativo {
             <em class="tarjeta-cta">Ver camisas</em>
           </span>
         </a>
-        <a class="tarjeta rev" data-d="2" data-ir="novios">
-          <img src="assets/novios-novio.jpg" alt="Traje de novio a medida en Lima" loading="lazy">
+        <a href="/trajes-de-novio" class="tarjeta rev" data-d="2" data-ir="novios">
+          <img src="assets/novios-novio.jpg" alt="Traje de novio a medida en Lima" loading="lazy" width="801" height="1200">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Trajes de novio</b>
@@ -1037,8 +1220,8 @@ body.tema-corporativo {
             <em class="tarjeta-cta">Ver novios</em>
           </span>
         </a>
-        <a class="tarjeta rev" data-d="3" data-ir="telas">
-          <img src="assets/traje-petroleo.jpg" alt="Terno cruzado en tela importada" loading="lazy">
+        <a href="/telas" class="tarjeta rev" data-d="3" data-ir="telas">
+          <img src="assets/traje-petroleo.jpg" alt="Terno cruzado en tela importada" loading="lazy" width="412" height="1000">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Telas</b>
@@ -1067,7 +1250,7 @@ body.tema-corporativo {
   <section class="seccion fondo-nube">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La casa</span>
         <h2 class="t-xl">El oficio, sin atajos</h2>
         <p class="lead" style="margin-top:1.25rem;">Desde 1982 vestimos a Lima. Con nosotros el cliente vive el proceso completo de crear su traje desde cero, guiado por sastres que llevan décadas en el oficio.</p>
@@ -1107,10 +1290,10 @@ body.tema-corporativo {
           <li>Precio directo, sin sobrecosto de intermediarios.</li>
           <li>Asesoría para elegir el tejido según ocasión, clima y caída.</li>
         </ul>
-        <div style="margin-top:2rem;"><a class="enlace" data-ir="telas">Ver las telas</a></div>
+        <div style="margin-top:2rem;"><a href="/telas" class="enlace" data-ir="telas">Ver las telas</a></div>
       </div>
       <div class="rev" data-d="1">
-        <img src="assets/editorial-duo.jpg" alt="Dos trajes de gala confeccionados a medida" loading="lazy">
+        <img src="assets/editorial-duo.jpg" alt="Dos trajes de gala confeccionados a medida" loading="lazy" width="1275" height="1400">
       </div>
     </div>
   </section>
@@ -1126,7 +1309,7 @@ body.tema-corporativo {
   <section class="seccion" id="configurador">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Atelier digital</span>
         <h2 class="t-xl">Diseña tu prenda</h2>
         <p class="lead" style="margin-top:1rem;">Elige la prenda, el color de tela y los detalles. Es el mismo recorrido que haremos juntos en la tienda, para que llegues a tu cita con la idea clara.</p>
@@ -1212,7 +1395,7 @@ body.tema-corporativo {
 
   <section class="seccion fondo-nube">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida" loading="lazy"></div>
+      <div class="rev"><img src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida" loading="lazy" width="1300" height="868"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Servicio de novios</span>
@@ -1224,7 +1407,7 @@ body.tema-corporativo {
           <li>Corbata, pajarita, pañuelos y gemelos.</li>
         </ul>
         <div class="acciones" style="margin-top:2rem;">
-          <a class="btn btn-linea" data-ir="novios">Ver el servicio</a>
+          <a href="/trajes-de-novio" class="btn btn-linea" data-ir="novios">Ver el servicio</a>
           <a class="btn btn-azul" href="https://wa.me/51959370397?text=Hola%2C%20me%20caso%20y%20quiero%20informaci%C3%B3n%20del%20servicio%20de%20novios." target="_blank" rel="noopener">Escríbenos</a>
         </div>
       </div>
@@ -1234,14 +1417,14 @@ body.tema-corporativo {
   <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial-duo.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Nos han confiado su imagen</span>
         <h2 class="t-xl">Instituciones que visten con nosotros</h2>
         <p class="lead" style="margin-top:1rem;">En 44 años hemos vestido a clubes, elencos y empresas. Estos son algunos de los proyectos de los que estamos orgullosos.</p>
       </div>
       <div class="rejilla r3" id="casos-inicio"></div>
       <div class="centro" style="margin-top:2.5rem;">
-        <a class="btn btn-claro" data-ir="corporativo">Ver el servicio corporativo</a>
+        <a href="/corporativo" class="btn btn-claro" data-ir="corporativo">Ver el servicio corporativo</a>
       </div>
     </div>
   </section>
@@ -1262,12 +1445,12 @@ body.tema-corporativo {
   <section class="seccion-corta">
     <div class="caja">
       <div class="rejilla r2">
-        <a class="banner rev" data-ir="telas" style="--foto:url('assets/editorial-esmoquin-negro.jpg');">
+        <a href="/telas" class="banner rev" data-ir="telas" style="--foto:url('assets/editorial-esmoquin-negro.jpg');">
           <span class="banner-rotulo">Distribuidores oficiales</span>
           <span class="banner-titulo">Elige tu tela</span>
           <span class="banner-cta">Ver las telas</span>
         </a>
-        <a class="banner rev" data-d="1" data-ir="novios" style="--foto:url('assets/novios-duo.jpg');">
+        <a href="/trajes-de-novio" class="banner rev" data-d="1" data-ir="novios" style="--foto:url('assets/novios-duo.jpg');">
           <span class="banner-rotulo">Experiencia novio</span>
           <span class="banner-titulo">Tu traje de novio</span>
           <span class="banner-cta">Ver la experiencia</span>
@@ -1281,19 +1464,19 @@ body.tema-corporativo {
       <div class="enc"><span class="rotulo">Diario</span><h2 class="t-xl">Del blog</h2></div>
       <div class="rejilla r3">
         <article class="nota rev" data-ir="blog">
-          <div class="nota-img"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro" loading="lazy" width="659" height="1300"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Guías</span><h3>Cómo elegir tu primer traje a medida</h3><p>Qué esperar de tu primera visita a la tienda.</p></div>
         </article>
         <article class="nota rev" data-d="1" data-ir="blog">
-          <div class="nota-img"><img src="assets/traje-petroleo.jpg" alt="Traje verde petróleo" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/traje-petroleo.jpg" alt="Traje verde petróleo" loading="lazy" width="412" height="1000"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Telas</span><h3>Nacional o importada: cómo decidir</h3><p>Las diferencias que de verdad importan al elegir tejido.</p></div>
         </article>
         <article class="nota rev" data-d="2" data-ir="blog">
-          <div class="nota-img"><img src="assets/novios-duo.jpg" alt="Trajes de novio" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/novios-duo.jpg" alt="Trajes de novio" loading="lazy" width="801" height="1200"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Novios</span><h3>Calendario del novio: cuándo empezar</h3><p>Los tiempos reales para llegar tranquilo a la boda.</p></div>
         </article>
       </div>
-      <div class="centro" style="margin-top:2.5rem;"><a class="btn btn-linea" data-ir="blog">Ver el blog</a></div>
+      <div class="centro" style="margin-top:2.5rem;"><a href="/blog" class="btn btn-linea" data-ir="blog">Ver el blog</a></div>
     </div>
   </section>
 
@@ -1307,6 +1490,75 @@ body.tema-corporativo {
         <span class="rotulo">Antes de escribirnos</span>
         <h2 class="t-xl">Preguntas frecuentes</h2>
       </div>
+
+      <!-- Va aquí dentro y no en el <head>: el servidor poda las secciones que
+           no son de la URL, así que en /telas o /tiendas este dato desaparece
+           junto con las preguntas. Declarar un FAQPage en una página que no
+           muestra las preguntas es dato estructurado inválido. -->
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Dónde queda la sastrería en Lima?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tenemos tres tiendas. En el Cercado de Lima, en Jr. Ucayali 115, 119 y 121, y en Jr. Huallaga 558 y 570. En Santiago de Surco, en Av. Primavera 252, Chacarilla."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es el horario de atención?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Huallaga y Primavera (Chacarilla) atienden de lunes a sábado de 10 am a 8 pm, y domingos de 10 am a 4 pm. Ucayali atiende de lunes a viernes de 10 am a 8 pm; para el fin de semana, consúltanos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué prendas confeccionan a medida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ternos y trajes de dos y tres piezas para oficina, ocasión y gala, camisas, trajes de novio y vestuario corporativo para equipos y directivos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Con qué telas trabajan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Somos distribuidores oficiales de telas nacionales e importadas: tejeduría peruana y casas italianas e inglesas, entre ellas Barrington, VBC, Reda, Albini, Thomas Mason y Brunello Cucinelli."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hacen trajes de novio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. La experiencia de novios se vive en la tienda de Chacarilla, con el traje del novio y el de su cortejo resueltos en un solo lugar, desde la primera medida hasta los gemelos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué medios de pago aceptan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabajamos con Mercado Pago, Culqi y otros medios de pago, para que elijas el que te resulte más cómodo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo agendo una cita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Escríbenos por WhatsApp al 959 370 397 y coordinamos el día y la tienda, o acércate directamente a cualquiera de las tres en el horario de atención."
+      }
+    }
+  ]
+}
+      </script>
       <div class="faq" id="faq">
         <details>
           <summary>¿Dónde queda la sastrería en Lima?</summary>
@@ -1346,7 +1598,7 @@ body.tema-corporativo {
   <section class="seccion fondo-azul sobre-azul con-foto" id="tiendas" style="--foto:url('assets/hero.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Visítanos</span>
         <h2 class="t-xl">Tres tiendas en Lima</h2>
         <p class="lead" style="margin-top:1rem;">Una en Chacarilla y dos en el Cercado de Lima. Escríbenos por WhatsApp y coordinamos en la que te quede más cerca.</p>
@@ -1355,7 +1607,7 @@ body.tema-corporativo {
       <div class="centro" style="margin-top:3rem;">
         <div class="acciones" style="justify-content:center;">
           <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
-          <a class="btn btn-linea-clara" data-ir="tiendas">Ver las tiendas</a>
+          <a href="/tiendas" class="btn btn-linea-clara" data-ir="tiendas">Ver las tiendas</a>
         </div>
       </div>
     </div>
@@ -1365,7 +1617,7 @@ body.tema-corporativo {
 <!-- ==================== A MEDIDA ==================== -->
 <main class="pagina" data-pag="medida">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/traje-petroleo.jpg" alt="Traje cruzado confeccionado a medida" style="object-position:50% 22%;" loading="lazy">
+    <img class="pag-hero-img" src="assets/traje-petroleo.jpg" alt="Traje cruzado confeccionado a medida" style="object-position:50% 22%;" loading="lazy" width="412" height="1000">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · A medida</div>
@@ -1382,7 +1634,7 @@ body.tema-corporativo {
   <section class="seccion">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La diferencia</span>
         <h2 class="t-xl">Qué cambia cuando es a medida</h2>
       </div>
@@ -1418,16 +1670,16 @@ body.tema-corporativo {
         <p class="lead" style="margin-top:1rem;">Dos oficios distintos bajo el mismo techo. Cada uno con su patrón, sus pruebas y sus decisiones.</p>
       </div>
       <div class="rejilla r2">
-        <a class="duo rev" data-ir="trajes">
-          <div class="duo-img"><img src="assets/traje-negro.jpg" alt="Terno negro a medida con solapa de pico" loading="lazy"></div>
+        <a href="/ternos-a-medida" class="duo rev" data-ir="trajes">
+          <div class="duo-img"><img src="assets/traje-negro.jpg" alt="Terno negro a medida con solapa de pico" loading="lazy" width="454" height="1000"></div>
           <div class="duo-txt">
             <h3>Ternos y trajes</h3>
             <p>De dos y tres piezas, para la oficina, una ocasión o una gala. Esmóquines y chaqués incluidos.</p>
             <span class="enlace">Ver ternos</span>
           </div>
         </a>
-        <a class="duo rev" data-d="1" data-ir="camisas">
-          <div class="duo-img"><img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy"></div>
+        <a href="/camisas-a-medida" class="duo rev" data-d="1" data-ir="camisas">
+          <div class="duo-img"><img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy" width="451" height="1000"></div>
           <div class="duo-txt">
             <h3>Camisas</h3>
             <p>Cuello, puño y silueta definidos contigo. La prenda que más contacto tiene con tu piel.</p>
@@ -1453,12 +1705,12 @@ body.tema-corporativo {
           <div class="paso"><b>04</b><div><h3>Entrega</h3><p>Recibes la prenda terminada, lista para usar.</p></div></div>
         </div>
       </div>
-      <div class="rev" data-d="1"><img src="assets/editorial-esmoquin-negro.jpg" alt="Prenda a medida terminada" loading="lazy"></div>
+      <div class="rev" data-d="1"><img src="assets/editorial-esmoquin-negro.jpg" alt="Prenda a medida terminada" loading="lazy" width="659" height="1300"></div>
     </div>
   </section>
 
   <!-- Banner hacia Telas -->
-  <a class="banner rev" data-ir="telas" style="--foto:url('assets/editorial-duo.jpg');">
+  <a href="/telas" class="banner rev" data-ir="telas" style="--foto:url('assets/editorial-duo.jpg');">
     <span class="banner-rotulo">La decisión que más pesa</span>
     <span class="banner-titulo">Todo empieza por la tela</span>
     <span class="banner-cta">Ver las telas</span>
@@ -1466,15 +1718,15 @@ body.tema-corporativo {
 
   <!-- Cierre -->
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/hero.jpg" alt="" loading="lazy">
+    <img class="cierre-img" src="assets/hero.jpg" alt="" loading="lazy" width="1900" height="1008">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Empieza aquí</span>
       <h2 class="t-xl">Diseña tu prenda antes de venir</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Elige prenda, tela y detalles en nuestro atelier digital y llega a la cita con la idea clara. O escríbenos y lo vemos juntos.</p>
       <div class="acciones" style="justify-content:center;margin-top:2.5rem;">
-        <a class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
+        <a href="/#configurador" class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
         <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
       </div>
     </div>
@@ -1484,7 +1736,7 @@ body.tema-corporativo {
 <!-- ==================== TRAJES ==================== -->
 <main class="pagina" data-pag="trajes">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial-duo.jpg" alt="Trajes a medida de Andrés Vargas" style="object-position:50% 26%;" loading="lazy">
+    <img class="pag-hero-img" src="assets/editorial-duo.jpg" alt="Trajes a medida de Andrés Vargas" style="object-position:50% 26%;" loading="lazy" width="1275" height="1400">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · <span data-ir="medida">A medida</span> · Trajes</div>
@@ -1499,19 +1751,19 @@ body.tema-corporativo {
       <div class="enc"><span class="rotulo">Colección</span><h2 class="t-xl">Confeccionados en nuestro taller</h2></div>
       <div class="rejilla r4">
         <article class="ficha rev">
-          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Smoking negro con solapa de raso" loading="lazy"></div>
+          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Smoking negro con solapa de raso" loading="lazy" width="454" height="1000"></div>
           <div class="ficha-cuerpo doble-filete"><h3>Smoking negro</h3><p>Solapa de raso, para gala y etiqueta.</p></div>
         </article>
         <article class="ficha rev" data-d="1">
-          <div class="ficha-img"><img src="assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo" loading="lazy"></div>
+          <div class="ficha-img"><img src="assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo" loading="lazy" width="412" height="1000"></div>
           <div class="ficha-cuerpo doble-filete"><h3>Cruzado petróleo</h3><p>Doble botonadura, presencia y carácter.</p></div>
         </article>
         <article class="ficha rev" data-d="2">
-          <div class="ficha-img"><img src="assets/traje-burdeos.jpg" alt="Traje cruzado burdeos" loading="lazy"></div>
+          <div class="ficha-img"><img src="assets/traje-burdeos.jpg" alt="Traje cruzado burdeos" loading="lazy" width="412" height="1000"></div>
           <div class="ficha-cuerpo doble-filete"><h3>Cruzado burdeos</h3><p>Para quien quiere salir del negro sin estridencias.</p></div>
         </article>
         <article class="ficha rev" data-d="3">
-          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Saco de fiesta gris perla" loading="lazy"></div>
+          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Saco de fiesta gris perla" loading="lazy" width="451" height="1000"></div>
           <div class="ficha-cuerpo doble-filete"><h3>Saco gris perla</h3><p>Chaqueta de fiesta con pantalón de contraste.</p></div>
         </article>
       </div>
@@ -1520,7 +1772,7 @@ body.tema-corporativo {
 
   <section class="seccion fondo-nube">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro a medida" loading="lazy"></div>
+      <div class="rev"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro a medida" loading="lazy" width="659" height="1300"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">El proceso</span>
@@ -1549,7 +1801,7 @@ body.tema-corporativo {
 <!-- ==================== CAMISAS ==================== -->
 <main class="pagina" data-pag="camisas">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/traje-gris.jpg" alt="Camisa a medida" style="object-position:50% 18%;" loading="lazy">
+    <img class="pag-hero-img" src="assets/traje-gris.jpg" alt="Camisa a medida" style="object-position:50% 18%;" loading="lazy" width="451" height="1000">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · <span data-ir="medida">A medida</span> · Camisas</div>
@@ -1561,7 +1813,7 @@ body.tema-corporativo {
 
   <section class="seccion">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy"></div>
+      <div class="rev"><img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy" width="451" height="1000"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">El detalle</span>
@@ -1574,7 +1826,7 @@ body.tema-corporativo {
         </ul>
         <div style="margin-top:2rem;">
           <div class="acciones">
-            <a class="btn btn-azul" data-ir="inicio" data-scroll="configurador">Diseña tu camisa</a>
+            <a href="/#configurador" class="btn btn-azul" data-ir="inicio" data-scroll="configurador">Diseña tu camisa</a>
             <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
           </div>
         </div>
@@ -1600,7 +1852,7 @@ body.tema-corporativo {
 <!-- ==================== TELAS ==================== -->
 <main class="pagina" data-pag="telas">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial-esmoquin-negro.jpg" alt="Tejidos de sastrería" style="object-position:50% 38%;" loading="lazy">
+    <img class="pag-hero-img" src="assets/editorial-esmoquin-negro.jpg" alt="Tejidos de sastrería" style="object-position:50% 38%;" loading="lazy" width="659" height="1300">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Telas</div>
@@ -1614,7 +1866,7 @@ body.tema-corporativo {
   <section class="seccion" id="las-casas">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Las casas</span>
         <h2 class="t-xl">Con quién trabajamos</h2>
         <p class="lead" style="margin-top:1rem;">Tejeduría peruana junto a algunas de las casas más antiguas de Italia e Inglaterra. Al ser distribuidores oficiales tratamos directo con ellas, sin intermediarios de por medio.</p>
@@ -1627,7 +1879,7 @@ body.tema-corporativo {
   <section class="seccion fondo-nube">
     <div class="caja casa-destacada">
       <div class="casa-placa rev">
-        <img src="assets/tela-barrington.png" alt="Barrington" loading="lazy">
+        <img src="assets/tela-barrington.png" alt="Barrington" loading="lazy" width="460" height="261">
         <span class="sello-txt">Distribuidor oficial</span>
       </div>
       <div class="rev" data-d="1">
@@ -1677,7 +1929,7 @@ body.tema-corporativo {
   <section class="seccion con-foto sobre-azul" id="consulta-tela" style="--foto:url('assets/editorial-duo.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Consúltanos</span>
         <h2 class="t-xl">¿Quieres tela de alguna de estas casas?</h2>
         <p class="lead medida centro" style="margin-top:1rem;">Déjanos tus datos y te respondemos con disponibilidad, colores y lo que necesites saber. Sin compromiso.</p>
@@ -1716,7 +1968,7 @@ body.tema-corporativo {
 <!-- ==================== NOVIOS ==================== -->
 <main class="pagina" data-pag="novios">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida" style="object-position:50% 32%;" loading="lazy">
+    <img class="pag-hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida" style="object-position:50% 32%;" loading="lazy" width="1300" height="868">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Novios</div>
@@ -1731,7 +1983,7 @@ body.tema-corporativo {
 
   <section class="seccion">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/novios-novio.jpg" alt="Novio con esmoquin negro a medida" loading="lazy"></div>
+      <div class="rev"><img src="assets/novios-novio.jpg" alt="Novio con esmoquin negro a medida" loading="lazy" width="801" height="1200"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Qué incluye</span>
@@ -1753,7 +2005,7 @@ body.tema-corporativo {
   <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/novios-duo.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La experiencia</span>
         <h2 class="t-xl">Cómo se vive en el atelier</h2>
       </div>
@@ -1798,7 +2050,7 @@ body.tema-corporativo {
           <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos con tu fecha</a>
         </div>
       </div>
-      <div class="rev"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro confeccionado a medida" loading="lazy"></div>
+      <div class="rev"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro confeccionado a medida" loading="lazy" width="659" height="1300"></div>
     </div>
   </section>
 
@@ -1808,9 +2060,9 @@ body.tema-corporativo {
         <p class="lead medida centro" style="margin-top:1rem;">Vestimos también a padrinos, padres y hermanos, para que el conjunto se vea coherente en las fotos.</p>
       </div>
       <div class="rejilla r3">
-        <div class="rev"><img src="assets/novios-trio.jpg" alt="Novio con dos padrinos" loading="lazy"></div>
-        <div class="rev" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida" loading="lazy"></div>
-        <div class="rev" data-d="2"><img src="assets/novios-trio-wide.jpg" alt="Grupo de novio y padrinos" loading="lazy"></div>
+        <div class="rev"><img src="assets/novios-trio.jpg" alt="Novio con dos padrinos" loading="lazy" width="801" height="1200"></div>
+        <div class="rev" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida" loading="lazy" width="801" height="1200"></div>
+        <div class="rev" data-d="2"><img src="assets/novios-trio-wide.jpg" alt="Grupo de novio y padrinos" loading="lazy" width="1300" height="868"></div>
       </div>
     </div>
   </section>
@@ -1839,15 +2091,15 @@ body.tema-corporativo {
           <a class="btn btn-linea" href="https://www.google.com/maps/search/?api=1&query=Av.+Primavera+252+Chacarilla+Santiago+de+Surco+Lima" target="_blank" rel="noopener">Cómo llegar</a>
         </div>
       </div>
-      <div class="rev" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida" loading="lazy"></div>
+      <div class="rev" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida" loading="lazy" width="801" height="1200"></div>
     </div>
   </section>
 
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/novios-trio-wide.jpg" alt="" loading="lazy">
+    <img class="cierre-img" src="assets/novios-trio-wide.jpg" alt="" loading="lazy" width="1300" height="868">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Tu fecha</span>
       <h2 class="t-xl">Empecemos con tiempo</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Escríbenos con la fecha de tu boda y coordinamos el calendario de medidas y pruebas sin apuros.</p>
@@ -1861,7 +2113,7 @@ body.tema-corporativo {
 <!-- ==================== CORPORATIVO ==================== -->
 <main class="pagina" data-pag="corporativo">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial-esmoquin-marfil.jpg" alt="Vestuario formal a medida" style="object-position:50% 26%;" loading="lazy">
+    <img class="pag-hero-img" src="assets/editorial-esmoquin-marfil.jpg" alt="Vestuario formal a medida" style="object-position:50% 26%;" loading="lazy" width="1275" height="1400">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Corporativo</div>
@@ -1896,7 +2148,7 @@ body.tema-corporativo {
 
   <section class="seccion">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/editorial-duo.jpg" alt="Dos trajes a medida" loading="lazy"></div>
+      <div class="rev"><img src="assets/editorial-duo.jpg" alt="Dos trajes a medida" loading="lazy" width="1275" height="1400"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Coordinación</span>
@@ -1918,10 +2170,10 @@ body.tema-corporativo {
   </section>
 
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/editorial-esmoquin-marfil.jpg" alt="" loading="lazy">
+    <img class="cierre-img" src="assets/editorial-esmoquin-marfil.jpg" alt="" loading="lazy" width="1275" height="1400">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Cotización a medida</span>
       <h2 class="t-xl">Hablemos de tu equipo</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Cada programa se cotiza según el número de personas, las prendas y la tela elegida. Cuéntanos qué necesitas y preparamos una propuesta.</p>
@@ -1946,7 +2198,7 @@ body.tema-corporativo {
 <!-- ==================== BLOG ==================== -->
 <main class="pagina" data-pag="blog">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/traje-burdeos.jpg" alt="Traje burdeos a medida" style="object-position:50% 20%;" loading="lazy">
+    <img class="pag-hero-img" src="assets/traje-burdeos.jpg" alt="Traje burdeos a medida" style="object-position:50% 20%;" loading="lazy" width="412" height="1000">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Blog</div>
@@ -1964,27 +2216,27 @@ body.tema-corporativo {
       </div>
       <div class="rejilla r3">
         <article class="nota rev">
-          <div class="nota-img"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro" loading="lazy" width="659" height="1300"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Guías · Próximamente</span><h3>Cómo elegir tu primer traje a medida</h3><p>Qué esperar de tu primera visita y cómo llegar preparado.</p></div>
         </article>
         <article class="nota rev" data-d="1">
-          <div class="nota-img"><img src="assets/traje-petroleo.jpg" alt="Traje verde petróleo" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/traje-petroleo.jpg" alt="Traje verde petróleo" loading="lazy" width="412" height="1000"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Telas · Próximamente</span><h3>Nacional o importada: cómo decidir</h3><p>Las diferencias que de verdad importan al elegir el tejido.</p></div>
         </article>
         <article class="nota rev" data-d="2">
-          <div class="nota-img"><img src="assets/novios-duo.jpg" alt="Trajes de novio" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/novios-duo.jpg" alt="Trajes de novio" loading="lazy" width="801" height="1200"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Novios · Próximamente</span><h3>Calendario del novio: cuándo empezar</h3><p>Los tiempos reales para llegar tranquilo al día de la boda.</p></div>
         </article>
         <article class="nota rev">
-          <div class="nota-img"><img src="assets/traje-negro.jpg" alt="Smoking negro" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/traje-negro.jpg" alt="Smoking negro" loading="lazy" width="454" height="1000"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Estilo · Próximamente</span><h3>Etiqueta: qué se espera de un código de vestimenta</h3><p>Traducción práctica de lo que dice la invitación.</p></div>
         </article>
         <article class="nota rev" data-d="1">
-          <div class="nota-img"><img src="assets/traje-burdeos.jpg" alt="Traje burdeos" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/traje-burdeos.jpg" alt="Traje burdeos" loading="lazy" width="412" height="1000"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Cuidado · Próximamente</span><h3>Cómo cuidar un traje para que dure</h3><p>Colgado, cepillado y descanso: lo que sí funciona.</p></div>
         </article>
         <article class="nota rev" data-d="2">
-          <div class="nota-img"><img src="assets/traje-gris.jpg" alt="Saco gris perla" loading="lazy"></div>
+          <div class="nota-img"><img src="assets/traje-gris.jpg" alt="Saco gris perla" loading="lazy" width="451" height="1000"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Estilo · Próximamente</span><h3>Salir del negro sin equivocarse</h3><p>Colores que funcionan en Lima y con qué combinarlos.</p></div>
         </article>
       </div>
@@ -1992,10 +2244,10 @@ body.tema-corporativo {
   </section>
 
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/traje-petroleo.jpg" alt="" loading="lazy">
+    <img class="cierre-img" src="assets/traje-petroleo.jpg" alt="" loading="lazy" width="412" height="1000">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">¿Tienes una duda?</span>
       <h2 class="t-xl">Pregúntale al sastre</h2>
       <p class="lead medida centro" style="margin-top:1rem;">No hace falta esperar al artículo. Escríbenos y te respondemos lo que necesites saber sobre tu prenda.</p>
@@ -2009,7 +2261,7 @@ body.tema-corporativo {
 <!-- ==================== TIENDAS ==================== -->
 <main class="pagina" data-pag="tiendas">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/hero.jpg" alt="Prendas a medida de Andrés Vargas" style="object-position:50% 44%;" loading="lazy">
+    <img class="pag-hero-img" src="assets/hero.jpg" alt="Prendas a medida de Andrés Vargas" style="object-position:50% 44%;" loading="lazy" width="1900" height="1008">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><span data-ir="inicio">Inicio</span> · Tiendas</div>
@@ -2036,7 +2288,7 @@ body.tema-corporativo {
   <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/novios-trio-wide.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La visita</span>
         <h2 class="t-xl">Cómo es venir al atelier</h2>
       </div>
@@ -2064,10 +2316,10 @@ body.tema-corporativo {
   </section>
 
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/editorial-esmoquin-negro.jpg" alt="" loading="lazy">
+    <img class="cierre-img" src="assets/editorial-esmoquin-negro.jpg" alt="" loading="lazy" width="659" height="1300">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy"><i></i></div>
+      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Tu visita</span>
       <h2 class="t-xl">¿Cómo te gustaría agendar?</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Elige el canal que prefieras. Te respondemos con los horarios disponibles en la tienda que te quede más cerca.</p>
@@ -2094,7 +2346,7 @@ body.tema-corporativo {
   <div class="caja">
     <div class="pie-rejilla">
       <div class="pie-logo">
-        <img src="assets/logo-blanco.png" alt="Andrés Vargas Sastrería" loading="lazy">
+        <img src="assets/logo-blanco.png" alt="Andrés Vargas Sastrería" loading="lazy" width="700" height="700">
         <p>Sastrería a medida en Lima desde 1982. Distribuidores oficiales de telas nacionales e importadas.</p>
         <div class="redes">
           <a href="https://www.instagram.com/andres_vargas_sastreria/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -2104,13 +2356,13 @@ body.tema-corporativo {
       <div>
         <h4>Servicios</h4>
         <ul>
-          <li><a data-ir="medida">A medida</a></li>
-          <li><a data-ir="trajes">Trajes</a></li>
-          <li><a data-ir="camisas">Camisas</a></li>
-          <li><a data-ir="telas">Telas</a></li>
-          <li><a data-ir="novios">Novios</a></li>
-          <li><a data-ir="corporativo">Corporativo</a></li>
-          <li><a data-ir="tiendas">Tiendas</a></li>
+          <li><a href="/a-medida" data-ir="medida">A medida</a></li>
+          <li><a href="/ternos-a-medida" data-ir="trajes">Trajes</a></li>
+          <li><a href="/camisas-a-medida" data-ir="camisas">Camisas</a></li>
+          <li><a href="/telas" data-ir="telas">Telas</a></li>
+          <li><a href="/trajes-de-novio" data-ir="novios">Novios</a></li>
+          <li><a href="/corporativo" data-ir="corporativo">Corporativo</a></li>
+          <li><a href="/tiendas" data-ir="tiendas">Tiendas</a></li>
         </ul>
       </div>
       <div>
@@ -2203,6 +2455,12 @@ body.tema-corporativo {
   };
 
   function ir(nombre, ancla, sinHistorial) {
+    // El servidor sirve solo la sección de la URL, así que el resto no está en
+    // el documento: para ir a otra hay que cargarla de verdad.
+    if (!document.querySelector('.pagina[data-pag="' + nombre + '"]')) {
+      location.href = (RUTAS[nombre] || '/') + (ancla ? '#' + ancla : '');
+      return;
+    }
     pags.forEach(function (p) { p.classList.toggle('activa', p.dataset.pag === nombre); });
     // Corporativo se viste de ciruela; el resto del sitio sigue en azul.
     var esCorp = nombre === 'corporativo';
@@ -2319,7 +2577,7 @@ body.tema-corporativo {
       return '<article class="tienda-ficha rev"' + (i ? ' data-d="' + i + '"' : '') + '>' +
         '<div class="tienda-foto">' +
           '<img src="' + t.foto + '" alt="Prendas a medida de Andrés Vargas" loading="lazy">' +
-          '<img src="assets/escudo-blanco.png" alt="" class="sello" loading="lazy">' +
+          '<img src="assets/escudo-blanco.png" alt="" class="sello" loading="lazy" width="261" height="420">' +
           '<span class="zona">' + t.zona + '</span>' +
           (t.destacado ? '<span class="tienda-badge">' + t.destacado + '</span>' : '') +
         '</div>' +
@@ -2341,42 +2599,23 @@ body.tema-corporativo {
       if (c) c.innerHTML = html;
     });
 
-    /* Datos estructurados: permiten que Google muestre cada tienda con su
-       dirección y su horario en la búsqueda y en Maps. Se generan del mismo
-       arreglo, así que no pueden quedar desfasados respecto a lo que se ve. */
+    /* El JSON-LD de las tiendas está escrito en el <head>, no generado aquí:
+       los rastreadores de IA no ejecutan JavaScript y se lo perderían. Como eso
+       abre la puerta a que se desfase respecto a este arreglo, esta comprobación
+       avisa por consola en cuanto las direcciones dejen de coincidir. */
     (function () {
-      var fichas = TIENDAS.map(function (t) {
-        return {
-          '@context': 'https://schema.org',
-          '@type': 'ClothingStore',
-          name: 'Andrés Vargas Sastrería · ' + t.nombre,
-          description: 'Sastrería a medida en Lima desde 1982. Trajes y camisas a medida, distribuidores oficiales de telas nacionales e importadas.',
-          image: location.origin + '/' + t.foto,
-          url: location.origin + '/',
-          telephone: '+51959370397',
-          email: 'servicioalcliente@andresvargas.pe',
-          priceRange: '$$$',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: t.calle,
-            addressLocality: t.distrito,
-            addressRegion: 'Lima',
-            addressCountry: 'PE'
-          },
-          openingHoursSpecification: (t.aperturas || []).map(function (a) {
-            return {
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: a.dias,
-              opens: a.abre,
-              closes: a.cierra
-            };
-          })
-        };
-      });
-      var et = document.createElement('script');
-      et.type = 'application/ld+json';
-      et.textContent = JSON.stringify(fichas);
-      document.head.appendChild(et);
+      var et = document.querySelector('script[type="application/ld+json"]');
+      if (!et) return;
+      try {
+        var grafo = JSON.parse(et.textContent)['@graph'] || [];
+        var enLD = grafo.filter(function (n) { return n['@type'] === 'ClothingStore'; })
+                        .map(function (n) { return n.address.streetAddress; }).sort();
+        var enDatos = TIENDAS.map(function (t) { return t.calle; }).sort();
+        if (enLD.join('|') !== enDatos.join('|')) {
+          console.warn('[Andrés Vargas] Los datos estructurados del <head> ya no coinciden ' +
+            'con el arreglo TIENDAS. Hay que actualizarlos a mano.', { enLD: enLD, enDatos: enDatos });
+        }
+      } catch (e) { console.warn('[Andrés Vargas] JSON-LD ilegible', e); }
     })();
 
   })();
@@ -2431,7 +2670,7 @@ body.tema-corporativo {
       return '<article class="caso rev"' + (i ? ' data-d="' + i + '"' : '') + '>' +
         '<div class="caso-visual">' +
           '<img class="caso-foto" src="' + p.foto + '" alt="' + p.nombre + '" loading="lazy">' +
-          '<img src="assets/escudo-blanco.png" alt="" class="caso-escudo" loading="lazy">' +
+          '<img src="assets/escudo-blanco.png" alt="" class="caso-escudo" loading="lazy" width="261" height="420">' +
           (p.badge ? '<span class="caso-badge">' + p.badge + '</span>' : '') +
           '<div class="caso-meta">' + metrica + '</div>' +
         '</div>' +
@@ -2474,25 +2713,6 @@ body.tema-corporativo {
     caja.innerHTML = conLogo.map(function (e) {
       return '<div class="empresa"><img src="' + e.logo + '" alt="' + e.n + '" loading="lazy"></div>';
     }).join('');
-  })();
-
-  /* ================= PREGUNTAS FRECUENTES · JSON-LD =================
-     Se genera leyendo el propio HTML, así que el dato estructurado y lo que
-     lee la persona no pueden separarse nunca. */
-  (function () {
-    var faq = document.getElementById('faq');
-    if (!faq) return;
-    var items = [].map.call(faq.querySelectorAll('details'), function (d) {
-      return {
-        '@type': 'Question',
-        name: d.querySelector('summary').textContent.trim(),
-        acceptedAnswer: { '@type': 'Answer', text: d.querySelector('p').textContent.trim() }
-      };
-    });
-    var et = document.createElement('script');
-    et.type = 'application/ld+json';
-    et.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items });
-    document.head.appendChild(et);
   })();
 
   /* ================= CASAS DE TELA =================
