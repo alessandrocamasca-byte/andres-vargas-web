@@ -512,3 +512,47 @@ origen con `sips`, detectando las bandas con un escaneo de columnas sobre BMP
 fuerte para tela de terno. No lo metí porque afirmar categorías de producto es
 decisión del cliente, no mía. Si Andrés Vargas confirma que vende casimir,
 entra en el H1 de Telas y en la FAQ.
+
+### Segunda vuelta de SEO/GEO (8 ago 2026)
+
+**El problema de fondo, que la primera vuelta no resolvió.** Dar una URL a cada
+sección no bastaba: las nueve seguían sirviendo el MISMO HTML de 142 KB con las
+nueve secciones dentro, y solo cambiaba un atributo. Para un buscador eran nueve
+páginas casi idénticas. Y para los rastreadores de IA —que en su mayoría **no
+ejecutan JavaScript**— preguntar por «trajes de novio en Lima» devolvía una
+página que hablaba sobre todo de otra cosa.
+
+Ahora el middleware **poda** las secciones que no son de la URL y pone `activa`
+en la que queda (`.pagina` es `display:none` por defecto: servir el contenido
+oculto es justo lo que los buscadores descuentan). Cada ruta pasa de 151 KB a
+~100 KB y dice solo lo suyo.
+
+Como consecuencia, los 33 enlaces internos llevan `href` real y la navegación es
+una carga normal. `ir()` cae a `location.href` si la sección pedida no está en el
+documento, así que los pocos elementos sin `href` siguen funcionando.
+
+**Datos estructurados: estaban generados por JavaScript.** O sea, invisibles
+justo para quien más los aprovecha. Ahora van escritos en el HTML:
+`Organization` y `WebSite` (que no existían), las tres `ClothingStore` y
+`BreadcrumbList` por ruta. El `FAQPage` va **dentro** de la sección de inicio
+para que la poda se lo lleve: declararlo en una página que no muestra las
+preguntas es dato inválido.
+
+Como escribirlos a mano abre la puerta al desfase, hay una comprobación que
+avisa por consola si las direcciones del JSON-LD dejan de coincidir con el
+arreglo `TIENDAS`.
+
+Fuera `priceRange: "$$$"`: Google lo muestra como indicador de precio y la regla
+del cliente es no publicar ninguno.
+
+**Compartir enlaces estaba roto.** `og:image` era una ruta relativa y ni WhatsApp
+ni Facebook las resuelven, así que el enlace se compartía sin imagen. Ahora es
+absoluta, con tamaño y alt, y **cada ruta tiene su propia foto**. Añadidas las
+etiquetas de Twitter, que no había.
+
+**Rendimiento.** Las 66 imágenes locales llevan `width`/`height` —evita el salto
+de maquetado que Google mide como CLS— y la foto del héroe se precarga.
+
+**El logo navegaba por JavaScript**, así que el enlace interno más repetido del
+sitio no existía para un rastreador. Ahora es `<a href="/">`. Las diez migas de
+pan, igual.
