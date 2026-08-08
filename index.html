@@ -97,8 +97,8 @@ h1, h2, h3, h4 {
 
 /* ---------- Layout ---------- */
 .caja { max-width: var(--ancho); margin-inline: auto; padding-inline: var(--margen); }
-.seccion { padding-block: clamp(4rem, 9vw, 8.5rem); }
-.seccion-corta { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.seccion { padding-block: clamp(3rem, 5.5vw, 5.5rem); }
+.seccion-corta { padding-block: clamp(2rem, 3.5vw, 3rem); }
 .fondo-azul { background: var(--azul); }
 .fondo-profundo { background: var(--azul-profundo); }
 .fondo-nube { background: var(--nube); }
@@ -156,14 +156,14 @@ h1, h2, h3, h4 {
 
 /* ---------- Cinta superior con la propuesta de valor ---------- */
 .cinta {
-  background: var(--azul-profundo); overflow: hidden; height: 34px;
+  background: var(--blanco); overflow: hidden; height: 34px; border-bottom: 1px solid var(--filete);
   display: flex; align-items: center; transition: height 0.4s var(--ease), opacity 0.3s var(--ease);
 }
 .cinta-pista { display: flex; gap: 0; white-space: nowrap; animation: correr 46s linear infinite; }
 .cinta-pista span {
   font-family: var(--display); font-size: 0.66rem; font-weight: 300; letter-spacing: 0.28em;
-  text-transform: uppercase; color: rgba(255,255,255,0.72); padding-inline: 1.6rem;
-  border-right: 1px solid rgba(255,255,255,0.2);
+  text-transform: uppercase; color: var(--azul); padding-inline: 1.6rem;
+  border-right: 1px solid var(--filete);
 }
 @keyframes correr { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .cinta-pista { animation: none; } }
@@ -302,7 +302,7 @@ h1, h2, h3, h4 {
 .miga span:hover { color: var(--blanco); }
 
 /* ---------- Encabezado de sección ---------- */
-.enc { margin-bottom: clamp(2rem, 4vw, 3.25rem); max-width: 64ch; }
+.enc { margin-bottom: clamp(1.75rem, 3vw, 2.5rem); max-width: 64ch; }
 .enc.centro { margin-inline: auto; }
 
 /* ---------- Cifras ---------- */
@@ -339,6 +339,11 @@ h1, h2, h3, h4 {
 .paso b { font-family: var(--display); font-weight: 200; font-size: 1.9rem; color: var(--azul-medio); line-height: 1; }
 .paso h3 { font-size: 0.98rem; letter-spacing: 0.09em; font-weight: 400; margin-bottom: 0.35rem; }
 .paso p { font-size: 0.86rem; font-weight: 300; color: var(--grafito); line-height: 1.8; }
+/* Sobre azul, grafito y azul-medio daban 1.8:1 y 1.27:1: ilegibles. */
+.sobre-azul .paso { border-top-color: rgba(255,255,255,0.22); }
+.sobre-azul .paso b { color: var(--azul-claro); }
+.sobre-azul .paso p { color: rgba(255,255,255,0.76); }
+.sobre-azul .paso h3 { color: var(--blanco); }
 
 /* ---------- Telas ---------- */
 .tela { border: 1px solid var(--filete); background: var(--blanco); transition: border-color 0.35s var(--ease); }
@@ -597,6 +602,29 @@ h1, h2, h3, h4 {
 .form-acciones { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--e2); }
 .form-error { font-size: 0.82rem; color: #FFC9C9; font-weight: 300; }
 
+/* ---------- Banner de paso a otra sección ---------- */
+.banner {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.6rem; text-align: center; cursor: pointer; overflow: hidden;
+  min-height: clamp(230px, 26vw, 330px); padding: clamp(2rem, 4vw, 3rem) var(--margen);
+  background-color: var(--azul);
+  background-image: linear-gradient(rgba(23,39,64,0.82), rgba(23,39,64,0.82)), var(--foto, none);
+  background-size: cover; background-position: center 32%;
+  transition: background-size 0.9s var(--ease);
+}
+.banner:hover { background-size: 106%; }
+.banner-rotulo { font-family: var(--display); font-size: 0.67rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--azul-claro); }
+.banner-titulo {
+  font-family: var(--display); font-weight: 200; text-transform: uppercase; letter-spacing: 0.012em;
+  font-size: clamp(1.65rem, 3.4vw, 2.6rem); line-height: 1.05; color: var(--blanco);
+}
+.banner-cta {
+  margin-top: var(--e3); font-family: var(--display); font-size: 0.71rem; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--blanco); border: 1px solid rgba(255,255,255,0.55);
+  padding: 0.85rem 1.9rem; transition: all 0.35s var(--ease);
+}
+.banner:hover .banner-cta { background: var(--blanco); color: var(--azul); border-color: var(--blanco); }
+
 /* ---------- Cierre con fotografía de fondo ---------- */
 .cierre { position: relative; overflow: hidden; background: var(--azul); padding-block: clamp(4.5rem, 9vw, 8rem); }
 .cierre-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
@@ -798,16 +826,19 @@ h1, h2, h3, h4 {
       <div class="rejilla r3">
         <article class="pilar doble-filete rev">
           <span class="num">01</span>
+          <span class="icono" data-icono="patron"></span>
           <h3>Desde cero, contigo</h3>
           <p>No adaptamos una talla: construimos la prenda. El cliente participa en cada decisión, del primer boceto a la última prueba.</p>
         </article>
         <article class="pilar doble-filete rev" data-d="1">
           <span class="num">02</span>
+          <span class="icono" data-icono="charla"></span>
           <h3>Asesoría de sastres expertos</h3>
           <p>Nuestros sastres te guían en la elección de telas, colores, cortes y acabados para que el resultado sea el correcto.</p>
         </article>
         <article class="pilar doble-filete rev" data-d="2">
           <span class="num">03</span>
+          <span class="icono" data-icono="cinta"></span>
           <h3>Diseñado a tu medida</h3>
           <p>Cada prenda se diseña sobre tus gustos, tus necesidades y tus medidas. Nada es estándar.</p>
         </article>
@@ -1096,26 +1127,12 @@ h1, h2, h3, h4 {
     </div>
   </section>
 
-  <!-- La tela -->
-  <section class="seccion">
-    <div class="caja dos-col">
-      <div class="rev"><img src="assets/editorial-duo.jpg" alt="Trajes confeccionados en telas nacionales e importadas" loading="lazy"></div>
-      <div class="rev" data-d="1">
-        <div class="marca-div izq"><i></i></div>
-        <span class="rotulo">La decisión que más pesa</span>
-        <h2 class="t-xl">Todo empieza por la tela</h2>
-        <p class="lead" style="margin-top:1.25rem;">El corte define la forma, pero la tela define cómo se ve, cómo cae y cuánto dura. Es la primera decisión y la que más condiciona el resultado.</p>
-        <ul class="lista">
-          <li>Nacional, italiana e inglesa, para comparar con criterio.</li>
-          <li>Precio directo: somos distribuidores oficiales.</li>
-          <li>Asesoría según la ocasión, el clima de Lima y la caída que buscas.</li>
-        </ul>
-        <div class="acciones" style="margin-top:2rem;">
-          <a class="btn btn-azul" data-ir="telas">Ver las telas</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Banner hacia Telas -->
+  <a class="banner rev" data-ir="telas" style="--foto:url('assets/editorial-duo.jpg');">
+    <span class="banner-rotulo">La decisión que más pesa</span>
+    <span class="banner-titulo">Todo empieza por la tela</span>
+    <span class="banner-cta">Ver las telas</span>
+  </a>
 
   <!-- Cierre -->
   <section class="cierre sobre-azul">
@@ -1239,9 +1256,12 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="enc centro"><span class="rotulo">Personalización</span><h2 class="t-xl">Lo que puedes elegir</h2></div>
       <div class="rejilla r3">
-        <article class="pilar doble-filete rev"><span class="num">01</span><h3>El cuello</h3><p>Define el carácter de la camisa y cómo se ve con o sin corbata.</p></article>
-        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><h3>El puño</h3><p>Simple para el día a día, doble para gemelos en ocasiones formales.</p></article>
-        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><h3>La tela</h3><p>Del popelín liso al lino fresco, según el clima y la ocasión.</p></article>
+        <article class="pilar doble-filete rev"><span class="num">01</span><span class="icono" data-icono="cuello"></span>
+          <h3>El cuello</h3><p>Define el carácter de la camisa y cómo se ve con o sin corbata.</p></article>
+        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><span class="icono" data-icono="puno"></span>
+          <h3>El puño</h3><p>Simple para el día a día, doble para gemelos en ocasiones formales.</p></article>
+        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><span class="icono" data-icono="tela"></span>
+          <h3>La tela</h3><p>Del popelín liso al lino fresco, según el clima y la ocasión.</p></article>
       </div>
     </div>
   </section>
@@ -1313,9 +1333,12 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="enc"><span class="rotulo">Ventajas</span><h2 class="t-xl">Por qué la tela importa</h2></div>
       <div class="rejilla r3">
-        <article class="pilar doble-filete rev"><span class="num">01</span><h3>Variedad real</h3><p>Tejeduría peruana junto a casas italianas e inglesas, para que compares y elijas con criterio.</p></article>
-        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><h3>Precio directo</h3><p>Al ser distribuidores oficiales, la tela no pasa por intermediarios y eso se refleja en lo que pagas.</p></article>
-        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><h3>Asesoría honesta</h3><p>Te decimos qué tejido conviene según la ocasión, el clima de Lima y la caída que buscas.</p></article>
+        <article class="pilar doble-filete rev"><span class="num">01</span><span class="icono" data-icono="tela"></span>
+          <h3>Variedad real</h3><p>Tejeduría peruana junto a casas italianas e inglesas, para que compares y elijas con criterio.</p></article>
+        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><span class="icono" data-icono="etiqueta"></span>
+          <h3>Precio directo</h3><p>Al ser distribuidores oficiales, la tela no pasa por intermediarios y eso se refleja en lo que pagas.</p></article>
+        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><span class="icono" data-icono="charla"></span>
+          <h3>Asesoría honesta</h3><p>Te decimos qué tejido conviene según la ocasión, el clima de Lima y la caída que buscas.</p></article>
       </div>
     </div>
   </section>
@@ -1407,16 +1430,19 @@ h1, h2, h3, h4 {
       <div class="rejilla r3">
         <article class="pilar doble-filete rev">
           <span class="num">01</span>
+          <span class="icono" data-icono="personas"></span>
           <h3>Ven acompañado</h3>
           <p>Elegir el traje es parte de la boda. Ven con tu pareja, tu familia o tus padrinos: aquí se decide en conjunto, sin prisa.</p>
         </article>
         <article class="pilar doble-filete rev" data-d="1">
           <span class="num">02</span>
+          <span class="icono" data-icono="tijeras"></span>
           <h3>Asesoría de sastres</h3>
           <p>Nuestros sastres te guían en la tela, el color, el corte y los acabados según la hora, el lugar y el estilo de tu boda.</p>
         </article>
         <article class="pilar doble-filete rev" data-d="2">
           <span class="num">03</span>
+          <span class="icono" data-icono="cinta"></span>
           <h3>Ajuste hasta el final</h3>
           <p>Tomamos medidas y ajustamos en las pruebas necesarias, para que el día de la boda la prenda caiga exacta.</p>
         </article>
@@ -1528,9 +1554,12 @@ h1, h2, h3, h4 {
     <div class="caja">
       <div class="enc"><span class="rotulo">Soluciones</span><h2 class="t-xl">Cómo trabajamos con empresas</h2></div>
       <div class="rejilla r3">
-        <article class="pilar doble-filete rev"><span class="num">01</span><h3>Directivos</h3><p>Trajes y camisas a medida para la plana gerencial, con la imagen que el cargo pide.</p></article>
-        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><h3>Equipos</h3><p>Vestuario coherente para equipos comerciales y de atención, con la misma línea para todos.</p></article>
-        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><h3>Tela a precio directo</h3><p>Al ser distribuidores oficiales, en pedidos por volumen la diferencia en la tela se nota.</p></article>
+        <article class="pilar doble-filete rev"><span class="num">01</span><span class="icono" data-icono="persona"></span>
+          <h3>Directivos</h3><p>Trajes y camisas a medida para la plana gerencial, con la imagen que el cargo pide.</p></article>
+        <article class="pilar doble-filete rev" data-d="1"><span class="num">02</span><span class="icono" data-icono="personas"></span>
+          <h3>Equipos</h3><p>Vestuario coherente para equipos comerciales y de atención, con la misma línea para todos.</p></article>
+        <article class="pilar doble-filete rev" data-d="2"><span class="num">03</span><span class="icono" data-icono="etiqueta"></span>
+          <h3>Tela a precio directo</h3><p>Al ser distribuidores oficiales, en pedidos por volumen la diferencia en la tela se nota.</p></article>
       </div>
     </div>
   </section>
@@ -1603,10 +1632,6 @@ h1, h2, h3, h4 {
         <span class="rotulo">Lo que viene</span>
         <h2 class="t-xl">Los primeros artículos</h2>
       </div>
-      <div class="aviso rev" style="margin-bottom:2.5rem;">
-        <b>En preparación</b>
-        Estamos escribiendo los primeros artículos. Los temas de abajo son los que vienen; muy pronto podrás leerlos completos.
-      </div>
       <div class="rejilla r3">
         <article class="nota rev">
           <div class="nota-img"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro" loading="lazy"></div>
@@ -1664,7 +1689,6 @@ h1, h2, h3, h4 {
       <div class="acciones" style="margin-top:2rem;">
         <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
       </div>
-      <div class="pag-resumen" id="resumen-tiendas"></div>
     </div>
   </section>
 
@@ -2140,6 +2164,27 @@ h1, h2, h3, h4 {
       }).join('');
     }
   })();
+
+  /* ================= ICONOS =================
+     Dibujados a mano con trazo de 1px, para que pesen lo mismo que los
+     filetes del sistema. Se inyectan en cualquier `[data-icono]`. */
+  var ICONOS = {
+    patron:   '<path d="M6 27V9l7-4 3 3 3-3 7 4v18z"/><path d="M13 5l3 6 3-6M16 11v16"/>',
+    tijeras:  '<circle cx="8" cy="24" r="3.4"/><circle cx="24" cy="24" r="3.4"/><path d="M10.4 21.6L26 5M21.6 21.6L6 5"/>',
+    cinta:    '<rect x="2.5" y="11" width="27" height="10" rx="1.6"/><path d="M8 11v4M13 11v6M18 11v4M23 11v6"/>',
+    charla:   '<path d="M4 6h17v12H11l-7 5V6z"/><path d="M24 11h4v12l-4-3h-6"/>',
+    cuello:   '<path d="M16 19L6.5 10.5L11 6.5z"/><path d="M16 19l9.5-8.5L21 6.5z"/><path d="M11 6.5h10"/><circle cx="16" cy="23.5" r="1.4"/>',
+    puno:     '<rect x="5" y="8" width="22" height="16" rx="1.4"/><path d="M21 8v16"/><circle cx="24" cy="13" r="1.3"/><circle cx="24" cy="19" r="1.3"/>',
+    tela:     '<path d="M4 8h24v14q-3 3-6 0t-6 0-6 0-6 0z"/><path d="M4 14h24M11.5 8v12.6M20 8v12.6"/>',
+    etiqueta: '<path d="M4 4h11l13 13-11 11L4 15z"/><circle cx="10.5" cy="10.5" r="2.2"/>',
+    persona:  '<circle cx="16" cy="10" r="4.6"/><path d="M6 28v-2a10 10 0 0120 0v2"/>',
+    personas: '<circle cx="11" cy="11" r="4"/><path d="M3 27v-2a8 8 0 0116 0v2"/><path d="M22 8.4a4 4 0 010 7.8M23 19.4A8 8 0 0129 25v2"/>'
+  };
+  document.querySelectorAll('[data-icono]').forEach(function (e) {
+    var d = ICONOS[e.dataset.icono];
+    if (!d) return;
+    e.outerHTML = '<svg class="icono" viewBox="0 0 32 32" aria-hidden="true">' + d + '</svg>';
+  });
 
   /* ================= FORMULARIO DE CONSULTA =================
      No hay backend, así que el formulario compone el mensaje y lo abre en
