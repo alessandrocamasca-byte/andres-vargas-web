@@ -402,3 +402,33 @@ Resuelto con `functions/_middleware.js`, que sí se ejecuta antes que el archivo
 - **Bug corregido (30 jul):** el menú móvil no ocupaba la altura de la pantalla (64px en vez de 812px) porque dependía de que `inset: 0` resolviera la altura. Ahora lleva `height: 100svh` explícito.
 - **Fotos de Unsplash retiradas:** ya no se usa ninguna. Todas las imágenes son del cliente y viven en el repo, así que no hay riesgo de que una URL externa desaparezca.
 - Las muestras de tela de la página Telas son **referencias de color**, no telas reales del muestrario. Está advertido en la propia página. Si el cliente entrega fotos macro de sus telas, se sustituyen.
+
+### Hero convertido en carrusel de banners (7 ago 2026)
+
+El hero pasa de una sola imagen a tres banners que se cruzan por opacidad.
+Autoavance de 6,8 s; se detiene al pasar el mouse, al recibir foco de teclado
+y cuando el hero sale de pantalla (incluido el salto a otra página, que lo
+deja en `display:none`). Flechas, barras y deslizamiento táctil. El banner
+que no se ve queda con `inert`, así que sus botones no entran al tabulador.
+
+Los tres textos salen tal cual de sus páginas: nada escrito solo para el hero.
+
+1. Sastrería a medida · Lima → eslogan de marca (lleva el único `<h1>`)
+2. Experiencia novio → `novios-trio-wide.jpg`
+3. Distribuidores oficiales → `editorial-duo.jpg`
+
+**Por qué solo tres.** De todo el material, únicamente `hero.jpg` (1900 px) y
+`novios-trio-wide.jpg` (1300 px) sirven a sangre completa. `editorial-duo.jpg`
+es vertical (1275×1400) y ya se recorta fuerte; las `traje-*.jpg` miden 562 px
+de ancho y en un banner se verían borrosas. **No hay banner de Corporativo por
+falta de foto**, no por decisión de diseño.
+
+Para añadir banners hace falta foto **horizontal, mínimo 2000 px de ancho**,
+con espacio vacío o de tono uniforme en el tercio derecho (ahí va el texto).
+Pendientes: Corporativo (equipo o directivos), Telas (tejidos o el mostrador),
+Tiendas (fachada).
+
+**Colisión resuelta.** El botón flotante de WhatsApp ocupa 84 px desde el borde
+derecho. El margen del contenedor (1280 px) solo lo libra a partir de 1352 px
+de ventana; por debajo el mando se aparta 100 px. En táctil las flechas se
+ocultan —se pasa deslizando— y las barras se van a la izquierda.

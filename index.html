@@ -248,14 +248,26 @@ h1, h2, h3, h4 {
 /* ---------- Hero a sangre completa ----------
    La foto está compuesta con el sujeto a la izquierda y el muro de piedra a
    la derecha, así que el texto va sobre el muro y el velo oscurece por ese lado. */
-.hero {
+.hero { position: relative; min-height: 100svh; overflow: hidden; background: var(--azul); --duracion: 6800ms; }
+/* Cada banner es una capa completa (foto + velo + texto) superpuesta a las
+   demás. Se cruzan por opacidad, nunca desplazándose: el corte lateral de una
+   foto a sangre se nota como un salto. */
+.hero-capa {
+  position: absolute; inset: 0; display: flex; align-items: center;
   /* Reserva el alto de la cabecera por dentro (padding), no por fuera (margin):
      con margin, cualquier redondeo de medio pixel deja asomar el fondo de
      pagina —que es casi blanco— y se ve como una raya bajo el header. */
-  position: relative; padding-top: var(--alto-cabecera); min-height: 100svh;
-  display: flex; align-items: center; overflow: hidden; background: var(--azul);
+  padding-top: var(--alto-cabecera);
+  opacity: 0; visibility: hidden;
+  transition: opacity 1.1s var(--ease), visibility 1.1s var(--ease);
 }
-.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 26% 34%; }
+.hero-capa.on { opacity: 1; visibility: visible; }
+.hero-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  object-position: var(--pos, 26% 34%);
+  transform: scale(1.055); transition: transform 8s linear;
+}
+.hero-capa.on .hero-img { transform: scale(1); }
 .hero-velo {
   position: absolute; inset: 0;
   background:
@@ -273,14 +285,56 @@ h1, h2, h3, h4 {
 }
 .hero-slogan em { font-style: normal; color: var(--azul-tenue); }
 .hero-firma { margin-top: var(--e5); }
+
+/* ---------- Mando del carrusel ----------
+   Barras de 2px en vez de puntos: el filete fino es el motivo del sistema, y
+   la barra que se llena avisa cuánto falta para el siguiente banner. */
+.hero-mando { position: absolute; left: 0; right: 0; bottom: clamp(1.4rem, 3vw, 2.6rem); z-index: 5; }
+.hero-mando-fila { display: flex; justify-content: flex-end; align-items: center; gap: clamp(0.9rem, 2vw, 1.6rem); }
+/* El botón flotante de WhatsApp ocupa 84px desde el borde derecho. El margen
+   del contenedor (1280px de ancho) solo lo libra a partir de 1352px de
+   ventana; por debajo hay que apartar el mando o la flecha queda tapada. */
+@media (max-width: 1352px) { .hero-mando-fila { padding-right: 6.25rem; } }
+.hero-barras { display: flex; gap: 0.7rem; }
+.hero-barra {
+  appearance: none; border: none; padding: 0; cursor: pointer; position: relative; overflow: hidden;
+  width: clamp(30px, 4.5vw, 54px); height: 2px; background: rgba(255,255,255,0.34);
+}
+.hero-barra::after {
+  content: ""; position: absolute; inset: 0; background: var(--blanco);
+  transform: scaleX(0); transform-origin: left;
+}
+.hero-barra.on::after { animation: llenar var(--duracion) linear forwards; }
+.hero.pausa .hero-barra.on::after { animation-play-state: paused; }
+@keyframes llenar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.hero-flechas { display: flex; gap: 0.5rem; }
+.hero-flecha {
+  appearance: none; background: none; cursor: pointer; display: grid; place-items: center;
+  width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.4); color: var(--blanco);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.hero-flecha:hover { background: var(--blanco); border-color: var(--blanco); color: var(--azul); }
+.hero-flecha svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.2; }
+.hero-barra:focus-visible, .hero-flecha:focus-visible { outline: 2px solid var(--blanco); outline-offset: 3px; }
+
 @media (max-width: 900px) {
-  .hero { min-height: 88svh; align-items: flex-end; }
-  .hero-img { object-position: 32% 30%; }
+  .hero { min-height: 88svh; }
+  .hero-capa { align-items: flex-end; }
+  .hero-img { object-position: var(--pos-movil, 32% 30%); }
   .hero-velo {
     background: linear-gradient(to top, rgba(23,39,64,0.96) 0%, rgba(23,39,64,0.88) 34%, rgba(23,39,64,0.55) 62%, rgba(23,39,64,0.22) 100%);
   }
-  .hero-inner { justify-content: flex-start; }
+  .hero-inner { justify-content: flex-start; padding-bottom: clamp(5rem, 14vw, 7rem); }
   .hero-texto { max-width: none; }
+  /* En táctil se pasa deslizando, así que las flechas sobran: sin ellas el
+     mando cabe a la izquierda y nunca pelea con el botón de WhatsApp. */
+  .hero-flechas { display: none; }
+  .hero-mando-fila { justify-content: flex-start; padding-right: var(--margen); }
+  .hero-barra { width: clamp(38px, 12vw, 60px); height: 3px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-capa, .hero-img { transition: none; }
+  .hero-barra.on::after { animation: none; transform: scaleX(1); }
 }
 
 /* ---------- Cabecera de página interior ---------- */
@@ -752,19 +806,74 @@ h1, h2, h3, h4 {
 <!-- ==================== INICIO ==================== -->
 <main class="pagina activa" data-pag="inicio">
 
-  <section class="hero sobre-azul">
-    <img class="hero-img" src="assets/hero.jpg" alt="Smoking marfil confeccionado a medida en el atelier de Andrés Vargas" fetchpriority="high">
-    <div class="hero-velo"></div>
-    <div class="caja hero-inner">
-      <div class="hero-texto">
-        <span class="rotulo">Sastrería a medida · Lima</span>
-        <h1 class="hero-slogan">Cada prenda que hacemos guarda <em>la medida exacta del carácter</em> de quien la viste.</h1>
-        <div class="hero-firma">
-          <div class="acciones">
-            <a class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
-            <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+  <!-- Carrusel de banners. El texto de cada uno sale de su propia página: no
+       hay mensajes escritos solo para el hero que luego nadie mantenga. -->
+  <section class="hero sobre-azul" data-slider aria-roledescription="carrusel" aria-label="Andrés Vargas Boutique">
+
+    <div class="hero-capa on" style="--pos:26% 34%;" aria-label="1 de 3">
+      <img class="hero-img" src="assets/hero.jpg" alt="Smoking marfil confeccionado a medida en el atelier de Andrés Vargas" fetchpriority="high">
+      <div class="hero-velo"></div>
+      <div class="caja hero-inner">
+        <div class="hero-texto">
+          <span class="rotulo">Sastrería a medida · Lima</span>
+          <h1 class="hero-slogan">Cada prenda que hacemos guarda <em>la medida exacta del carácter</em> de quien la viste.</h1>
+          <div class="hero-firma">
+            <div class="acciones">
+              <a class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
+              <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+            </div>
+            <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Tres tiendas en Lima</p>
           </div>
-          <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Tres tiendas en Lima</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-capa" style="--pos:50% 28%; --pos-movil:50% 24%;" aria-label="2 de 3">
+      <img class="hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida de Andrés Vargas" loading="lazy">
+      <div class="hero-velo"></div>
+      <div class="caja hero-inner">
+        <div class="hero-texto">
+          <span class="rotulo">Experiencia novio</span>
+          <p class="hero-slogan">Todo lo que necesitas para ese día, <em>en un solo lugar</em>.</p>
+          <div class="hero-firma">
+            <div class="acciones">
+              <a class="btn btn-claro" data-ir="novios">Ver la experiencia</a>
+              <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+            </div>
+            <p class="mini" style="margin-top:1.5rem;">Chacarilla · Única con experiencia de novios</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-capa" style="--pos:50% 12%; --pos-movil:50% 14%;" aria-label="3 de 3">
+      <img class="hero-img" src="assets/editorial-duo.jpg" alt="Dos esmóquines a medida en tejidos distintos" loading="lazy">
+      <div class="hero-velo"></div>
+      <div class="caja hero-inner">
+        <div class="hero-texto">
+          <span class="rotulo">Distribuidores oficiales</span>
+          <p class="hero-slogan">Tela nacional, italiana e inglesa, <em>a precio directo</em>.</p>
+          <div class="hero-firma">
+            <div class="acciones">
+              <a class="btn btn-claro" data-ir="telas">Ver las telas</a>
+              <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
+            </div>
+            <p class="mini" style="margin-top:1.5rem;">Tejeduría peruana y casas italianas e inglesas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-mando">
+      <div class="caja hero-mando-fila">
+        <div class="hero-barras" aria-label="Banners"></div>
+        <div class="hero-flechas">
+          <button class="hero-flecha" type="button" data-paso="-1" aria-label="Banner anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4L7 12l8 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="hero-flecha" type="button" data-paso="1" aria-label="Banner siguiente">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -2310,6 +2419,98 @@ h1, h2, h3, h4 {
     });
     opciones(); dibuja();
   }
+
+  /* ================= CARRUSEL DEL HERO =================
+     Se detiene al pasar el mouse, al recibir foco de teclado y cuando el hero
+     deja de estar en pantalla —incluido el cambio de página, porque ahí queda
+     en display:none y seguir contando cambiaría el banner a espaldas de nadie. */
+  (function () {
+    var hero = document.querySelector('[data-slider]');
+    if (!hero) return;
+    var capas = [].slice.call(hero.querySelectorAll('.hero-capa'));
+    if (capas.length < 2) return;
+
+    var DURACION = 6800;
+    var lento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var caja = hero.querySelector('.hero-barras');
+    var reloj = null, actual = 0, aLaVista = true;
+
+    hero.style.setProperty('--duracion', DURACION + 'ms');
+    caja.innerHTML = capas.map(function (c, k) {
+      return '<button class="hero-barra" type="button" data-va="' + k +
+             '" aria-label="Banner ' + (k + 1) + ' de ' + capas.length + '"></button>';
+    }).join('');
+    var barras = [].slice.call(caja.children);
+
+    function ir(n) {
+      n = (n + capas.length) % capas.length;
+      capas.forEach(function (c, k) {
+        var act = k === n;
+        c.classList.toggle('on', act);
+        c.setAttribute('aria-hidden', act ? 'false' : 'true');
+        // inert saca del tabulador los botones del banner que no se ve
+        if ('inert' in c) c.inert = !act;
+      });
+      barras.forEach(function (b, k) {
+        b.classList.remove('on');
+        if (k === n) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+      });
+      void barras[n].offsetWidth; // fuerza el reinicio de la barra que se llena
+      barras[n].classList.add('on');
+      actual = n;
+    }
+
+    function parar() {
+      if (reloj) { clearInterval(reloj); reloj = null; }
+      hero.classList.add('pausa');
+    }
+    function arrancar() {
+      parar();
+      if (lento || !aLaVista) return;
+      hero.classList.remove('pausa');
+      reloj = setInterval(function () { ir(actual + 1); }, DURACION);
+    }
+    function saltar(n) { ir(n); arrancar(); }
+
+    barras.forEach(function (b) {
+      b.addEventListener('click', function () { saltar(+b.dataset.va); });
+    });
+    hero.querySelectorAll('[data-paso]').forEach(function (f) {
+      f.addEventListener('click', function () { saltar(actual + (+f.dataset.paso)); });
+    });
+
+    hero.addEventListener('mouseenter', parar);
+    hero.addEventListener('mouseleave', function () { arrancar(); });
+    hero.addEventListener('focusin', parar);
+    hero.addEventListener('focusout', function () { arrancar(); });
+    hero.addEventListener('keydown', function (ev) {
+      if (ev.key === 'ArrowLeft') { ev.preventDefault(); saltar(actual - 1); }
+      if (ev.key === 'ArrowRight') { ev.preventDefault(); saltar(actual + 1); }
+    });
+
+    var x0 = null;
+    hero.addEventListener('touchstart', function (ev) { x0 = ev.touches[0].clientX; }, { passive: true });
+    hero.addEventListener('touchend', function (ev) {
+      if (x0 === null) return;
+      var d = ev.changedTouches[0].clientX - x0;
+      if (Math.abs(d) > 45) saltar(actual + (d < 0 ? 1 : -1));
+      x0 = null;
+    }, { passive: true });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) parar(); else arrancar();
+    });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) {
+        aLaVista = e[0].isIntersecting;
+        if (aLaVista) arrancar(); else parar();
+      }, { threshold: 0.25 }).observe(hero);
+    }
+
+    ir(0);
+    arrancar();
+  })();
 
   animar(document.querySelector('.pagina[data-pag="inicio"]'));
 })();
