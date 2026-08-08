@@ -41,6 +41,9 @@
   --azul-bruma:    #74819A;  /* solo decorativo: 3.8:1, no apto para texto */
   --azul-claro:    #9FAAC0;  /* rótulos sobre azul, 6.3:1 */
   --azul-tenue:    #E7EAF0;
+  /* El mismo terciario en componentes, para los velos con transparencia.
+     Va suelto y no en hex porque rgba() necesita los canales por separado. */
+  --rgb-profundo:  23, 39, 64;
 
   /* --- Neutros. El manual trabaja en gris neutro y frío, nunca cálido.
      Su gris de texto (#818181) es de documento impreso y en pantalla da 3.8:1,
@@ -176,6 +179,36 @@ h1, h2, h3, h4 {
 @media (prefers-reduced-motion: reduce) { .cinta-pista { animation: none; } }
 .cabecera.fijo .cinta { height: 0; opacity: 0; }
 
+/* ============================================================
+   TEMA DE CORPORATIVO
+   Corporativo se viste de ciruela en vez del azul de marca. Se aplica en el
+   <body> y no en la página, porque si la cabecera se quedara azul justo encima
+   de un héroe ciruela la junta se leería como un error.
+
+   Los tintes no están elegidos a ojo: son el mismo tono (331°) con los pasos
+   de claridad de la familia azul, para que los contrastes se conserven.
+     · ciruela sobre blanco ......... 10.3:1
+     · pizarra sobre blanco .......... 6.3:1  (igual que el azul)
+     · claro sobre ciruela ........... 5.5:1
+   ============================================================ */
+body.tema-corporativo {
+  --azul:          #5D3347;
+  --azul-medio:    #79445D;
+  --azul-profundo: #502B3D;
+  --azul-pizarra:  #7D5468;
+  --azul-bruma:    #9B7889;  /* decorativo: no apto para texto */
+  --azul-claro:    #CEB6C1;
+  --azul-tenue:    #F0E6EA;
+  --rgb-profundo:  80, 43, 61;
+  /* Los neutros del sistema son fríos porque salen de la familia azul. Sobre
+     ciruela se notan verdosos, así que se inclinan al mismo tono conservando
+     su claridad; el texto (piedra y grafito) se queda neutro, que es lo que
+     mejor se lee. */
+  --papel:  #FCFAFB;
+  --nube:   #F5F1F3;
+  --filete: #E8E0E4;
+}
+
 /* ---------- Cabecera maison: logo centrado, menú debajo ---------- */
 .cabecera {
   position: fixed; inset: 0 0 auto 0; z-index: 100; background: var(--azul);
@@ -183,7 +216,7 @@ h1, h2, h3, h4 {
 }
 /* Sombra difusa, nunca un filo de 1px: una línea clara aquí corta la foto
    del hero y se lee como un defecto. */
-.cabecera.fijo { box-shadow: 0 10px 30px rgba(23,39,64,0.28); }
+.cabecera.fijo { box-shadow: 0 10px 30px rgba(var(--rgb-profundo), 0.28); }
 .nav {
   display: flex; flex-direction: column; align-items: center; gap: 0.85rem;
   padding-block: 1.15rem; transition: padding 0.4s var(--ease), gap 0.4s var(--ease);
@@ -278,8 +311,8 @@ h1, h2, h3, h4 {
 .hero-velo {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to left, rgba(23,39,64,0.95) 0%, rgba(23,39,64,0.90) 26%, rgba(23,39,64,0.58) 52%, rgba(23,39,64,0.20) 78%, rgba(23,39,64,0.10) 100%),
-    linear-gradient(to top, rgba(23,39,64,0.42) 0%, transparent 42%);
+    linear-gradient(to left, rgba(var(--rgb-profundo), 0.95) 0%, rgba(var(--rgb-profundo), 0.90) 26%, rgba(var(--rgb-profundo), 0.58) 52%, rgba(var(--rgb-profundo), 0.20) 78%, rgba(var(--rgb-profundo), 0.10) 100%),
+    linear-gradient(to top, rgba(var(--rgb-profundo), 0.42) 0%, transparent 42%);
 }
 .hero-inner {
   position: relative; z-index: 2; width: 100%; display: flex; justify-content: flex-end;
@@ -329,7 +362,7 @@ h1, h2, h3, h4 {
   .hero-capa { align-items: flex-end; }
   .hero-img { object-position: var(--pos-movil, 32% 30%); }
   .hero-velo {
-    background: linear-gradient(to top, rgba(23,39,64,0.96) 0%, rgba(23,39,64,0.88) 34%, rgba(23,39,64,0.55) 62%, rgba(23,39,64,0.22) 100%);
+    background: linear-gradient(to top, rgba(var(--rgb-profundo), 0.96) 0%, rgba(var(--rgb-profundo), 0.88) 34%, rgba(var(--rgb-profundo), 0.55) 62%, rgba(var(--rgb-profundo), 0.22) 100%);
   }
   .hero-inner { justify-content: flex-start; padding-bottom: clamp(5rem, 14vw, 7rem); }
   .hero-texto { max-width: none; }
@@ -353,13 +386,13 @@ h1, h2, h3, h4 {
 .pag-hero-velo {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to right, rgba(23,39,64,0.93) 0%, rgba(23,39,64,0.90) 46%, rgba(23,39,64,0.70) 60%, rgba(23,39,64,0.36) 80%, rgba(23,39,64,0.18) 100%),
-    linear-gradient(to bottom, rgba(23,39,64,0.38) 0%, transparent 34%, rgba(23,39,64,0.26) 100%);
+    linear-gradient(to right, rgba(var(--rgb-profundo), 0.93) 0%, rgba(var(--rgb-profundo), 0.90) 46%, rgba(var(--rgb-profundo), 0.70) 60%, rgba(var(--rgb-profundo), 0.36) 80%, rgba(var(--rgb-profundo), 0.18) 100%),
+    linear-gradient(to bottom, rgba(var(--rgb-profundo), 0.38) 0%, transparent 34%, rgba(var(--rgb-profundo), 0.26) 100%);
 }
 .pag-hero .caja { position: relative; z-index: 2; }
 @media (max-width: 860px) {
   .pag-hero-velo {
-    background: linear-gradient(to bottom, rgba(23,39,64,0.92) 0%, rgba(23,39,64,0.86) 55%, rgba(23,39,64,0.90) 100%);
+    background: linear-gradient(to bottom, rgba(var(--rgb-profundo), 0.92) 0%, rgba(var(--rgb-profundo), 0.86) 55%, rgba(var(--rgb-profundo), 0.90) 100%);
   }
 }
 .miga { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
@@ -407,7 +440,7 @@ h1, h2, h3, h4 {
   /* Las fotos de producto son de estudio, casi blancas. Con un velo suave el
      título quedaba en 3.6:1 sobre ellas; el degradado tiene que llegar denso
      hasta donde empieza el texto, no solo al borde inferior. */
-  background: linear-gradient(to top, rgba(23,39,64,0.96) 0%, rgba(23,39,64,0.86) 30%, rgba(23,39,64,0.30) 62%, rgba(23,39,64,0) 84%);
+  background: linear-gradient(to top, rgba(var(--rgb-profundo), 0.96) 0%, rgba(var(--rgb-profundo), 0.86) 30%, rgba(var(--rgb-profundo), 0.30) 62%, rgba(var(--rgb-profundo), 0) 84%);
 }
 .tarjeta-txt { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--e4); display: flex; flex-direction: column; }
 .tarjeta-txt b { font-family: var(--display); font-weight: 400; font-size: 1.02rem; letter-spacing: 0.11em; text-transform: uppercase; }
@@ -581,14 +614,14 @@ h1, h2, h3, h4 {
   border: 1px solid var(--filete); overflow: hidden; min-height: 100%;
   transition: border-color 0.4s var(--ease), transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
-.caso:hover { border-color: var(--azul-pizarra); transform: translateY(-4px); box-shadow: 0 16px 44px rgba(23,39,64,0.13); }
+.caso:hover { border-color: var(--azul-pizarra); transform: translateY(-4px); box-shadow: 0 16px 44px rgba(var(--rgb-profundo), 0.13); }
 
 .caso-visual { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--azul); }
 .caso-foto { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
 .caso:hover .caso-foto { transform: scale(1.05); }
 .caso-visual::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(23,39,64,0.95) 0%, rgba(23,39,64,0.74) 38%, rgba(23,39,64,0.30) 72%, rgba(23,39,64,0.16) 100%);
+  background: linear-gradient(to top, rgba(var(--rgb-profundo), 0.95) 0%, rgba(var(--rgb-profundo), 0.74) 38%, rgba(var(--rgb-profundo), 0.30) 72%, rgba(var(--rgb-profundo), 0.16) 100%);
 }
 
 .caso-escudo { position: absolute; top: var(--e3); left: var(--e3); z-index: 2; width: 30px; opacity: 0.95; }
@@ -596,7 +629,7 @@ h1, h2, h3, h4 {
   position: absolute; top: var(--e3); right: var(--e3); z-index: 2;
   font-family: var(--display); font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--blanco); border: 1px solid rgba(255,255,255,0.42); padding: 0.32rem 0.8rem;
-  backdrop-filter: blur(6px); background: rgba(23,39,64,0.28);
+  backdrop-filter: blur(6px); background: rgba(var(--rgb-profundo), 0.28);
 }
 
 .caso-meta { position: absolute; left: var(--e4); right: var(--e4); bottom: var(--e4); z-index: 2; }
@@ -681,14 +714,14 @@ h1, h2, h3, h4 {
 .con-foto {
   position: relative; background-color: var(--azul);
   background-image:
-    linear-gradient(rgba(23,39,64,0.93), rgba(23,39,64,0.93)),
+    linear-gradient(rgba(var(--rgb-profundo), 0.93), rgba(var(--rgb-profundo), 0.93)),
     var(--foto, none);
   background-size: cover; background-position: center; background-repeat: no-repeat;
   background-attachment: scroll;
 }
 .con-foto.velo-suave {
   background-image:
-    linear-gradient(rgba(23,39,64,0.88), rgba(23,39,64,0.88)),
+    linear-gradient(rgba(var(--rgb-profundo), 0.88), rgba(var(--rgb-profundo), 0.88)),
     var(--foto, none);
 }
 
@@ -735,7 +768,7 @@ h1, h2, h3, h4 {
   gap: 0.6rem; text-align: center; cursor: pointer; overflow: hidden;
   min-height: clamp(230px, 26vw, 330px); padding: clamp(2rem, 4vw, 3rem) var(--margen);
   background-color: var(--azul);
-  background-image: linear-gradient(rgba(23,39,64,0.82), rgba(23,39,64,0.82)), var(--foto, none);
+  background-image: linear-gradient(rgba(var(--rgb-profundo), 0.82), rgba(var(--rgb-profundo), 0.82)), var(--foto, none);
   background-size: cover; background-position: center 32%;
   transition: background-size 0.9s var(--ease);
 }
@@ -757,7 +790,7 @@ h1, h2, h3, h4 {
 .cierre-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
 .cierre-velo {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(23,39,64,0.93) 0%, rgba(23,39,64,0.88) 45%, rgba(23,39,64,0.94) 100%);
+  background: linear-gradient(to bottom, rgba(var(--rgb-profundo), 0.93) 0%, rgba(var(--rgb-profundo), 0.88) 45%, rgba(var(--rgb-profundo), 0.94) 100%);
 }
 .cierre-inner { position: relative; z-index: 2; text-align: center; }
 
@@ -790,11 +823,11 @@ h1, h2, h3, h4 {
   display: flex; flex-direction: column; overflow: hidden; min-height: 100%;
   transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.tienda-ficha:hover { border-color: var(--azul-pizarra); box-shadow: 0 14px 40px rgba(23,39,64,0.10); }
+.tienda-ficha:hover { border-color: var(--azul-pizarra); box-shadow: 0 14px 40px rgba(var(--rgb-profundo), 0.10); }
 .tienda-foto { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--azul); }
 .tienda-foto > img:first-child { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
 .tienda-ficha:hover .tienda-foto > img:first-child { transform: scale(1.04); }
-.tienda-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(23,39,64,0.78) 0%, rgba(23,39,64,0.30) 45%, rgba(23,39,64,0.10) 100%); }
+.tienda-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(var(--rgb-profundo), 0.78) 0%, rgba(var(--rgb-profundo), 0.30) 45%, rgba(var(--rgb-profundo), 0.10) 100%); }
 .tienda-foto .zona {
   position: absolute; left: var(--e3); bottom: var(--e3); z-index: 2;
   font-family: var(--display); font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--azul-claro);
@@ -811,7 +844,7 @@ h1, h2, h3, h4 {
   position: absolute; left: var(--e3); top: var(--e3); z-index: 2;
   font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--blanco); border: 1px solid rgba(255,255,255,0.5); padding: 0.28rem 0.7rem;
-  background: rgba(23,39,64,0.34); backdrop-filter: blur(6px);
+  background: rgba(var(--rgb-profundo), 0.34); backdrop-filter: blur(6px);
 }
 .tienda-cuerpo { padding: clamp(1.3rem, 2.4vw, 1.9rem); display: flex; flex-direction: column; gap: var(--e2); flex: 1; }
 .tienda-cuerpo h3 { font-size: 1.14rem; letter-spacing: 0.1em; font-weight: 400; }
@@ -848,7 +881,7 @@ h1, h2, h3, h4 {
 .wa {
   position: fixed; right: clamp(1rem, 3vw, 1.75rem); bottom: clamp(1rem, 3vw, 1.75rem); z-index: 90;
   width: 56px; height: 56px; border-radius: 50%; background: #25D366;
-  display: grid; place-items: center; box-shadow: 0 8px 28px rgba(23,39,64,0.28);
+  display: grid; place-items: center; box-shadow: 0 8px 28px rgba(var(--rgb-profundo), 0.28);
   transition: transform 0.3s var(--ease);
 }
 .wa:hover { transform: scale(1.07); }
@@ -2171,6 +2204,11 @@ h1, h2, h3, h4 {
 
   function ir(nombre, ancla, sinHistorial) {
     pags.forEach(function (p) { p.classList.toggle('activa', p.dataset.pag === nombre); });
+    // Corporativo se viste de ciruela; el resto del sitio sigue en azul.
+    var esCorp = nombre === 'corporativo';
+    document.body.classList.toggle('tema-corporativo', esCorp);
+    var tc = document.querySelector('meta[name="theme-color"]');
+    if (tc) tc.setAttribute('content', esCorp ? '#5D3347' : '#1A2744');
     var ruta = RUTAS[nombre];
     if (ruta && !sinHistorial && location.pathname !== ruta) {
       history.pushState({ pagina: nombre }, '', ruta);

@@ -95,10 +95,15 @@ class Meta {
 }
 
 /* Marca en el <body> qué sección abrir, para que el script no tenga que
-   deducirla de la URL por su cuenta. */
+   deducirla de la URL por su cuenta. El tema de Corporativo se pone aquí
+   también: si esperara al script, la página entraría azul y viraría a ciruela
+   a la vista del visitante. */
 class Cuerpo {
   constructor(pagina) { this.pagina = pagina; }
-  element(el) { el.setAttribute('data-ruta', this.pagina); }
+  element(el) {
+    el.setAttribute('data-ruta', this.pagina);
+    if (this.pagina === 'corporativo') el.setAttribute('class', 'tema-corporativo');
+  }
 }
 
 export async function onRequest(context) {
