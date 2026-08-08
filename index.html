@@ -260,7 +260,12 @@ body {
   font-family: var(--texto); font-weight: 400; font-size: 15.5px; line-height: 1.8;
   overflow-x: hidden; -webkit-font-smoothing: antialiased;
 }
-img { max-width: 100%; display: block; }
+/* `height: auto` es obligatorio desde que las imágenes llevan los atributos
+   width/height del archivo. Sin esto, en las que el CSS solo fija el ancho
+   —el escudo de la cabecera, el del pie— el navegador combina el ancho del CSS
+   con el alto del HTML y la imagen sale estirada. Las que sí fijan alto
+   (.tarjeta img, .hero-img…) ganan por especificidad y no se ven afectadas. */
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 ul { margin: 0; padding: 0; list-style: none; }
 p { margin: 0; }
