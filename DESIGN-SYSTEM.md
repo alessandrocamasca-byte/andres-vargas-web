@@ -229,3 +229,48 @@ Todos verificados con el documento del cliente (`4. Slogan, características, da
 - **Servicio de novios:** traje de 2 o 3 piezas, camisa a medida, corbata, pajarita, pañuelos y gemelos.
 
 **No hay precios, testimonios ni cifras de producción en la web**, porque el cliente no los ha entregado. Ver `NOTAS.md`.
+
+## Tema de Corporativo · ciruela
+
+Corporativo es la única sección que no va en el azul de marca. Usa **#5D3347**.
+
+```css
+body.tema-corporativo {
+  --azul:          #5D3347;
+  --azul-medio:    #79445D;
+  --azul-profundo: #502B3D;
+  --azul-pizarra:  #7D5468;
+  --azul-bruma:    #9B7889;   /* decorativo: no apto para texto */
+  --azul-claro:    #CEB6C1;
+  --azul-tenue:    #F0E6EA;
+  --rgb-profundo:  80, 43, 61;
+  --papel:  #FCFAFB;  --nube: #F5F1F3;  --filete: #E8E0E4;
+}
+```
+
+**Por qué en el `<body>` y no en la página.** La cabecera vive fuera de
+`.pagina`. Si se quedara azul justo encima de un héroe ciruela, esa junta se
+leería como un error, no como una decisión. El middleware pone la clase también
+en el servidor, así la página no entra azul y vira a la vista del visitante.
+
+**De dónde salen los tintes.** No están elegidos a ojo: es el mismo tono (331°)
+recorriendo los pasos de claridad de la familia azul, para conservar las
+relaciones de contraste del sistema.
+
+| | ratio | equivalente azul |
+|---|---|---|
+| ciruela sobre blanco | 10.3:1 | 14.4:1 |
+| pizarra sobre blanco | 6.3:1 | 6.3:1 |
+| claro sobre ciruela | 5.5:1 | 6.3:1 |
+
+Los 49 textos de la página quedaron verificados: ninguno incumple AA.
+
+**Los neutros también cambian.** `--papel`, `--nube` y `--filete` son fríos
+porque salen de la familia azul; sobre ciruela se notaban verdosos. Se inclinan
+al mismo tono conservando su claridad. `--piedra` y `--grafito` se quedan
+neutros: para leer párrafos es lo que mejor funciona.
+
+**Requisito para que funcione.** Ningún velo puede llevar el azul escrito a
+mano. Los 46 `rgba(23,39,64,…)` que había pasaron a
+`rgba(var(--rgb-profundo),…)`. Si se añade un degradado nuevo con el color
+literal, en Corporativo se quedará azul.
