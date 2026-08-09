@@ -1033,17 +1033,33 @@ body.tema-corporativo {
 /* ---- Ficha ampliada ---- */
 .cat-visor { position: fixed; inset: 0; z-index: 200; background: rgba(var(--rgb-profundo), 0.9); display: grid; place-items: center; padding: var(--margen); }
 .cat-visor[hidden] { display: none; }
-.cat-caja { background: var(--papel); max-width: 900px; width: 100%; max-height: 92svh; overflow: auto; position: relative; }
-.cat-cerrar { position: absolute; top: 0; right: 0; width: 48px; height: 48px; border: none; background: none; cursor: pointer; font-size: 1.5rem; line-height: 1; color: var(--azul); z-index: 2; }
-.cat-fotos { display: grid; grid-template-columns: 1fr 1fr; }
-@media (max-width: 640px) { .cat-fotos { grid-template-columns: 1fr; } }
-.cat-fotos img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
-.cat-ficha { padding: clamp(1.5rem, 4vw, 2.5rem); }
-.cat-ficha h3 { font-family: var(--display); font-weight: 400; font-size: 1.18rem; letter-spacing: 0.1em; color: var(--azul); }
-.cat-datos { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--e3); margin-top: var(--e4); }
-.cat-datos div { border-top: 1px solid var(--filete); padding-top: 0.6rem; }
-.cat-datos dt { font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-pizarra); }
-.cat-datos dd { font-size: 0.88rem; font-weight: 300; color: var(--grafito); margin-top: 0.2rem; }
+.cat-caja { background: var(--papel); max-width: 860px; width: 100%; max-height: 92svh; overflow: auto; position: relative; }
+/* El aspa va sobre la fotografía, así que necesita fondo propio: sin él
+   desaparece en cuanto la tela es clara. */
+.cat-cerrar {
+  position: absolute; top: 0.9rem; right: 0.9rem; width: 38px; height: 38px; z-index: 2;
+  border: 1px solid rgba(255,255,255,0.35); background: rgba(var(--rgb-profundo), 0.45);
+  backdrop-filter: blur(6px); cursor: pointer; font-size: 1.15rem; line-height: 1; color: var(--blanco);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.cat-cerrar:hover { background: rgba(var(--rgb-profundo), 0.75); border-color: rgba(255,255,255,0.6); }
+/* Manda la foto del orillo: es la que lleva la marca tejida y el grado. La
+   plana pasa a muestra pequeña junto al código, que es todo lo que aporta
+   cuando la tela es de color entero y el recuadro sale negro. */
+/* Tope de alto para portátiles y móviles en horizontal: sin él la foto se
+   lleva el recuadro entero y hay que desplazar para ver un solo dato. */
+.cat-foto { display: block; width: 100%; aspect-ratio: 21/9; max-height: 42svh; object-fit: cover; }
+@media (max-width: 620px) { .cat-foto { aspect-ratio: 3/2; } }
+.cat-ficha { padding: clamp(1.6rem, 4vw, 2.6rem); }
+.cat-enc { display: flex; align-items: center; gap: clamp(0.9rem, 2vw, 1.35rem); }
+.cat-muestra { flex: 0 0 auto; width: 62px; height: 62px; object-fit: cover; border: 1px solid var(--filete); }
+.cat-ficha h3 { font-family: var(--display); font-weight: 400; font-size: 1.42rem; letter-spacing: 0.09em; color: var(--azul); line-height: 1.15; }
+.cat-linaje { display: block; margin-top: 0.4rem; font-family: var(--display); font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--azul-pizarra); }
+.cat-datos { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(1.8rem, 4vw, 3.2rem); margin-top: clamp(1.5rem, 3vw, 2.1rem); }
+@media (max-width: 620px) { .cat-datos { grid-template-columns: 1fr; } }
+.cat-datos div { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; border-bottom: 1px solid var(--filete); padding: 0.72rem 0; }
+.cat-datos dt { flex: 0 0 auto; font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-pizarra); }
+.cat-datos dd { text-align: right; font-size: 0.88rem; font-weight: 300; color: var(--grafito); }
 .cat-aviso { font-size: 0.78rem; color: var(--piedra); margin-top: var(--e3); font-weight: 300; }
 
 /* ---------- Muro de empresas ---------- */
@@ -3800,15 +3816,20 @@ body.tema-corporativo {
     var visor = document.getElementById('cat-visor');
     function abrir(t) {
       document.getElementById('cat-fotos').innerHTML =
-        (t.i2 ? '<img src="assets/telas/' + t.i2 + '" alt="Orillo ' + t.c + '" width="480" height="320">' : '') +
-        '<img src="assets/telas/' + t.i + '" alt="Tejido ' + t.c + '" width="420" height="280">';
-      var filas = [['Código', t.c || '—'], ['Casa', CASA], ['Colección', t.k], ['Grado', t.g],
-                   ['Tejido', t.j], ['Composición', t.comp], ['Gramaje', t.gm],
+        '<img class="cat-foto" src="assets/telas/' + (t.i2 || t.i) + '" alt="Orillo de la tela ' + t.c + ' de ' + CASA + '" width="480" height="320">';
+      /* Casa, colección y grado suben al linaje: repetirlos como campos deja
+         «Barrington» once veces en las 483 fichas y no distingue ninguna. */
+      var linaje = [CASA, t.k, t.g].filter(Boolean).join(' · ');
+      var filas = [['Tejido', t.j], ['Composición', t.comp], ['Gramaje', t.gm],
                    ['Color', NOMBRE[t.o] || t.o], ['Diseño', t.d],
                    ['Peso', t.p], ['Uso', (t.u || []).join(', ')]].filter(function (f) { return f[1]; });
       var msg = 'Hola, me interesa la tela ' + (t.c || '') + ' de ' + CASA + ' (' + t.k + (t.g ? ', ' + t.g : '') + ').';
       document.getElementById('cat-ficha').innerHTML =
-        '<h3>' + (t.c || 'Tela') + '</h3>' +
+        '<div class="cat-enc">' +
+          (t.i2 ? '<img class="cat-muestra" src="assets/telas/' + t.i + '" alt="Muestra de la tela ' + t.c + '" width="420" height="280">' : '') +
+          '<div><h3>' + (t.c || 'Tela') + '</h3>' +
+          (linaje ? '<span class="cat-linaje">' + linaje + '</span>' : '') + '</div>' +
+        '</div>' +
         '<dl class="cat-datos">' + filas.map(function (f) {
           return '<div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'; }).join('') + '</dl>' +
         (t.v ? '<p class="cat-aviso">Código pendiente de confirmar con el catálogo impreso.</p>' : '') +
@@ -3816,6 +3837,7 @@ body.tema-corporativo {
         WA + '?text=' + encodeURIComponent(msg) + '">Consultar esta tela</a></div>';
       visor.hidden = false;
       document.body.style.overflow = 'hidden';
+      document.getElementById('cat-cerrar').focus();
     }
     function cerrar() { visor.hidden = true; document.body.style.overflow = ''; }
     rejilla.addEventListener('click', function (ev) {
