@@ -763,7 +763,10 @@ body.tema-corporativo {
 /* ---------- Pilar ---------- */
 .pilar { padding-top: var(--e4); }
 .pilar .num { font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.3em; color: var(--azul-medio); display: block; margin-bottom: var(--e2); }
-.pilar h3 { font-size: 1.02rem; letter-spacing: 0.09em; margin-bottom: var(--e2); font-weight: 400; }
+.pilar h3 {
+  font-size: 1.02rem; letter-spacing: 0.09em; margin-bottom: var(--e2); font-weight: 400;
+  line-height: 1.3; min-height: calc(2 * 1.3em);
+}
 .pilar p { font-size: 0.88rem; font-weight: 300; color: var(--grafito); line-height: 1.82; }
 .sobre-azul .pilar .num { color: rgba(255,255,255,0.8); }
 .sobre-azul .pilar p { color: rgba(255,255,255,0.88); }
@@ -856,6 +859,7 @@ body.tema-corporativo {
 .casa-sinlogo {
   display: grid; place-items: center start; font-family: var(--display); font-weight: 300;
   font-size: 1.12rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--azul-bruma);
+  height: clamp(64px, 6.4vw, 84px); padding-block: 0;
 }
 
 /* ============================================================
@@ -1130,7 +1134,10 @@ body.tema-corporativo {
 .nota:hover .nota-img img { transform: scale(1.04); }
 .nota-cuerpo { padding-top: var(--e3); margin-top: var(--e3); }
 .nota-meta { font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-medio); }
-.nota-cuerpo h3 { font-size: 0.98rem; letter-spacing: 0.09em; font-weight: 400; margin: 0.5rem 0; }
+.nota-cuerpo h3 {
+  font-size: 0.98rem; letter-spacing: 0.09em; font-weight: 400; margin: 0.5rem 0;
+  line-height: 1.3; min-height: calc(2 * 1.3em);
+}
 .nota-cuerpo p { font-size: 0.82rem; font-weight: 300; color: var(--piedra); line-height: 1.75; }
 
 /* ---------- Aviso ---------- */
@@ -1197,7 +1204,12 @@ body.tema-corporativo {
 
 .caso-cuerpo { padding: var(--e4); display: flex; flex-direction: column; gap: var(--e2); flex: 1; }
 .caso-cat { font-family: var(--display); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--azul-pizarra); }
-.caso-cuerpo h3 { font-size: 1rem; letter-spacing: 0.07em; font-weight: 400; line-height: 1.3; }
+.caso-cuerpo h3 {
+  font-size: 1rem; letter-spacing: 0.07em; font-weight: 400; line-height: 1.3;
+  /* Dos líneas reservadas: si un proyecto tiene el nombre más largo que
+     otro, el párrafo de debajo no puede bajar solo en esa tarjeta. */
+  min-height: calc(2 * 1.3em);
+}
 .caso-cuerpo p { font-size: 0.84rem; font-weight: 300; color: var(--grafito); flex: 1; line-height: 1.78; }
 .caso-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: var(--e2); }
 .caso-chips span {
@@ -1282,9 +1294,14 @@ body.tema-corporativo {
 
 /* ---------- Ficha de casa ---------- */
 .casa { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; gap: 0.5rem; }
+/* La caja del logo mide siempre igual y la escala se aplica por dentro. Antes
+   la escala cambiaba el alto de la caja, así que el texto de cada casa
+   arrancaba a distinta altura y la fila quedaba desalineada. */
 .casa-logo {
-  height: calc(clamp(58px, 6vw, 78px) * var(--escala, 1)); width: auto; max-width: 100%; object-fit: contain;
-  object-position: left center; align-self: flex-start;
+  height: clamp(64px, 6.4vw, 84px); width: 100%; max-width: 100%;
+  object-fit: contain; object-position: left center; align-self: stretch;
+  box-sizing: border-box;
+  padding-block: calc((1 - var(--escala, 1)) * clamp(32px, 3.2vw, 42px));
   mix-blend-mode: multiply; filter: brightness(1.08); opacity: 1; margin-bottom: var(--e3);
 }
 .casa .origen { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul-pizarra); }
