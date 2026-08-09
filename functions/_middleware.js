@@ -214,9 +214,25 @@ export async function onRequest(context) {
       .transform(html);
   }
 
-  // Archivos reales (assets, robots.txt, sitemap.xml, favicon…) siguen su curso.
-  const esArchivo = /\.[a-z0-9]+$/i.test(ruta);
-  if (esArchivo) return context.next();
+  /* Archivos reales (assets, robots.txt, sitemap.xml, favicon…).
+     Cloudflare Pages responde a un archivo que no existe con la portada entera
+     y un 200: pedir /assets/loquesea.png devolvía HTML haciéndose pasar por
+     imagen. Eso engaña a los rastreadores y rompe cualquier comprobación de
+     «¿existe este archivo?». Si lo que vuelve no es del tipo que se pidió, es
+     que no está: 404. */
+  const ext = (ruta.match(/\.([a-z0-9]+)$/i) || [])[1];
+  if (ext) {
+    const res = await context.next();
+    const tipo = res.headers.get('content-type') || '';
+    const esHtml = /text\/html/i.test(tipo);
+    if (esHtml && !/^html?$/i.test(ext)) {
+      return new Response('Not Found', {
+        status: 404,
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+      });
+    }
+    return res;
+  }
 
   // Cualquier otra cosa no existe. Antes devolvía la portada con 200.
   return new Response('Not Found', {

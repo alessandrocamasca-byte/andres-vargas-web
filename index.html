@@ -2960,7 +2960,10 @@ body.tema-corporativo {
     if (!caja) return;
     var ruta = 'assets/catalogo-telas.pdf';
     fetch(ruta, { method: 'HEAD' }).then(function (r) {
-      if (!r.ok) return;
+      // No basta con r.ok: Cloudflare Pages responde 200 con la portada entera
+      // cuando el archivo no existe, así que hay que mirar el tipo. Sin esto,
+      // el botón aparecía y descargaba un HTML llamado .pdf.
+      if (!r.ok || !/pdf/i.test(r.headers.get('content-type') || '')) return;
       document.getElementById('catalogo-enlace').href = ruta;
       caja.hidden = false;
     }).catch(function () { /* sin catálogo, el bloque se queda oculto */ });
