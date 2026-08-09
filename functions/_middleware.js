@@ -178,13 +178,26 @@ class Cuerpo {
 
 /* El menú trae «Inicio» marcado como activo en el HTML. Sin esto, en /telas se
    vería Inicio subrayado hasta que arrancara el script. */
+class MenuSub {
+  constructor(pagina) { this.pagina = pagina; }
+  element(el) {
+    const clases = (el.getAttribute('class') || '').replace(/\bon\b/g, '').trim();
+    const nuevo = el.getAttribute('data-ir') === this.pagina ? (clases + ' on').trim() : clases;
+    if (nuevo) el.setAttribute('class', nuevo); else el.removeAttribute('class');
+  }
+}
+
 class Menu {
   constructor(pagina) {
+    this.pagina = pagina;
     this.activo = { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[pagina] || pagina;
   }
   element(el) {
     const clases = (el.getAttribute('class') || '').replace(/\bon\b/g, '').trim();
-    const nuevo = el.getAttribute('data-ir') === this.activo ? (clases + ' on').trim() : clases;
+    // El submenú se marca por coincidencia exacta, no por sección padre.
+    const enSub = /submenu/.test(el.getAttribute('data-nivel') || '');
+    const objetivo = enSub ? this.pagina : this.activo;
+    const nuevo = el.getAttribute('data-ir') === objetivo ? (clases + ' on').trim() : clases;
     if (nuevo) el.setAttribute('class', nuevo); else el.removeAttribute('class');
   }
 }
@@ -215,7 +228,8 @@ export async function onRequest(context) {
     return new HTMLRewriter()
       .on('title, meta, link[rel="canonical"]', new Meta(conf, SITIO + (ruta === '/' ? '/' : ruta)))
       .on('head', new Miga(conf, SITIO + (ruta === '/' ? '/' : ruta)))
-      .on('.menu a[data-ir]', new Menu(conf.pagina))
+      .on('.menu > li > a[data-ir]', new Menu(conf.pagina))
+      .on('.submenu a[data-ir]', new MenuSub(conf.pagina))
       .on('body', new Cuerpo(conf.pagina))
       .on('main[data-pag]', new Podar(conf.pagina))
       .transform(html);

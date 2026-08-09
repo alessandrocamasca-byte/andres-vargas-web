@@ -576,6 +576,27 @@ body.tema-corporativo {
 .menu .btn-claro { color: var(--azul); }
 .menu .btn-claro:hover { color: var(--azul); }
 
+/* Submenú de Telas. En escritorio se despliega al pasar el mouse o al tabular;
+   en móvil no hay hover, así que se muestra siempre debajo. */
+.tiene-sub { position: relative; }
+.submenu {
+  position: absolute; top: 100%; left: -1.1rem; min-width: 214px; z-index: 120;
+  background: var(--azul-profundo); border: 1px solid rgba(255,255,255,0.14);
+  padding: 0.5rem 0; margin-top: 0.9rem;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+}
+/* Puente invisible: sin esto el submenú se cierra al cruzar el hueco. */
+.tiene-sub::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 1.1rem; }
+.tiene-sub:hover .submenu, .tiene-sub:focus-within .submenu { opacity: 1; visibility: visible; transform: none; }
+.submenu li { display: block; }
+.submenu a {
+  display: block; padding: 0.62rem 1.1rem; font-size: 0.66rem; letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.84); white-space: nowrap;
+}
+.submenu a::after { display: none; }
+.submenu a:hover { background: rgba(255,255,255,0.09); color: var(--blanco); }
+
 .hamburguesa { display: none; flex-direction: column; gap: 5px; width: 28px; z-index: 130; }
 .hamburguesa span { display: block; height: 2px; background: var(--blanco); transition: all 0.3s var(--ease); }
 @media (max-width: 1140px) {
@@ -594,6 +615,14 @@ body.tema-corporativo {
   }
   .menu.abierto { transform: none; }
   .menu a { color: var(--blanco) !important; font-size: 1.05rem; letter-spacing: 0.2em; }
+  .tiene-sub { display: flex; flex-direction: column; align-items: center; gap: 0.9rem; }
+  .submenu {
+    position: static; opacity: 1; visibility: visible; transform: none; margin-top: 0;
+    background: none; border: none; padding: 0; min-width: 0;
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .submenu a { padding: 0; font-size: 0.85rem !important; color: rgba(255,255,255,0.74) !important; }
+  .tiene-sub::after { display: none; }
   .menu a::after { background: var(--blanco) !important; }
   .menu .btn-claro { background: var(--blanco) !important; color: var(--azul) !important; }
   .hamburguesa.x span { background: var(--blanco); }
@@ -1325,7 +1354,13 @@ body.tema-corporativo {
     <ul class="menu">
       <li><a href="/" class="on" data-ir="inicio">Inicio</a></li>
       <li><a href="/a-medida" data-ir="medida">A medida</a></li>
-      <li><a href="/telas" data-ir="telas">Telas</a></li>
+      <li class="tiene-sub">
+        <a href="/telas" data-ir="telas">Telas</a>
+        <ul class="submenu">
+          <li><a href="/telas" data-ir="telas">Las casas</a></li>
+          <li><a href="/catalogo-de-telas" data-ir="catalogo">Catálogo · 488 telas</a></li>
+        </ul>
+      </li>
       <li><a href="/trajes-de-novio" data-ir="novios">Novios</a></li>
       <li><a href="/corporativo" data-ir="corporativo">Corporativo</a></li>
       <li><a href="/tiendas" data-ir="tiendas">Tiendas</a></li>
@@ -2806,7 +2841,12 @@ body.tema-corporativo {
     }
     // Trajes y Camisas cuelgan de "A medida", así que marcan ese ítem del menú
     var padre = { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[nombre] || nombre;
-    menuLinks.forEach(function (a) { a.classList.toggle('on', a.dataset.ir === padre); });
+    // El enlace de primer nivel se marca por su sección padre; el del submenú,
+    // por coincidencia exacta. Si no, en el catálogo se encendía «Las casas».
+    menuLinks.forEach(function (a) {
+      var enSub = !!a.closest('.submenu');
+      a.classList.toggle('on', a.dataset.ir === (enSub ? nombre : padre));
+    });
 
     var act = document.querySelector('.pagina[data-pag="' + nombre + '"]');
     if (act) { act.querySelectorAll('.rev').forEach(function (e) { e.classList.remove('ver'); }); animar(act); }
