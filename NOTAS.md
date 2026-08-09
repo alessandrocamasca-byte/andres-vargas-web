@@ -556,3 +556,50 @@ de maquetado que Google mide como CLS— y la foto del héroe se precarga.
 **El logo navegaba por JavaScript**, así que el enlace interno más repetido del
 sitio no existía para un rastreador. Ahora es `<a href="/">`. Las diez migas de
 pan, igual.
+
+### Revisión del cliente (8 ago 2026) · «revision de la web AV.docx»
+
+**Tiendas: eran seis, no tres.** Cada número de Ucayali y de Huallaga es una
+tienda distinta, no una sola con varias puertas. Cinco en el Cercado de Lima
+(Ucayali 115, 119 y 121; Huallaga 558 y 570) y una en Surco.
+
+Horarios confirmados: **solo Huallaga 558 abre domingo** (10 am a 4 pm), y las
+de **Ucayali parten la jornada**: 10 am a 1 pm y 2 pm a 8 pm. El resto, lunes a
+sábado de 10 am a 8 pm.
+
+**PENDIENTE:** el sábado de las tiendas de Ucayali. Sigue como «Consúltanos» —
+es el mismo dato que quedó cortado en julio— y no se rellena con un horario
+plausible.
+
+**Novios.** Deja de anclarse a «Chacarilla»: ahora es «nuestra tienda de Surco»
+y el foco pasa a los detalles de ese día. Fuera la frase de las fotos que se
+van a tomar en la vida. «Chacarilla» solo se mantiene dentro de la dirección
+postal, que es el nombre real de la zona.
+
+**Telas.** La lista es la que pidió el cliente: Barrington, Vitale Barberis,
+Albini, Thomas Mason, Brunello Cucinelli y **Creditex**. Sale **Reda**.
+
+**Configurador.** «Diseña tu camisa» abría con Traje puesto —el botón prometía
+una prenda y aparecía otra—. Ahora la prenda viaja en la URL (`?prenda=camisa`).
+
+**El prototipo del saco** parecía un abrigo: sin línea de hombro, largo hasta
+medio muslo, solapa indistinguible del cuerpo y botones bajo la cintura.
+Redibujado con largo de saco, hombro marcado, delanteros abiertos bajo el
+botón, bolsillos con tapa, botones de puño y solapa con filo claro para que se
+lea sobre cualquier tela. Las costuras van en negro translúcido, así funcionan
+sobre cualquier color sin tener que repintarse.
+
+**Correo:** `ventas@sastreriaandresvargas.pe`. Ojo: el dominio de la marca es
+**sastreriaandresvargas.pe**, no andresvargas.pe. Corrige la recomendación
+anterior sobre el dominio propio.
+
+**Catálogo de modelos en PDF.** El bloque de descarga ya está en Telas, oculto
+hasta que exista `assets/catalogo-telas.pdf`. Se comprueba con una petición
+HEAD antes de mostrar el botón: un enlace de descarga a un 404 es peor que no
+tenerlo.
+
+**PENDIENTE de archivos del cliente:**
+1. Foto enfocada en camisa (hoy Camisas usa una foto de saco, `traje-gris.jpg`).
+2. Logo de Creditex.
+3. El PDF del catálogo de modelos.
+4. Los logos de empresas, con la lista confirmada.
