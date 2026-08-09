@@ -838,6 +838,21 @@ body.tema-corporativo {
   color: var(--blanco); border: 1px solid rgba(255,255,255,0.34); padding: 0.42rem 0.85rem;
 }
 
+/* Las casas son cinco y la rejilla de tres deja un hueco a la derecha en la
+   última fila. Con flex la fila incompleta se centra sola, sin tener que
+   contar cuántas casas hay. */
+#casas-detalle {
+  --hueco: clamp(1.25rem, 2.5vw, 2rem);
+  display: flex; flex-wrap: wrap; justify-content: center; gap: var(--hueco);
+}
+#casas-detalle > .casa { flex: 0 1 calc((100% - 2 * var(--hueco)) / 3); min-width: 230px; }
+@media (max-width: 980px) {
+  #casas-detalle > .casa { flex-basis: calc((100% - var(--hueco)) / 2); }
+}
+@media (max-width: 600px) {
+  #casas-detalle > .casa { flex-basis: 100%; }
+}
+
 .casa-sinlogo {
   display: grid; place-items: center start; font-family: var(--display); font-weight: 300;
   font-size: 1.35rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--azul-bruma);
