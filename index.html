@@ -1000,7 +1000,7 @@ body.tema-corporativo {
 .slider-marcas:hover .slider-pista { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .slider-pista { animation: none; } }
 .slider-pista img {
-  height: clamp(62px, 6.8vw, 92px); width: auto; max-width: 280px; object-fit: contain;
+  height: calc(clamp(62px, 6.8vw, 92px) * var(--escala, 1)); width: auto; max-width: 280px; object-fit: contain;
   mix-blend-mode: multiply; filter: brightness(1.1); opacity: 0.82;
   transition: opacity 0.35s var(--ease);
 }
@@ -1027,7 +1027,7 @@ body.tema-corporativo {
 /* ---------- Ficha de casa ---------- */
 .casa { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; gap: 0.5rem; }
 .casa-logo {
-  height: clamp(58px, 6vw, 78px); width: auto; max-width: 100%; object-fit: contain;
+  height: calc(clamp(58px, 6vw, 78px) * var(--escala, 1)); width: auto; max-width: 100%; object-fit: contain;
   object-position: left center; align-self: flex-start;
   mix-blend-mode: multiply; filter: brightness(1.08); opacity: 1; margin-bottom: var(--e3);
 }
@@ -2059,11 +2059,12 @@ body.tema-corporativo {
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Nuestra casa principal</span>
         <h2 class="t-xl">La relación más cercana<br>la tenemos con Barrington</h2>
-        <p class="lead" style="margin-top:1.25rem;">De todas las casas con las que trabajamos, Barrington es con la que tenemos el vínculo más estrecho. Ser distribuidores oficiales no es un título: es tratar directo con la casa, y eso cambia lo que podemos ofrecerte.</p>
+        <p class="lead" style="margin-top:1.25rem;">Con Barrington la relación va en dos direcciones, y eso no lo tenemos con ninguna otra casa: distribuimos su tela de manera oficial y, además, desarrollamos y confeccionamos prendas para la marca. Conocemos sus tejidos desde el telar y desde la mesa de corte, que son dos formas muy distintas de conocer una tela.</p>
         <ul class="lista">
-          <li>Acceso a la colección completa, no a una selección recortada.</li>
-          <li>Disponibilidad para reponer una tela cuando hace falta.</li>
-          <li>Precio directo, sin el sobrecosto de pasar por terceros.</li>
+          <li>La colección completa, no la selección recortada que alguien decidió traer.</li>
+          <li>Reposición de una tela cuando hace falta, sin depender del stock suelto.</li>
+          <li>Precio directo: la tela no pasa por intermediarios antes de llegar a tu prenda.</li>
+          <li>El muestrario en cualquiera de nuestras seis tiendas, para elegir con un sastre delante.</li>
         </ul>
         <div class="acciones" style="margin-top:2rem;">
           <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar telas Barrington</a>
@@ -2987,7 +2988,7 @@ body.tema-corporativo {
        Mientras no exista, `onerror` degrada al nombre en texto en lugar de
        dejar el icono de imagen rota. El texto de la casa sigue pendiente del
        cliente: no se inventa. */
-    { n: 'Creditex', logo: 'assets/tela-creditex.png', origen: 'Perú',
+    { n: 'Creditex', logo: 'assets/tela-creditex.png', origen: 'Perú', escala: 0.68,
       d: 'El algodón pima peruano está entre los más finos del mundo, y Creditex es de las casas que lo lleva del campo al telar sin salir del país. Es la respuesta para quien quiere una prenda tejida con fibra peruana de primer nivel: la misma exigencia que pedimos a las casas europeas, con el orgullo de que se hizo aquí.' }
   ];
 
@@ -2998,8 +2999,9 @@ body.tema-corporativo {
     var pista = document.getElementById('slider-marcas');
     if (pista) {
       var uno = CASAS.filter(function (c) { return c.logo; }).map(function (c) {
-        return '<img src="' + c.logo + '" alt="' + c.n + '" loading="lazy" ' +
-               'onerror="this.remove()">';
+        return '<img src="' + c.logo + '" alt="' + c.n + '" loading="lazy"' +
+               (c.escala ? ' style="--escala:' + c.escala + '"' : '') +
+               ' onerror="this.remove()">';
       }).join('');
       pista.innerHTML = uno + uno;
     }
@@ -3012,7 +3014,8 @@ body.tema-corporativo {
       grid.innerHTML = CASAS.filter(function (c) { return !c.destacada; }).map(function (c, i) {
         return '<article class="casa rev"' + (i % 3 ? ' data-d="' + (i % 3) + '"' : '') + '>' +
           (c.logo
-            ? '<img class="casa-logo" src="' + c.logo + '" alt="' + c.n + '" loading="lazy" ' +
+            ? '<img class="casa-logo" src="' + c.logo + '" alt="' + c.n + '" loading="lazy"' +
+              (c.escala ? ' style="--escala:' + c.escala + '"' : '') + ' ' +
               'onerror="this.outerHTML=\'<span class=&quot;casa-logo casa-sinlogo&quot;>' + c.n + '</span>\'">'
             : '<span class="casa-logo casa-sinlogo">' + c.n + '</span>') +
           (c.origen ? '<span class="origen">' + c.origen + '</span>' : '') +
