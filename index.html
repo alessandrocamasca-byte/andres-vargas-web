@@ -1465,9 +1465,10 @@ body.tema-corporativo {
 /* Los horarios partidos de Ucayali no caben en una línea dentro de la ficha:
    en lugar de romper el valor y dejar un «pm» suelto, la fila se apila. */
 .horario > div { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.1rem 1rem; font-size: 0.82rem; }
-.horario > div > * { flex: 0 1 auto; min-width: 0; }
-.horario > div > b { text-align: left; }
-@media (min-width: 1101px) { .horario > div > b { text-align: right; } }
+.horario > div > span { flex: 0 1 auto; }
+/* nowrap es lo que obliga a la fila a apilarse: sin esto el valor se parte
+   dentro de su caja y flex-wrap nunca llega a actuar. */
+.horario > div > b { flex: 0 0 auto; white-space: nowrap; text-align: left; }
 .horario span { font-weight: 300; color: var(--piedra); }
 .horario b { font-weight: 500; color: var(--tinta); font-variant-numeric: tabular-nums; }
 .horario .pendiente { color: var(--azul-pizarra); font-weight: 400; }
