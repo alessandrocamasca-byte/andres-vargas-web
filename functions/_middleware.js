@@ -86,7 +86,7 @@ const RUTAS = {
   '/catalogo-de-telas': {
     pagina: 'catalogo',
     titulo: 'Catálogo de Telas para Ternos | Andrés Vargas',
-    desc: 'Todo el muestrario Barrington, tela por tela: 483 telas filtrables por colección, grado, tejido y color. Escríbenos con el código.',
+    desc: 'Todo el muestrario Barrington, tela por tela. Filtra por colección, grado, tejido, composición y color, y escríbenos con el código.',
     imagen: 'editorial-esmoquin-negro.jpg',
     miga: 'Catálogo de telas',
   },
