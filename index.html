@@ -859,6 +859,43 @@ body.tema-corporativo {
 }
 
 /* ============================================================
+   ESCUELA DE TELA
+   Los bloques que explican grado y tejido. Cada uno termina en un enlace que
+   abre el catálogo ya filtrado: se educa y se vende en el mismo clic.
+   ============================================================ */
+.escala { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--filete); border: 1px solid var(--filete); margin-top: var(--e5); }
+@media (max-width: 900px) { .escala { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .escala { grid-template-columns: 1fr; } }
+.grado {
+  background: var(--papel); padding: clamp(1.4rem, 2.6vw, 2rem);
+  display: flex; flex-direction: column; text-decoration: none;
+  transition: background 0.3s var(--ease);
+}
+.grado:hover { background: var(--blanco); }
+.grado-num { font-family: var(--display); font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: 0.04em; color: var(--azul); line-height: 1; }
+.grado-micras { font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--azul-pizarra); margin-top: 0.5rem; }
+.grado p { font-size: 0.84rem; font-weight: 300; color: var(--grafito); line-height: 1.75; margin-top: var(--e3); flex: 1; }
+.grado-ocasion { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul); border-top: 1px solid var(--filete); padding-top: var(--e3); margin-top: var(--e3); }
+.grado-cta { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-pizarra); margin-top: 0.6rem; display: inline-flex; align-items: center; gap: 0.4rem; }
+.grado-cta::after { content: "→"; transition: transform 0.3s var(--ease); }
+.grado:hover .grado-cta { color: var(--azul); }
+.grado:hover .grado-cta::after { transform: translateX(4px); }
+
+/* Regla de finura: hace visible que el número es una escala. */
+.regla { display: flex; align-items: center; gap: 0.9rem; margin-top: var(--e5); }
+.regla i { flex: 1; height: 2px; background: linear-gradient(to right, var(--azul-bruma), var(--azul)); }
+.regla span { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-pizarra); white-space: nowrap; }
+
+/* Fichas de tejido */
+.tejidos { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: clamp(1.25rem, 2.5vw, 2rem); margin-top: var(--e5); }
+.tejido-f { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; text-decoration: none; }
+.tejido-f h3 { font-family: var(--display); font-weight: 400; font-size: 1.02rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--azul); }
+.tejido-f .n-telas { font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-bruma); margin-top: 0.3rem; }
+.tejido-f p { font-size: 0.84rem; font-weight: 300; color: var(--grafito); line-height: 1.75; margin-top: var(--e3); flex: 1; }
+.tejido-f .grado-ocasion { border-top: none; padding-top: 0; margin-top: var(--e3); }
+.tejido-f:hover h3 { color: var(--azul-medio); }
+
+/* ============================================================
    CATÁLOGO DE TELAS
    483 telas. Filtros en una columna propia a la izquierda y plegados por
    grupo: desplegados de golpe ocupaban media pantalla antes de ver una sola
@@ -2319,7 +2356,120 @@ body.tema-corporativo {
       </div>
       <div class="rejilla r3" id="casas-detalle"></div>
       <div class="centro" style="margin-top:3rem;">
-        <a class="btn btn-azul" href="/catalogo-de-telas" data-ir="catalogo">Ver el catálogo completo · 483 telas</a>
+        <a class="btn btn-azul" href="/catalogo-de-telas" data-ir="catalogo"><span data-total-largo>Ver el catálogo completo</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EL GRADO ============
+       El número Super es una norma internacional (IWTO) que mide la finura del
+       hilo en micras. Cada bloque lleva al catálogo ya filtrado por ese grado. -->
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc">
+        <span class="rotulo">Entender la tela · 01</span>
+        <h2 class="t-xl">Qué significa Super 120s</h2>
+        <p class="lead" style="margin-top:1rem;">El número que va junto a la palabra Super no es una marca ni una categoría de precio: mide el grosor del hilo con el que está tejida la tela, en micras. Cuanto más alto el número, más fino el hilo, más suave el tacto y mejor la caída. Y también, más cuidado pide la prenda. No existe un grado mejor que otro: existe el que corresponde a lo que vas a hacer con el terno.</p>
+      </div>
+
+      <div class="regla">
+        <span>Más resistente</span><i></i><span>Más fino</span>
+      </div>
+
+      <div class="escala">
+        <a class="grado" href="/catalogo-de-telas?grado=Super+100s" data-ir="catalogo">
+          <span class="grado-num">100<em style="font-style:normal;font-size:0.5em;">s</em></span>
+          <span class="grado-micras">≈ 18,5 micras</span>
+          <p>El punto de equilibrio del muestrario. Aguanta el uso continuo, se arruga menos y vuelve a su sitio al colgarlo. Es la tela del terno que se pone cinco días a la semana y sigue entero al año siguiente.</p>
+          <span class="grado-ocasion">Oficina · uso diario</span>
+          <span class="grado-cta">Ver estas telas</span>
+        </a>
+        <a class="grado" href="/catalogo-de-telas?grado=Super+120s" data-ir="catalogo">
+          <span class="grado-num">120<em style="font-style:normal;font-size:0.5em;">s</em></span>
+          <span class="grado-micras">≈ 17,5 micras</span>
+          <p>Un escalón más fino sin renunciar a la resistencia. Se nota en la mano y en cómo cae el saco, pero sigue siendo una tela para usar seguido. Si solo vas a tener un terno bueno, suele ser este.</p>
+          <span class="grado-ocasion">Reuniones · uso frecuente</span>
+          <span class="grado-cta">Ver estas telas</span>
+        </a>
+        <a class="grado" href="/catalogo-de-telas?grado=Super+130s" data-ir="catalogo">
+          <span class="grado-num">130<em style="font-style:normal;font-size:0.5em;">s</em></span>
+          <span class="grado-micras">≈ 17 micras</span>
+          <p>Aquí la tela empieza a comportarse distinto: cae con más fluidez y tiene un brillo discreto que se ve de lejos. Pide un poco más de cuidado, así que funciona mejor en el terno que no es el de todos los días.</p>
+          <span class="grado-ocasion">Ocasión · cita importante</span>
+          <span class="grado-cta">Ver estas telas</span>
+        </a>
+        <a class="grado" href="/catalogo-de-telas?grado=Super+140s" data-ir="catalogo">
+          <span class="grado-num">140<em style="font-style:normal;font-size:0.5em;">s</em></span>
+          <span class="grado-micras">≈ 16,5 micras</span>
+          <p>Lo más fino que tenemos. La caída es la que se busca en un traje de gala y el tacto no se parece a nada más del muestrario. A cambio es delicada: no es la tela para el maletín y el metro todos los días.</p>
+          <span class="grado-ocasion">Gala · boda · el terno que se recuerda</span>
+          <span class="grado-cta">Ver estas telas</span>
+        </a>
+      </div>
+
+      <p class="mini centro" style="margin-top:2.5rem;max-width:52rem;margin-inline:auto;">Un consejo que damos siempre en tienda: antes de subir de grado, pregúntate cuántas veces al mes vas a usar la prenda. Para el uso diario, un Super 120s bien confeccionado se ve mejor a los dos años que un Super 140s castigado.</p>
+    </div>
+  </section>
+
+  <!-- ============ EL TEJIDO ============ -->
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc">
+        <span class="rotulo">Entender la tela · 02</span>
+        <h2 class="t-xl">Cada tejido pide su ocasión</h2>
+        <p class="lead" style="margin-top:1rem;">El grado dice cómo de fino es el hilo. El tejido dice cómo está construida la tela, y eso es lo que decide si una prenda es de oficina, de fin de semana o de invierno. Estos son los que tenemos en el muestrario.</p>
+      </div>
+
+      <div class="tejidos">
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Lana+peinada" data-ir="catalogo">
+          <h3>Lana peinada</h3><span class="n-telas" data-cuenta="j:Lana peinada"></span>
+          <p>El tejido clásico del terno. La lana se peina antes de hilar para dejar solo las fibras largas y alineadas, y el resultado es una superficie lisa, sin pelusa, que marca bien la línea del saco y del pantalón.</p>
+          <span class="grado-ocasion">Terno de oficina y de ocasión</span>
+        </a>
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Casimir" data-ir="catalogo">
+          <h3>Casimir</h3><span class="n-telas" data-cuenta="j:Casimir"></span>
+          <p>El paño de lana de toda la vida para terno. En el muestrario viene en dos acabados: <em style="font-style:normal;color:var(--azul)">rasado</em>, de superficie limpia y aspecto más formal, y <em style="font-style:normal;color:var(--azul)">batanado</em>, trabajado para quedar más lleno y aterciopelado al tacto.</p>
+          <span class="grado-ocasion">Terno formal · todo el año</span>
+        </a>
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Lanilla" data-ir="catalogo">
+          <h3>Lanilla</h3><span class="n-telas" data-cuenta="j:Lanilla"></span>
+          <p>Lana de menor peso, pensada para climas templados. Es la respuesta al verano limeño: mantiene la caída de la lana sin el calor de un paño grueso.</p>
+          <span class="grado-ocasion">Verano · oficina con calor</span>
+        </a>
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Lana+para+saco" data-ir="catalogo">
+          <h3>Lana para saco</h3><span class="n-telas" data-cuenta="j:Lana para saco"></span>
+          <p>Tejidos elegidos para el saco suelto y el blazer, no para el terno de dos piezas. Suelen tener más textura y color que un terno completo, porque están hechos para llevarse con pantalón distinto.</p>
+          <span class="grado-ocasion">Blazer · saco sport</span>
+        </a>
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Tweed" data-ir="catalogo">
+          <h3>Tweed</h3><span class="n-telas" data-cuenta="j:Tweed"></span>
+          <p>Lana de superficie rústica y visible, con los cuadros y espigas que se reconocen a distancia. Abriga de verdad y envejece bien: es de las pocas telas que mejoran con el uso.</p>
+          <span class="grado-ocasion">Invierno · sport · fin de semana</span>
+        </a>
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Lana" data-ir="catalogo">
+          <h3>Lana Richwool</h3><span class="n-telas" data-cuenta="j:Lana"></span>
+          <p>La línea de lana de uso diario de la casa. Pensada para el terno que trabaja todos los días: sostiene la forma, disimula la arruga y no pide cuidados especiales.</p>
+          <span class="grado-ocasion">Oficina · uso continuo</span>
+        </a>
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Pa%C3%B1o" data-ir="catalogo">
+          <h3>Paño</h3><span class="n-telas" data-cuenta="j:Paño"></span>
+          <p>El más pesado del muestrario. Tejido denso y compacto, el de los abrigos y sobretodos. No se elige por caída sino por cuerpo: es la tela que se sostiene sola.</p>
+          <span class="grado-ocasion">Abrigo · sobretodo</span>
+        </a>
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri" data-ir="catalogo">
+          <h3>Baby alpaca</h3><span class="n-telas" data-cuenta="j:Baby alpaca velour|Baby alpaca suri"></span>
+          <p>Fibra peruana, de las más apreciadas del mundo por su suavidad y su brillo natural. La <em style="font-style:normal;color:var(--azul)">suri</em> es la variedad de hebra más larga y sedosa; el <em style="font-style:normal;color:var(--azul)">velour</em> lleva un acabado que levanta el pelo y da un tacto de terciopelo.</p>
+          <span class="grado-ocasion">Gala · abrigo · lo excepcional</span>
+        </a>
+        <a class="tejido-f" href="/catalogo-de-telas?tejido=Denim" data-ir="catalogo">
+          <h3>Denim</h3><span class="n-telas" data-cuenta="j:Denim"></span>
+          <p>Algodón de ligamento sarga, el del jean de siempre, aquí en calidad de sastrería. Para el saco que se lleva sin corbata y para quien quiere una prenda a medida sin que parezca de oficina.</p>
+          <span class="grado-ocasion">Casual · fin de semana</span>
+        </a>
+      </div>
+
+      <div class="centro" style="margin-top:3.5rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas" data-ir="catalogo"><span data-total>Ver el catálogo</span></a>
       </div>
     </div>
   </section>
@@ -3611,6 +3761,27 @@ body.tema-corporativo {
     });
   })();
 
+  /* ================= RECUENTOS DE LA PÁGINA DE TELAS =================
+     Los números de los bloques educativos salen del propio catálogo. Escritos
+     a mano se desfasan en cuanto cambia el muestrario: ya pasó al depurar
+     cinco fichas y dos quedaron mal. */
+  (function () {
+    var marcas = document.querySelectorAll('[data-cuenta], [data-total], [data-total-largo]');
+    if (!marcas.length) return;
+    fetch('assets/telas.json').then(function (r) { return r.json(); }).then(function (t) {
+      marcas.forEach(function (e) {
+        if (e.hasAttribute('data-total')) { e.textContent = 'Ver las ' + t.length + ' telas'; return; }
+        if (e.hasAttribute('data-total-largo')) { e.textContent = 'Ver el catálogo completo · ' + t.length + ' telas'; return; }
+        var partes = e.dataset.cuenta.split(':');
+        var campo = partes[0], vals = partes[1].split('|');
+        var n = t.filter(function (x) { return vals.indexOf(x[campo]) >= 0; }).length;
+        e.textContent = n + (n === 1 ? ' tela' : ' telas');
+      });
+    }).catch(function () {
+      marcas.forEach(function (e) { if (!e.textContent) e.textContent = ''; });
+    });
+  })();
+
   /* ================= CATÁLOGO DE TELAS =================
      483 telas. Los datos se piden solo cuando la página está en pantalla: son
      92 KB que no tienen por qué descargarse en la portada. Todo el filtrado
@@ -3815,8 +3986,21 @@ body.tema-corporativo {
     visor.addEventListener('click', function (ev) { if (ev.target === visor) cerrar(); });
     document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !visor.hidden) cerrar(); });
 
+    /* Los bloques de la página de Telas enlazan aquí con el filtro ya puesto:
+       .../catalogo-de-telas?grado=Super+140s abre el catálogo mostrando solo
+       esas. Educar y vender en el mismo clic. */
+    function desdeURL() {
+      var p = new URLSearchParams(location.search);
+      var mapa = { coleccion: 'k', grado: 'g', tejido: 'j', color: 'o', diseno: 'd', peso: 'p', uso: 'u' };
+      Object.keys(mapa).forEach(function (nom) {
+        var v = p.getAll(nom);
+        if (v.length) estado[mapa[nom]] = v;
+      });
+      if (p.get('q')) { estado.q = p.get('q'); document.getElementById('cat-q').value = estado.q; }
+    }
+
     fetch('assets/telas.json').then(function (r) { return r.json(); }).then(function (d) {
-      TELAS = d; filtrar();
+      TELAS = d; desdeURL(); filtrar();
     }).catch(function () {
       document.getElementById('cat-vacio').hidden = false;
       document.getElementById('cat-vacio').textContent = 'No se pudo cargar el catálogo. Vuelve a intentarlo.';
