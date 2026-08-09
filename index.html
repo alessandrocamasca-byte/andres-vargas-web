@@ -538,6 +538,8 @@ body.tema-corporativo {
 /* Sombra difusa, nunca un filo de 1px: una línea clara aquí corta la foto
    del hero y se lee como un defecto. */
 .cabecera.fijo { box-shadow: 0 10px 30px rgba(var(--rgb-profundo), 0.28); }
+/* Apaga las transiciones mientras se mide el alto encogido. */
+.cabecera.midiendo, .cabecera.midiendo * { transition: none !important; }
 .nav {
   display: flex; flex-direction: column; align-items: center; gap: 0.85rem;
   padding-block: 1.15rem; transition: padding 0.4s var(--ease), gap 0.4s var(--ease);
@@ -850,8 +852,23 @@ body.tema-corporativo {
 .cat-layout { display: grid; grid-template-columns: 268px 1fr; gap: clamp(1.5rem, 3vw, 3rem); align-items: start; }
 
 /* ---- Columna de filtros ---- */
-.cat-lado { position: sticky; top: calc(var(--alto-cabecera) + 1rem); max-height: calc(100svh - var(--alto-cabecera) - 2rem); overflow-y: auto; padding-right: 4px; }
-.cat-lado-cab { display: flex; align-items: baseline; gap: 0.75rem; padding-bottom: var(--e3); border-bottom: 1px solid var(--filete); }
+/* Una sola zona de scroll, la de la columna. La lista de cada grupo llevaba
+   su propio max-height y cortaba el último ítem por la mitad: parecía roto.
+   El tope se calcula sobre la cabecera ya encogida, que es como está cuando
+   la columna llega a pegarse. */
+.cat-lado {
+  position: sticky; top: calc(var(--alto-cabecera-fija, 72px) + 1.1rem);
+  max-height: calc(100svh - var(--alto-cabecera-fija, 72px) - 2.2rem);
+  overflow-y: auto; overscroll-behavior: contain; padding-right: 6px;
+  scrollbar-gutter: stable;
+}
+/* Aviso de que hay más abajo, para que el corte no se lea como un fallo. */
+.cat-lado::after { content: ""; position: sticky; bottom: 0; display: block; height: 28px; margin-top: -28px; background: linear-gradient(transparent, var(--papel)); pointer-events: none; }
+.cat-lado-cab {
+  display: flex; align-items: baseline; gap: 0.75rem; padding-bottom: var(--e3);
+  border-bottom: 1px solid var(--filete);
+  position: sticky; top: 0; background: var(--papel); z-index: 2; padding-top: 2px;
+}
 .cat-lado-cab b { font-family: var(--display); font-weight: 400; font-size: 0.86rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul); flex: 1; }
 .cat-limpiar { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--azul-pizarra); cursor: pointer; background: none; border: none; text-decoration: underline; padding: 0; }
 .cat-limpiar:hover { color: var(--azul); }
@@ -879,7 +896,7 @@ body.tema-corporativo {
 .cat-grupo[open] > summary::after { content: "−"; }
 .cat-grupo > summary em { font-style: normal; font-family: var(--texto); font-size: 0.72rem; letter-spacing: 0; color: var(--azul-pizarra); }
 .cat-grupo > summary:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
-.cat-lista { display: grid; gap: 0.1rem; padding-bottom: 0.9rem; max-height: 260px; overflow-y: auto; }
+.cat-lista { display: grid; gap: 0.1rem; padding-bottom: 0.9rem; }
 
 .cat-op {
   display: flex; align-items: center; gap: 0.55rem; width: 100%; text-align: left;
@@ -2946,6 +2963,17 @@ body.tema-corporativo {
     // floor y no round: si la variable se pasa del alto real, queda un hueco
     // de medio pixel bajo la cabecera. Que se quede corta no se nota.
     document.documentElement.style.setProperty('--alto-cabecera', Math.floor(cab.getBoundingClientRect().height) + 'px');
+    // Y el alto que tendrá ya encogida, que es contra el que se pegan las
+    // columnas fijas. Se mide aplicando la clase un instante, sin transición.
+    // Hay que apagar las transiciones de TODA la cabecera, no solo la suya:
+    // la cinta encoge con la propia y medir antes de que acabe daba 136 px
+    // donde la cabecera real mide 82.
+    cab.classList.add('midiendo', 'fijo');
+    var alto = Math.ceil(cab.getBoundingClientRect().height);
+    cab.classList.remove('fijo');
+    void cab.offsetWidth;
+    cab.classList.remove('midiendo');
+    document.documentElement.style.setProperty('--alto-cabecera-fija', alto + 'px');
   }
   medirCabecera();
   window.addEventListener('resize', medirCabecera);
