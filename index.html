@@ -867,11 +867,19 @@ body.tema-corporativo {
 @media (max-width: 900px) { .escala { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .escala { grid-template-columns: 1fr; } }
 .grado {
-  background: var(--papel); padding: clamp(1.4rem, 2.6vw, 2rem);
-  display: flex; flex-direction: column; text-decoration: none;
-  transition: background 0.3s var(--ease);
+  background: var(--papel); display: flex; flex-direction: column; text-decoration: none;
+  transition: background 0.3s var(--ease); overflow: hidden;
 }
 .grado:hover { background: var(--blanco); }
+/* Cada grado se ilustra con una tela suya de verdad. En el Super 140s el
+   orillo lleva el número tejido, así que la foto explica sola lo que dice el
+   texto. */
+.grado-foto { display: block; overflow: hidden; }
+.grado-foto img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
+.grado:hover .grado-foto img { transform: scale(1.05); }
+.grado > :not(.grado-foto) { margin-inline: clamp(1.4rem, 2.6vw, 2rem); }
+.grado > .grado-num { margin-top: clamp(1.2rem, 2.2vw, 1.6rem); }
+.grado > .grado-cta { margin-bottom: clamp(1.4rem, 2.6vw, 2rem); }
 .grado-num { font-family: var(--display); font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: 0.04em; color: var(--azul); line-height: 1; }
 .grado-micras { font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--azul-pizarra); margin-top: 0.5rem; }
 .grado p { font-size: 0.84rem; font-weight: 300; color: var(--grafito); line-height: 1.75; margin-top: var(--e3); flex: 1; }
@@ -888,7 +896,11 @@ body.tema-corporativo {
 
 /* Fichas de tejido */
 .tejidos { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: clamp(1.25rem, 2.5vw, 2rem); margin-top: var(--e5); }
-.tejido-f { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; text-decoration: none; }
+.tejido-f { display: flex; flex-direction: column; text-decoration: none; }
+.tejido-foto { display: block; overflow: hidden; border: 1px solid var(--filete); }
+.tejido-foto img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
+.tejido-f:hover .tejido-foto img { transform: scale(1.05); }
+.tejido-f h3 { margin-top: var(--e4); }
 .tejido-f h3 { font-family: var(--display); font-weight: 400; font-size: 1.02rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--azul); }
 .tejido-f .n-telas { font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-bruma); margin-top: 0.3rem; }
 .tejido-f p { font-size: 0.84rem; font-weight: 300; color: var(--grafito); line-height: 1.75; margin-top: var(--e3); flex: 1; }
@@ -2368,7 +2380,7 @@ body.tema-corporativo {
     <div class="caja">
       <div class="enc">
         <span class="rotulo">Entender la tela · 01</span>
-        <h2 class="t-xl">Qué significa Super 120s</h2>
+        <h2 class="t-xl">Qué significa el número Super</h2>
         <p class="lead" style="margin-top:1rem;">El número que va junto a la palabra Super no es una marca ni una categoría de precio: mide el grosor del hilo con el que está tejida la tela, en micras. Cuanto más alto el número, más fino el hilo, más suave el tacto y mejor la caída. Y también, más cuidado pide la prenda. No existe un grado mejor que otro: existe el que corresponde a lo que vas a hacer con el terno.</p>
       </div>
 
@@ -2378,6 +2390,7 @@ body.tema-corporativo {
 
       <div class="escala">
         <a class="grado" href="/catalogo-de-telas?grado=Super+100s" data-ir="catalogo">
+          <span class="grado-foto"><img src="assets/telas/s100-0012.jpg" alt="Tela Super 100s de Barrington" loading="lazy" width="480" height="320"></span>
           <span class="grado-num">100<em style="font-style:normal;font-size:0.5em;">s</em></span>
           <span class="grado-micras">≈ 18,5 micras</span>
           <p>El punto de equilibrio del muestrario. Aguanta el uso continuo, se arruga menos y vuelve a su sitio al colgarlo. Es la tela del terno que se pone cinco días a la semana y sigue entero al año siguiente.</p>
@@ -2385,6 +2398,7 @@ body.tema-corporativo {
           <span class="grado-cta">Ver estas telas</span>
         </a>
         <a class="grado" href="/catalogo-de-telas?grado=Super+120s" data-ir="catalogo">
+          <span class="grado-foto"><img src="assets/telas/s120-0006.jpg" alt="Tela Super 120s de Barrington" loading="lazy" width="480" height="320"></span>
           <span class="grado-num">120<em style="font-style:normal;font-size:0.5em;">s</em></span>
           <span class="grado-micras">≈ 17,5 micras</span>
           <p>Un escalón más fino sin renunciar a la resistencia. Se nota en la mano y en cómo cae el saco, pero sigue siendo una tela para usar seguido. Si solo vas a tener un terno bueno, suele ser este.</p>
@@ -2392,6 +2406,7 @@ body.tema-corporativo {
           <span class="grado-cta">Ver estas telas</span>
         </a>
         <a class="grado" href="/catalogo-de-telas?grado=Super+130s" data-ir="catalogo">
+          <span class="grado-foto"><img src="assets/telas/superfine-0009.jpg" alt="Tela Super 130s de Barrington" loading="lazy" width="480" height="320"></span>
           <span class="grado-num">130<em style="font-style:normal;font-size:0.5em;">s</em></span>
           <span class="grado-micras">≈ 17 micras</span>
           <p>Aquí la tela empieza a comportarse distinto: cae con más fluidez y tiene un brillo discreto que se ve de lejos. Pide un poco más de cuidado, así que funciona mejor en el terno que no es el de todos los días.</p>
@@ -2399,6 +2414,7 @@ body.tema-corporativo {
           <span class="grado-cta">Ver estas telas</span>
         </a>
         <a class="grado" href="/catalogo-de-telas?grado=Super+140s" data-ir="catalogo">
+          <span class="grado-foto"><img src="assets/telas/diamond-0048.jpg" alt="Orillo de una tela Super 140s de Barrington" loading="lazy" width="480" height="320"></span>
           <span class="grado-num">140<em style="font-style:normal;font-size:0.5em;">s</em></span>
           <span class="grado-micras">≈ 16,5 micras</span>
           <p>Lo más fino que tenemos. La caída es la que se busca en un traje de gala y el tacto no se parece a nada más del muestrario. A cambio es delicada: no es la tela para el maletín y el metro todos los días.</p>
@@ -2422,46 +2438,55 @@ body.tema-corporativo {
 
       <div class="tejidos">
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Lana+peinada" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/diamond-0060.jpg" alt="Tela Lana peinada" loading="lazy" width="480" height="320"></span>
           <h3>Lana peinada</h3><span class="n-telas" data-cuenta="j:Lana peinada"></span>
           <p>El tejido clásico del terno. La lana se peina antes de hilar para dejar solo las fibras largas y alineadas, y el resultado es una superficie lisa, sin pelusa, que marca bien la línea del saco y del pantalón.</p>
           <span class="grado-ocasion">Terno de oficina y de ocasión</span>
         </a>
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Casimir" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/casimir-0016.jpg" alt="Tela Casimir" loading="lazy" width="480" height="320"></span>
           <h3>Casimir</h3><span class="n-telas" data-cuenta="j:Casimir"></span>
           <p>El paño de lana de toda la vida para terno. En el muestrario viene en dos acabados: <em style="font-style:normal;color:var(--azul)">rasado</em>, de superficie limpia y aspecto más formal, y <em style="font-style:normal;color:var(--azul)">batanado</em>, trabajado para quedar más lleno y aterciopelado al tacto.</p>
           <span class="grado-ocasion">Terno formal · todo el año</span>
         </a>
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Lanilla" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/lanilla-0013.jpg" alt="Tela Lanilla" loading="lazy" width="480" height="320"></span>
           <h3>Lanilla</h3><span class="n-telas" data-cuenta="j:Lanilla"></span>
           <p>Lana de menor peso, pensada para climas templados. Es la respuesta al verano limeño: mantiene la caída de la lana sin el calor de un paño grueso.</p>
           <span class="grado-ocasion">Verano · oficina con calor</span>
         </a>
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Lana+para+saco" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/s100-jackets-0010.jpg" alt="Tela Lana para saco" loading="lazy" width="480" height="320"></span>
           <h3>Lana para saco</h3><span class="n-telas" data-cuenta="j:Lana para saco"></span>
           <p>Tejidos elegidos para el saco suelto y el blazer, no para el terno de dos piezas. Suelen tener más textura y color que un terno completo, porque están hechos para llevarse con pantalón distinto.</p>
           <span class="grado-ocasion">Blazer · saco sport</span>
         </a>
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Tweed" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/tweed-0019.jpg" alt="Tela Tweed" loading="lazy" width="480" height="320"></span>
           <h3>Tweed</h3><span class="n-telas" data-cuenta="j:Tweed"></span>
           <p>Lana de superficie rústica y visible, con los cuadros y espigas que se reconocen a distancia. Abriga de verdad y envejece bien: es de las pocas telas que mejoran con el uso.</p>
           <span class="grado-ocasion">Invierno · sport · fin de semana</span>
         </a>
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Lana" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/richwool-0026.jpg" alt="Tela Lana Richwool" loading="lazy" width="480" height="320"></span>
           <h3>Lana Richwool</h3><span class="n-telas" data-cuenta="j:Lana"></span>
           <p>La línea de lana de uso diario de la casa. Pensada para el terno que trabaja todos los días: sostiene la forma, disimula la arruga y no pide cuidados especiales.</p>
           <span class="grado-ocasion">Oficina · uso continuo</span>
         </a>
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Pa%C3%B1o" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/pano-0020.jpg" alt="Tela Paño" loading="lazy" width="480" height="320"></span>
           <h3>Paño</h3><span class="n-telas" data-cuenta="j:Paño"></span>
           <p>El más pesado del muestrario. Tejido denso y compacto, el de los abrigos y sobretodos. No se elige por caída sino por cuerpo: es la tela que se sostiene sola.</p>
           <span class="grado-ocasion">Abrigo · sobretodo</span>
         </a>
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/alpaca-suri-0015.jpg" alt="Tela de baby alpaca" loading="lazy" width="480" height="320"></span>
           <h3>Baby alpaca</h3><span class="n-telas" data-cuenta="j:Baby alpaca velour|Baby alpaca suri"></span>
           <p>Fibra peruana, de las más apreciadas del mundo por su suavidad y su brillo natural. La <em style="font-style:normal;color:var(--azul)">suri</em> es la variedad de hebra más larga y sedosa; el <em style="font-style:normal;color:var(--azul)">velour</em> lleva un acabado que levanta el pelo y da un tacto de terciopelo.</p>
           <span class="grado-ocasion">Gala · abrigo · lo excepcional</span>
         </a>
         <a class="tejido-f" href="/catalogo-de-telas?tejido=Denim" data-ir="catalogo">
+          <span class="tejido-foto"><img src="assets/telas/denim-0004.jpg" alt="Tela Denim" loading="lazy" width="480" height="320"></span>
           <h3>Denim</h3><span class="n-telas" data-cuenta="j:Denim"></span>
           <p>Algodón de ligamento sarga, el del jean de siempre, aquí en calidad de sastrería. Para el saco que se lleva sin corbata y para quien quiere una prenda a medida sin que parezca de oficina.</p>
           <span class="grado-ocasion">Casual · fin de semana</span>
