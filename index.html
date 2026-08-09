@@ -1012,13 +1012,39 @@ body.tema-corporativo {
 .casa-placa {
   position: relative; background: var(--blanco); border: 1px solid var(--filete);
   padding: clamp(2.2rem, 5vw, 3.6rem) clamp(1.5rem, 3vw, 2.5rem);
-  display: flex; flex-direction: column; align-items: center; gap: var(--e4); text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: var(--e3); text-align: center;
 }
 /* doble filete interior, el motivo del escudo */
 .casa-placa::after {
   content: ""; position: absolute; inset: 7px; border: 1px solid var(--filete); pointer-events: none;
 }
-.casa-placa img { max-width: 230px; width: 100%; height: auto; mix-blend-mode: multiply; filter: brightness(1.13); }
+/* La placa se queda blanca sobre el azul: es lo que hace que salte a la vista,
+   y además los logos vienen con fondo blanco, así que el multiply solo funciona
+   sobre claro. */
+.casa-placa .placa-escudo { width: 46px; height: auto; mix-blend-mode: normal; }
+.casa-placa .placa-marca { max-width: 250px; width: 100%; height: auto; mix-blend-mode: multiply; filter: brightness(1.1); }
+/* «junto a» entre dos filetes: el vínculo dicho con el sistema de la marca. */
+.placa-union { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0.9rem; width: 100%; }
+.placa-union i { height: 1px; background: var(--filete); }
+.placa-union em {
+  font-style: normal; font-family: var(--display); font-size: 0.58rem; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--azul-pizarra);
+}
+
+/* Los cuatro motivos del vínculo. Con icono, no con un cuadrado vacío de 7px
+   que no dice nada. */
+.rejilla-vinculo {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.4rem, 2.6vw, 2.2rem) clamp(1.5rem, 3vw, 2.5rem); margin-top: var(--e5);
+}
+@media (max-width: 620px) { .rejilla-vinculo { grid-template-columns: 1fr; } }
+.vinculo { border-top: 1px solid rgba(255,255,255,0.26); padding-top: var(--e3); }
+.vinculo .icono { margin-bottom: var(--e2); }
+.vinculo b {
+  display: block; font-family: var(--display); font-weight: 400; font-size: 0.88rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--blanco);
+}
+.vinculo p { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.88); line-height: 1.7; margin-top: 0.42rem; }
 .casa-placa .sello-txt {
   font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--azul-pizarra); border-top: 1px solid var(--filete); padding-top: var(--e3); width: 100%;
@@ -2048,11 +2074,17 @@ body.tema-corporativo {
     <div class="slider-marcas sobre-papel"><div class="slider-pista" id="slider-marcas"></div></div>
   </section>
 
-  <!-- BARRINGTON, LA CASA PRINCIPAL -->
-  <section class="seccion fondo-nube">
+  <!-- BARRINGTON, LA CASA PRINCIPAL
+       Va sobre azul con fotografía, no sobre el gris del resto: es el único
+       bloque de la página que tiene que destacar por encima de los demás.
+       La placa junta el escudo de la casa con la marca de Barrington, que es
+       la forma más directa de enseñar el vínculo en lugar de contarlo. -->
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial-esmoquin-marfil.jpg');">
     <div class="caja casa-destacada">
       <div class="casa-placa rev">
-        <img src="assets/tela-barrington.png" alt="Barrington" loading="lazy" width="460" height="261">
+        <img class="placa-escudo" src="assets/escudo-azul.png" alt="Andrés Vargas Boutique" loading="lazy" width="261" height="420">
+        <span class="placa-union"><i></i><em>junto a</em><i></i></span>
+        <img class="placa-marca" src="assets/tela-barrington.png" alt="Barrington" loading="lazy" width="460" height="261">
         <span class="sello-txt">Distribuidor oficial</span>
       </div>
       <div class="rev" data-d="1">
@@ -2060,14 +2092,30 @@ body.tema-corporativo {
         <span class="rotulo">Nuestra casa principal</span>
         <h2 class="t-xl">La relación más cercana<br>la tenemos con Barrington</h2>
         <p class="lead" style="margin-top:1.25rem;">Con Barrington la relación va en dos direcciones, y eso no lo tenemos con ninguna otra casa: distribuimos su tela de manera oficial y, además, desarrollamos y confeccionamos prendas para la marca. Conocemos sus tejidos desde el telar y desde la mesa de corte, que son dos formas muy distintas de conocer una tela.</p>
-        <ul class="lista">
-          <li>La colección completa, no la selección recortada que alguien decidió traer.</li>
-          <li>Reposición de una tela cuando hace falta, sin depender del stock suelto.</li>
-          <li>Precio directo: la tela no pasa por intermediarios antes de llegar a tu prenda.</li>
-          <li>El muestrario en cualquiera de nuestras seis tiendas, para elegir con un sastre delante.</li>
-        </ul>
-        <div class="acciones" style="margin-top:2rem;">
-          <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar telas Barrington</a>
+        <div class="rejilla-vinculo">
+          <article class="vinculo">
+            <svg class="icono" viewBox="0 0 32 32" data-icono="tela" aria-hidden="true"></svg>
+            <b>La colección completa</b>
+            <p>No la selección recortada que alguien decidió traer al país.</p>
+          </article>
+          <article class="vinculo">
+            <svg class="icono" viewBox="0 0 32 32" data-icono="reponer" aria-hidden="true"></svg>
+            <b>Reposición asegurada</b>
+            <p>Si hace falta más metraje de una tela, se pide. Sin depender del stock suelto.</p>
+          </article>
+          <article class="vinculo">
+            <svg class="icono" viewBox="0 0 32 32" data-icono="etiqueta" aria-hidden="true"></svg>
+            <b>Precio directo</b>
+            <p>La tela no pasa por intermediarios antes de llegar a tu prenda.</p>
+          </article>
+          <article class="vinculo">
+            <svg class="icono" viewBox="0 0 32 32" data-icono="tienda" aria-hidden="true"></svg>
+            <b>En las seis tiendas</b>
+            <p>El muestrario completo, para elegir con la tela delante y un sastre al lado.</p>
+          </article>
+        </div>
+        <div class="acciones" style="margin-top:2.5rem;">
+          <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20telas%20Barrington." target="_blank" rel="noopener">Consultar telas Barrington</a>
         </div>
       </div>
     </div>
@@ -2082,12 +2130,6 @@ body.tema-corporativo {
         <p class="lead" style="margin-top:1rem;">Cada una lleva siglos haciendo una sola cosa bien, y cada una aporta algo que las demás no: la lana del terno, el algodón de la camisa, el cachemir de la prenda que se hereda. Todas están en el muestrario de nuestras tiendas.</p>
       </div>
       <div class="rejilla r3" id="casas-detalle"></div>
-      <!-- Catálogo descargable. Aparece solo cuando el PDF existe en assets/;
-           mientras tanto no se muestra un botón que lleve a un 404. -->
-      <div class="centro" id="catalogo-telas" hidden style="margin-top:3rem;">
-        <p class="lead medida centro" style="margin-bottom:1.5rem;">Descarga el catálogo con los modelos disponibles en tienda.</p>
-        <a class="btn btn-azul" id="catalogo-enlace" download>Descargar catálogo (PDF)</a>
-      </div>
     </div>
   </section>
 
@@ -2951,25 +2993,6 @@ body.tema-corporativo {
     }).join('');
   })();
 
-  /* ================= CATÁLOGO DE MODELOS =================
-     PENDIENTE: dejar el PDF en assets/catalogo-telas.pdf. En cuanto esté, el
-     bloque aparece solo. Se comprueba con una petición HEAD en vez de confiar
-     en que el archivo esté: un botón de descarga que da 404 es peor que no
-     tenerlo. */
-  (function () {
-    var caja = document.getElementById('catalogo-telas');
-    if (!caja) return;
-    var ruta = 'assets/catalogo-telas.pdf';
-    fetch(ruta, { method: 'HEAD' }).then(function (r) {
-      // No basta con r.ok: Cloudflare Pages responde 200 con la portada entera
-      // cuando el archivo no existe, así que hay que mirar el tipo. Sin esto,
-      // el botón aparecía y descargaba un HTML llamado .pdf.
-      if (!r.ok || !/pdf/i.test(r.headers.get('content-type') || '')) return;
-      document.getElementById('catalogo-enlace').href = ruta;
-      caja.hidden = false;
-    }).catch(function () { /* sin catálogo, el bloque se queda oculto */ });
-  })();
-
   /* ================= CASAS DE TELA =================
      `destacada: true` la saca de la rejilla de detalle: Barrington tiene su
      propio bloque. El slider sí las muestra todas. */
@@ -3039,7 +3062,9 @@ body.tema-corporativo {
     tela:     '<path d="M4 8h24v14q-3 3-6 0t-6 0-6 0-6 0z"/><path d="M4 14h24M11.5 8v12.6M20 8v12.6"/>',
     etiqueta: '<path d="M4 4h11l13 13-11 11L4 15z"/><circle cx="10.5" cy="10.5" r="2.2"/>',
     persona:  '<circle cx="16" cy="10" r="4.6"/><path d="M6 28v-2a10 10 0 0120 0v2"/>',
-    personas: '<circle cx="11" cy="11" r="4"/><path d="M3 27v-2a8 8 0 0116 0v2"/><path d="M22 8.4a4 4 0 010 7.8M23 19.4A8 8 0 0129 25v2"/>'
+    personas: '<circle cx="11" cy="11" r="4"/><path d="M3 27v-2a8 8 0 0116 0v2"/><path d="M22 8.4a4 4 0 010 7.8M23 19.4A8 8 0 0129 25v2"/>',
+    reponer:  '<path d="M28 16a12 12 0 11-3.8-8.7"/><path d="M28 5v7h-7"/>',
+    tienda:   '<path d="M5 12h22v13a2 2 0 01-2 2H7a2 2 0 01-2-2z"/><path d="M4 12l2.4-6h19.2L28 12"/><path d="M13 27v-8h6v8"/>'
   };
   document.querySelectorAll('[data-icono]').forEach(function (e) {
     var d = ICONOS[e.dataset.icono];
