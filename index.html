@@ -3712,9 +3712,11 @@ body.tema-corporativo {
         // Abierto: el primero por defecto, y cualquiera con filtro puesto.
         var abre = abiertos[c.k] !== undefined ? abiertos[c.k] : (idx === 0);
         if (sel.length) abre = true;
+        // Sin nada elegido no se pone número: cuántas opciones hay dentro se ve
+        // al abrir el grupo y como recuento ahí no aportaba nada.
         var resumen = sel.length
           ? '<em>' + sel.length + (sel.length === 1 ? ' elegido' : ' elegidos') + '</em>'
-          : '<em>' + claves.length + '</em>';
+          : '';
         return '<details class="cat-grupo" data-k="' + c.k + '"' + (abre ? ' open' : '') + '>' +
           '<summary>' + c.et + resumen + '</summary><div class="cat-lista">' +
           claves.map(function (v) {
