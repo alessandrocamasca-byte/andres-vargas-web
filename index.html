@@ -3610,13 +3610,21 @@ body.tema-corporativo {
     var TELAS = [], vistas = 0, filtradas = [];
     var estado = { q: '' };
 
+    // Por defecto las opciones se ordenan por cuántas telas tienen, que es lo
+    // útil en una lista suelta. Pero grado y peso son escalas: ahí manda el
+    // orden natural, no la frecuencia.
+    function porNumero(a, b) { return (parseInt(a, 10) || 0) - (parseInt(b, 10) || 0); }
+    function porEscala(escala) {
+      return function (a, b) { return escala.indexOf(a) - escala.indexOf(b); };
+    }
     var CAMPOS = [
       { k: 'k',  et: 'Colección' },
-      { k: 'g',  et: 'Grado' },
+      { k: 'g',  et: 'Grado', orden: function (a, b) {
+          return porNumero(a.replace(/\D*/, ''), b.replace(/\D*/, '')); } },
       { k: 'j',  et: 'Tejido' },
       { k: 'o',  et: 'Color', color: true },
       { k: 'd',  et: 'Diseño' },
-      { k: 'p',  et: 'Peso' },
+      { k: 'p',  et: 'Peso', orden: porEscala(['Ligero', 'Medio', 'Pesado']) },
       { k: 'u',  et: 'Uso', lista: true }
     ];
     var COLORES = { negro: '#23262b', azul: '#2b3b5c', gris: '#8b8f96', burdeos: '#6b2c3a',
@@ -3706,7 +3714,8 @@ body.tema-corporativo {
         var base = baseSin(c);
         var cuenta = {};
         base.forEach(function (t) { valores(t, c).forEach(function (v) { cuenta[v] = (cuenta[v] || 0) + 1; }); });
-        var claves = Object.keys(cuenta).sort(function (a, b) { return cuenta[b] - cuenta[a]; });
+        var claves = Object.keys(cuenta).sort(c.orden ||
+          function (a, b) { return cuenta[b] - cuenta[a]; });
         if (!claves.length) return '';
         var sel = estado[c.k] || [];
         // Abierto: el primero por defecto, y cualquiera con filtro puesto.
