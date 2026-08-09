@@ -812,6 +812,62 @@ body.tema-corporativo {
   font-size: 1.35rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--azul-bruma);
 }
 
+/* ============================================================
+   CATÁLOGO DE TELAS
+   488 telas sacadas de los catálogos de Barrington. La rejilla filtra en el
+   navegador: son 92 KB de datos, así que no hace falta ir al servidor por
+   cada clic.
+   ============================================================ */
+.cat-barra { position: sticky; top: var(--alto-cabecera); z-index: 40; background: var(--papel); border-bottom: 1px solid var(--filete); padding-block: var(--e3); }
+.cat-buscar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+.cat-buscar input {
+  flex: 1 1 240px; min-width: 200px; border: 1px solid var(--filete); background: var(--blanco);
+  padding: 0.85rem 1rem; font-family: var(--texto); font-size: 0.9rem; color: var(--tinta);
+}
+.cat-buscar input:focus { outline: none; border-color: var(--azul); }
+.cat-cuenta { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-pizarra); white-space: nowrap; }
+.cat-limpiar { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); cursor: pointer; background: none; border: none; text-decoration: underline; }
+
+.cat-filtros { display: grid; gap: var(--e3); margin-top: var(--e3); }
+.cat-grupo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.45rem; }
+.cat-grupo > b { font-family: var(--display); font-weight: 400; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--azul-pizarra); width: 88px; flex: none; }
+.cat-chip {
+  font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1px solid var(--filete); background: var(--blanco); color: var(--grafito);
+  padding: 0.42rem 0.8rem; cursor: pointer; transition: all 0.25s var(--ease);
+}
+.cat-chip:hover { border-color: var(--azul-bruma); }
+.cat-chip.on { background: var(--azul); border-color: var(--azul); color: var(--blanco); }
+.cat-chip .n { opacity: 0.55; margin-left: 0.4rem; font-size: 0.9em; }
+.cat-chip.color { display: inline-flex; align-items: center; gap: 0.45rem; }
+.cat-chip.color i { width: 11px; height: 11px; border: 1px solid rgba(0,0,0,0.18); flex: none; }
+
+.cat-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: clamp(1rem, 2vw, 1.6rem); margin-top: var(--e5); }
+.cat-tela { border: 1px solid var(--filete); background: var(--blanco); cursor: pointer; text-align: left; padding: 0; font: inherit; transition: border-color 0.3s var(--ease); }
+.cat-tela:hover { border-color: var(--azul-bruma); }
+.cat-tela img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+.cat-pie { padding: var(--e3); border-top: 1px solid var(--filete); }
+.cat-cod { font-family: var(--display); font-size: 0.82rem; letter-spacing: 0.08em; color: var(--azul); display: block; }
+.cat-meta { font-size: 0.73rem; font-weight: 300; color: var(--piedra); margin-top: 0.25rem; line-height: 1.5; }
+.cat-vacio { text-align: center; padding-block: var(--e6); color: var(--piedra); font-weight: 300; }
+.cat-mas { display: block; margin: var(--e5) auto 0; }
+
+/* Ficha ampliada */
+.cat-visor { position: fixed; inset: 0; z-index: 200; background: rgba(var(--rgb-profundo), 0.9); display: grid; place-items: center; padding: var(--margen); }
+.cat-visor[hidden] { display: none; }
+.cat-caja { background: var(--papel); max-width: 900px; width: 100%; max-height: 92svh; overflow: auto; position: relative; }
+.cat-cerrar { position: absolute; top: 0; right: 0; width: 48px; height: 48px; border: none; background: none; cursor: pointer; font-size: 1.5rem; line-height: 1; color: var(--azul); }
+.cat-fotos { display: grid; grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) { .cat-fotos { grid-template-columns: 1fr; } }
+.cat-fotos img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+.cat-ficha { padding: clamp(1.5rem, 4vw, 2.5rem); }
+.cat-ficha h3 { font-family: var(--display); font-weight: 400; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--azul); }
+.cat-datos { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--e3); margin-top: var(--e4); }
+.cat-datos div { border-top: 1px solid var(--filete); padding-top: 0.6rem; }
+.cat-datos dt { font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-pizarra); }
+.cat-datos dd { font-size: 0.88rem; font-weight: 300; color: var(--grafito); margin-top: 0.2rem; }
+.cat-aviso { font-size: 0.78rem; color: var(--piedra); margin-top: var(--e3); font-weight: 300; }
+
 /* ---------- Muro de empresas ---------- */
 .empresas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--filete); border: 1px solid var(--filete); }
 .empresa { background: var(--papel); display: grid; place-items: center; padding: clamp(1.4rem, 3vw, 2.2rem) 1rem; min-height: 118px; }
@@ -2130,6 +2186,9 @@ body.tema-corporativo {
         <p class="lead" style="margin-top:1rem;">Cada una lleva siglos haciendo una sola cosa bien, y cada una aporta algo que las demás no: la lana del terno, el algodón de la camisa, el cachemir de la prenda que se hereda. Todas están en el muestrario de nuestras tiendas.</p>
       </div>
       <div class="rejilla r3" id="casas-detalle"></div>
+      <div class="centro" style="margin-top:3rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas" data-ir="catalogo">Ver el catálogo completo · 488 telas</a>
+      </div>
     </div>
   </section>
 
@@ -2418,6 +2477,55 @@ body.tema-corporativo {
 </main>
 
 <!-- ==================== BLOG ==================== -->
+<!-- ============ CATÁLOGO DE TELAS ============ -->
+<main class="pagina" data-pag="catalogo">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="assets/editorial-esmoquin-negro.jpg" alt="Telas para ternos a medida" style="object-position:50% 30%;" loading="lazy" width="659" height="1300">
+    <div class="pag-hero-velo"></div>
+    <div class="caja pag-hero-inner">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Catálogo</div>
+      <span class="rotulo">Muestrario Barrington</span>
+      <h1 class="t-hero">Catálogo de telas</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Todo el muestrario de Barrington, tela por tela. Filtra por colección, grado, tejido o color, y escríbenos con el código de la que te guste.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="cat-barra">
+        <div class="cat-buscar">
+          <input id="cat-q" type="search" placeholder="Buscar por código, p. ej. 518001" autocomplete="off" aria-label="Buscar tela por código">
+          <span class="cat-cuenta" id="cat-cuenta">—</span>
+          <button class="cat-limpiar" id="cat-limpiar" type="button">Limpiar filtros</button>
+        </div>
+        <div class="cat-filtros" id="cat-filtros"></div>
+      </div>
+      <div class="cat-rejilla" id="cat-rejilla"></div>
+      <p class="cat-vacio" id="cat-vacio" hidden>Ninguna tela coincide con esos filtros.</p>
+      <button class="btn btn-linea cat-mas" id="cat-mas" type="button" hidden>Ver más telas</button>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Viste una que te guste?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2.5rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20vi%20el%20cat%C3%A1logo%20de%20telas%20y%20quiero%20consultar." target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cat-visor" id="cat-visor" hidden role="dialog" aria-modal="true" aria-label="Ficha de la tela">
+    <div class="cat-caja">
+      <button class="cat-cerrar" id="cat-cerrar" type="button" aria-label="Cerrar">&times;</button>
+      <div class="cat-fotos" id="cat-fotos"></div>
+      <div class="cat-ficha" id="cat-ficha"></div>
+    </div>
+  </div>
+</main>
+
 <main class="pagina" data-pag="blog">
   <section class="pag-hero sobre-azul">
     <img class="pag-hero-img" src="assets/traje-burdeos.jpg" alt="Traje burdeos a medida" style="object-position:50% 20%;" loading="lazy" width="412" height="1000">
@@ -2673,7 +2781,8 @@ body.tema-corporativo {
   var RUTAS = {
     inicio: '/', medida: '/a-medida', trajes: '/ternos-a-medida',
     camisas: '/camisas-a-medida', telas: '/telas', novios: '/trajes-de-novio',
-    corporativo: '/corporativo', tiendas: '/tiendas', blog: '/blog'
+    corporativo: '/corporativo', tiendas: '/tiendas', blog: '/blog',
+    catalogo: '/catalogo-de-telas'
   };
 
   function ir(nombre, ancla, sinHistorial) {
@@ -2696,7 +2805,7 @@ body.tema-corporativo {
       history.pushState({ pagina: nombre }, '', ruta);
     }
     // Trajes y Camisas cuelgan de "A medida", así que marcan ese ítem del menú
-    var padre = { trajes: 'medida', camisas: 'medida' }[nombre] || nombre;
+    var padre = { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[nombre] || nombre;
     menuLinks.forEach(function (a) { a.classList.toggle('on', a.dataset.ir === padre); });
 
     var act = document.querySelector('.pagina[data-pag="' + nombre + '"]');
@@ -3342,6 +3451,160 @@ body.tema-corporativo {
       var destino = 'inicio';
       for (var k in RUTAS) { if (RUTAS[k] === location.pathname) { destino = k; break; } }
       ir(destino, null, true);
+    });
+  })();
+
+  /* ================= CATÁLOGO DE TELAS =================
+     488 telas. Los datos se piden solo cuando la página está en pantalla: son
+     92 KB que no tienen por qué descargarse en la portada. Todo el filtrado
+     ocurre aquí, sin volver al servidor. */
+  (function () {
+    var rejilla = document.getElementById('cat-rejilla');
+    if (!rejilla) return;
+
+    var WA = '51959370397';
+    var PASO = 60;                 // cuántas se pintan de golpe
+    var TELAS = [], vistas = 0, filtradas = [];
+    var estado = { q: '' };
+
+    var CAMPOS = [
+      { k: 'k',  et: 'Colección' },
+      { k: 'g',  et: 'Grado' },
+      { k: 'j',  et: 'Tejido' },
+      { k: 'o',  et: 'Color', color: true },
+      { k: 'd',  et: 'Diseño' },
+      { k: 'p',  et: 'Peso' },
+      { k: 'u',  et: 'Uso', lista: true }
+    ];
+    var COLORES = { negro: '#23262b', azul: '#2b3b5c', gris: '#8b8f96', burdeos: '#6b2c3a',
+                    marron: '#6d5340', beige: '#c9bda6', celeste: '#9db6cf', verde: '#4a5f4a' };
+    var NOMBRE = { negro: 'Negro', azul: 'Azul', gris: 'Gris', burdeos: 'Burdeos',
+                   marron: 'Marrón', beige: 'Beige', celeste: 'Celeste', verde: 'Verde' };
+
+    function valores(t, campo) {
+      var v = t[campo.k];
+      if (!v) return [];
+      return campo.lista ? v : [v];
+    }
+
+    function pinta(nuevo) {
+      if (nuevo) { rejilla.innerHTML = ''; vistas = 0; }
+      var trozo = filtradas.slice(vistas, vistas + PASO);
+      rejilla.insertAdjacentHTML('beforeend', trozo.map(function (t, i) {
+        var meta = [t.k, t.g].filter(Boolean).join(' · ');
+        return '<button class="cat-tela" type="button" data-i="' + (vistas + i) + '">' +
+          '<img src="assets/telas/' + t.i + '" alt="Tela ' + t.c + '" loading="lazy" width="420" height="280">' +
+          '<span class="cat-pie"><b class="cat-cod">' + (t.c || 'Sin código') + '</b>' +
+          '<span class="cat-meta">' + meta + '</span></span></button>';
+      }).join(''));
+      vistas += trozo.length;
+      document.getElementById('cat-mas').hidden = vistas >= filtradas.length;
+      document.getElementById('cat-vacio').hidden = filtradas.length > 0;
+      document.getElementById('cat-cuenta').textContent =
+        filtradas.length + (filtradas.length === 1 ? ' tela' : ' telas');
+    }
+
+    function filtrar() {
+      var q = estado.q.replace(/[^0-9a-z]/gi, '').toLowerCase();
+      filtradas = TELAS.filter(function (t) {
+        if (q && (t.c || '').replace(/[^0-9a-z]/gi, '').toLowerCase().indexOf(q) < 0) return false;
+        for (var i = 0; i < CAMPOS.length; i++) {
+          var c = CAMPOS[i], sel = estado[c.k];
+          if (!sel || !sel.length) continue;
+          var vs = valores(t, c);
+          if (!sel.some(function (x) { return vs.indexOf(x) >= 0; })) return false;
+        }
+        return true;
+      });
+      pinta(true);
+      dibujaChips();
+    }
+
+    function dibujaChips() {
+      var cont = document.getElementById('cat-filtros');
+      cont.innerHTML = CAMPOS.map(function (c) {
+        // El recuento de cada opción se calcula ignorando su propio grupo, que
+        // es lo que hace que los números sigan teniendo sentido al filtrar.
+        var base = TELAS.filter(function (t) {
+          var q = estado.q.replace(/[^0-9a-z]/gi, '').toLowerCase();
+          if (q && (t.c || '').replace(/[^0-9a-z]/gi, '').toLowerCase().indexOf(q) < 0) return false;
+          return CAMPOS.every(function (o) {
+            if (o.k === c.k) return true;
+            var sel = estado[o.k];
+            if (!sel || !sel.length) return true;
+            var vs = valores(t, o);
+            return sel.some(function (x) { return vs.indexOf(x) >= 0; });
+          });
+        });
+        var cuenta = {};
+        base.forEach(function (t) { valores(t, c).forEach(function (v) { cuenta[v] = (cuenta[v] || 0) + 1; }); });
+        var claves = Object.keys(cuenta).sort(function (a, b) { return cuenta[b] - cuenta[a]; });
+        if (!claves.length) return '';
+        var sel = estado[c.k] || [];
+        return '<div class="cat-grupo"><b>' + c.et + '</b>' + claves.map(function (v) {
+          var on = sel.indexOf(v) >= 0;
+          var etiqueta = c.color ? (NOMBRE[v] || v) : v;
+          var punto = c.color ? '<i style="background:' + (COLORES[v] || '#ccc') + '"></i>' : '';
+          return '<button class="cat-chip' + (c.color ? ' color' : '') + (on ? ' on' : '') +
+            '" type="button" data-campo="' + c.k + '" data-valor="' + v + '">' + punto +
+            etiqueta + '<span class="n">' + cuenta[v] + '</span></button>';
+        }).join('') + '</div>';
+      }).join('');
+    }
+
+    document.getElementById('cat-filtros').addEventListener('click', function (ev) {
+      var b = ev.target.closest('.cat-chip');
+      if (!b) return;
+      var c = b.dataset.campo, v = b.dataset.valor;
+      estado[c] = estado[c] || [];
+      var i = estado[c].indexOf(v);
+      if (i >= 0) estado[c].splice(i, 1); else estado[c].push(v);
+      filtrar();
+    });
+    document.getElementById('cat-q').addEventListener('input', function (e) {
+      estado.q = e.target.value; filtrar();
+    });
+    document.getElementById('cat-limpiar').addEventListener('click', function () {
+      estado = { q: '' };
+      document.getElementById('cat-q').value = '';
+      filtrar();
+    });
+    document.getElementById('cat-mas').addEventListener('click', function () { pinta(false); });
+
+    /* ---- Ficha ampliada ---- */
+    var visor = document.getElementById('cat-visor');
+    function abrir(t) {
+      document.getElementById('cat-fotos').innerHTML =
+        '<img src="assets/telas/' + t.i + '" alt="Tejido ' + t.c + '" width="420" height="280">' +
+        (t.i2 ? '<img src="assets/telas/' + t.i2 + '" alt="Orillo ' + t.c + '" width="560" height="373">' : '');
+      var filas = [['Código', t.c || '—'], ['Colección', t.k], ['Grado', t.g],
+                   ['Tejido', t.j], ['Color', NOMBRE[t.o] || t.o], ['Diseño', t.d],
+                   ['Peso', t.p], ['Uso', (t.u || []).join(', ')]].filter(function (f) { return f[1]; });
+      var msg = 'Hola, me interesa la tela ' + (t.c || '') + ' (' + t.k + ').';
+      document.getElementById('cat-ficha').innerHTML =
+        '<h3>' + (t.c || 'Tela') + '</h3>' +
+        '<dl class="cat-datos">' + filas.map(function (f) {
+          return '<div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'; }).join('') + '</dl>' +
+        (t.v ? '<p class="cat-aviso">Código pendiente de confirmar con el catálogo impreso.</p>' : '') +
+        '<div class="acciones" style="margin-top:2rem;"><a class="btn btn-azul" target="_blank" rel="noopener" href="https://wa.me/' +
+        WA + '?text=' + encodeURIComponent(msg) + '">Consultar esta tela</a></div>';
+      visor.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function cerrar() { visor.hidden = true; document.body.style.overflow = ''; }
+    rejilla.addEventListener('click', function (ev) {
+      var b = ev.target.closest('.cat-tela');
+      if (b) abrir(filtradas[+b.dataset.i]);
+    });
+    document.getElementById('cat-cerrar').addEventListener('click', cerrar);
+    visor.addEventListener('click', function (ev) { if (ev.target === visor) cerrar(); });
+    document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !visor.hidden) cerrar(); });
+
+    fetch('assets/telas.json').then(function (r) { return r.json(); }).then(function (d) {
+      TELAS = d; filtrar();
+    }).catch(function () {
+      document.getElementById('cat-vacio').hidden = false;
+      document.getElementById('cat-vacio').textContent = 'No se pudo cargar el catálogo. Vuelve a intentarlo.';
     });
   })();
 

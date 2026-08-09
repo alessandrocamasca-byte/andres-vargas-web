@@ -83,6 +83,13 @@ const RUTAS = {
     imagen: 'hero.jpg',
     miga: 'Tiendas',
   },
+  '/catalogo-de-telas': {
+    pagina: 'catalogo',
+    titulo: 'Catálogo de Telas para Ternos | Andrés Vargas',
+    desc: 'Todo el muestrario Barrington, tela por tela: 488 telas filtrables por colección, grado, tejido y color. Escríbenos con el código.',
+    imagen: 'editorial-esmoquin-negro.jpg',
+    miga: 'Catálogo de telas',
+  },
   '/blog': {
     pagina: 'blog',
     titulo: 'Blog de Sastrería | Andrés Vargas',
@@ -173,7 +180,7 @@ class Cuerpo {
    vería Inicio subrayado hasta que arrancara el script. */
 class Menu {
   constructor(pagina) {
-    this.activo = { trajes: 'medida', camisas: 'medida' }[pagina] || pagina;
+    this.activo = { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[pagina] || pagina;
   }
   element(el) {
     const clases = (el.getAttribute('class') || '').replace(/\bon\b/g, '').trim();
