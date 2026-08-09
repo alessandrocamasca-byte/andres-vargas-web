@@ -1462,9 +1462,14 @@ body.tema-corporativo {
   font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase;
   color: var(--azul-pizarra); margin-bottom: 0.3rem;
 }
-.horario > div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.82rem; }
+/* Los horarios partidos de Ucayali no caben en una línea dentro de la ficha:
+   en lugar de romper el valor y dejar un «pm» suelto, la fila se apila. */
+.horario > div { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.1rem 1rem; font-size: 0.82rem; }
+.horario > div > * { flex: 0 1 auto; min-width: 0; }
+.horario > div > b { text-align: left; }
+@media (min-width: 1101px) { .horario > div > b { text-align: right; } }
 .horario span { font-weight: 300; color: var(--piedra); }
-.horario b { font-weight: 500; color: var(--tinta); font-variant-numeric: tabular-nums; text-align: right; }
+.horario b { font-weight: 500; color: var(--tinta); font-variant-numeric: tabular-nums; }
 .horario .pendiente { color: var(--azul-pizarra); font-weight: 400; }
 .tienda-cuerpo .acciones { margin-top: auto; padding-top: var(--e4); }
 .tienda-cuerpo .btn { padding: 0.72rem 1.3rem; font-size: 0.72rem; }
