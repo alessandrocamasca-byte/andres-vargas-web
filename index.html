@@ -418,11 +418,13 @@ h1, h2, h3, h4 {
   display: block; margin-bottom: var(--e3);
 }
 .lead { font-size: clamp(0.96rem, 1.1vw, 1.05rem); font-weight: 300; color: var(--grafito); line-height: 1.82; }
-.mini { font-size: 0.79rem; font-weight: 300; color: var(--piedra); letter-spacing: 0.015em; }
+.mini { font-size: 0.79rem; font-weight: 400; color: var(--piedra); letter-spacing: 0.015em; }
 .sobre-azul, .sobre-azul h1, .sobre-azul h2, .sobre-azul h3, .sobre-azul h4 { color: var(--blanco); }
-.sobre-azul .lead { color: rgba(255,255,255,0.78); }
-.sobre-azul .rotulo { color: rgba(255,255,255,0.62); }
-.sobre-azul .mini { color: rgba(255,255,255,0.55); }
+.sobre-azul .lead { color: rgba(255,255,255,0.92); }
+.sobre-azul .rotulo { color: rgba(255,255,255,0.88); }
+/* Casi opaco a propósito: este texto suele caer sobre una foto, donde el
+   fondo local es más claro que el azul sólido y un blanco al 55% se disolvía. */
+.sobre-azul .mini { color: rgba(255,255,255,0.92); }
 
 /* ---------- Layout ---------- */
 .caja { max-width: var(--ancho); margin-inline: auto; padding-inline: var(--margen); }
@@ -556,13 +558,13 @@ body.tema-corporativo {
 .cabecera.fijo .logo-txt b { font-size: 1.02rem; letter-spacing: 0.13em; }
 .logo-txt i {
   font-style: normal; font-family: var(--display); font-size: 0.56rem; letter-spacing: 0.4em;
-  color: rgba(255,255,255,0.6); margin-top: 5px; text-transform: uppercase; padding-left: 0.4em;
+  color: rgba(255,255,255,0.8); margin-top: 5px; text-transform: uppercase; padding-left: 0.4em;
 }
 
 .menu { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2.1rem); }
 .menu a {
   font-family: var(--display); font-size: 0.74rem; font-weight: 300; text-transform: uppercase;
-  letter-spacing: 0.19em; color: rgba(255,255,255,0.88); cursor: pointer; position: relative; padding-block: 3px;
+  letter-spacing: 0.19em; color: rgba(255,255,255,0.94); cursor: pointer; position: relative; padding-block: 3px;
   transition: color 0.3s var(--ease);
 }
 .menu a:hover { color: var(--blanco); }
@@ -714,7 +716,7 @@ body.tema-corporativo {
     background: linear-gradient(to bottom, rgba(var(--rgb-profundo), 0.92) 0%, rgba(var(--rgb-profundo), 0.86) 55%, rgba(var(--rgb-profundo), 0.90) 100%);
   }
 }
-.miga { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: var(--e3); }
+.miga { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.82); margin-bottom: var(--e3); }
 .miga a { cursor: pointer; color: inherit; }
 .miga a:hover { color: var(--blanco); }
 
@@ -725,15 +727,15 @@ body.tema-corporativo {
 /* ---------- Cifras ---------- */
 .cifra { text-align: center; padding: var(--e4) var(--e2); }
 .cifra b { display: block; font-family: var(--display); font-weight: 200; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1; color: var(--blanco); }
-.cifra span { display: block; font-family: var(--display); font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: var(--e2); }
+.cifra span { display: block; font-family: var(--display); font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-top: var(--e2); }
 
 /* ---------- Pilar ---------- */
 .pilar { padding-top: var(--e4); }
 .pilar .num { font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.3em; color: var(--azul-medio); display: block; margin-bottom: var(--e2); }
 .pilar h3 { font-size: 1.02rem; letter-spacing: 0.09em; margin-bottom: var(--e2); font-weight: 400; }
 .pilar p { font-size: 0.88rem; font-weight: 300; color: var(--grafito); line-height: 1.82; }
-.sobre-azul .pilar .num { color: rgba(255,255,255,0.6); }
-.sobre-azul .pilar p { color: rgba(255,255,255,0.72); }
+.sobre-azul .pilar .num { color: rgba(255,255,255,0.8); }
+.sobre-azul .pilar p { color: rgba(255,255,255,0.88); }
 
 /* ---------- Ficha de prenda ---------- */
 .ficha { cursor: pointer; }
@@ -763,7 +765,7 @@ body.tema-corporativo {
 }
 .tarjeta-txt { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--e4); display: flex; flex-direction: column; }
 .tarjeta-txt b { font-family: var(--display); font-weight: 400; font-size: 1.02rem; letter-spacing: 0.11em; text-transform: uppercase; }
-.tarjeta-txt em { font-style: normal; font-size: 0.79rem; font-weight: 300; color: rgba(255,255,255,0.78); line-height: 1.62; margin-top: 0.3rem; }
+.tarjeta-txt em { font-style: normal; font-size: 0.79rem; font-weight: 300; color: rgba(255,255,255,0.9); line-height: 1.62; margin-top: 0.3rem; }
 .tarjeta-cta {
   font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
   margin-top: var(--e3); display: inline-flex; align-items: center; gap: 0.45rem; font-style: normal;
@@ -798,7 +800,7 @@ body.tema-corporativo {
 /* ---------- Franja de medios de pago ---------- */
 .pago { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.7rem clamp(1rem, 3vw, 2.25rem); }
 .pago b { font-family: var(--display); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blanco); }
-.pago span { font-size: 0.84rem; font-weight: 300; color: rgba(255,255,255,0.82); }
+.pago span { font-size: 0.84rem; font-weight: 300; color: rgba(255,255,255,0.9); }
 .pago-medios { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .pago-medio {
   font-family: var(--display); font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase;
@@ -837,7 +839,7 @@ body.tema-corporativo {
 .lista { display: grid; gap: var(--e3); margin-top: var(--e4); }
 .lista li { display: grid; grid-template-columns: auto 1fr; gap: 0.9rem; font-weight: 300; color: var(--grafito); font-size: 0.89rem; line-height: 1.8; }
 .lista li::before { content: ""; width: 7px; height: 7px; margin-top: 0.62rem; border: 1px solid var(--azul-medio); }
-.sobre-azul .lista li { color: rgba(255,255,255,0.78); }
+.sobre-azul .lista li { color: rgba(255,255,255,0.9); }
 .sobre-azul .lista li::before { border-color: rgba(255,255,255,0.6); }
 
 /* ---------- Pasos ---------- */
@@ -848,7 +850,7 @@ body.tema-corporativo {
 /* Sobre azul, grafito y azul-medio daban 1.8:1 y 1.27:1: ilegibles. */
 .sobre-azul .paso { border-top-color: rgba(255,255,255,0.22); }
 .sobre-azul .paso b { color: var(--azul-claro); }
-.sobre-azul .paso p { color: rgba(255,255,255,0.76); }
+.sobre-azul .paso p { color: rgba(255,255,255,0.88); }
 .sobre-azul .paso h3 { color: var(--blanco); }
 
 /* ---------- Telas ---------- */
@@ -887,9 +889,9 @@ body.tema-corporativo {
 .cfg-resumen { background: var(--azul); padding: clamp(1.25rem, 3vw, 1.9rem); }
 .cfg-resumen h3 { font-size: 1.02rem; letter-spacing: 0.1em; color: var(--blanco); margin-bottom: var(--e3); font-weight: 400; }
 .cfg-resumen ul { display: grid; gap: 0.5rem; margin-bottom: var(--e4); }
-.cfg-resumen li { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.86rem; font-weight: 300; color: rgba(255,255,255,0.72); border-bottom: 1px solid rgba(255,255,255,0.14); padding-bottom: 0.42rem; }
+.cfg-resumen li { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.86rem; font-weight: 300; color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.14); padding-bottom: 0.42rem; }
 .cfg-resumen li b { font-weight: 500; color: var(--blanco); text-align: right; }
-.cfg-nota { font-size: 0.74rem; font-weight: 300; color: rgba(255,255,255,0.5); margin-top: var(--e2); }
+.cfg-nota { font-size: 0.74rem; font-weight: 300; color: rgba(255,255,255,0.75); margin-top: var(--e2); }
 
 /* ---------- Nota / Blog ---------- */
 .nota { cursor: pointer; }
@@ -908,10 +910,10 @@ body.tema-corporativo {
 /* ---------- Tienda ---------- */
 .tienda { padding: var(--e4); border: 1px solid rgba(255,255,255,0.18); }
 .tienda h3 { font-size: 1rem; letter-spacing: 0.14em; font-weight: 400; margin-bottom: var(--e2); }
-.tienda p { font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.74); }
+.tienda p { font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.9); }
 
 /* ---------- Pie ---------- */
-.pie { background: var(--azul-profundo); color: rgba(255,255,255,0.72); padding-top: clamp(3rem, 6vw, 4.5rem); }
+.pie { background: var(--azul-profundo); color: rgba(255,255,255,0.85); padding-top: clamp(3rem, 6vw, 4.5rem); }
 .pie-rejilla { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: clamp(1.5rem, 3vw, 2.5rem); padding-bottom: var(--e6); }
 @media (max-width: 900px) { .pie-rejilla { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .pie-rejilla { grid-template-columns: 1fr; } }
@@ -929,7 +931,7 @@ body.tema-corporativo {
 .pie-base {
   border-top: 1px solid rgba(255,255,255,0.1); padding-block: var(--e4);
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--e2);
-  font-size: 0.78rem; color: rgba(255,255,255,0.45);
+  font-size: 0.78rem; color: rgba(255,255,255,0.72);
 }
 
 /* ---------- Caso: tarjeta de proyecto con foto y métrica ---------- */
@@ -959,7 +961,7 @@ body.tema-corporativo {
 .caso-meta { position: absolute; left: var(--e4); right: var(--e4); bottom: var(--e4); z-index: 2; }
 .caso-rotulo { display: block; font-family: var(--display); font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul-claro); margin-bottom: 0.3rem; }
 .caso-valor { font-family: var(--display); font-weight: 200; font-size: clamp(2.1rem, 3.4vw, 3rem); line-height: 1; color: var(--blanco); letter-spacing: 0.01em; }
-.caso-sub { font-size: 0.78rem; font-weight: 300; color: rgba(255,255,255,0.72); margin-top: 0.35rem; }
+.caso-sub { font-size: 0.78rem; font-weight: 300; color: rgba(255,255,255,0.88); margin-top: 0.35rem; }
 /* Sin métrica: el nombre del proyecto ocupa el lugar del número */
 .caso-nombre { font-family: var(--display); font-weight: 300; text-transform: uppercase; font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.06; color: var(--blanco); letter-spacing: 0.03em; }
 
@@ -976,7 +978,7 @@ body.tema-corporativo {
 .sobre-azul .caso { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.2); }
 .sobre-azul .caso:hover { border-color: rgba(255,255,255,0.48); box-shadow: none; }
 .sobre-azul .caso-cuerpo h3 { color: var(--blanco); }
-.sobre-azul .caso-cuerpo p { color: rgba(255,255,255,0.72); }
+.sobre-azul .caso-cuerpo p { color: rgba(255,255,255,0.88); }
 .sobre-azul .caso-cat { color: var(--azul-claro); }
 .sobre-azul .caso-chips span { color: rgba(255,255,255,0.86); border-color: rgba(255,255,255,0.26); }
 
@@ -1069,7 +1071,7 @@ body.tema-corporativo {
   padding: 0.85rem 1rem; width: 100%; transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
 }
 .campo textarea { resize: vertical; line-height: 1.7; }
-.campo input::placeholder, .campo textarea::placeholder { color: rgba(255,255,255,0.42); }
+.campo input::placeholder, .campo textarea::placeholder { color: rgba(255,255,255,0.6); }
 .campo input:focus, .campo textarea:focus, .campo select:focus {
   outline: none; border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1);
 }
@@ -1082,7 +1084,7 @@ body.tema-corporativo {
 }
 .campo select { appearance: none; -webkit-appearance: none; padding-right: 2.4rem; cursor: pointer; }
 .campo select option { color: var(--tinta); background: var(--blanco); }
-.campo-nota { font-size: 0.74rem; font-weight: 300; color: rgba(255,255,255,0.5); }
+.campo-nota { font-size: 0.74rem; font-weight: 300; color: rgba(255,255,255,0.75); }
 .form-acciones { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: var(--e2); }
 .form-error { font-size: 0.82rem; color: #FFC9C9; font-weight: 300; }
 
@@ -1138,7 +1140,7 @@ body.tema-corporativo {
 .canal:hover { border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.04); transform: translateY(-3px); }
 .canal .icono { stroke: var(--azul-claro); width: 30px; height: 30px; margin-bottom: var(--e2); }
 .canal h3 { font-family: var(--display); font-size: 0.92rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blanco); }
-.canal p { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.66); line-height: 1.75; }
+.canal p { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.85); line-height: 1.75; }
 .canal b { font-family: var(--display); font-weight: 400; font-size: 0.8rem; letter-spacing: 0.12em; color: var(--blanco); margin-top: 0.3rem; }
 
 /* ---------- Ficha de tienda ---------- */
@@ -1199,7 +1201,7 @@ body.tema-corporativo {
 .local .btn { padding: 0.7rem 1.3rem; font-size: 0.72rem; }
 .sobre-azul .local { border-top-color: rgba(255,255,255,0.22); }
 .sobre-azul .local .zona { color: var(--azul-claro); }
-.sobre-azul .local address { color: rgba(255,255,255,0.75); }
+.sobre-azul .local address { color: rgba(255,255,255,0.9); }
 
 /* ---------- WhatsApp flotante ---------- */
 .wa {
