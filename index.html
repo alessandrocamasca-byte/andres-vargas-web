@@ -1043,24 +1043,35 @@ body.tema-corporativo {
   transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .cat-cerrar:hover { background: rgba(var(--rgb-profundo), 0.75); border-color: rgba(255,255,255,0.6); }
-/* Manda la foto del orillo: es la que lleva la marca tejida y el grado. La
-   plana pasa a muestra pequeña junto al código, que es todo lo que aporta
-   cuando la tela es de color entero y el recuadro sale negro. */
-/* Tope de alto para portátiles y móviles en horizontal: sin él la foto se
-   lleva el recuadro entero y hay que desplazar para ver un solo dato. */
-.cat-foto { display: block; width: 100%; aspect-ratio: 21/9; max-height: 42svh; object-fit: cover; }
-@media (max-width: 620px) { .cat-foto { aspect-ratio: 3/2; } }
-.cat-ficha { padding: clamp(1.6rem, 4vw, 2.6rem); }
-.cat-enc { display: flex; align-items: center; gap: clamp(0.9rem, 2vw, 1.35rem); }
-.cat-muestra { flex: 0 0 auto; width: 62px; height: 62px; object-fit: cover; border: 1px solid var(--filete); }
+/* Las dos fotos, orillo y plano, al mismo tamaño. Los originales miden 480px
+   de ancho: repartidas en dos mitades de la caja se ven nítidas, a todo lo
+   ancho había que ampliarlas al doble y se pixelaban.
+   El tope en svh es lo que mantiene la ficha entera dentro del recuadro en
+   portátiles de pantalla baja, sin desplazar. */
+.cat-fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--filete); }
+.cat-fotos img { display: block; width: 100%; aspect-ratio: 3/2; max-height: 32svh; object-fit: cover; }
+/* En móvil siguen enfrentadas: apiladas sumaban dos veces su alto y la ficha
+   se salía del recuadro. Recorte más cuadrado para que no queden en tira. */
+@media (max-width: 620px) { .cat-fotos img { aspect-ratio: 4/3; } }
+.cat-ficha { padding: clamp(1.4rem, 3.2vw, 2.2rem) clamp(1.6rem, 4vw, 2.6rem); }
 .cat-ficha h3 { font-family: var(--display); font-weight: 400; font-size: 1.42rem; letter-spacing: 0.09em; color: var(--azul); line-height: 1.15; }
 .cat-linaje { display: block; margin-top: 0.4rem; font-family: var(--display); font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--azul-pizarra); }
-.cat-datos { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(1.8rem, 4vw, 3.2rem); margin-top: clamp(1.5rem, 3vw, 2.1rem); }
+.cat-datos { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(1.8rem, 4vw, 3.2rem); margin-top: clamp(1.1rem, 2.4vw, 1.6rem); }
 @media (max-width: 620px) { .cat-datos { grid-template-columns: 1fr; } }
-.cat-datos div { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; border-bottom: 1px solid var(--filete); padding: 0.72rem 0; }
+.cat-datos div { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; border-bottom: 1px solid var(--filete); padding: 0.58rem 0; }
 .cat-datos dt { flex: 0 0 auto; font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-pizarra); }
 .cat-datos dd { text-align: right; font-size: 0.88rem; font-weight: 300; color: var(--grafito); }
 .cat-aviso { font-size: 0.78rem; color: var(--piedra); margin-top: var(--e3); font-weight: 300; }
+/* Pantallas bajas (portátil pequeño, móvil en horizontal): se recorta la
+   fotografía y el aire de la ficha antes que dejar la tarjeta a medias. */
+@media (max-height: 680px) and (min-width: 621px) {
+  .cat-fotos img { max-height: 26svh; }
+  .cat-ficha { padding: 1.1rem clamp(1.4rem, 3vw, 2rem); }
+  .cat-ficha h3 { font-size: 1.22rem; }
+  .cat-datos { margin-top: 0.9rem; }
+  .cat-datos div { padding: 0.45rem 0; }
+  .cat-ficha .acciones { margin-top: 1rem !important; }
+}
 
 /* ---------- Muro de empresas ---------- */
 .empresas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--filete); border: 1px solid var(--filete); }
@@ -3816,24 +3827,26 @@ body.tema-corporativo {
     var visor = document.getElementById('cat-visor');
     function abrir(t) {
       document.getElementById('cat-fotos').innerHTML =
-        '<img class="cat-foto" src="assets/telas/' + (t.i2 || t.i) + '" alt="Orillo de la tela ' + t.c + ' de ' + CASA + '" width="480" height="320">';
+        (t.i2 ? '<img src="assets/telas/' + t.i2 + '" alt="Orillo de la tela ' + t.c + ' de ' + CASA + '" width="480" height="320">' : '') +
+        '<img src="assets/telas/' + t.i + '" alt="Tejido de la tela ' + t.c + ' de ' + CASA + '" width="420" height="280">';
       /* Casa, colección y grado suben al linaje: repetirlos como campos deja
          «Barrington» once veces en las 483 fichas y no distingue ninguna. */
-      var linaje = [CASA, t.k, t.g].filter(Boolean).join(' · ');
+      /* En 80 telas la colección y el grado son la misma palabra («Super 120s»),
+         así que hay que quitar el repetido o el linaje sale tartamudo. */
+      var linaje = [CASA, t.k, t.g].filter(Boolean).filter(function (v, i, a) {
+        return a.indexOf(v) === i;
+      }).join(' · ');
       var filas = [['Tejido', t.j], ['Composición', t.comp], ['Gramaje', t.gm],
                    ['Color', NOMBRE[t.o] || t.o], ['Diseño', t.d],
                    ['Peso', t.p], ['Uso', (t.u || []).join(', ')]].filter(function (f) { return f[1]; });
       var msg = 'Hola, me interesa la tela ' + (t.c || '') + ' de ' + CASA + ' (' + t.k + (t.g ? ', ' + t.g : '') + ').';
       document.getElementById('cat-ficha').innerHTML =
-        '<div class="cat-enc">' +
-          (t.i2 ? '<img class="cat-muestra" src="assets/telas/' + t.i + '" alt="Muestra de la tela ' + t.c + '" width="420" height="280">' : '') +
-          '<div><h3>' + (t.c || 'Tela') + '</h3>' +
-          (linaje ? '<span class="cat-linaje">' + linaje + '</span>' : '') + '</div>' +
-        '</div>' +
+        '<h3>' + (t.c || 'Tela') + '</h3>' +
+        (linaje ? '<span class="cat-linaje">' + linaje + '</span>' : '') +
         '<dl class="cat-datos">' + filas.map(function (f) {
           return '<div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'; }).join('') + '</dl>' +
         (t.v ? '<p class="cat-aviso">Código pendiente de confirmar con el catálogo impreso.</p>' : '') +
-        '<div class="acciones" style="margin-top:2rem;"><a class="btn btn-azul" target="_blank" rel="noopener" href="https://wa.me/' +
+        '<div class="acciones" style="margin-top:1.4rem;"><a class="btn btn-azul" target="_blank" rel="noopener" href="https://wa.me/' +
         WA + '?text=' + encodeURIComponent(msg) + '">Consultar esta tela</a></div>';
       visor.hidden = false;
       document.body.style.overflow = 'hidden';
