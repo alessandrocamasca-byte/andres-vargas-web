@@ -1422,6 +1422,15 @@ body.tema-corporativo {
 .tienda-foto > img:first-child { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
 .tienda-ficha:hover .tienda-foto > img:first-child { transform: scale(1.04); }
 .tienda-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(var(--rgb-profundo), 0.78) 0%, rgba(var(--rgb-profundo), 0.30) 45%, rgba(var(--rgb-profundo), 0.10) 100%); }
+/* El cliente todavía no ha enviado fotografías de sus locales. El hueco se
+   resuelve con la marca sobre el azul de la casa: poner una foto de archivo
+   de una sastrería cualquiera sería enseñar una tienda que no es la suya.
+   En cuanto lleguen las fotos basta con rellenar `foto` en TIENDAS. */
+.tienda-foto.sin-foto { background: radial-gradient(120% 120% at 50% 12%, var(--azul-medio) 0%, var(--azul) 58%, rgb(var(--rgb-profundo)) 100%); }
+.tienda-foto.sin-foto::after { background: none; }
+.tienda-placa { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem; }
+.tienda-placa img { width: 38px; height: auto; opacity: 0.9; }
+.tienda-placa b { font-family: var(--display); font-weight: 400; font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blanco); }
 .tienda-foto .zona {
   position: absolute; left: var(--e3); bottom: var(--e3); z-index: 2;
   font-family: var(--display); font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--azul-claro);
@@ -1482,6 +1491,11 @@ body.tema-corporativo {
 .wa svg { width: 30px; height: 30px; fill: #fff; }
 
 /* ---------- Entrada ---------- */
+/* Filas de varias fotos: manda la caja, no la proporción de cada original.
+   Sin esto una foto más ancha se queda corta y la fila hace escalón. */
+.foto-caja { overflow: hidden; }
+.foto-caja > img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+
 .rev { opacity: 0; transform: translateY(22px); transition: opacity 0.85s var(--ease), transform 0.85s var(--ease); }
 .rev.ver { opacity: 1; transform: none; }
 .rev[data-d="1"] { transition-delay: 0.08s; }
@@ -2571,9 +2585,9 @@ body.tema-corporativo {
         <p class="lead medida centro" style="margin-top:1rem;">Vestimos también a padrinos, padres y hermanos, para que el conjunto se vea coherente en las fotos.</p>
       </div>
       <div class="rejilla r3">
-        <div class="rev"><img src="assets/novios-trio.jpg" alt="Novio con dos padrinos" loading="lazy" width="801" height="1200"></div>
-        <div class="rev" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida" loading="lazy" width="801" height="1200"></div>
-        <div class="rev" data-d="2"><img src="assets/editorial-duo.jpg" alt="Dos trajes a medida para el cortejo" loading="lazy" width="1275" height="1400"></div>
+        <div class="rev foto-caja"><img src="assets/novios-trio.jpg" alt="Novio con dos padrinos" loading="lazy" width="801" height="1200"></div>
+        <div class="rev foto-caja" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida" loading="lazy" width="801" height="1200"></div>
+        <div class="rev foto-caja" data-d="2"><img src="assets/editorial-duo.jpg" alt="Dos trajes a medida para el cortejo" loading="lazy" width="1275" height="1400"></div>
       </div>
     </div>
   </section>
@@ -3126,7 +3140,7 @@ body.tema-corporativo {
       distrito: 'Santiago de Surco',
       ref: '',
       mapa: 'Av.+Primavera+252+Chacarilla+Santiago+de+Surco+Lima',
-      foto: 'assets/editorial/ed-abrigo-tweed.jpg',
+      foto: '',
       destacado: 'Experiencia en los detalles para ese día',
       horas: [['Lunes a sábado', '10 am a 8 pm']],
       aperturas: [
@@ -3141,7 +3155,7 @@ body.tema-corporativo {
       distrito: 'Cercado de Lima',
       ref: '',
       mapa: 'Jiron+Huallaga+558+Cercado+de+Lima',
-      foto: 'assets/editorial/ed-oficina-camel.jpg',
+      foto: '',
       destacado: 'Única que abre domingos',
       horas: [['Lunes a sábado', '10 am a 8 pm'], ['Domingo', '10 am a 4 pm']],
       aperturas: [
@@ -3157,7 +3171,7 @@ body.tema-corporativo {
       distrito: 'Cercado de Lima',
       ref: '',
       mapa: 'Jiron+Huallaga+570+Cercado+de+Lima',
-      foto: 'assets/editorial/ed-verano-cruzado.jpg',
+      foto: '',
       horas: [['Lunes a sábado', '10 am a 8 pm']],
       aperturas: [
         { dias: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], abre: '10:00', cierra: '20:00' }
@@ -3171,7 +3185,7 @@ body.tema-corporativo {
       distrito: 'Cercado de Lima',
       ref: '',
       mapa: 'Jiron+Ucayali+115+Cercado+de+Lima',
-      foto: 'assets/editorial/ed-saco-pieddepoule.jpg',
+      foto: '',
       horas: [['Lunes a viernes', '10 am a 1 pm y 2 pm a 8 pm'], ['Sábado', 'Consúltanos']],
       aperturas: [
         { dias: ['Monday','Tuesday','Wednesday','Thursday','Friday'], abre: '10:00', cierra: '13:00' },
@@ -3186,7 +3200,7 @@ body.tema-corporativo {
       distrito: 'Cercado de Lima',
       ref: '',
       mapa: 'Jiron+Ucayali+119+Cercado+de+Lima',
-      foto: 'assets/editorial/ed-sport-verde.jpg',
+      foto: '',
       horas: [['Lunes a viernes', '10 am a 1 pm y 2 pm a 8 pm'], ['Sábado', 'Consúltanos']],
       aperturas: [
         { dias: ['Monday','Tuesday','Wednesday','Thursday','Friday'], abre: '10:00', cierra: '13:00' },
@@ -3201,7 +3215,7 @@ body.tema-corporativo {
       distrito: 'Cercado de Lima',
       ref: '',
       mapa: 'Jiron+Ucayali+121+Cercado+de+Lima',
-      foto: 'assets/editorial/ed-casual-denim.jpg',
+      foto: '',
       horas: [['Lunes a viernes', '10 am a 1 pm y 2 pm a 8 pm'], ['Sábado', 'Consúltanos']],
       aperturas: [
         { dias: ['Monday','Tuesday','Wednesday','Thursday','Friday'], abre: '10:00', cierra: '13:00' },
@@ -3217,9 +3231,11 @@ body.tema-corporativo {
         return '<div><span>' + h[0] + '</span><b' + pend + '>' + h[1] + '</b></div>';
       }).join('');
       return '<article class="tienda-ficha rev"' + (i ? ' data-d="' + i + '"' : '') + '>' +
-        '<div class="tienda-foto">' +
-          '<img src="' + t.foto + '" alt="Prendas a medida de Andrés Vargas" loading="lazy">' +
-          '<img src="assets/escudo-blanco.png" alt="" class="sello" loading="lazy" width="261" height="420">' +
+        '<div class="tienda-foto' + (t.foto ? '' : ' sin-foto') + '">' +
+          (t.foto
+            ? '<img src="' + t.foto + '" alt="Tienda de Andrés Vargas en ' + t.zona + '" loading="lazy">'
+            : '<span class="tienda-placa"><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><b>' + t.nombre + '</b></span>') +
+          (t.foto ? '<img src="assets/escudo-blanco.png" alt="" class="sello" loading="lazy" width="261" height="420">' : '') +
           '<span class="zona">' + t.zona + '</span>' +
           (t.destacado ? '<span class="tienda-badge">' + t.destacado + '</span>' : '') +
         '</div>' +
