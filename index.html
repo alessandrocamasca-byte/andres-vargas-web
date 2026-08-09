@@ -808,8 +808,8 @@ body.tema-corporativo {
 }
 
 .casa-sinlogo {
-  display: grid; place-items: center; font-family: var(--display); font-weight: 300;
-  font-size: 1.1rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--azul-bruma);
+  display: grid; place-items: center start; font-family: var(--display); font-weight: 300;
+  font-size: 1.35rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--azul-bruma);
 }
 
 /* ---------- Muro de empresas ---------- */
@@ -1000,8 +1000,8 @@ body.tema-corporativo {
 .slider-marcas:hover .slider-pista { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .slider-pista { animation: none; } }
 .slider-pista img {
-  height: clamp(50px, 5.6vw, 76px); width: auto; max-width: 250px; object-fit: contain;
-  mix-blend-mode: multiply; filter: brightness(1.16); opacity: 0.68;
+  height: clamp(62px, 6.8vw, 92px); width: auto; max-width: 280px; object-fit: contain;
+  mix-blend-mode: multiply; filter: brightness(1.1); opacity: 0.82;
   transition: opacity 0.35s var(--ease);
 }
 .slider-pista img:hover { opacity: 1; }
@@ -1027,8 +1027,9 @@ body.tema-corporativo {
 /* ---------- Ficha de casa ---------- */
 .casa { border-top: 1px solid var(--filete); padding-top: var(--e4); display: flex; flex-direction: column; gap: 0.5rem; }
 .casa-logo {
-  height: 40px; width: auto; max-width: 140px; object-fit: contain; align-self: flex-start;
-  mix-blend-mode: multiply; filter: brightness(1.13); opacity: 0.85; margin-bottom: var(--e2);
+  height: clamp(58px, 6vw, 78px); width: auto; max-width: 100%; object-fit: contain;
+  object-position: left center; align-self: flex-start;
+  mix-blend-mode: multiply; filter: brightness(1.08); opacity: 1; margin-bottom: var(--e3);
 }
 .casa .origen { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul-pizarra); }
 .casa h3 { font-size: 1.02rem; letter-spacing: 0.09em; font-weight: 400; }
@@ -2076,7 +2077,7 @@ body.tema-corporativo {
     <div class="caja">
       <div class="enc">
         <span class="rotulo">Una por una</span>
-        <h2 class="t-xl">Las demás casas</h2>
+        <h2 class="t-xl">Grandes casas del tejido</h2>
         <p class="lead" style="margin-top:1rem;">Cada una aporta algo distinto al muestrario: lana para traje, algodón para camisería, tejidos de temporada.</p>
       </div>
       <div class="rejilla r3" id="casas-detalle"></div>
@@ -2979,10 +2980,11 @@ body.tema-corporativo {
       d: 'El archivo camisero inglés por excelencia, con más de dos siglos de diseños. Forma parte del grupo Albini.' },
     { n: 'Brunello Cucinelli', logo: 'assets/tela-cucinelli.png', origen: 'Italia · Solomeo',
       d: 'La casa italiana de Solomeo, reconocida en todo el mundo por su trabajo con el cachemir y las fibras nobles.' },
-    /* PENDIENTE: falta el archivo del logo y el texto de la casa. Sin logo no
-       se dibuja un rótulo que parezca su marca; sin datos no se inventa la
-       descripción. */
-    { n: 'Creditex', logo: '', origen: 'Perú',
+    /* La ruta ya está puesta: en cuanto el PNG esté en assets/ aparece solo.
+       Mientras no exista, `onerror` degrada al nombre en texto en lugar de
+       dejar el icono de imagen rota. El texto de la casa sigue pendiente del
+       cliente: no se inventa. */
+    { n: 'Creditex', logo: 'assets/tela-creditex.png', origen: 'Perú',
       d: '' }
   ];
 
@@ -2993,7 +2995,8 @@ body.tema-corporativo {
     var pista = document.getElementById('slider-marcas');
     if (pista) {
       var uno = CASAS.filter(function (c) { return c.logo; }).map(function (c) {
-        return '<img src="' + c.logo + '" alt="' + c.n + '" loading="lazy">';
+        return '<img src="' + c.logo + '" alt="' + c.n + '" loading="lazy" ' +
+               'onerror="this.remove()">';
       }).join('');
       pista.innerHTML = uno + uno;
     }
@@ -3006,7 +3009,8 @@ body.tema-corporativo {
       grid.innerHTML = CASAS.filter(function (c) { return !c.destacada; }).map(function (c, i) {
         return '<article class="casa rev"' + (i % 3 ? ' data-d="' + (i % 3) + '"' : '') + '>' +
           (c.logo
-            ? '<img class="casa-logo" src="' + c.logo + '" alt="' + c.n + '" loading="lazy">'
+            ? '<img class="casa-logo" src="' + c.logo + '" alt="' + c.n + '" loading="lazy" ' +
+              'onerror="this.outerHTML=\'<span class=&quot;casa-logo casa-sinlogo&quot;>' + c.n + '</span>\'">'
             : '<span class="casa-logo casa-sinlogo">' + c.n + '</span>') +
           (c.origen ? '<span class="origen">' + c.origen + '</span>' : '') +
           '<h3>' + c.n + '</h3>' +
