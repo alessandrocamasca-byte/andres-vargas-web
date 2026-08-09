@@ -3607,7 +3607,10 @@ body.tema-corporativo {
       var trozo = filtradas.slice(vistas, vistas + PASO);
       rejilla.insertAdjacentHTML('beforeend', trozo.map(function (t, i) {
         return '<button class="cat-tela" type="button" data-i="' + (vistas + i) + '">' +
-          '<img src="assets/telas/' + t.i + '" alt="Tela ' + t.c + '" loading="lazy" width="420" height="280">' +
+          // La drapeada enseña el orillo con el nombre de la casa; la plana es
+          // un rectángulo de color que no dice nada en una rejilla. 22 telas no
+          // tienen drapeada y caen a la plana.
+          '<img src="assets/telas/' + (t.i2 || t.i) + '" alt="Tela ' + t.c + ' de ' + CASA + '" loading="lazy" width="480" height="320">' +
           '<span class="cat-pie">' +
             '<span class="cat-casa">' + CASA + '</span>' +
             '<b class="cat-cod">' + (t.c || 'Sin código') + '</b>' +
@@ -3733,8 +3736,8 @@ body.tema-corporativo {
     var visor = document.getElementById('cat-visor');
     function abrir(t) {
       document.getElementById('cat-fotos').innerHTML =
-        '<img src="assets/telas/' + t.i + '" alt="Tejido ' + t.c + '" width="420" height="280">' +
-        (t.i2 ? '<img src="assets/telas/' + t.i2 + '" alt="Orillo ' + t.c + '" width="560" height="373">' : '');
+        (t.i2 ? '<img src="assets/telas/' + t.i2 + '" alt="Orillo ' + t.c + '" width="480" height="320">' : '') +
+        '<img src="assets/telas/' + t.i + '" alt="Tejido ' + t.c + '" width="420" height="280">';
       var filas = [['Código', t.c || '—'], ['Casa', CASA], ['Colección', t.k], ['Grado', t.g],
                    ['Tejido', t.j], ['Color', NOMBRE[t.o] || t.o], ['Diseño', t.d],
                    ['Peso', t.p], ['Uso', (t.u || []).join(', ')]].filter(function (f) { return f[1]; });
