@@ -31,7 +31,7 @@ const RUTAS = {
   '/': {
     pagina: 'inicio',
     titulo: 'Ternos y Trajes a Medida en Lima | Sastrería Andrés Vargas',
-    desc: 'Sastrería en Lima desde 1982. Ternos, trajes y camisas a medida, traje de novio y vestuario corporativo. Tres tiendas. Escríbenos por WhatsApp.',
+    desc: 'Sastrería en Lima desde 1982. Ternos, trajes y camisas a medida, traje de novio y vestuario corporativo. Seis tiendas. Escríbenos por WhatsApp.',
     imagen: 'hero.jpg',
   },
   '/a-medida': {
@@ -51,7 +51,7 @@ const RUTAS = {
   '/camisas-a-medida': {
     pagina: 'camisas',
     titulo: 'Camisas a Medida en Lima | Andrés Vargas',
-    desc: 'Camisas a medida con patrón propio: cuello, puño y silueta se definen contigo. Sastrería en Lima desde 1982, con tres tiendas.',
+    desc: 'Camisas a medida con patrón propio: cuello, puño y silueta se definen contigo. Sastrería en Lima desde 1982, con seis tiendas.',
     imagen: 'traje-gris.jpg',
     miga: 'Camisas',
   },
@@ -79,7 +79,7 @@ const RUTAS = {
   '/tiendas': {
     pagina: 'tiendas',
     titulo: 'Tiendas de Sastrería en Lima | Andrés Vargas',
-    desc: 'Tres tiendas en Lima: Jr. Ucayali 115, 119 y 121 y Jr. Huallaga 558 y 570 en el Cercado, y Av. Primavera 252, Chacarilla, en Surco.',
+    desc: 'Seis tiendas en Lima: Jr. Ucayali 115, 119 y 121 y Jr. Huallaga 558 y 570 en el Cercado, y Av. Primavera 252, Chacarilla, en Surco.',
     imagen: 'hero.jpg',
     miga: 'Tiendas',
   },
