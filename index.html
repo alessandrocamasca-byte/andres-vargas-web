@@ -1501,6 +1501,9 @@ body.tema-corporativo {
    Sin esto una foto más ancha se queda corta y la fila hace escalón. */
 .foto-caja { overflow: hidden; }
 .foto-caja > img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.foto-caja.tira-ancha { margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+.foto-caja.tira-ancha > img { aspect-ratio: 12/5; }
+@media (max-width: 620px) { .foto-caja.tira-ancha > img { aspect-ratio: 3/2; } }
 
 .rev { opacity: 0; transform: translateY(22px); transition: opacity 0.85s var(--ease), transform 0.85s var(--ease); }
 .rev.ver { opacity: 1; transform: none; }
@@ -1640,7 +1643,7 @@ body.tema-corporativo {
           </span>
         </a>
         <a href="/camisas-a-medida" class="tarjeta rev" data-d="1" data-ir="camisas">
-          <img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy" width="451" height="1000">
+          <img src="assets/camisa-hero.jpg" alt="Camisa a medida confeccionada en Lima" loading="lazy" width="1003" height="1800">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Camisas</b>
@@ -2079,7 +2082,7 @@ body.tema-corporativo {
           </div>
         </a>
         <a href="/camisas-a-medida" class="duo rev" data-d="1" data-ir="camisas">
-          <div class="duo-img"><img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy" width="451" height="1000"></div>
+          <div class="duo-img"><img src="assets/camisa-medida.jpg" alt="Camisa a medida sobre maniquí con cinta métrica" loading="lazy" width="573" height="535"></div>
           <div class="duo-txt">
             <h3>Camisas</h3>
             <p>Cuello, puño y silueta definidos contigo. La prenda que más contacto tiene con tu piel.</p>
@@ -2201,7 +2204,7 @@ body.tema-corporativo {
 <!-- ==================== CAMISAS ==================== -->
 <main class="pagina" data-pag="camisas">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/traje-gris.jpg" alt="Camisa a medida" style="object-position:50% 18%;" loading="lazy" width="451" height="1000">
+    <img class="pag-hero-img" src="assets/camisa-hero.jpg" alt="Camisa a medida en tejido azul" style="object-position:50% 20%;" loading="lazy" width="1003" height="1800">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/a-medida" data-ir="medida">A medida</a> · Camisas</div>
@@ -2213,7 +2216,7 @@ body.tema-corporativo {
 
   <section class="seccion">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/traje-gris.jpg" alt="Camisa a medida bajo saco gris perla" loading="lazy" width="451" height="1000"></div>
+      <div class="rev"><img src="assets/camisa-medida.jpg" alt="Camisa a medida sobre maniquí con cinta métrica" loading="lazy" width="573" height="535"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">El detalle</span>
@@ -2234,9 +2237,10 @@ body.tema-corporativo {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial/ed-oficina-azul.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/camisa-detalle.jpg');">
     <div class="caja">
       <div class="enc centro"><span class="rotulo">Personalización</span><h2 class="t-xl">Lo que puedes elegir</h2></div>
+      <div class="rev foto-caja tira-ancha"><img src="assets/camisa-cuellos.jpg" alt="Tres tipos de cuello de camisa a medida" loading="lazy" width="1200" height="800"></div>
       <div class="rejilla r3">
         <article class="pilar doble-filete rev"><span class="num">01</span><span class="icono" data-icono="cuello"></span>
           <h3>El cuello</h3><p>Define el carácter de la camisa y cómo se ve con o sin corbata.</p></article>
