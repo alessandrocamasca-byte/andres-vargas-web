@@ -1104,28 +1104,22 @@ body.tema-corporativo {
 .chip:hover { border-color: var(--azul-medio); }
 .chip.on { background: var(--azul); border-color: var(--azul); color: var(--blanco); }
 
-/* ---------- Configurador ---------- */
-.cfg { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
-@media (max-width: 940px) { .cfg { grid-template-columns: 1fr; } }
-.cfg-vista { background: var(--blanco); border: 1px solid var(--filete); padding: clamp(1.25rem, 3vw, 2.25rem); position: sticky; top: 84px; text-align: center; }
-@media (max-width: 940px) { .cfg-vista { position: static; } }
-.cfg-vista svg { width: min(100%, 330px); margin-inline: auto; }
-.cfg-pie { margin-top: var(--e3); font-family: var(--display); font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-medio); }
-.cfg-panel { display: flex; flex-direction: column; gap: var(--e5); }
-.cfg-grupo h3 { font-family: var(--display); font-size: 0.78rem; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase; color: var(--azul); margin-bottom: var(--e3); }
-.cfg-grupo h3 em { font-style: normal; font-family: var(--texto); font-size: 0.73rem; letter-spacing: 0.02em; text-transform: none; color: var(--piedra); }
-.cfg-telas { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 0.6rem; }
-.cfg-tela { border: 1px solid var(--filete); background: var(--blanco); padding: 0.45rem; text-align: center; transition: all 0.3s var(--ease); }
-.cfg-tela:hover { border-color: var(--azul-medio); }
-.cfg-tela.on { border-color: var(--azul); box-shadow: inset 0 0 0 1px var(--azul); }
-.cfg-tela i { display: block; height: 40px; margin-bottom: 0.4rem; }
-.cfg-tela span { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--azul); line-height: 1.3; }
-.cfg-resumen { background: var(--azul); padding: clamp(1.25rem, 3vw, 1.9rem); }
-.cfg-resumen h3 { font-size: 1.02rem; letter-spacing: 0.1em; color: var(--blanco); margin-bottom: var(--e3); font-weight: 400; }
-.cfg-resumen ul { display: grid; gap: 0.5rem; margin-bottom: var(--e4); }
-.cfg-resumen li { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.86rem; font-weight: 300; color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.14); padding-bottom: 0.42rem; }
-.cfg-resumen li b { font-weight: 500; color: var(--blanco); text-align: right; }
-.cfg-nota { font-size: 0.74rem; font-weight: 300; color: rgba(255,255,255,0.75); margin-top: var(--e2); }
+/* ---------- Puertas al catálogo ---------- */
+/* Puertas de entrada al catálogo. La foto manda; el texto reserva tres líneas
+   para que las seis tarjetas midan igual aunque la descripción sea más corta. */
+.puertas { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2vw, 1.6rem); }
+@media (max-width: 900px) { .puertas { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .puertas { grid-template-columns: 1fr; } }
+.puerta { display: block; border: 1px solid var(--filete); background: var(--blanco); text-decoration: none; transition: border-color 0.35s var(--ease); }
+.puerta:hover { border-color: var(--azul-bruma); }
+.puerta-foto { display: block; overflow: hidden; }
+.puerta-foto img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
+.puerta:hover .puerta-foto img { transform: scale(1.04); }
+.puerta-cuerpo { display: block; padding: clamp(1rem, 2vw, 1.35rem); }
+.puerta-cuerpo b { display: block; font-family: var(--display); font-weight: 400; font-size: 0.95rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--azul); }
+.puerta-cuerpo em { display: block; font-style: normal; margin-top: 0.6rem; font-size: 0.86rem; font-weight: 300; line-height: 1.7; color: var(--piedra); min-height: calc(3 * 1.7em); }
+.puertas-pie { margin-top: clamp(1.75rem, 3vw, 2.5rem); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.8rem 1.2rem; }
+.puertas-pie .chip { text-decoration: none; }
 
 /* ---------- Nota / Blog ---------- */
 .nota { cursor: pointer; }
@@ -1549,7 +1543,7 @@ body.tema-corporativo {
           <h1 class="hero-slogan">Cada prenda que hacemos guarda <em>la medida exacta del carácter</em> de quien la viste.</h1>
           <div class="hero-firma">
             <div class="acciones">
-              <a href="/#configurador" class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
+              <a href="/#muestrario" class="btn btn-claro" data-ir="inicio" data-scroll="muestrario">Ver el muestrario</a>
               <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
             </div>
             <p class="mini" style="margin-top:1.5rem;">44 años de oficio · Seis tiendas en Lima</p>
@@ -1729,118 +1723,52 @@ body.tema-corporativo {
     </div>
   </section>
 
-  <section class="seccion" id="configurador">
+  <!-- Seis puertas de entrada al muestrario, cada una a un filtro real del
+       catálogo. Las descripciones hablan de para qué sirve cada tela, no de
+       cuál es mejor: un Super 100s no es un 140s a medio hacer. -->
+  <section class="seccion" id="muestrario">
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
-        <span class="rotulo">Atelier digital</span>
-        <h2 class="t-xl">Diseña tu prenda</h2>
-        <p class="lead" style="margin-top:1rem;">Elige la prenda, el color de tela y los detalles. Es el mismo recorrido que haremos juntos en la tienda, para que llegues a tu cita con la idea clara.</p>
+        <span class="rotulo">El muestrario</span>
+        <h2 class="t-xl">Empieza por la tela</h2>
+        <p class="lead" style="margin-top:1rem;">Todo el muestrario de Barrington, tela por tela y con su código. Elige la tuya, escríbenos el código y la tenemos lista para tu cita.</p>
       </div>
-      <div class="cfg">
-        <div class="cfg-vista rev">
-          <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" aria-label="Vista previa de la prenda">
-            <!-- Saco. Se dibuja con largo de saco (dobladillo a la cadera, no a
-                 medio muslo) y con los delanteros abiertos bajo el botón: es lo
-                 que distingue un saco de un abrigo de un vistazo. Los ids que
-                 llevan color los repinta el script según la tela elegida. -->
-            <g id="sv-traje">
-              <!-- camisa y corbata bajo el saco -->
-              <path d="M126 46 L150 196 L174 46 L162 40 L150 62 L138 40 Z" fill="#f4f6f9"/>
-              <path d="M150 62 L141 78 L146 168 L150 186 L154 168 L159 78 Z" fill="#1E2128"/>
-              <path d="M138 302 L150 190 L162 302 Z" fill="#f4f6f9"/>
-              <!-- cuerpo -->
-              <path id="tr-cuerpo-i" d="M128 48 L74 68 C67 126 69 186 78 232 L84 302 L140 302 C146 262 150 222 150 190 Z" fill="#1A2744"/>
-              <path id="tr-cuerpo-d" d="M172 48 L226 68 C233 126 231 186 222 232 L216 302 L160 302 C154 262 150 222 150 190 Z" fill="#1A2744"/>
-              <!-- mangas -->
-              <path id="tr-manga-i" d="M74 68 C61 88 55 130 53 172 L51 244 L83 250 C85 202 83 130 84 80 Z" fill="#1A2744"/>
-              <path id="tr-manga-d" d="M226 68 C239 88 245 130 247 172 L249 244 L217 250 C215 202 217 130 216 80 Z" fill="#1A2744"/>
-              <!-- costura de hombro y sisa, en negro translúcido para que
-                   funcionen sobre cualquier tela sin repintarse -->
-              <path d="M128 48 L74 68" stroke="rgba(0,0,0,0.22)" stroke-width="1.6" fill="none"/>
-              <path d="M172 48 L226 68" stroke="rgba(0,0,0,0.22)" stroke-width="1.6" fill="none"/>
-              <path d="M84 80 C83 130 85 202 83 250" stroke="rgba(0,0,0,0.18)" stroke-width="1.4" fill="none"/>
-              <path d="M216 80 C217 130 215 202 217 250" stroke="rgba(0,0,0,0.18)" stroke-width="1.4" fill="none"/>
-              <!-- bolsillos de parche con tapa -->
-              <path d="M92 226 L134 231 L134 245 L92 240 Z" fill="rgba(0,0,0,0.17)"/>
-              <path d="M208 226 L166 231 L166 245 L208 240 Z" fill="rgba(0,0,0,0.17)"/>
-              <!-- solapas -->
-              <g id="tr-solapa-clasica">
-                <path id="tr-sc-i" d="M137 47 L110 74 L122 90 L147 190 Z" fill="#172740" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-                <path id="tr-sc-d" d="M163 47 L190 74 L178 90 L153 190 Z" fill="#172740" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-              </g>
-              <g id="tr-solapa-pico" style="display:none;">
-                <path id="tr-sp-i" d="M137 47 L116 78 L97 63 L113 100 L147 190 Z" fill="#172740" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-                <path id="tr-sp-d" d="M163 47 L184 78 L203 63 L187 100 L153 190 Z" fill="#172740" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-              </g>
-              <!-- ojal de la solapa -->
-              <path d="M124 84 L131 90" stroke="rgba(255,255,255,0.35)" stroke-width="1.4" fill="none"/>
-              <!-- botones: el de la cintura y el de abajo -->
-              <circle cx="150" cy="192" r="4" fill="#F1F3F6"/>
-              <circle cx="150" cy="218" r="4" fill="#F1F3F6"/>
-              <!-- botones de puño -->
-              <circle cx="60" cy="232" r="2.4" fill="rgba(255,255,255,0.5)"/>
-              <circle cx="60" cy="240" r="2.4" fill="rgba(255,255,255,0.5)"/>
-              <circle cx="240" cy="232" r="2.4" fill="rgba(255,255,255,0.5)"/>
-              <circle cx="240" cy="240" r="2.4" fill="rgba(255,255,255,0.5)"/>
-              <!-- bolsillo de pecho y pañuelo -->
-              <path d="M168 142 L196 146" stroke="rgba(0,0,0,0.22)" stroke-width="1.6" fill="none"/>
-              <rect id="tr-panuelo" x="172" y="134" width="21" height="7" fill="#FBFBFC"/>
-              <!-- cuello -->
-              <path id="tr-cuello" d="M131 48 Q150 33 169 48 L172 56 Q150 44 128 56 Z" fill="#172740" stroke="rgba(255,255,255,0.2)" stroke-width="1.1"/>
-            </g>
-            <g id="sv-camisa" style="display:none;">
-              <path id="cm-cuerpo" d="M100 64 L138 44 L150 60 L162 44 L200 64 Q210 100 208 180 L204 352 L96 352 L92 180 Q90 100 100 64 Z" fill="#F1F3F6"/>
-              <path id="cm-manga-i" d="M100 64 Q76 80 70 126 L60 236 L90 242 L100 156 Z" fill="#F1F3F6"/>
-              <path id="cm-manga-d" d="M200 64 Q224 80 230 126 L240 236 L210 242 L200 156 Z" fill="#F1F3F6"/>
-              <rect id="cm-puno-i" x="58" y="222" width="34" height="20" fill="#DFE3EA"/>
-              <rect id="cm-puno-d" x="208" y="222" width="34" height="20" fill="#DFE3EA"/>
-              <rect id="cm-tapeta" x="145" y="60" width="10" height="292" fill="#DFE3EA"/>
-              <circle cx="150" cy="100" r="2.4" fill="#1A2744"/><circle cx="150" cy="140" r="2.4" fill="#1A2744"/>
-              <circle cx="150" cy="180" r="2.4" fill="#1A2744"/><circle cx="150" cy="220" r="2.4" fill="#1A2744"/>
-              <circle cx="150" cy="260" r="2.4" fill="#1A2744"/><circle cx="150" cy="300" r="2.4" fill="#1A2744"/>
-              <g id="cm-cuello-italiano">
-                <path id="cm-ci-i" d="M138 44 L150 60 L132 84 L120 56 Z" fill="#DFE3EA"/>
-                <path id="cm-ci-d" d="M162 44 L150 60 L168 84 L180 56 Z" fill="#DFE3EA"/>
-              </g>
-              <g id="cm-cuello-bd" style="display:none;">
-                <path id="cm-cb-i" d="M138 44 L150 60 L138 90 L124 60 Z" fill="#DFE3EA"/>
-                <path id="cm-cb-d" d="M162 44 L150 60 L162 90 L176 60 Z" fill="#DFE3EA"/>
-                <circle cx="138" cy="84" r="2" fill="#1A2744"/><circle cx="162" cy="84" r="2" fill="#1A2744"/>
-              </g>
-              <path id="cm-banda" d="M126 46 Q150 34 174 46 L170 60 Q150 50 130 60 Z" fill="#DFE3EA" style="display:none;"/>
-              <path id="cm-hombro" d="M126 46 Q150 34 174 46 L172 52 Q150 42 128 52 Z" fill="#DFE3EA"/>
-            </g>
-          </svg>
-          <div class="cfg-pie" id="cfg-pie">Traje · Azul Marino</div>
-        </div>
-        <div class="cfg-panel rev" data-d="1">
-          <div class="cfg-grupo">
-            <h3>01 · La prenda</h3>
-            <div class="chips" id="cfg-prenda">
-              <button class="chip on" data-prenda="traje">Traje</button>
-              <button class="chip" data-prenda="camisa">Camisa</button>
-            </div>
-          </div>
-          <div class="cfg-grupo">
-            <h3>02 · La tela <em>· nacionales e importadas</em></h3>
-            <div class="cfg-telas" id="cfg-telas"></div>
-          </div>
-          <div class="cfg-grupo">
-            <h3 id="cfg-t1">03 · La solapa</h3>
-            <div class="chips" id="cfg-d1"></div>
-          </div>
-          <div class="cfg-grupo">
-            <h3 id="cfg-t2">04 · El acabado</h3>
-            <div class="chips" id="cfg-d2"></div>
-          </div>
-          <div class="cfg-resumen">
-            <h3>Tu diseño</h3>
-            <ul id="cfg-lista"></ul>
-            <a class="btn btn-claro" id="cfg-cta" href="https://wa.me/51959370397" target="_blank" rel="noopener" style="width:100%;">Enviar por WhatsApp</a>
-            <p class="cfg-nota">Te responderemos con las opciones de tela disponibles. La prenda final se define contigo en la tienda.</p>
-          </div>
-        </div>
+      <div class="puertas">
+        <a class="puerta rev" href="/catalogo-de-telas?grado=Super+100s">
+          <span class="puerta-foto"><img src="assets/telas/s100-0006.jpg" alt="Tela Super 100s de Barrington" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Super 100s</b><em>Para el uso diario. Aguanta la rutina de oficina, los viajes y el trajín sin perder la forma.</em></span>
+        </a>
+        <a class="puerta rev" href="/catalogo-de-telas?grado=Super+120s">
+          <span class="puerta-foto"><img src="assets/telas/s120-0062.jpg" alt="Tela Super 120s de Barrington" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Super 120s</b><em>Tacto más suave y caída más fluida. La tela del terno con el que se recibe y se presenta.</em></span>
+        </a>
+        <a class="puerta rev" href="/catalogo-de-telas?grado=Super+140s">
+          <span class="puerta-foto"><img src="assets/telas/diamond-0030.jpg" alt="Tela Super 140s de la Diamond Collection de Barrington" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Super 140s</b><em>Hilo muy fino de la Diamond Collection. Para gala, boda y las fechas que se recuerdan.</em></span>
+        </a>
+        <a class="puerta rev" href="/catalogo-de-telas?coleccion=Casimir">
+          <span class="puerta-foto"><img src="assets/telas/casimir-0142.jpg" alt="Tela casimir de Barrington" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Casimir</b><em>El tejido de siempre de la casa, en color entero y en diseño. Sirve todo el año en Lima.</em></span>
+        </a>
+        <a class="puerta rev" href="/catalogo-de-telas?coleccion=Lanilla">
+          <span class="puerta-foto"><img src="assets/telas/lanilla-0031.jpg" alt="Tela lanilla de Barrington" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Lanilla</b><em>Ligera y fresca. Para el verano, la costa norte y los climas cálidos.</em></span>
+        </a>
+        <a class="puerta rev" href="/catalogo-de-telas?uso=Abrigo">
+          <span class="puerta-foto"><img src="assets/telas/tweed-0002.jpg" alt="Tela de tweed de Barrington" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Abrigos</b><em>Tweed, paño y baby alpaca. El cuerpo que pide un abrigo o un saco de invierno.</em></span>
+        </a>
+      </div>
+      <div class="puertas-pie">
+        <span class="mini">O búscala por ocasión</span>
+        <span class="chips">
+          <a class="chip" href="/catalogo-de-telas?uso=Oficina">Oficina</a>
+          <a class="chip" href="/catalogo-de-telas?uso=Gala">Gala</a>
+          <a class="chip" href="/catalogo-de-telas?uso=Sport">Sport</a>
+          <a class="chip" href="/catalogo-de-telas?uso=Abrigo">Abrigo</a>
+        </span>
+        <a class="btn btn-azul" href="/catalogo-de-telas" data-ir="catalogo">Ver el catálogo completo</a>
       </div>
     </div>
   </section>
@@ -2175,10 +2103,10 @@ body.tema-corporativo {
     <div class="caja cierre-inner">
       <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Empieza aquí</span>
-      <h2 class="t-xl">Diseña tu prenda antes de venir</h2>
-      <p class="lead medida centro" style="margin-top:1rem;">Elige prenda, tela y detalles en nuestro atelier digital y llega a la cita con la idea clara. O escríbenos y lo vemos juntos.</p>
+      <h2 class="t-xl">Elige tu tela antes de venir</h2>
+      <p class="lead medida centro" style="margin-top:1rem;">Revisa el muestrario completo con calma, anota el código de la que te guste y llega a la cita con esa parte resuelta.</p>
       <div class="acciones" style="justify-content:center;margin-top:2.5rem;">
-        <a href="/#configurador" class="btn btn-claro" data-ir="inicio" data-scroll="configurador">Diseña tu prenda</a>
+        <a href="/catalogo-de-telas" class="btn btn-claro" data-ir="catalogo">Ver el catálogo</a>
         <a class="btn btn-linea-clara" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a>
       </div>
     </div>
@@ -2278,7 +2206,7 @@ body.tema-corporativo {
         </ul>
         <div style="margin-top:2rem;">
           <div class="acciones">
-            <a href="/?prenda=camisa#configurador" class="btn btn-azul" data-ir="inicio" data-scroll="configurador" data-prenda="camisa">Diseña tu camisa</a>
+            <a href="/telas" class="btn btn-azul" data-ir="telas">Ver las telas</a>
             <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
           </div>
         </div>
@@ -3562,121 +3490,6 @@ body.tema-corporativo {
     });
   })();
 
-  /* ================= CONFIGURADOR ================= */
-  var CFG = {
-    prenda: 'traje',
-    telas: {
-      traje: [
-        { n: 'Azul Marino', base: '#1A2744', osc: '#131D33' },
-        { n: 'Negro', base: '#252523', osc: '#131312' },
-        { n: 'Azul Medio', base: '#293661', osc: '#1D2747' },
-        { n: 'Gris Plomo', base: '#4A4F58', osc: '#343841' },
-        { n: 'Verde Petróleo', base: '#1F4B4A', osc: '#153434' },
-        { n: 'Burdeos', base: '#5C2233', osc: '#411722' }
-      ],
-      camisa: [
-        { n: 'Blanco', base: '#F7F5F0', osc: '#E2DCD0' },
-        { n: 'Celeste', base: '#C8D9EA', osc: '#A9BBD0' },
-        { n: 'Azul Francia', base: '#8CA8C8', osc: '#6E8CAF' },
-        { n: 'Rosa Palo', base: '#EBD6D4', osc: '#D6B8B6' },
-        { n: 'Arena', base: '#E6DECC', osc: '#CDBFA4' },
-        { n: 'Gris Perla', base: '#DADDE1', osc: '#B6BAC0' }
-      ]
-    },
-    d1: {
-      traje: { t: '03 · La solapa', o: ['Clásica', 'De pico'] },
-      camisa: { t: '03 · El cuello', o: ['Italiano', 'Button-down', 'Mao'] }
-    },
-    d2: {
-      traje: { t: '04 · El acabado', o: ['Con pañuelo', 'Sin pañuelo'] },
-      camisa: { t: '04 · El puño', o: ['Simple', 'Doble para gemelos'] }
-    },
-    est: { traje: { tela: 0, a: 0, b: 0 }, camisa: { tela: 0, a: 0, b: 0 } }
-  };
-  var $ = function (id) { return document.getElementById(id); };
-
-  if ($('cfg-prenda')) {
-    var pinta = function (id, c) { var e = $(id); if (e) e.setAttribute('fill', c); };
-
-    var opciones = function () {
-      var g = CFG.prenda, st = CFG.est[g];
-      var cont = $('cfg-telas'); cont.innerHTML = '';
-      CFG.telas[g].forEach(function (t, i) {
-        var b = document.createElement('button');
-        b.className = 'cfg-tela' + (i === st.tela ? ' on' : '');
-        b.innerHTML = '<i style="background:linear-gradient(150deg,' + t.base + ',' + t.osc + ')"></i><span>' + t.n + '</span>';
-        b.addEventListener('click', function () { st.tela = i; opciones(); dibuja(); });
-        cont.appendChild(b);
-      });
-      [['d1', 'a'], ['d2', 'b']].forEach(function (par, idx) {
-        var conf = CFG[par[0]][g];
-        $('cfg-t' + (idx + 1)).textContent = conf.t;
-        var w = $('cfg-' + par[0]); w.innerHTML = '';
-        conf.o.forEach(function (lab, i) {
-          var b = document.createElement('button');
-          b.className = 'chip' + (i === st[par[1]] ? ' on' : '');
-          b.textContent = lab;
-          b.addEventListener('click', function () { st[par[1]] = i; opciones(); dibuja(); });
-          w.appendChild(b);
-        });
-      });
-    };
-
-    var dibuja = function () {
-      var g = CFG.prenda, st = CFG.est[g], t = CFG.telas[g][st.tela];
-      $('sv-traje').style.display = g === 'traje' ? '' : 'none';
-      $('sv-camisa').style.display = g === 'camisa' ? '' : 'none';
-
-      if (g === 'traje') {
-        ['tr-cuerpo-i', 'tr-cuerpo-d', 'tr-manga-i', 'tr-manga-d'].forEach(function (id) { pinta(id, t.base); });
-        ['tr-sc-i', 'tr-sc-d', 'tr-sp-i', 'tr-sp-d', 'tr-cuello'].forEach(function (id) { pinta(id, t.osc); });
-        $('tr-solapa-clasica').style.display = st.a === 0 ? '' : 'none';
-        $('tr-solapa-pico').style.display = st.a === 1 ? '' : 'none';
-        $('tr-panuelo').style.display = st.b === 1 ? 'none' : '';
-      } else {
-        ['cm-cuerpo', 'cm-manga-i', 'cm-manga-d'].forEach(function (id) { pinta(id, t.base); });
-        ['cm-puno-i', 'cm-puno-d', 'cm-tapeta', 'cm-hombro', 'cm-ci-i', 'cm-ci-d', 'cm-cb-i', 'cm-cb-d', 'cm-banda'].forEach(function (id) { pinta(id, t.osc); });
-        $('cm-cuello-italiano').style.display = st.a === 0 ? '' : 'none';
-        $('cm-cuello-bd').style.display = st.a === 1 ? '' : 'none';
-        $('cm-banda').style.display = st.a === 2 ? '' : 'none';
-      }
-
-      var nombre = g === 'traje' ? 'Traje' : 'Camisa';
-      $('cfg-pie').textContent = nombre + ' · ' + t.n;
-      var filas = [
-        ['Prenda', nombre + ' a medida'],
-        ['Tela', t.n],
-        [g === 'traje' ? 'Solapa' : 'Cuello', CFG.d1[g].o[st.a]],
-        [g === 'traje' ? 'Acabado' : 'Puño', CFG.d2[g].o[st.b]]
-      ];
-      $('cfg-lista').innerHTML = filas.map(function (f) {
-        return '<li><span>' + f[0] + '</span><b>' + f[1] + '</b></li>';
-      }).join('');
-
-      var msg = 'Hola, quiero cotizar una prenda a medida:\n\n' +
-        filas.map(function (f) { return '· ' + f[0] + ': ' + f[1]; }).join('\n') +
-        '\n\n¿Me pueden dar más información?';
-      $('cfg-cta').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
-    };
-
-    $('cfg-prenda').querySelectorAll('.chip').forEach(function (b) {
-      b.addEventListener('click', function () {
-        CFG.prenda = b.dataset.prenda;
-        $('cfg-prenda').querySelectorAll('.chip').forEach(function (x) { x.classList.toggle('on', x === b); });
-        opciones(); dibuja();
-      });
-    });
-    /* Desde «Diseña tu camisa» hay que llegar con la camisa puesta: si no, el
-       botón promete una prenda y el configurador muestra otra. */
-    (function () {
-      var pedida = (location.search.match(/[?&]prenda=(traje|camisa)/) || [])[1];
-      if (!pedida) return;
-      var chip = $('cfg-prenda').querySelector('.chip[data-prenda="' + pedida + '"]');
-      if (chip && !chip.classList.contains('on')) chip.click();
-    })();
-
-    opciones(); dibuja();
-  }
 
   /* ================= CARRUSEL DEL HERO =================
      Se detiene al pasar el mouse, al recibir foco de teclado y cuando el hero
