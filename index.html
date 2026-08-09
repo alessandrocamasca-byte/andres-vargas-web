@@ -843,49 +843,95 @@ body.tema-corporativo {
 
 /* ============================================================
    CATÁLOGO DE TELAS
-   488 telas sacadas de los catálogos de Barrington. La rejilla filtra en el
-   navegador: son 92 KB de datos, así que no hace falta ir al servidor por
-   cada clic.
+   488 telas. Filtros en una columna propia a la izquierda y plegados por
+   grupo: desplegados de golpe ocupaban media pantalla antes de ver una sola
+   tela. El filtrado ocurre en el navegador; son 92 KB de datos.
    ============================================================ */
-.cat-barra { position: sticky; top: var(--alto-cabecera); z-index: 40; background: var(--papel); border-bottom: 1px solid var(--filete); padding-block: var(--e3); }
-.cat-buscar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+.cat-layout { display: grid; grid-template-columns: 268px 1fr; gap: clamp(1.5rem, 3vw, 3rem); align-items: start; }
+
+/* ---- Columna de filtros ---- */
+.cat-lado { position: sticky; top: calc(var(--alto-cabecera) + 1rem); max-height: calc(100svh - var(--alto-cabecera) - 2rem); overflow-y: auto; padding-right: 4px; }
+.cat-lado-cab { display: flex; align-items: baseline; gap: 0.75rem; padding-bottom: var(--e3); border-bottom: 1px solid var(--filete); }
+.cat-lado-cab b { font-family: var(--display); font-weight: 400; font-size: 0.86rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul); flex: 1; }
+.cat-limpiar { font-family: var(--display); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--azul-pizarra); cursor: pointer; background: none; border: none; text-decoration: underline; padding: 0; }
+.cat-limpiar:hover { color: var(--azul); }
+.cat-cerrar-lado { display: none; background: none; border: none; font-size: 1.5rem; line-height: 1; color: var(--azul); cursor: pointer; padding: 0 0 0 0.5rem; }
+
+.cat-aplicados { display: flex; flex-wrap: wrap; gap: 0.4rem; padding-block: var(--e3); }
+.cat-aplicados:empty { display: none; }
+.cat-quitar {
+  display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer;
+  font-family: var(--display); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--azul); color: var(--blanco); border: none; padding: 0.38rem 0.6rem;
+}
+.cat-quitar::after { content: "×"; font-size: 1rem; line-height: 1; opacity: 0.75; }
+
+/* ---- Grupo plegable ---- */
+.cat-grupo { border-bottom: 1px solid var(--filete); }
+.cat-grupo > summary {
+  cursor: pointer; list-style: none; padding-block: 0.9rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  font-family: var(--display); font-weight: 400; font-size: 0.7rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--azul);
+}
+.cat-grupo > summary::-webkit-details-marker { display: none; }
+.cat-grupo > summary::after { content: "+"; font-size: 1.1rem; font-weight: 300; color: var(--azul-pizarra); flex: none; }
+.cat-grupo[open] > summary::after { content: "−"; }
+.cat-grupo > summary em { font-style: normal; font-family: var(--texto); font-size: 0.72rem; letter-spacing: 0; color: var(--azul-pizarra); }
+.cat-grupo > summary:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
+.cat-lista { display: grid; gap: 0.1rem; padding-bottom: 0.9rem; max-height: 260px; overflow-y: auto; }
+
+.cat-op {
+  display: flex; align-items: center; gap: 0.55rem; width: 100%; text-align: left;
+  background: none; border: none; cursor: pointer; padding: 0.4rem 0.2rem;
+  font-family: var(--texto); font-size: 0.82rem; font-weight: 300; color: var(--grafito);
+}
+.cat-op:hover { color: var(--azul); }
+.cat-op .caja-op { width: 13px; height: 13px; border: 1px solid var(--azul-bruma); flex: none; display: grid; place-items: center; }
+.cat-op.on .caja-op { background: var(--azul); border-color: var(--azul); }
+.cat-op.on .caja-op::after { content: ""; width: 5px; height: 8px; border: solid var(--blanco); border-width: 0 1.5px 1.5px 0; transform: translateY(-1px) rotate(45deg); }
+.cat-op .n { margin-left: auto; font-size: 0.72rem; color: var(--azul-bruma); }
+.cat-op .tono { width: 12px; height: 12px; border: 1px solid rgba(0,0,0,0.18); flex: none; }
+
+/* ---- Columna de resultados ---- */
+.cat-buscar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: var(--e4); }
 .cat-buscar input {
-  flex: 1 1 240px; min-width: 200px; border: 1px solid var(--filete); background: var(--blanco);
+  flex: 1 1 220px; min-width: 180px; border: 1px solid var(--filete); background: var(--blanco);
   padding: 0.85rem 1rem; font-family: var(--texto); font-size: 0.9rem; color: var(--tinta);
 }
 .cat-buscar input:focus { outline: none; border-color: var(--azul); }
 .cat-cuenta { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--azul-pizarra); white-space: nowrap; }
-.cat-limpiar { font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); cursor: pointer; background: none; border: none; text-decoration: underline; }
+.cat-abrir-lado { display: none; padding: 0.8rem 1.4rem; font-size: 0.64rem; }
 
-.cat-filtros { display: grid; gap: var(--e3); margin-top: var(--e3); }
-.cat-grupo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.45rem; }
-.cat-grupo > b { font-family: var(--display); font-weight: 400; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--azul-pizarra); width: 88px; flex: none; }
-.cat-chip {
-  font-family: var(--display); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
-  border: 1px solid var(--filete); background: var(--blanco); color: var(--grafito);
-  padding: 0.42rem 0.8rem; cursor: pointer; transition: all 0.25s var(--ease);
-}
-.cat-chip:hover { border-color: var(--azul-bruma); }
-.cat-chip.on { background: var(--azul); border-color: var(--azul); color: var(--blanco); }
-.cat-chip .n { opacity: 0.55; margin-left: 0.4rem; font-size: 0.9em; }
-.cat-chip.color { display: inline-flex; align-items: center; gap: 0.45rem; }
-.cat-chip.color i { width: 11px; height: 11px; border: 1px solid rgba(0,0,0,0.18); flex: none; }
-
-.cat-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: clamp(1rem, 2vw, 1.6rem); margin-top: var(--e5); }
+.cat-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: clamp(0.9rem, 1.8vw, 1.5rem); }
 .cat-tela { border: 1px solid var(--filete); background: var(--blanco); cursor: pointer; text-align: left; padding: 0; font: inherit; transition: border-color 0.3s var(--ease); }
 .cat-tela:hover { border-color: var(--azul-bruma); }
 .cat-tela img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
 .cat-pie { padding: var(--e3); border-top: 1px solid var(--filete); }
-.cat-cod { font-family: var(--display); font-size: 0.82rem; letter-spacing: 0.08em; color: var(--azul); display: block; }
-.cat-meta { font-size: 0.73rem; font-weight: 300; color: var(--piedra); margin-top: 0.25rem; line-height: 1.5; }
+.cat-cod { font-family: var(--display); font-size: 0.8rem; letter-spacing: 0.07em; color: var(--azul); display: block; }
+.cat-meta { font-size: 0.71rem; font-weight: 300; color: var(--piedra); margin-top: 0.25rem; line-height: 1.5; }
 .cat-vacio { text-align: center; padding-block: var(--e6); color: var(--piedra); font-weight: 300; }
 .cat-mas { display: block; margin: var(--e5) auto 0; }
 
-/* Ficha ampliada */
+@media (max-width: 900px) {
+  .cat-layout { grid-template-columns: 1fr; }
+  .cat-abrir-lado { display: inline-flex; }
+  /* En móvil los filtros no caben al lado: entran como panel lateral. */
+  .cat-lado {
+    position: fixed; inset: 0 0 0 auto; width: min(340px, 88vw); z-index: 150;
+    background: var(--papel); max-height: none; padding: var(--e4);
+    box-shadow: -12px 0 40px rgba(var(--rgb-profundo), 0.22);
+    transform: translateX(101%); transition: transform 0.4s var(--ease);
+  }
+  .cat-lado.abierto { transform: none; }
+  .cat-cerrar-lado { display: block; }
+}
+
+/* ---- Ficha ampliada ---- */
 .cat-visor { position: fixed; inset: 0; z-index: 200; background: rgba(var(--rgb-profundo), 0.9); display: grid; place-items: center; padding: var(--margen); }
 .cat-visor[hidden] { display: none; }
 .cat-caja { background: var(--papel); max-width: 900px; width: 100%; max-height: 92svh; overflow: auto; position: relative; }
-.cat-cerrar { position: absolute; top: 0; right: 0; width: 48px; height: 48px; border: none; background: none; cursor: pointer; font-size: 1.5rem; line-height: 1; color: var(--azul); }
+.cat-cerrar { position: absolute; top: 0; right: 0; width: 48px; height: 48px; border: none; background: none; cursor: pointer; font-size: 1.5rem; line-height: 1; color: var(--azul); z-index: 2; }
 .cat-fotos { display: grid; grid-template-columns: 1fr 1fr; }
 @media (max-width: 640px) { .cat-fotos { grid-template-columns: 1fr; } }
 .cat-fotos img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
@@ -2526,18 +2572,27 @@ body.tema-corporativo {
   </section>
 
   <section class="seccion">
-    <div class="caja">
-      <div class="cat-barra">
+    <div class="caja cat-layout">
+      <aside class="cat-lado" id="cat-lado">
+        <div class="cat-lado-cab">
+          <b>Filtros</b>
+          <button class="cat-limpiar" id="cat-limpiar" type="button">Limpiar</button>
+          <button class="cat-cerrar-lado" id="cat-cerrar-lado" type="button" aria-label="Cerrar filtros">&times;</button>
+        </div>
+        <div class="cat-aplicados" id="cat-aplicados"></div>
+        <div class="cat-filtros" id="cat-filtros"></div>
+      </aside>
+
+      <div class="cat-main">
         <div class="cat-buscar">
           <input id="cat-q" type="search" placeholder="Buscar por código, p. ej. 518001" autocomplete="off" aria-label="Buscar tela por código">
+          <button class="btn btn-linea cat-abrir-lado" id="cat-abrir-lado" type="button">Filtros</button>
           <span class="cat-cuenta" id="cat-cuenta">—</span>
-          <button class="cat-limpiar" id="cat-limpiar" type="button">Limpiar filtros</button>
         </div>
-        <div class="cat-filtros" id="cat-filtros"></div>
+        <div class="cat-rejilla" id="cat-rejilla"></div>
+        <p class="cat-vacio" id="cat-vacio" hidden>Ninguna tela coincide con esos filtros.</p>
+        <button class="btn btn-linea cat-mas" id="cat-mas" type="button" hidden>Ver más telas</button>
       </div>
-      <div class="cat-rejilla" id="cat-rejilla"></div>
-      <p class="cat-vacio" id="cat-vacio" hidden>Ninguna tela coincide con esos filtros.</p>
-      <button class="btn btn-linea cat-mas" id="cat-mas" type="button" hidden>Ver más telas</button>
     </div>
   </section>
 
@@ -3560,46 +3615,83 @@ body.tema-corporativo {
       dibujaChips();
     }
 
-    function dibujaChips() {
-      var cont = document.getElementById('cat-filtros');
-      cont.innerHTML = CAMPOS.map(function (c) {
-        // El recuento de cada opción se calcula ignorando su propio grupo, que
-        // es lo que hace que los números sigan teniendo sentido al filtrar.
-        var base = TELAS.filter(function (t) {
-          var q = estado.q.replace(/[^0-9a-z]/gi, '').toLowerCase();
-          if (q && (t.c || '').replace(/[^0-9a-z]/gi, '').toLowerCase().indexOf(q) < 0) return false;
-          return CAMPOS.every(function (o) {
-            if (o.k === c.k) return true;
-            var sel = estado[o.k];
-            if (!sel || !sel.length) return true;
-            var vs = valores(t, o);
-            return sel.some(function (x) { return vs.indexOf(x) >= 0; });
-          });
+    function baseSin(c) {
+      // Los recuentos de un grupo se calculan ignorando ese mismo grupo: si no,
+      // al marcar «azul» todas las demás opciones de color dirían 0.
+      var q = estado.q.replace(/[^0-9a-z]/gi, '').toLowerCase();
+      return TELAS.filter(function (t) {
+        if (q && (t.c || '').replace(/[^0-9a-z]/gi, '').toLowerCase().indexOf(q) < 0) return false;
+        return CAMPOS.every(function (o) {
+          if (c && o.k === c.k) return true;
+          var sel = estado[o.k];
+          if (!sel || !sel.length) return true;
+          var vs = valores(t, o);
+          return sel.some(function (x) { return vs.indexOf(x) >= 0; });
         });
+      });
+    }
+
+    function dibujaChips() {
+      // Chips de lo aplicado, para poder quitar un filtro sin abrir su grupo.
+      var apl = [];
+      CAMPOS.forEach(function (c) {
+        (estado[c.k] || []).forEach(function (v) {
+          apl.push('<button class="cat-quitar" type="button" data-campo="' + c.k +
+                   '" data-valor="' + v + '">' + (c.color ? (NOMBRE[v] || v) : v) + '</button>');
+        });
+      });
+      document.getElementById('cat-aplicados').innerHTML = apl.join('');
+
+      var abiertos = {};
+      document.querySelectorAll('.cat-grupo').forEach(function (d) { abiertos[d.dataset.k] = d.open; });
+
+      document.getElementById('cat-filtros').innerHTML = CAMPOS.map(function (c, idx) {
+        var base = baseSin(c);
         var cuenta = {};
         base.forEach(function (t) { valores(t, c).forEach(function (v) { cuenta[v] = (cuenta[v] || 0) + 1; }); });
         var claves = Object.keys(cuenta).sort(function (a, b) { return cuenta[b] - cuenta[a]; });
         if (!claves.length) return '';
         var sel = estado[c.k] || [];
-        return '<div class="cat-grupo"><b>' + c.et + '</b>' + claves.map(function (v) {
-          var on = sel.indexOf(v) >= 0;
-          var etiqueta = c.color ? (NOMBRE[v] || v) : v;
-          var punto = c.color ? '<i style="background:' + (COLORES[v] || '#ccc') + '"></i>' : '';
-          return '<button class="cat-chip' + (c.color ? ' color' : '') + (on ? ' on' : '') +
-            '" type="button" data-campo="' + c.k + '" data-valor="' + v + '">' + punto +
-            etiqueta + '<span class="n">' + cuenta[v] + '</span></button>';
-        }).join('') + '</div>';
+        // Abierto: el primero por defecto, y cualquiera con filtro puesto.
+        var abre = abiertos[c.k] !== undefined ? abiertos[c.k] : (idx === 0);
+        if (sel.length) abre = true;
+        var resumen = sel.length
+          ? '<em>' + sel.length + (sel.length === 1 ? ' elegido' : ' elegidos') + '</em>'
+          : '<em>' + claves.length + '</em>';
+        return '<details class="cat-grupo" data-k="' + c.k + '"' + (abre ? ' open' : '') + '>' +
+          '<summary>' + c.et + resumen + '</summary><div class="cat-lista">' +
+          claves.map(function (v) {
+            var on = sel.indexOf(v) >= 0;
+            var tono = c.color ? '<i class="tono" style="background:' + (COLORES[v] || '#ccc') + '"></i>' : '';
+            return '<button class="cat-op' + (on ? ' on' : '') + '" type="button" data-campo="' + c.k +
+              '" data-valor="' + v + '"><span class="caja-op"></span>' + tono +
+              (c.color ? (NOMBRE[v] || v) : v) + '<span class="n">' + cuenta[v] + '</span></button>';
+          }).join('') + '</div></details>';
       }).join('');
     }
 
-    document.getElementById('cat-filtros').addEventListener('click', function (ev) {
-      var b = ev.target.closest('.cat-chip');
-      if (!b) return;
-      var c = b.dataset.campo, v = b.dataset.valor;
+    function alterna(c, v) {
       estado[c] = estado[c] || [];
       var i = estado[c].indexOf(v);
       if (i >= 0) estado[c].splice(i, 1); else estado[c].push(v);
       filtrar();
+    }
+    document.getElementById('cat-filtros').addEventListener('click', function (ev) {
+      var b = ev.target.closest('.cat-op');
+      if (b) alterna(b.dataset.campo, b.dataset.valor);
+    });
+    document.getElementById('cat-aplicados').addEventListener('click', function (ev) {
+      var b = ev.target.closest('.cat-quitar');
+      if (b) alterna(b.dataset.campo, b.dataset.valor);
+    });
+
+    /* En móvil los filtros son un panel lateral. */
+    var lado = document.getElementById('cat-lado');
+    document.getElementById('cat-abrir-lado').addEventListener('click', function () {
+      lado.classList.add('abierto'); document.body.style.overflow = 'hidden';
+    });
+    document.getElementById('cat-cerrar-lado').addEventListener('click', function () {
+      lado.classList.remove('abierto'); document.body.style.overflow = '';
     });
     document.getElementById('cat-q').addEventListener('input', function (e) {
       estado.q = e.target.value; filtrar();
