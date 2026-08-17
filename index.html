@@ -841,14 +841,17 @@ body.tema-corporativo {
   color: var(--blanco); border: 1px solid rgba(255,255,255,0.34); padding: 0.42rem 0.85rem;
 }
 
-/* Las casas son cinco y la rejilla de tres deja un hueco a la derecha en la
-   última fila. Con flex la fila incompleta se centra sola, sin tener que
-   contar cuántas casas hay. */
+/* Las marcas no son múltiplo de tres, así que la última fila queda coja.
+   Con flex se centra sola: el número cambia cuando el cliente confirma o
+   descarta una casa, y la rejilla no tiene que enterarse. */
 #casas-detalle {
   --hueco: clamp(1.25rem, 2.5vw, 2rem);
   display: flex; flex-wrap: wrap; justify-content: center; gap: var(--hueco);
 }
-#casas-detalle > .casa { flex: 0 1 calc((100% - 2 * var(--hueco)) / 3); min-width: 230px; }
+#casas-detalle > .casa { flex: 0 1 calc((100% - 3 * var(--hueco)) / 4); min-width: 230px; }
+@media (max-width: 1180px) {
+  #casas-detalle > .casa { flex-basis: calc((100% - 2 * var(--hueco)) / 3); }
+}
 @media (max-width: 980px) {
   #casas-detalle > .casa { flex-basis: calc((100% - var(--hueco)) / 2); }
 }
@@ -1751,7 +1754,7 @@ body.tema-corporativo {
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Nuestra ventaja</span>
         <h2 class="t-xl">Distribuidores oficiales de telas</h2>
-        <p class="lead" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas: Barrington y Creditex del Perú, y Vitale Barberis Canonico, Albini, Thomas Mason y Brunello Cucinelli de Italia e Inglaterra. Tratamos directo con ellas, así que la tela llega a tu prenda sin pasar por intermediarios.</p>
+        <p class="lead" style="margin-top:1.25rem;">Somos distribuidores oficiales de telas nacionales e importadas: Barrington y Creditex del Perú, y Vitale Barberis Canonico, Albini y Thomas Mason de Italia e Inglaterra. Tratamos directo con ellas, así que la tela llega a tu prenda sin pasar por intermediarios.</p>
         <ul class="lista">
           <li>Tela nacional, italiana e inglesa en una misma casa.</li>
           <li>Precio directo, sin sobrecosto de intermediarios.</li>
@@ -1959,7 +1962,7 @@ body.tema-corporativo {
       "name": "¿Con qué telas trabajan?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Somos distribuidores oficiales de marcas de telas nacionales, italianas e inglesas: Barrington, Vitale Barberis Canonico, Albini, Thomas Mason, Brunello Cucinelli y Creditex."
+        "text": "Somos distribuidores oficiales de marcas de telas nacionales, italianas e inglesas: Barrington, Vitale Barberis Canonico, Albini, Thomas Mason y Creditex."
       }
     },
     {
@@ -2004,7 +2007,7 @@ body.tema-corporativo {
         </details>
         <details>
           <summary>¿Con qué telas trabajan?</summary>
-          <p>Somos distribuidores oficiales de marcas de telas nacionales, italianas e inglesas: Barrington, Vitale Barberis Canonico, Albini, Thomas Mason, Brunello Cucinelli y Creditex.</p>
+          <p>Somos distribuidores oficiales de marcas de telas nacionales, italianas e inglesas: Barrington, Vitale Barberis Canonico, Albini, Thomas Mason y Creditex.</p>
         </details>
         <details>
           <summary>¿Hacen trajes de novio?</summary>
@@ -3422,8 +3425,6 @@ body.tema-corporativo {
       d: 'Uno de los mayores grupos camiseros de Europa y dueño del archivo de Thomas Mason. Cultiva su propio algodón para las calidades más finas, algo que casi ninguna hilandería hace. De Albini traemos los algodones de camisería, que son los tejidos que vas a tener en contacto con la piel todos los días.' },
     { n: 'Thomas Mason', logo: 'assets/tela-thomasmason.png', origen: 'Inglaterra · 1796',
       d: 'Dos siglos de camisería inglesa guardados en un archivo de diseños que sigue alimentando cada colección. Es la referencia cuando alguien busca una camisa con carácter británico: popelinas, oxford, rayas de época. Lo pedimos para camisas de oficina y de ocasión, con el cuello y el puño que elijas.' },
-    { n: 'Brunello Cucinelli', logo: 'assets/tela-cucinelli.png', origen: 'Italia · Solomeo',
-      d: 'La casa que convirtió un pueblo medieval de Umbría en su taller y en su manera de entender el oficio. Su nombre es sinónimo de cachemir y fibras nobles en todo el mundo. Reservamos sus tejidos para las prendas donde el tacto y la caída mandan por encima de todo lo demás.' },
     /* La ruta ya está puesta: en cuanto el PNG esté en assets/ aparece solo.
        Mientras no exista, `onerror` degrada al nombre en texto en lugar de
        dejar el icono de imagen rota. El texto de la casa sigue pendiente del
