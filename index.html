@@ -1563,7 +1563,7 @@ body.tema-corporativo {
       <li class="tiene-sub">
         <a href="/telas" data-ir="telas">Telas</a>
         <ul class="submenu">
-          <li><a href="/telas" data-ir="telas">Las casas</a></li>
+          <li><a href="/telas" data-ir="telas">Las marcas</a></li>
           <li><a href="/catalogo-de-telas" data-ir="catalogo">Catálogo de telas</a></li>
         </ul>
       </li>
@@ -2298,7 +2298,7 @@ body.tema-corporativo {
     <div class="caja">
       <div class="enc centro">
         <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
-        <span class="rotulo">Las casas</span>
+        <span class="rotulo">Las marcas</span>
         <h2 class="t-xl">Con quién trabajamos</h2>
         <p class="lead" style="margin-top:1rem;">Tejeduría peruana junto a algunas de las casas más antiguas de Italia e Inglaterra. Al ser distribuidores oficiales tratamos directo con ellas, sin intermediarios de por medio.</p>
       </div>
@@ -3097,7 +3097,7 @@ body.tema-corporativo {
     // Trajes y Camisas cuelgan de "A medida", así que marcan ese ítem del menú
     var padre = { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[nombre] || nombre;
     // El enlace de primer nivel se marca por su sección padre; el del submenú,
-    // por coincidencia exacta. Si no, en el catálogo se encendía «Las casas».
+    // por coincidencia exacta. Si no, en el catálogo se encendía «Las marcas».
     menuLinks.forEach(function (a) {
       var enSub = !!a.closest('.submenu');
       a.classList.toggle('on', a.dataset.ir === (enSub ? nombre : padre));
