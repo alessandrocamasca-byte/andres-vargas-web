@@ -6,4 +6,4 @@ Disallow: /CLAUDE.md
 Disallow: /NOTAS.md
 Disallow: /DESIGN-SYSTEM.md
 
-Sitemap: https://andres-vargas-web.pages.dev/sitemap.xml
+Sitemap: https://sastreriaandresvargas.pe/sitemap.xml

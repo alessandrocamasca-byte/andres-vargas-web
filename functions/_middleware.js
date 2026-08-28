@@ -22,7 +22,7 @@ const BLOQUEADO = [
   /^\/\.git(\/|$)/i,
 ];
 
-const SITIO = 'https://andres-vargas-web.pages.dev';
+const SITIO = 'https://sastreriaandresvargas.pe';
 
 /* Cada ruta apunta a la página interna que abre el script y lleva el texto con
    el que se presenta en buscadores. Los títulos abren con el término que la
