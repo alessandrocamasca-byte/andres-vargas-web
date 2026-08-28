@@ -71,7 +71,7 @@ const RUTAS = {
   },
   '/corporativo': {
     pagina: 'corporativo',
-    titulo: 'Ternos y Uniformes Corporativos a Medida | Andrés Vargas',
+    titulo: 'Trajes y Uniformes Corporativos a Medida | Andrés Vargas',
     desc: 'Vestuario a medida para equipos y directivos, con la misma confección de siempre coordinada para varias personas. Sastrería en Lima desde 1982.',
     imagen: 'editorial-esmoquin-marfil.jpg',
     miga: 'Corporativo',
