@@ -3327,7 +3327,10 @@ body.tema-corporativo {
       nombre: 'Universitario de Deportes',
       cat: 'Club deportivo',
       badge: 'Institucional',
-      foto: 'assets/editorial/ed-blazer-azul.jpg',
+      foto: 'assets/caso-universitario.jpg',
+      /* Cuadrada en un recuadro 4:3: sin subir el encuadre, el forro con el
+         escudo cae en la zona que el degradado oscurece para el titular. */
+      pos: '50% 34%',
       titulo: 'Vestuario formal para el club',
       texto: 'Confección a medida para la institución deportiva.',
       chips: ['Trajes a medida'],
@@ -3367,7 +3370,8 @@ body.tema-corporativo {
         : '';
       return '<article class="caso rev"' + (i ? ' data-d="' + i + '"' : '') + '>' +
         '<div class="caso-visual">' +
-          '<img class="caso-foto" src="' + p.foto + '" alt="' + p.nombre + '" loading="lazy">' +
+          '<img class="caso-foto" src="' + p.foto + '" alt="' + p.nombre + '" loading="lazy"' +
+            (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '>' +
           '<img src="assets/escudo-blanco.png" alt="" class="caso-escudo" loading="lazy" width="261" height="420">' +
           (p.badge ? '<span class="caso-badge">' + p.badge + '</span>' : '') +
           '<div class="caso-meta">' + metrica + '</div>' +
