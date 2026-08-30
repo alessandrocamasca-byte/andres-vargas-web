@@ -131,6 +131,30 @@ const RUTAS = {
     miga: 'Terno beige',
     padre: { nombre: 'Telas', ruta: '/telas' },
   },
+  '/proyectos/universitario-de-deportes': {
+    pagina: 'proy-universitario',
+    titulo: 'Vestuario Formal para Universitario de Deportes | Andrés Vargas',
+    desc: 'Confección a medida para Universitario de Deportes: trajes con forro conmemorativo y escudo en la solapa. Vestuario institucional en Lima.',
+    imagen: 'caso-universitario.jpg',
+    miga: 'Universitario de Deportes',
+    padre: { nombre: 'Corporativo', ruta: '/corporativo' },
+  },
+  '/proyectos/vestuario-de-teatro': {
+    pagina: 'proy-teatro',
+    titulo: 'Vestuario de Teatro a Medida en Lima | Andrés Vargas',
+    desc: 'Confección de vestuario de época para elencos de teatro: frac, terno de tres piezas y chaleco. Sastrería a medida en Lima desde 1982.',
+    imagen: 'caso-teatro.jpg',
+    miga: 'Teatro',
+    padre: { nombre: 'Corporativo', ruta: '/corporativo' },
+  },
+  '/proyectos/barrington': {
+    pagina: 'proy-barrington',
+    titulo: 'Confección de Prendas para Barrington | Andrés Vargas',
+    desc: 'Desarrollo y confección de prendas para Barrington, la casa de tela con la que trabajamos como distribuidores oficiales en Lima.',
+    imagen: 'editorial/ed-macro-super100-fondo.jpg',
+    miga: 'Barrington',
+    padre: { nombre: 'Corporativo', ruta: '/corporativo' },
+  },
   '/telas/super-100s': {
     pagina: 'tela-s100',
     padre: { nombre: 'Telas', ruta: '/telas' },
@@ -339,7 +363,8 @@ class MenuSub {
 class Menu {
   constructor(pagina) {
     this.pagina = pagina;
-    this.activo = /^(tela|color)-/.test(pagina) ? 'telas' :
+    this.activo = /^proy-/.test(pagina) ? 'corporativo' :
+      /^(tela|color)-/.test(pagina) ? 'telas' :
       { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[pagina] || pagina;
   }
   element(el) {
