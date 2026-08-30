@@ -1111,6 +1111,37 @@ body.tema-corporativo {
   .cat-ficha .acciones { margin-top: 1rem !important; }
 }
 
+/* ---------- Libro de reclamaciones ---------- */
+.aviso-legal { border: 1px solid var(--filete); border-left: 3px solid var(--azul); padding: 1.1rem 1.25rem; background: var(--papel); margin-bottom: clamp(2rem,4vw,2.8rem); }
+.form-lr fieldset { border: 0; padding: 0; margin: 0 0 clamp(1.8rem,3vw,2.4rem); }
+.form-lr legend { font-family: var(--display); font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--azul-medio); padding: 0 0 0.9rem; border-bottom: 1px solid var(--filete); width: 100%; margin-bottom: 1.2rem; }
+.form-lr, .aviso-legal { text-align: left; }
+.form-lr .campo { display: block; margin-bottom: 1rem; }
+/* display:block gana al hidden del navegador, y el campo del tutor se veía
+   siempre. Hay que devolverle el none explícitamente. */
+.form-lr .campo[hidden], .hoja-lr[hidden] { display: none; }
+.form-lr .dos { display: grid; gap: 1rem; }
+@media (min-width: 620px) { .form-lr .dos { grid-template-columns: 1fr 1fr; } }
+.form-lr .campo label { display: block; font-family: var(--texto); font-size: 0.78rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--piedra); margin-bottom: 0.35rem; }
+.form-lr .campo label span { color: var(--azul-medio); }
+.form-lr .campo input, .form-lr .campo select, .form-lr .campo textarea {
+  width: 100%; font: inherit; font-size: 0.9rem; font-weight: 300; color: var(--tinta);
+  background: var(--blanco); border: 1px solid var(--filete); padding: 0.7rem 0.85rem;
+  border-radius: 0; transition: border-color 0.25s var(--ease);
+}
+.form-lr .campo input:focus, .form-lr .campo select:focus, .form-lr .campo textarea:focus { outline: 0; border-color: var(--azul-medio); }
+.form-lr .campo textarea { resize: vertical; line-height: 1.7; }
+.form-lr .campo.campo-check label { display: flex; align-items: center; gap: 0.55rem; font-size: 0.86rem; color: var(--tinta); }
+.form-lr .campo.campo-check input { width: auto; }
+.form-lr .campo [aria-invalid="true"] { border-color: #9B3B3B; }
+#lr-error { color: #9B3B3B; }
+.hoja-lr { border: 1px solid var(--filete); padding: clamp(1.5rem,3vw,2.2rem); background: var(--papel); }
+@media print {
+  body > *:not(main) { display: none !important; }
+  .pag-hero, .form-lr, .aviso-legal, .wa-caja { display: none !important; }
+  .hoja-lr { border: 0; padding: 0; }
+}
+
 /* ---------- Cuerpo de artículo ---------- */
 .fig-art { margin: clamp(2rem, 3.5vw, 2.8rem) 0; }
 .fig-art img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
@@ -1290,6 +1321,8 @@ body.tema-corporativo {
 .redes a { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.2); display: grid; place-items: center; transition: all 0.3s; }
 .redes a:hover { background: var(--blanco); border-color: var(--blanco); color: var(--azul); }
 .redes svg { width: 16px; height: 16px; }
+.lr-pie { border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 1px; }
+.lr-pie:hover { color: var(--blanco); border-color: var(--blanco); }
 .pie-base {
   border-top: 1px solid rgba(255,255,255,0.1); padding-block: var(--e4);
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--e2);
@@ -2396,6 +2429,33 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
       <p class="lead centro medida" style="margin-top:1rem;">Qué resuelve cada color, con qué combinarlo y por qué la luz de Lima cambia cómo se ven.</p>
       <div class="acciones" style="justify-content:center;margin-top:1.8rem;">
         <a class="btn btn-linea" href="/blog/salir-del-negro">Salir del negro sin equivocarse</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Cada prenda</span>
+        <h2 class="t-xl">No todo es un terno</h2>
+        <p class="lead centro medida" style="margin-top:1rem;">Cada una tiene su corte, su tela y su ocasión. Estas son las que confeccionamos además del terno de dos y tres piezas.</p>
+      </div>
+      <div class="puertas">
+        <a class="puerta rev" href="/esmoquin-a-medida">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="saco" aria-hidden="true"></svg><b>Esmoquin a medida</b><em>Solapa de raso y galón. Lo que pide una invitación de etiqueta.</em></span>
+        </a>
+        <a class="puerta rev" data-d="1" href="/chaque-a-medida">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="saco" aria-hidden="true"></svg><b>Chaqué a medida</b><em>Levita y pantalón de raya diplomática. La ceremonia de día.</em></span>
+        </a>
+        <a class="puerta rev" data-d="2" href="/blazer-a-medida">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="saco" aria-hidden="true"></svg><b>Blazer a medida</b><em>Liso y urbano, para llevar suelto con pantalón de otro tono.</em></span>
+        </a>
+        <a class="puerta rev" data-d="3" href="/saco-sport-a-medida">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="saco" aria-hidden="true"></svg><b>Saco sport a medida</b><em>Con textura, sin corbata. Tweed, cuadros y pied de poule.</em></span>
+        </a>
+        <a class="puerta rev" data-d="4" href="/abrigo-a-medida">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="saco" aria-hidden="true"></svg><b>Abrigo a medida</b><em>Paño batanado, tweed o baby alpaca. Cortado para ir sobre el saco.</em></span>
+        </a>
       </div>
     </div>
   </section>
@@ -5370,6 +5430,557 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿De qué color debe ser mi primer terno?","acceptedAnswer":{"@type":"Answer","text":"Azul marino. Sirve en la oficina, en un matrimonio y en una entrevista, y admite más combinaciones de camisa y corbata que ningún otro color."}},{"@type":"Question","name":"¿El terno negro sirve para el día?","acceptedAnswer":{"@type":"Answer","text":"Poco. El negro se lee bien de noche y en ceremonia; a la luz del día resulta duro y fuera de tono. Para el día funcionan mejor el azul y el gris."}},{"@type":"Question","name":"¿Qué color de terno se usa en una boda de día?","acceptedAnswer":{"@type":"Answer","text":"Tonos más claros y pesos ligeros: azul medio, gris claro o beige, según lo formal que sea. En una boda de noche, azul marino, gris oxford o negro."}},{"@type":"Question","name":"¿Se puede usar terno marrón en la oficina?","acceptedAnswer":{"@type":"Answer","text":"En ambientes formales, poco. El marrón vive mejor en el saco sport y el fin de semana, con camisa clara y sin corbata."}}]}</script>
 </main>
 
+<!-- ==================== PRENDA · ESMOQUIN A MEDIDA ==================== -->
+<main class="pagina" data-pag="prenda-esmoquin">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/editorial-esmoquin-marfil.jpg" alt="Esmoquin marfil confeccionado a medida" loading="lazy" width="1275" height="1400">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/ternos-a-medida" data-ir="trajes">Ternos y trajes</a> · Esmoquin</div>
+      <span class="rotulo">Prenda · Gala</span>
+      <h1 class="t-hero">Esmoquin a medida</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Es lo que piden las invitaciones que dicen etiqueta o black tie, y lo que no se resuelve con un terno negro y corbata.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <article class="articulo medida centro rev">
+
+<h2 class="t-xl">¿Qué distingue un esmoquin de un terno negro?</h2>
+<p class="lead">El raso. La solapa va forrada en raso, el pantalón lleva un galón del mismo tejido corriendo por el costado y el cierre es de un solo botón. Esos tres detalles se leen a distancia, y son la razón por la que sustituirlo por un terno oscuro con corbata negra se nota desde la puerta.</p>
+<p class="lead">La solapa puede ser de pico o de chal. La de chal, redondeada y sin quiebre, es la más clásica de noche; la de pico levanta el hombro y estiliza. Se decide contigo en la primera cita.</p>
+<figure class="fig-art"><img src="/assets/editorial/ed-gala-pinstripe.jpg" alt="Traje de gala a medida" loading="lazy" width="990" height="1120"><figcaption>La solapa de raso y el galón del pantalón son lo que distingue un esmoquin de un terno oscuro.</figcaption></figure>
+
+<h2 class="t-xl">¿Cuándo se lleva?</h2>
+<p class="lead">De noche. Bodas de etiqueta, galas, cenas de premiación y algunas fiestas de fin de año. De día, el equivalente formal no es el esmoquin sino el <a href="/chaque-a-medida">chaqué</a>, y confundirlos es el error más frecuente. Lo desarrollamos entero en <a href="/blog/codigo-de-vestimenta">qué se espera de cada código de vestimenta</a>.</p>
+
+<h2 class="t-xl">¿Qué tela lleva?</h2>
+<p class="lead">Caída por encima de resistencia, porque es una prenda de pocas puestas. Ahí tiene sentido subir de grado: la <a href="/telas/super-140s">Super 140s</a> de la colección Diamond es lo más fino del muestrario. Un <a href="/telas/casimir">casimir</a> de acabado rasado también funciona, con superficie más limpia y más formal.</p>
+<p class="lead">En color, el <a href="/terno-negro">negro</a> es el canónico y el azul medianoche es la alternativa que muchos prefieren: bajo luz artificial se lee más profundo que el propio negro. El marfil se reserva para climas cálidos y ceremonias al aire libre.</p>
+
+      </article>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Sigue por aquí</span>
+        <h2 class="t-xl">Lo que puede interesarte</h2>
+      </div>
+      <div class="puertas">
+        <a class="puerta rev" href="/telas/super-140s">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="tela" aria-hidden="true"></svg><b>Super 140s</b></span>
+        </a>
+        <a class="puerta rev" data-d="1" href="/blog/codigo-de-vestimenta">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="nota" aria-hidden="true"></svg><b>Códigos de vestimenta</b></span>
+        </a>
+        <a class="puerta rev" data-d="2" href="/trajes-de-novio">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="anillos" aria-hidden="true"></svg><b>Trajes de novio</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Preguntas frecuentes</span><h2 class="t-xl">Lo que más nos preguntan</h2></div>
+      <div class="faq medida" style="margin-top:2rem;">
+          <details>
+            <summary>¿Puedo usar corbata en lugar de corbatín?</summary>
+            <p>El código de black tie pide corbatín. Una corbata negra con esmoquin es una licencia que se ve, sobre todo si la solapa es de raso.</p>
+          </details>
+          <details>
+            <summary>¿El esmoquin lleva chaleco o faja?</summary>
+            <p>Uno de los dos, nunca ambos ni ninguno. La faja se pone con el pliegue hacia arriba y el chaleco tiene que cubrir la pretina del pantalón.</p>
+          </details>
+          <details>
+            <summary>¿De qué color debe ser la camisa?</summary>
+            <p>Blanca. Con pechera lisa o de piqué, y puño de gemelo.</p>
+          </details>
+          <details>
+            <summary>¿Sirve para una boda de día?</summary>
+            <p>No es lo suyo. De día el equivalente es el chaqué; el esmoquin es prenda de noche.</p>
+          </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo-fondo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Lo hablamos?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Cuéntanos para cuándo lo necesitas y te decimos con qué margen cuentas. O pásate por cualquiera de nuestras seis tiendas de Lima.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20un%20esmoquin%20a%20medida." target="_blank" rel="noopener"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Esmoquin a medida","description":"Esmoquin confeccionado a medida en Lima: solapa de raso, galón en el pantalón y corbatín. Lo que pide una invitación que dice etiqueta.","serviceType":"Sastrería a medida","areaServed":{"@type":"City","name":"Lima"},"provider":{"@type":"ClothingStore","name":"Andrés Vargas Sastrería","url":"https://sastreriaandresvargas.pe"},"url":"https://sastreriaandresvargas.pe/esmoquin-a-medida"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Puedo usar corbata en lugar de corbatín?","acceptedAnswer":{"@type":"Answer","text":"El código de black tie pide corbatín. Una corbata negra con esmoquin es una licencia que se ve, sobre todo si la solapa es de raso."}},{"@type":"Question","name":"¿El esmoquin lleva chaleco o faja?","acceptedAnswer":{"@type":"Answer","text":"Uno de los dos, nunca ambos ni ninguno. La faja se pone con el pliegue hacia arriba y el chaleco tiene que cubrir la pretina del pantalón."}},{"@type":"Question","name":"¿De qué color debe ser la camisa?","acceptedAnswer":{"@type":"Answer","text":"Blanca. Con pechera lisa o de piqué, y puño de gemelo."}},{"@type":"Question","name":"¿Sirve para una boda de día?","acceptedAnswer":{"@type":"Answer","text":"No es lo suyo. De día el equivalente es el chaqué; el esmoquin es prenda de noche."}}]}</script>
+</main>
+
+<!-- ==================== PRENDA · CHAQUÉ A MEDIDA ==================== -->
+<main class="pagina" data-pag="prenda-chaque">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/editorial/ed-gala-pinstripe.jpg" alt="Prenda de ceremonia confeccionada a medida" loading="lazy" width="990" height="1120">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/ternos-a-medida" data-ir="trajes">Ternos y trajes</a> · Chaqué</div>
+      <span class="rotulo">Prenda · Ceremonia</span>
+      <h1 class="t-hero">Chaqué a medida</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">La prenda de la ceremonia de día. Casi nadie la pide dos veces en la vida, y por eso casi nadie sabe qué lleva.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <article class="articulo medida centro rev">
+
+<h2 class="t-xl">¿Qué es exactamente un chaqué?</h2>
+<p class="lead">Tres piezas con reglas propias: la levita, de faldón largo que cae en curva por detrás y cierra con un solo botón; el pantalón de raya diplomática, en gris y negro, que nunca hace juego con la levita; y el chaleco, normalmente gris claro o beige.</p>
+<p class="lead">Se completa con camisa blanca de cuello clásico y corbatón o plastrón. El zapato, negro y liso.</p>
+<figure class="fig-art"><img src="/assets/editorial/ed-verano-cruzado.jpg" alt="Prenda cruzada a medida" loading="lazy" width="990" height="1176"><figcaption>El chaqué es la etiqueta rigurosa de día; el esmoquin, la de noche. Confundirlos se nota.</figcaption></figure>
+
+<h2 class="t-xl">¿Cuándo se usa?</h2>
+<p class="lead">De día y solo en ceremonia: bodas de mañana o mediodía, actos protocolares, alguna ceremonia académica. Es el nivel de etiqueta rigurosa en su versión diurna; el nocturno es el frac. Si la invitación dice etiqueta rigurosa y la boda es a las once de la mañana, esto es lo que están pidiendo.</p>
+<p class="lead">El error más repetido es aparecer con <a href="/esmoquin-a-medida">esmoquin</a> a una ceremonia de día. Son la misma categoría de formalidad en horarios opuestos.</p>
+
+<h2 class="t-xl">¿Se hace a medida o se alquila?</h2>
+<p class="lead">Nosotros lo confeccionamos a tu medida, dentro del servicio de ternos y trajes. Tiene sentido si es tu boda o si el cargo te va a pedir usarlo más de una vez; para una única ocasión, conviene conversarlo antes de decidir.</p>
+<p class="lead">Si es para tu matrimonio, empieza por leer <a href="/blog/calendario-del-novio">el calendario del novio</a>: el chaqué tiene más piezas que un terno y cada una lleva su prueba.</p>
+
+      </article>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Sigue por aquí</span>
+        <h2 class="t-xl">Lo que puede interesarte</h2>
+      </div>
+      <div class="puertas">
+        <a class="puerta rev" href="/esmoquin-a-medida">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="saco" aria-hidden="true"></svg><b>Esmoquin</b></span>
+        </a>
+        <a class="puerta rev" data-d="1" href="/trajes-de-novio">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="anillos" aria-hidden="true"></svg><b>Trajes de novio</b></span>
+        </a>
+        <a class="puerta rev" data-d="2" href="/blog/codigo-de-vestimenta">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="nota" aria-hidden="true"></svg><b>Códigos de vestimenta</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Preguntas frecuentes</span><h2 class="t-xl">Lo que más nos preguntan</h2></div>
+      <div class="faq medida" style="margin-top:2rem;">
+          <details>
+            <summary>¿Cuál es la diferencia entre chaqué y frac?</summary>
+            <p>El chaqué es de día y el frac de noche. El chaqué tiene faldón largo y entero por detrás; el frac va cortado por delante a la cintura y lleva corbatín y chaleco blancos.</p>
+          </details>
+          <details>
+            <summary>¿El pantalón hace juego con la levita?</summary>
+            <p>No. El pantalón de chaqué es de raya diplomática en gris y negro, y contrasta con la levita a propósito.</p>
+          </details>
+          <details>
+            <summary>¿Se lleva corbata?</summary>
+            <p>Corbatón o plastrón, que es lo tradicional. Una corbata normal baja el registro de la prenda.</p>
+          </details>
+          <details>
+            <summary>¿Lo confeccionan a medida?</summary>
+            <p>Sí, dentro del servicio de ternos y trajes. Escríbenos con la fecha de la ceremonia y te decimos con qué margen cuentas.</p>
+          </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo-fondo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Lo hablamos?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Cuéntanos para cuándo lo necesitas y te decimos con qué margen cuentas. O pásate por cualquiera de nuestras seis tiendas de Lima.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20un%20chaqu%C3%A9%20a%20medida." target="_blank" rel="noopener"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Chaqué a medida","description":"Chaqué confeccionado a medida en Lima: levita, pantalón de raya diplomática y chaleco. La prenda de la ceremonia de día.","serviceType":"Sastrería a medida","areaServed":{"@type":"City","name":"Lima"},"provider":{"@type":"ClothingStore","name":"Andrés Vargas Sastrería","url":"https://sastreriaandresvargas.pe"},"url":"https://sastreriaandresvargas.pe/chaque-a-medida"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuál es la diferencia entre chaqué y frac?","acceptedAnswer":{"@type":"Answer","text":"El chaqué es de día y el frac de noche. El chaqué tiene faldón largo y entero por detrás; el frac va cortado por delante a la cintura y lleva corbatín y chaleco blancos."}},{"@type":"Question","name":"¿El pantalón hace juego con la levita?","acceptedAnswer":{"@type":"Answer","text":"No. El pantalón de chaqué es de raya diplomática en gris y negro, y contrasta con la levita a propósito."}},{"@type":"Question","name":"¿Se lleva corbata?","acceptedAnswer":{"@type":"Answer","text":"Corbatón o plastrón, que es lo tradicional. Una corbata normal baja el registro de la prenda."}},{"@type":"Question","name":"¿Lo confeccionan a medida?","acceptedAnswer":{"@type":"Answer","text":"Sí, dentro del servicio de ternos y trajes. Escríbenos con la fecha de la ceremonia y te decimos con qué margen cuentas."}}]}</script>
+</main>
+
+<!-- ==================== PRENDA · BLAZER A MEDIDA ==================== -->
+<main class="pagina" data-pag="prenda-blazer">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/editorial/ed-blazer-azul.jpg" alt="Blazer azul confeccionado a medida" loading="lazy" width="1328" height="1106">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/ternos-a-medida" data-ir="trajes">Ternos y trajes</a> · Blazer</div>
+      <span class="rotulo">Prenda · Diario</span>
+      <h1 class="t-hero">Blazer a medida</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Si vas a mandarte hacer una sola prenda y no sabes cuál, esta es la que más veces te vas a poner.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <article class="articulo medida centro rev">
+
+<h2 class="t-xl">¿Qué separa un blazer de un saco de terno?</h2>
+<p class="lead">Que vive solo. El saco de terno nace con su pantalón y pierde sentido separado; el blazer se corta para llevarse suelto, con pantalón de otro tono, con chino o con jean. Eso cambia el corte: hombro algo más blando, largo un punto más corto y botonadura pensada para verse abierta.</p>
+<p class="lead">El azul marino liso es el que resuelve más situaciones. Con camisa blanca sube a reunión; con polo y jean baja a fin de semana sin verse disfrazado.</p>
+<figure class="fig-art"><img src="/assets/editorial/ed-blazer-salmon.jpg" alt="Blazer en tono claro a medida" loading="lazy" width="990" height="1064"><figcaption>El blazer se corta para llevarse suelto: hombro más blando y largo un punto más corto que el saco de terno.</figcaption></figure>
+
+<h2 class="t-xl">¿Qué tela pedirle?</h2>
+<p class="lead">Va a trabajar mucho, así que manda la resistencia. La <a href="/telas/super-100s">Super 100s</a> es la base del muestrario justamente para esto: aguanta el uso continuo y vuelve a su sitio al colgarla. Para un blazer con más textura, el <a href="/telas/superfine">Superfine</a> da microdiseño con mano suave.</p>
+<p class="lead">En <a href="/terno-azul">azul</a> tienes desde el marino cerrado hasta el que solo revela su diseño de cerca. Si ya tienes uno azul, el siguiente paso lógico es un <a href="/terno-gris">gris</a> o un <a href="/terno-burdeos">burdeos</a>.</p>
+
+<h2 class="t-xl">Blazer o saco sport</h2>
+<p class="lead">Se confunden y no son lo mismo. El blazer es liso y urbano; el <a href="/saco-sport-a-medida">saco sport</a> lleva textura o diseño —tweed, cuadros, pied de poule— y pide un registro más relajado. Tener los dos cubre casi todo lo que no es terno.</p>
+
+      </article>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Sigue por aquí</span>
+        <h2 class="t-xl">Lo que puede interesarte</h2>
+      </div>
+      <div class="puertas">
+        <a class="puerta rev" href="/telas/super-100s">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="tela" aria-hidden="true"></svg><b>Super 100s</b></span>
+        </a>
+        <a class="puerta rev" data-d="1" href="/saco-sport-a-medida">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="saco" aria-hidden="true"></svg><b>Saco sport</b></span>
+        </a>
+        <a class="puerta rev" data-d="2" href="/blog/salir-del-negro">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="nota" aria-hidden="true"></svg><b>Salir del negro</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Preguntas frecuentes</span><h2 class="t-xl">Lo que más nos preguntan</h2></div>
+      <div class="faq medida" style="margin-top:2rem;">
+          <details>
+            <summary>¿Puedo usar el blazer con jean?</summary>
+            <p>Sí, y es de sus mejores usos. Conviene que el blazer sea liso y el jean oscuro y sin roturas.</p>
+          </details>
+          <details>
+            <summary>¿De qué color me conviene el primero?</summary>
+            <p>Azul marino. Es el que entra en más sitios y admite más combinaciones de camisa y pantalón.</p>
+          </details>
+          <details>
+            <summary>¿Sirve el saco de mi terno como blazer?</summary>
+            <p>Rara vez. El saco de terno está cortado para ir con su pantalón, y usado suelto se le nota que le falta algo. Además se desgasta distinto que el pantalón y el conjunto deja de casar.</p>
+          </details>
+          <details>
+            <summary>¿Cuántos botones?</summary>
+            <p>Dos es lo más versátil. El de tres alarga el torso y el cruzado es una prenda distinta, más formal.</p>
+          </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo-fondo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Lo hablamos?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Cuéntanos para cuándo lo necesitas y te decimos con qué margen cuentas. O pásate por cualquiera de nuestras seis tiendas de Lima.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20un%20blazer%20a%20medida." target="_blank" rel="noopener"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Blazer a medida","description":"Blazer confeccionado a medida en Lima, en casimir y superfine de Barrington. La prenda que sirve con pantalón de vestir y con jean.","serviceType":"Sastrería a medida","areaServed":{"@type":"City","name":"Lima"},"provider":{"@type":"ClothingStore","name":"Andrés Vargas Sastrería","url":"https://sastreriaandresvargas.pe"},"url":"https://sastreriaandresvargas.pe/blazer-a-medida"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Puedo usar el blazer con jean?","acceptedAnswer":{"@type":"Answer","text":"Sí, y es de sus mejores usos. Conviene que el blazer sea liso y el jean oscuro y sin roturas."}},{"@type":"Question","name":"¿De qué color me conviene el primero?","acceptedAnswer":{"@type":"Answer","text":"Azul marino. Es el que entra en más sitios y admite más combinaciones de camisa y pantalón."}},{"@type":"Question","name":"¿Sirve el saco de mi terno como blazer?","acceptedAnswer":{"@type":"Answer","text":"Rara vez. El saco de terno está cortado para ir con su pantalón, y usado suelto se le nota que le falta algo. Además se desgasta distinto que el pantalón y el conjunto deja de casar."}},{"@type":"Question","name":"¿Cuántos botones?","acceptedAnswer":{"@type":"Answer","text":"Dos es lo más versátil. El de tres alarga el torso y el cruzado es una prenda distinta, más formal."}}]}</script>
+</main>
+
+<!-- ==================== PRENDA · SACO SPORT A MEDIDA ==================== -->
+<main class="pagina" data-pag="prenda-sport">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/editorial/ed-sport-cuadros.jpg" alt="Saco sport de cuadros confeccionado a medida" loading="lazy" width="990" height="1092">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/ternos-a-medida" data-ir="trajes">Ternos y trajes</a> · Saco sport</div>
+      <span class="rotulo">Prenda · Fin de semana</span>
+      <h1 class="t-hero">Saco sport a medida</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">La prenda con la que se sale de la oficina sin ponerse un terno. Textura, color y ninguna corbata.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <article class="articulo medida centro rev">
+
+<h2 class="t-xl">¿Qué hace que un saco sea sport?</h2>
+<p class="lead">La tela, antes que el corte. Un saco sport lleva relieve visible —tweed, espiga, cuadros, pied de poule— donde un terno lleva superficie lisa. Esa textura es la que le da permiso para ir sin corbata y con pantalón de otro tono sin verse incompleto.</p>
+<p class="lead">Suele llevar también detalles que el terno no admite: coderas, bolsillos de parche, una construcción más blanda que deja moverse. No es un terno relajado, es otra prenda.</p>
+<figure class="fig-art"><img src="/assets/editorial/ed-saco-pieddepoule.jpg" alt="Saco a medida en pied de poule" loading="lazy" width="988" height="966"><figcaption>La textura es lo que le da permiso al saco sport para ir sin corbata.</figcaption></figure>
+
+<h2 class="t-xl">¿Qué tejidos funcionan?</h2>
+<p class="lead">El <a href="/telas/tweed">tweed</a> es el clásico: hebras de distintos colores retorcidas en un mismo hilo, de ahí su relieve y su profundidad. Abriga, aguanta y envejece bien, aunque en Lima se queda para el invierno y el fin de semana.</p>
+<p class="lead">Para el resto del año, el <a href="/telas/superfine">Superfine</a> da el carácter del tweed con mano más dulce, y el <a href="/telas/casimir">casimir</a> en cuadros o microdiseño funciona todo el año. En color, el <a href="/terno-marron">marrón</a> es el terreno natural del sport: admite el zapato marrón que el azul complica.</p>
+
+<h2 class="t-xl">¿Con qué se lleva?</h2>
+<p class="lead">Pantalón de franela o chino en tono contrastado, camisa clara sin corbata, y zapato de ante o con suela visible. Lo que no funciona es el pantalón de terno: si hace juego, ya no es un saco sport, es media prenda de un traje.</p>
+<p class="lead">Si buscas algo más urbano y liso, lo tuyo es el <a href="/blazer-a-medida">blazer</a>.</p>
+
+      </article>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Sigue por aquí</span>
+        <h2 class="t-xl">Lo que puede interesarte</h2>
+      </div>
+      <div class="puertas">
+        <a class="puerta rev" href="/telas/tweed">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="tela" aria-hidden="true"></svg><b>Tweed</b></span>
+        </a>
+        <a class="puerta rev" data-d="1" href="/blazer-a-medida">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="saco" aria-hidden="true"></svg><b>Blazer</b></span>
+        </a>
+        <a class="puerta rev" data-d="2" href="/terno-marron">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="gota" aria-hidden="true"></svg><b>Terno marrón</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Preguntas frecuentes</span><h2 class="t-xl">Lo que más nos preguntan</h2></div>
+      <div class="faq medida" style="margin-top:2rem;">
+          <details>
+            <summary>¿Cuál es la diferencia con un blazer?</summary>
+            <p>El blazer es liso y urbano; el saco sport lleva textura o diseño y pide un registro más relajado. Los dos se llevan sueltos, pero no en los mismos sitios.</p>
+          </details>
+          <details>
+            <summary>¿Sirve para la oficina?</summary>
+            <p>En oficinas con código relajado, sí. En un ambiente formal se lee como fin de semana.</p>
+          </details>
+          <details>
+            <summary>¿El tweed no da mucho calor en Lima?</summary>
+            <p>Para el terno diario sí. Para un saco de invierno y de fin de semana funciona bien, que es justo su sitio.</p>
+          </details>
+          <details>
+            <summary>¿Lleva coderas?</summary>
+            <p>Solo si las quieres. Son un detalle tradicional del sport, no una obligación.</p>
+          </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo-fondo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Lo hablamos?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Cuéntanos para cuándo lo necesitas y te decimos con qué margen cuentas. O pásate por cualquiera de nuestras seis tiendas de Lima.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20un%20saco%20sport%20a%20medida." target="_blank" rel="noopener"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Saco sport a medida","description":"Saco sport a medida en Lima, en tweed, superfine y pied de poule. La prenda del fin de semana, con textura y sin corbata.","serviceType":"Sastrería a medida","areaServed":{"@type":"City","name":"Lima"},"provider":{"@type":"ClothingStore","name":"Andrés Vargas Sastrería","url":"https://sastreriaandresvargas.pe"},"url":"https://sastreriaandresvargas.pe/saco-sport-a-medida"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuál es la diferencia con un blazer?","acceptedAnswer":{"@type":"Answer","text":"El blazer es liso y urbano; el saco sport lleva textura o diseño y pide un registro más relajado. Los dos se llevan sueltos, pero no en los mismos sitios."}},{"@type":"Question","name":"¿Sirve para la oficina?","acceptedAnswer":{"@type":"Answer","text":"En oficinas con código relajado, sí. En un ambiente formal se lee como fin de semana."}},{"@type":"Question","name":"¿El tweed no da mucho calor en Lima?","acceptedAnswer":{"@type":"Answer","text":"Para el terno diario sí. Para un saco de invierno y de fin de semana funciona bien, que es justo su sitio."}},{"@type":"Question","name":"¿Lleva coderas?","acceptedAnswer":{"@type":"Answer","text":"Solo si las quieres. Son un detalle tradicional del sport, no una obligación."}}]}</script>
+</main>
+
+<!-- ==================== PRENDA · ABRIGO A MEDIDA ==================== -->
+<main class="pagina" data-pag="prenda-abrigo">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/editorial/ed-abrigo-paisaje.jpg" alt="Abrigo de paño confeccionado a medida" loading="lazy" width="1376" height="1078">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/ternos-a-medida" data-ir="trajes">Ternos y trajes</a> · Abrigo</div>
+      <span class="rotulo">Prenda · Invierno</span>
+      <h1 class="t-hero">Abrigo a medida</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Es la prenda que más se nota y la que menos gente se manda hacer. También la que mejor envejece.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <article class="articulo medida centro rev">
+
+<h2 class="t-xl">¿Por qué a medida y no de tienda?</h2>
+<p class="lead">Porque va encima de todo lo demás. Un abrigo tiene que caber sobre un saco sin tirar del hombro ni acortar la manga, y ese cálculo es justamente lo que un patrón estándar no hace: los de tienda suelen quedar amplios de cuerpo y cortos de manga cuando llevas saco debajo.</p>
+<p class="lead">El largo también es decisión tuya y no del fabricante. Por encima de la rodilla es más urbano y más fácil de llevar; por debajo protege más y se lee más formal.</p>
+<figure class="fig-art"><img src="/assets/editorial/ed-abrigo-alpaca.jpg" alt="Abrigo en baby alpaca peruana" loading="lazy" width="990" height="1204"><figcaption>La baby alpaca es peruana y de las fibras más apreciadas del mundo.</figcaption></figure>
+
+<h2 class="t-xl">¿Qué telas se usan?</h2>
+<p class="lead">El <a href="/telas/pano">paño</a> es la respuesta clásica: lana merino con acabado batanado, de la familia del melton, compactado hasta darle cuerpo y calor al tacto. Es la tela que se sostiene sola, y por eso el abrigo cae como cae.</p>
+<p class="lead">El <a href="/telas/tweed">tweed</a> aporta relieve y profundidad de color, y la pelusa de su superficie repele el agua, lo que en una ciudad de garúa no es un detalle menor. Y está la <a href="/telas/baby-alpaca">baby alpaca</a>, fibra peruana de las más apreciadas del mundo: la suri da brillo y una ligereza que sorprende para el abrigo que tiene que ser excepcional.</p>
+
+<h2 class="t-xl">¿Tiene sentido un abrigo en Lima?</h2>
+<p class="lead">Menos que en una ciudad con invierno de verdad, y más de lo que la gente cree. Los meses de garúa piden una prenda de abrigo sobre el terno, y lo que suele ocupar ese lugar es una casaca que rompe todo lo que hay debajo. Un abrigo bien cortado hace el trabajo sin deshacer la silueta.</p>
+<p class="lead">Y si viajas fuera en invierno del norte, ahí la prenda deja de ser opcional. Cómo cuidarlo para que dure está en <a href="/blog/cuidar-un-traje">cómo cuidar un terno</a>: con la lana batanada, el gancho ancho y el cepillado importan todavía más.</p>
+
+      </article>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Sigue por aquí</span>
+        <h2 class="t-xl">Lo que puede interesarte</h2>
+      </div>
+      <div class="puertas">
+        <a class="puerta rev" href="/telas/pano">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="tela" aria-hidden="true"></svg><b>Paño</b></span>
+        </a>
+        <a class="puerta rev" data-d="1" href="/telas/baby-alpaca">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="tela" aria-hidden="true"></svg><b>Baby alpaca</b></span>
+        </a>
+        <a class="puerta rev" data-d="2" href="/blog/cuidar-un-traje">
+          <span class="puerta-cuerpo"><svg class="icono icono-puerta" viewBox="0 0 32 32" data-icono="nota" aria-hidden="true"></svg><b>Cuidar el terno</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc"><span class="rotulo">Preguntas frecuentes</span><h2 class="t-xl">Lo que más nos preguntan</h2></div>
+      <div class="faq medida" style="margin-top:2rem;">
+          <details>
+            <summary>¿Qué largo debe tener un abrigo?</summary>
+            <p>Depende de para qué lo quieras. Por encima de la rodilla es más versátil y urbano; por debajo abriga más y se ve más formal. Se decide contigo en la prueba, con el saco puesto debajo.</p>
+          </details>
+          <details>
+            <summary>¿Se puede hacer en baby alpaca?</summary>
+            <p>Sí. Es fibra peruana y de las más apreciadas del mundo; la suri da brillo y ligereza, y el velour un tacto aterciopelado.</p>
+          </details>
+          <details>
+            <summary>¿Hay que probárselo con saco debajo?</summary>
+            <p>Siempre. Es la única forma de que la manga y el hombro queden bien en el uso real de la prenda.</p>
+          </details>
+          <details>
+            <summary>¿El paño y el tweed dan mucho calor para Lima?</summary>
+            <p>Para los meses de garúa funcionan. En verano ninguna de las dos tiene sentido, y ahí es mejor una prenda más ligera.</p>
+          </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo-fondo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Lo hablamos?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Cuéntanos para cuándo lo necesitas y te decimos con qué margen cuentas. O pásate por cualquiera de nuestras seis tiendas de Lima.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20un%20abrigo%20a%20medida." target="_blank" rel="noopener"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Abrigo a medida","description":"Abrigo confeccionado a medida en Lima, en paño batanado, tweed y baby alpaca peruana. La prenda que se sostiene sola.","serviceType":"Sastrería a medida","areaServed":{"@type":"City","name":"Lima"},"provider":{"@type":"ClothingStore","name":"Andrés Vargas Sastrería","url":"https://sastreriaandresvargas.pe"},"url":"https://sastreriaandresvargas.pe/abrigo-a-medida"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué largo debe tener un abrigo?","acceptedAnswer":{"@type":"Answer","text":"Depende de para qué lo quieras. Por encima de la rodilla es más versátil y urbano; por debajo abriga más y se ve más formal. Se decide contigo en la prueba, con el saco puesto debajo."}},{"@type":"Question","name":"¿Se puede hacer en baby alpaca?","acceptedAnswer":{"@type":"Answer","text":"Sí. Es fibra peruana y de las más apreciadas del mundo; la suri da brillo y ligereza, y el velour un tacto aterciopelado."}},{"@type":"Question","name":"¿Hay que probárselo con saco debajo?","acceptedAnswer":{"@type":"Answer","text":"Siempre. Es la única forma de que la manga y el hombro queden bien en el uso real de la prenda."}},{"@type":"Question","name":"¿El paño y el tweed dan mucho calor para Lima?","acceptedAnswer":{"@type":"Answer","text":"Para los meses de garúa funcionan. En verano ninguna de las dos tiene sentido, y ahí es mejor una prenda más ligera."}}]}</script>
+</main>
+
+<!-- ==================== LIBRO DE RECLAMACIONES ====================
+     Obligatorio en Perú (Ley 29571, Código de Protección y Defensa del
+     Consumidor). Indecopi exige que esté a menos de dos clics de la portada:
+     por eso el enlace va en el pie, que aparece en las 41 páginas.
+
+     La hoja NO se guarda en ningún servidor: se compone en el navegador y el
+     consumidor la envía por correo o WhatsApp, quedándose con su copia. Así el
+     dato personal viaja directo del consumidor a la sastrería sin pasar por
+     una base de datos nuestra, que habría que declarar ante la Autoridad
+     Nacional de Protección de Datos Personales. -->
+<main class="pagina" data-pag="reclamaciones">
+  <section class="pag-hero sobre-azul" style="min-height:auto;">
+    <div class="caja" style="padding-block:clamp(3rem,7vw,5rem);">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Libro de reclamaciones</div>
+      <span class="rotulo">Atención al consumidor</span>
+      <h1 class="t-hero">Libro de reclamaciones</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Conforme a lo establecido en el Código de Protección y Defensa del Consumidor, Ley N.º 29571, esta sastrería pone a tu disposición su Libro de Reclamaciones.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja">
+      <div class="medida centro">
+        <div class="aviso-legal rev">
+          <p class="mini"><b>Reclamo</b> es tu disconformidad con el producto o el servicio recibido. <b>Queja</b> es tu disconformidad con la atención al público. La queja no constituye un reclamo ni es materia de un procedimiento ante Indecopi.</p>
+          <p class="mini" style="margin-top:0.8rem;">Responderemos tu hoja en un plazo máximo de <b>treinta (30) días calendario</b> desde su recepción, según lo dispuesto por la Ley N.º 29571.</p>
+        </div>
+
+        <form class="form-lr rev" id="form-lr" novalidate>
+          <fieldset>
+            <legend>1 · Identificación del consumidor</legend>
+            <div class="campo"><label for="lr-nombre">Nombre y apellidos <span aria-hidden="true">*</span></label><input id="lr-nombre" name="Nombre" required autocomplete="name"></div>
+            <div class="dos">
+              <div class="campo"><label for="lr-doc">DNI o carné de extranjería <span aria-hidden="true">*</span></label><input id="lr-doc" name="Documento" required inputmode="numeric"></div>
+              <div class="campo"><label for="lr-tel">Teléfono <span aria-hidden="true">*</span></label><input id="lr-tel" name="Teléfono" required type="tel" autocomplete="tel"></div>
+            </div>
+            <div class="campo"><label for="lr-mail">Correo electrónico <span aria-hidden="true">*</span></label><input id="lr-mail" name="Correo" required type="email" autocomplete="email"></div>
+            <div class="campo"><label for="lr-dir">Domicilio <span aria-hidden="true">*</span></label><input id="lr-dir" name="Domicilio" required autocomplete="street-address"></div>
+            <div class="campo campo-check"><label for="lr-menor"><input type="checkbox" id="lr-menor" name="Menor"> Soy menor de edad</label></div>
+            <div class="campo" id="lr-tutor-caja" hidden><label for="lr-tutor">Nombre del padre, madre o tutor</label><input id="lr-tutor" name="Tutor"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>2 · Identificación del bien contratado</legend>
+            <div class="dos">
+              <div class="campo"><label for="lr-tipo">Tipo <span aria-hidden="true">*</span></label>
+                <select id="lr-tipo" name="Tipo de bien" required><option value="Producto">Producto</option><option value="Servicio">Servicio</option></select></div>
+              <div class="campo"><label for="lr-monto">Monto reclamado</label><input id="lr-monto" name="Monto reclamado" placeholder="Opcional"></div>
+            </div>
+            <div class="campo"><label for="lr-tienda">Tienda donde ocurrió <span aria-hidden="true">*</span></label>
+              <select id="lr-tienda" name="Tienda" required>
+                <option>Av. Primavera 252, Chacarilla · Surco</option>
+                <option>Jr. Huallaga 558 · Cercado de Lima</option>
+                <option>Jr. Huallaga 570 · Cercado de Lima</option>
+                <option>Jr. Ucayali 115 · Cercado de Lima</option>
+                <option>Jr. Ucayali 119 · Cercado de Lima</option>
+                <option>Jr. Ucayali 121 · Cercado de Lima</option>
+                <option>Otro / no aplica</option>
+              </select></div>
+            <div class="campo"><label for="lr-bien">Descripción del producto o servicio <span aria-hidden="true">*</span></label><textarea id="lr-bien" name="Descripción del bien" rows="3" required></textarea></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>3 · Detalle</legend>
+            <div class="campo"><label for="lr-clase">¿Es un reclamo o una queja? <span aria-hidden="true">*</span></label>
+              <select id="lr-clase" name="Clase" required><option value="Reclamo">Reclamo — disconformidad con el producto o servicio</option><option value="Queja">Queja — disconformidad con la atención</option></select></div>
+            <div class="campo"><label for="lr-detalle">Detalle <span aria-hidden="true">*</span></label><textarea id="lr-detalle" name="Detalle" rows="5" required></textarea></div>
+            <div class="campo"><label for="lr-pedido">Tu pedido <span aria-hidden="true">*</span></label><textarea id="lr-pedido" name="Pedido del consumidor" rows="3" required></textarea></div>
+          </fieldset>
+
+          <p class="mini" id="lr-error" role="alert" hidden></p>
+          <div class="acciones" style="margin-top:1.6rem;">
+            <button class="btn btn-azul" type="submit">Generar mi hoja</button>
+          </div>
+          <p class="mini" style="margin-top:1.2rem;">Al generar la hoja obtendrás tu número de registro y podrás enviarla por correo o por WhatsApp, conservando tu copia. Tus datos no se guardan en este sitio: viajan directamente de ti a la sastrería.</p>
+        </form>
+
+        <div class="hoja-lr rev" id="hoja-lr" hidden>
+          <div class="enc"><span class="rotulo">Hoja de reclamación</span><h2 class="t-xl" id="lr-num"></h2></div>
+          <dl class="cat-datos ficha-tela" id="lr-resumen"></dl>
+          <div class="acciones" style="margin-top:2rem;">
+            <a class="btn btn-azul" id="lr-mail-btn" href="#">Enviar por correo</a>
+            <a class="btn btn-linea" id="lr-wa-btn" href="#" target="_blank" rel="noopener"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>Enviar por WhatsApp</a>
+            <button class="btn btn-linea" type="button" id="lr-imprimir">Imprimir o guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
 
 
 <!-- === FIN PÁGINAS DE COLOR === -->
@@ -5455,7 +6066,7 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
 
     <div class="pie-base">
       <span>© 2026 Andrés Vargas Sastrería · Since 1982</span>
-      <span>Lima, Perú</span>
+      <span><a href="/libro-de-reclamaciones" data-ir="reclamaciones" class="lr-pie">Libro de reclamaciones</a> · Lima, Perú</span>
     </div>
   </div>
 </footer>
@@ -5602,6 +6213,12 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
     camisas: '/camisas-a-medida', telas: '/telas', novios: '/trajes-de-novio',
     corporativo: '/corporativo', tiendas: '/tiendas', blog: '/blog',
     catalogo: '/catalogo-de-telas',
+    reclamaciones: '/libro-de-reclamaciones',
+    'prenda-esmoquin': '/esmoquin-a-medida',
+    'prenda-chaque': '/chaque-a-medida',
+    'prenda-blazer': '/blazer-a-medida',
+    'prenda-sport': '/saco-sport-a-medida',
+    'prenda-abrigo': '/abrigo-a-medida',
     'art-primer-traje': '/blog/primer-terno-a-medida',
     'art-nacional-importada': '/blog/tela-nacional-o-importada',
     'art-calendario-novio': '/blog/calendario-del-novio',
@@ -5657,7 +6274,8 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
       history.pushState({ pagina: nombre }, '', ruta);
     }
     // Trajes y Camisas cuelgan de "A medida", así que marcan ese ítem del menú
-    var padre = /^art-/.test(nombre) ? 'blog' :
+    var padre = /^prenda-/.test(nombre) ? 'trajes' :
+      /^art-/.test(nombre) ? 'blog' :
       /^proy-/.test(nombre) ? 'corporativo' :
       /^(tela|color)-/.test(nombre) ? 'telas' :
       { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[nombre] || nombre;
@@ -6250,6 +6868,75 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
     document.addEventListener('keydown', function (ev) {
       if (ev.key === 'Escape' && !panel.hidden) { mostrar(false); boton.focus(); }
     });
+  })();
+
+  /* Libro de reclamaciones. La hoja se arma en el navegador y se envía por
+     correo o WhatsApp: no hay servidor que la reciba, así que el dato personal
+     va del consumidor a la sastrería sin quedar almacenado aquí. */
+  (function () {
+    var form = document.getElementById('form-lr');
+    if (!form) return;
+    var hoja = document.getElementById('hoja-lr');
+    var menor = document.getElementById('lr-menor');
+    var tutor = document.getElementById('lr-tutor-caja');
+
+    menor.addEventListener('change', function () { tutor.hidden = !menor.checked; });
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var faltan = [];
+      form.querySelectorAll('[required]').forEach(function (c) {
+        var vacio = !String(c.value).trim();
+        c.setAttribute('aria-invalid', vacio ? 'true' : 'false');
+        if (vacio) faltan.push(c);
+      });
+      var err = document.getElementById('lr-error');
+      if (faltan.length) {
+        err.hidden = false;
+        err.textContent = 'Faltan ' + faltan.length + ' campo' + (faltan.length > 1 ? 's' : '') + ' por completar.';
+        faltan[0].focus();
+        return;
+      }
+      err.hidden = true;
+
+      var ahora = new Date();
+      var dd = String(ahora.getDate()).padStart(2, '0');
+      var mm = String(ahora.getMonth() + 1).padStart(2, '0');
+      var fecha = dd + '/' + mm + '/' + ahora.getFullYear();
+      // Correlativo local: no hay servidor que lleve la cuenta, así que se
+      // compone con la fecha y la hora para que dos hojas no coincidan.
+      var num = ahora.getFullYear() + mm + dd + '-' +
+                String(ahora.getHours()).padStart(2, '0') + String(ahora.getMinutes()).padStart(2, '0');
+
+      var filas = [['Fecha', fecha]];
+      form.querySelectorAll('input[name], select[name], textarea[name]').forEach(function (c) {
+        if (c.type === 'checkbox') { if (c.checked) filas.push([c.name, 'Sí']); return; }
+        if (!String(c.value).trim()) return;
+        if (c.id === 'lr-tutor' && !menor.checked) return;
+        filas.push([c.name, c.value]);
+      });
+
+      document.getElementById('lr-num').textContent = 'N.º ' + num;
+      document.getElementById('lr-resumen').innerHTML = filas.map(function (f) {
+        return '<div><dt>' + f[0] + '</dt><dd>' + f[1].replace(/[<>]/g, '') + '</dd></div>';
+      }).join('');
+
+      var texto = 'HOJA DE RECLAMACIÓN N.º ' + num + '\n' +
+        'Andrés Vargas Sastrería\n\n' +
+        filas.map(function (f) { return f[0] + ': ' + f[1]; }).join('\n');
+
+      document.getElementById('lr-mail-btn').href =
+        'mailto:ventas@sastreriaandresvargas.pe?subject=' +
+        encodeURIComponent('Hoja de reclamación N.º ' + num) + '&body=' + encodeURIComponent(texto);
+      document.getElementById('lr-wa-btn').href =
+        'https://wa.me/51959370397?text=' + encodeURIComponent(texto);
+
+      hoja.hidden = false;
+      hoja.classList.add('ver');
+      hoja.scrollIntoView({ block: 'start' });
+    });
+
+    document.getElementById('lr-imprimir').addEventListener('click', function () { window.print(); });
   })();
 
   // Abrir la sección que pide la URL, y responder al botón «atrás».

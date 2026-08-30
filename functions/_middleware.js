@@ -141,6 +141,53 @@ const RUTAS = {
     miga: 'Terno beige',
     padre: { nombre: 'Telas', ruta: '/telas' },
   },
+  '/libro-de-reclamaciones': {
+    pagina: 'reclamaciones',
+    titulo: 'Libro de Reclamaciones | Andrés Vargas Sastrería',
+    desc: 'Libro de Reclamaciones de Andrés Vargas Sastrería, conforme a la Ley N.º 29571. Registra tu reclamo o queja y recibe respuesta en 30 días calendario.',
+    imagen: 'hero.jpg',
+    miga: 'Libro de reclamaciones',
+  },
+  '/esmoquin-a-medida': {
+    pagina: 'prenda-esmoquin',
+    titulo: 'Esmoquin a Medida en Lima | Sastrería Andrés Vargas',
+    desc: 'Esmoquin confeccionado a medida en Lima: solapa de raso, galón en el pantalón y corbatín. Lo que pide una invitación que dice etiqueta.',
+    imagen: 'editorial-esmoquin-marfil.jpg',
+    miga: 'Esmoquin',
+    padre: { nombre: 'Ternos y trajes', ruta: '/ternos-a-medida' },
+  },
+  '/chaque-a-medida': {
+    pagina: 'prenda-chaque',
+    titulo: 'Chaqué a Medida en Lima | Sastrería Andrés Vargas',
+    desc: 'Chaqué confeccionado a medida en Lima: levita, pantalón de raya diplomática y chaleco. La prenda de la ceremonia de día.',
+    imagen: 'editorial/ed-gala-pinstripe.jpg',
+    miga: 'Chaqué',
+    padre: { nombre: 'Ternos y trajes', ruta: '/ternos-a-medida' },
+  },
+  '/blazer-a-medida': {
+    pagina: 'prenda-blazer',
+    titulo: 'Blazer a Medida en Lima | Sastrería Andrés Vargas',
+    desc: 'Blazer confeccionado a medida en Lima, en casimir y superfine de Barrington. La prenda que sirve con pantalón de vestir y con jean.',
+    imagen: 'editorial/ed-blazer-azul.jpg',
+    miga: 'Blazer',
+    padre: { nombre: 'Ternos y trajes', ruta: '/ternos-a-medida' },
+  },
+  '/saco-sport-a-medida': {
+    pagina: 'prenda-sport',
+    titulo: 'Saco Sport a Medida en Lima | Sastrería Andrés Vargas',
+    desc: 'Saco sport a medida en Lima, en tweed, superfine y pied de poule. La prenda del fin de semana, con textura y sin corbata.',
+    imagen: 'editorial/ed-sport-cuadros.jpg',
+    miga: 'Saco sport',
+    padre: { nombre: 'Ternos y trajes', ruta: '/ternos-a-medida' },
+  },
+  '/abrigo-a-medida': {
+    pagina: 'prenda-abrigo',
+    titulo: 'Abrigo a Medida en Lima | Sastrería Andrés Vargas',
+    desc: 'Abrigo confeccionado a medida en Lima, en paño batanado, tweed y baby alpaca peruana. La prenda que se sostiene sola.',
+    imagen: 'editorial/ed-abrigo-paisaje.jpg',
+    miga: 'Abrigo',
+    padre: { nombre: 'Ternos y trajes', ruta: '/ternos-a-medida' },
+  },
   '/blog/primer-terno-a-medida': {
     pagina: 'art-primer-traje',
     articulo: true,
@@ -428,7 +475,8 @@ class MenuSub {
 class Menu {
   constructor(pagina) {
     this.pagina = pagina;
-    this.activo = /^art-/.test(pagina) ? 'blog' :
+    this.activo = /^prenda-/.test(pagina) ? 'trajes' :
+      /^art-/.test(pagina) ? 'blog' :
       /^proy-/.test(pagina) ? 'corporativo' :
       /^(tela|color)-/.test(pagina) ? 'telas' :
       { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[pagina] || pagina;
