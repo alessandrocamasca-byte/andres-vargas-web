@@ -441,7 +441,7 @@ export async function onRequest(context) {
       .on('.submenu a[data-ir]', new MenuSub(conf.pagina))
       .on('body', new Cuerpo(conf.pagina))
       .on('main[data-pag]', new Podar(conf.pagina))
-      .on(conf.pagina === 'corporativo' ? '[data-wa-corp]' : 'nada-que-no-existe', new Wasap())
+      .on(conf.pagina === 'corporativo' ? '.menu [data-wa-corp]' : 'nada-que-no-existe', new Wasap())
       .transform(html);
   }
 
