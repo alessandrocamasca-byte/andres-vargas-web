@@ -35,8 +35,7 @@
      invisible justo para quien más lo aprovecharía.
      OJO: si cambian las preguntas frecuentes o los datos de tienda del HTML,
      hay que cambiarlos también aquí. El script avisa por consola si difieren. -->
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -66,6 +65,11 @@
         "Trajes de novio",
         "Vestuario corporativo",
         "Telas italianas e inglesas"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/sastreria_andresvargas/",
+        "https://www.facebook.com/AndresVargasBoutique",
+        "https://www.tiktok.com/@andresvargasboutique"
       ]
     },
     {
@@ -111,6 +115,11 @@
           "opens": "10:00",
           "closes": "20:00"
         }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/sastreria_andresvargas/",
+        "https://www.facebook.com/AndresVargasBoutique",
+        "https://www.tiktok.com/@andresvargasboutique"
       ]
     },
     {
@@ -154,6 +163,11 @@
           "opens": "10:00",
           "closes": "16:00"
         }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/sastreria_andresvargas/",
+        "https://www.facebook.com/AndresVargasBoutique",
+        "https://www.tiktok.com/@andresvargasboutique"
       ]
     },
     {
@@ -189,6 +203,11 @@
           "opens": "10:00",
           "closes": "20:00"
         }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/sastreria_andresvargas/",
+        "https://www.facebook.com/AndresVargasBoutique",
+        "https://www.tiktok.com/@andresvargasboutique"
       ]
     },
     {
@@ -235,6 +254,11 @@
           "opens": "14:00",
           "closes": "20:00"
         }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/sastreria_andresvargas/",
+        "https://www.facebook.com/AndresVargasBoutique",
+        "https://www.tiktok.com/@andresvargasboutique"
       ]
     },
     {
@@ -281,6 +305,11 @@
           "opens": "14:00",
           "closes": "20:00"
         }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/sastreria_andresvargas/",
+        "https://www.facebook.com/AndresVargasBoutique",
+        "https://www.tiktok.com/@andresvargasboutique"
       ]
     },
     {
@@ -327,11 +356,15 @@
           "opens": "14:00",
           "closes": "20:00"
         }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/sastreria_andresvargas/",
+        "https://www.facebook.com/AndresVargasBoutique",
+        "https://www.tiktok.com/@andresvargasboutique"
       ]
     }
   ]
-}
-</script>
+}</script>
 <!-- Escudo blanco sobre el azul de la casa, no el azul sobre transparente: en
      pestañas oscuras un escudo azul sin fondo desaparece. Con lienzo propio se
      lee igual en claro y en oscuro. -->
@@ -345,10 +378,34 @@
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Fuentes alojadas aquí, no en Google: eran dos conexiones a otro dominio
+     antes de que se pintara una letra. Son variables, así que un archivo por
+     familia cubre todos los pesos. Oswald y Montserrat están bajo SIL Open
+     Font License, que permite alojarlas. -->
+<link rel="preload" as="font" type="font/woff2" href="/assets/fuentes/oswald-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fuentes/montserrat-latin.woff2" crossorigin>
 <style>
+@font-face {
+  font-family: 'Oswald'; font-style: normal; font-weight: 200 500; font-display: swap;
+  src: url('/assets/fuentes/oswald-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Oswald'; font-style: normal; font-weight: 200 500; font-display: swap;
+  src: url('/assets/fuentes/oswald-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Montserrat'; font-style: normal; font-weight: 300 500; font-display: swap;
+  src: url('/assets/fuentes/montserrat-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Montserrat'; font-style: normal; font-weight: 300 500; font-display: swap;
+  src: url('/assets/fuentes/montserrat-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
 /* ============================================================
    DESIGN SYSTEM · ANDRÉS VARGAS SASTRERÍA
    Derivado del Manual de Marca oficial.
@@ -5995,6 +6052,7 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
         <p>Sastrería a medida en Lima desde 1982. Distribuidores oficiales de telas nacionales e importadas.</p>
         <div class="redes">
           <a href="https://www.instagram.com/sastreria_andresvargas/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/AndresVargasBoutique" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V6.9c0-.7.2-1.1 1.2-1.1H16.5V3.1A17 17 0 0014.6 3c-2 0-3.4 1.2-3.4 3.5v2H9v3h2.2V21h3v-9.5h2.3l.4-3z"/></svg></a>
           <a href="https://www.tiktok.com/@andresvargasboutique" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.1 2h2.6c.2 1.3.8 2.4 1.8 3.1.7.5 1.6.9 2.5 1v2.7a7.5 7.5 0 01-4.3-1.5v6.4a5.9 5.9 0 11-5.9-5.9c.3 0 .6 0 .9.1v2.8a3.1 3.1 0 101.9 2.9V2z"/></svg></a>
         </div>
       </div>
@@ -7161,7 +7219,12 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
       }).join(' · ');
       var filas = [['Tejido', t.j], ['Composición', t.comp], ['Gramaje', t.gm],
                    ['Color', NOMBRE[t.o] || t.o], ['Diseño', t.d],
-                   ['Peso', t.p], ['Uso', (t.u || []).join(', ')]].filter(function (f) { return f[1]; });
+                   ['Peso', t.p], ['Uso', (t.u || []).join(', ')]].filter(function (f) {
+        // En 359 de las 483 telas el campo «Diseño» trae la palabra «Diseño»,
+        // que es un dato mal cargado en origen. Repetir el rótulo como valor no
+        // informa de nada: la fila se calla hasta que Barrington lo corrija.
+        return f[1] && String(f[1]).toLowerCase() !== f[0].toLowerCase();
+      });
       var msg = 'Hola, me interesa la tela ' + (t.c || '') + ' de ' + CASA + ' (' + t.k + (t.g ? ', ' + t.g : '') + ').';
       document.getElementById('cat-ficha').innerHTML =
         '<h3>' + (t.c || 'Tela') + '</h3>' +
