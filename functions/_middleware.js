@@ -315,6 +315,16 @@ class Cuerpo {
   }
 }
 
+/* Corporativo atiende por otra línea de WhatsApp. El script la cambia al
+   navegar, pero quien entra directo a /corporativo vería la de tienda hasta que
+   el script arranque, y es el enlace que más se toca. */
+class Wasap {
+  element(el) {
+    const n = el.getAttribute('data-wa-corp');
+    if (n) el.setAttribute('href', 'https://wa.me/' + n);
+  }
+}
+
 /* El menú trae «Inicio» marcado como activo en el HTML. Sin esto, en /telas se
    vería Inicio subrayado hasta que arrancara el script. */
 class MenuSub {
@@ -431,6 +441,7 @@ export async function onRequest(context) {
       .on('.submenu a[data-ir]', new MenuSub(conf.pagina))
       .on('body', new Cuerpo(conf.pagina))
       .on('main[data-pag]', new Podar(conf.pagina))
+      .on(conf.pagina === 'corporativo' ? '[data-wa-corp]' : 'nada-que-no-existe', new Wasap())
       .transform(html);
   }
 

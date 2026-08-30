@@ -1602,7 +1602,7 @@ body.tema-corporativo {
       <li><a href="/corporativo" data-ir="corporativo">Corporativo</a></li>
       <li><a href="/tiendas" data-ir="tiendas">Tiendas</a></li>
       <li><a href="/blog" data-ir="blog">Blog</a></li>
-      <li><a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a></li>
+      <li><a class="btn btn-claro" data-wa-general="51959370397" data-wa-corp="51928820334" href="https://wa.me/51959370397" target="_blank" rel="noopener">Agenda tu cita</a></li>
     </ul>
     <button class="hamburguesa" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </nav>
@@ -2792,7 +2792,7 @@ body.tema-corporativo {
         </ul>
         <div style="margin-top:2rem;">
           <div class="acciones">
-            <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+            <a class="btn btn-azul" href="https://wa.me/51928820334" target="_blank" rel="noopener">Consultar por WhatsApp</a>
             <a class="btn btn-linea" href="mailto:ventas@sastreriaandresvargas.pe?subject=Consulta%20corporativa">Solicitar una propuesta</a>
           </div>
         </div>
@@ -2809,11 +2809,11 @@ body.tema-corporativo {
       <h2 class="t-xl">Hablemos de tu equipo</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Cada programa se cotiza según el número de personas, las prendas y la tela elegida. Cuéntanos qué necesitas y preparamos una propuesta.</p>
       <div class="canales" style="margin-top:clamp(2rem,4vw,3rem);">
-        <a class="canal" href="https://wa.me/51959370397" target="_blank" rel="noopener">
+        <a class="canal" href="https://wa.me/51928820334" target="_blank" rel="noopener">
           <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 28l1.9-6.4A12 12 0 1110.5 26z"/><path d="M11.5 12.5c.6 3.7 4.3 7.4 8 8"/></svg>
           <h3>WhatsApp</h3>
           <p>Para resolver dudas rápido y coordinar una visita a tu empresa.</p>
-          <b>959 370 397</b>
+          <b>928 820 334</b>
         </a>
         <a class="canal" href="mailto:ventas@sastreriaandresvargas.pe?subject=Consulta%20corporativa">
           <svg class="icono" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="7" width="26" height="18" rx="1.6"/><path d="M3.6 8.4L16 18 28.4 8.4"/></svg>
@@ -4376,7 +4376,7 @@ body.tema-corporativo {
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/51959370397" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+<a class="wa" data-wa-general="51959370397" data-wa-corp="51928820334" href="https://wa.me/51959370397" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>
 </a>
 
@@ -4473,6 +4473,11 @@ body.tema-corporativo {
     pags.forEach(function (p) { p.classList.toggle('activa', p.dataset.pag === nombre); });
     // Corporativo se viste de ciruela; el resto del sitio sigue en azul.
     var esCorp = nombre === 'corporativo';
+    // Y atiende por otra línea de WhatsApp: los enlaces globales —la burbuja y
+    // el «Agenda tu cita» del menú— apuntan a la que corresponda.
+    document.querySelectorAll('[data-wa-corp]').forEach(function (a) {
+      a.href = 'https://wa.me/' + (esCorp ? a.dataset.waCorp : a.dataset.waGeneral);
+    });
     document.body.classList.toggle('tema-corporativo', esCorp);
     var tc = document.querySelector('meta[name="theme-color"]');
     if (tc) tc.setAttribute('content', esCorp ? '#5D3347' : '#1A2744');
