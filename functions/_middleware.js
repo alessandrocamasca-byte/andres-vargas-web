@@ -83,6 +83,94 @@ const RUTAS = {
     imagen: 'hero.jpg',
     miga: 'Tiendas',
   },
+  '/telas/super-100s': {
+    pagina: 'tela-s100',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Telas Super 100s de Barrington en Lima | Andrés Vargas',
+    desc: 'Casimir Super 100s de Barrington para saco, blazer y terno de uso diario. Distribuidores oficiales en Lima. Consúltanos por WhatsApp.',
+    imagen: 'telas/s100-0006.jpg',
+    miga: 'Telas Super 100s',
+  },
+  '/telas/super-120s': {
+    pagina: 'tela-s120',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Telas Super 120s de Barrington en Lima | Andrés Vargas',
+    desc: 'Casimir Super 120s en merino australiano, para el terno de ocasión. Distribuidores oficiales de Barrington en Lima.',
+    imagen: 'telas/s120-0062.jpg',
+    miga: 'Telas Super 120s',
+  },
+  '/telas/super-140s': {
+    pagina: 'tela-s140',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Telas Super 140s Diamond Collection en Lima | Andrés Vargas',
+    desc: 'Super 140s de la Diamond Collection de Barrington, lo más fino del muestrario, para gala y boda. Sastrería en Lima desde 1982.',
+    imagen: 'telas/diamond-0030.jpg',
+    miga: 'Telas Super 140s',
+  },
+  '/telas/casimir': {
+    pagina: 'tela-casimir',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Casimir para Ternos a Medida en Lima | Andrés Vargas',
+    desc: 'Casimir 100% lana merino de Barrington: el paño de terno de toda la vida, en acabado rasado y batanado. Distribuidores oficiales en Lima.',
+    imagen: 'telas/casimir-0142.jpg',
+    miga: 'Casimir',
+  },
+  '/telas/lanilla': {
+    pagina: 'tela-lanilla',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Lanilla para Ternos a Medida en Lima | Andrés Vargas',
+    desc: 'Lanilla de Barrington, ligera y fresca, pensada para el clima templado de Lima. Sastrería a medida desde 1982.',
+    imagen: 'telas/lanilla-0031.jpg',
+    miga: 'Lanilla',
+  },
+  '/telas/richwool': {
+    pagina: 'tela-richwool',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Casimir Richwool para Terno de Oficina en Lima | Andrés Vargas',
+    desc: 'Casimir Richwool de Barrington: la mezcla resistente para el terno que se usa todos los días en la oficina. Lima, desde 1982.',
+    imagen: 'telas/richwool-0026.jpg',
+    miga: 'Casimir Richwool',
+  },
+  '/telas/superfine': {
+    pagina: 'tela-superfine',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Superfine de Barrington en Lima | Andrés Vargas',
+    desc: 'Superfine 100% lana de Barrington: el carácter del tweed sin su aspereza, con microdiseños sobre merino. Sastrería en Lima.',
+    imagen: 'telas/superfine-0009.jpg',
+    miga: 'Superfine',
+  },
+  '/telas/tweed': {
+    pagina: 'tela-tweed',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Tweed para Sacos y Abrigos a Medida en Lima | Andrés Vargas',
+    desc: 'Tweed 100% lana merino de Barrington, con relieve y profundidad de color, para saco sport y abrigo. Sastrería en Lima desde 1982.',
+    imagen: 'telas/tweed-0002.jpg',
+    miga: 'Tweed',
+  },
+  '/telas/pano': {
+    pagina: 'tela-pano',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Paño para Abrigos a Medida en Lima | Andrés Vargas',
+    desc: 'Paño de lana merino con acabado batanado, de la familia del melton: la tela del abrigo a medida. Andrés Vargas, Lima.',
+    imagen: 'telas/pano-0020.jpg',
+    miga: 'Paño',
+  },
+  '/telas/baby-alpaca': {
+    pagina: 'tela-alpaca',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Baby Alpaca Suri y Velour a Medida en Lima | Andrés Vargas',
+    desc: 'Baby alpaca suri y velour, fibra peruana de las más apreciadas del mundo, para abrigo y prenda de gala. Sastrería en Lima.',
+    imagen: 'telas/alpaca-suri-0015.jpg',
+    miga: 'Baby alpaca',
+  },
+  '/telas/denim': {
+    pagina: 'tela-denim',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+    titulo: 'Denim de Sastrería a Medida en Lima | Andrés Vargas',
+    desc: 'Denim con lana merino en calidad de sastrería: el tacto de la lana con la resistencia del diario. Andrés Vargas, Lima.',
+    imagen: 'telas/denim-0004.jpg',
+    miga: 'Denim de sastrería',
+  },
   '/catalogo-de-telas': {
     pagina: 'catalogo',
     titulo: 'Catálogo de Telas para Ternos | Andrés Vargas',
@@ -138,7 +226,10 @@ class Miga {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITIO + '/' },
-        { '@type': 'ListItem', position: 2, name: this.r.miga, item: this.url },
+        // Las colecciones cuelgan de Telas, y el resultado de búsqueda lo
+        // muestra: «andres-vargas › Telas › Tweed».
+        ...(this.r.padre ? [{ '@type': 'ListItem', position: 2, name: this.r.padre.nombre, item: SITIO + this.r.padre.ruta }] : []),
+        { '@type': 'ListItem', position: this.r.padre ? 3 : 2, name: this.r.miga, item: this.url },
       ],
     };
     el.append('<script type="application/ld+json">' + JSON.stringify(datos) + '</script>', { html: true });
@@ -190,7 +281,8 @@ class MenuSub {
 class Menu {
   constructor(pagina) {
     this.pagina = pagina;
-    this.activo = { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[pagina] || pagina;
+    this.activo = /^tela-/.test(pagina) ? 'telas' :
+      { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[pagina] || pagina;
   }
   element(el) {
     const clases = (el.getAttribute('class') || '').replace(/\bon\b/g, '').trim();

@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="Sastrería en Lima desde 1982. Ternos, camisas y trajes de novio a medida.">
 <meta name="twitter:image" content="https://sastreriaandresvargas.pe/assets/hero.jpg">
 <meta name="author" content="Andrés Vargas Boutique">
-<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/hero.jpg" fetchpriority="high">
 <!-- Datos estructurados. Van escritos aquí y no generados por el script: los
      rastreadores de IA (GPTBot, ClaudeBot, PerplexityBot y compañía) en su
      mayoría NO ejecutan JavaScript, así que un JSON-LD inyectado por JS es
@@ -340,11 +340,11 @@
      192 más el .ico en la raíz; el 32 es para la pestaña del navegador y el
      180 es el formato que pide Apple para la pantalla de inicio. -->
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1087,6 +1087,21 @@ body.tema-corporativo {
   .cat-ficha .acciones { margin-top: 1rem !important; }
 }
 
+/* ---------- Páginas de tejido ---------- */
+.ficha-tela { grid-template-columns: 1fr; margin-top: 0; }
+@media (min-width: 620px) { .ficha-tela { grid-template-columns: 1fr 1fr; column-gap: clamp(1.5rem,3vw,2.4rem); } }
+.rejilla-telas { display: grid; gap: clamp(0.9rem, 2vw, 1.4rem); grid-template-columns: repeat(6, 1fr); }
+/* Son doce muestras y las columnas son divisores de doce en cada tamaño:
+   así la última fila nunca queda a medias. */
+@media (max-width: 1100px) { .rejilla-telas { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 720px)  { .rejilla-telas { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px)  { .rejilla-telas { grid-template-columns: repeat(2, 1fr); } }
+.rejilla-telas figure { margin: 0; border: 1px solid var(--filete); background: var(--blanco); }
+.rejilla-telas img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+.rejilla-telas figcaption { padding: 0.7rem 0.85rem 0.85rem; }
+.rejilla-telas b { display: block; font-family: var(--display); font-size: 0.86rem; letter-spacing: 0.06em; color: var(--azul); font-weight: 400; }
+.rejilla-telas span { display: block; margin-top: 0.2rem; font-size: 0.74rem; color: var(--piedra); font-weight: 300; }
+
 /* ---------- Muro de empresas ---------- */
 .empresas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--filete); border: 1px solid var(--filete); }
 .empresa { background: var(--papel); display: grid; place-items: center; padding: clamp(1.4rem, 3vw, 2.2rem) 1rem; min-height: 118px; }
@@ -1568,7 +1583,7 @@ body.tema-corporativo {
   </div>
   <nav class="nav caja">
     <a class="logo" href="/" data-ir="inicio" aria-label="Andrés Vargas Boutique, ir al inicio">
-      <img src="assets/escudo-blanco.png" alt="" id="marca" width="261" height="420">
+      <img src="/assets/escudo-blanco.png" alt="" id="marca" width="261" height="420">
       <span class="logo-txt"><b>Andrés Vargas</b><i>Sastrería · Since 1982</i></span>
     </a>
     <ul class="menu">
@@ -1599,7 +1614,7 @@ body.tema-corporativo {
   <section class="hero sobre-azul" data-slider aria-roledescription="carrusel" aria-label="Andrés Vargas Boutique">
 
     <div class="hero-capa on" style="--pos:26% 34%;" aria-label="1 de 3">
-      <img class="hero-img" src="assets/hero.jpg" alt="Smoking marfil confeccionado a medida en el atelier de Andrés Vargas" fetchpriority="high" width="1900" height="1008">
+      <img class="hero-img" src="/assets/hero.jpg" alt="Smoking marfil confeccionado a medida en el atelier de Andrés Vargas" fetchpriority="high" width="1900" height="1008">
       <div class="hero-velo"></div>
       <div class="caja hero-inner">
         <div class="hero-texto">
@@ -1617,7 +1632,7 @@ body.tema-corporativo {
     </div>
 
     <div class="hero-capa" style="--pos:50% 28%; --pos-movil:50% 24%;" aria-label="2 de 3">
-      <img class="hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida de Andrés Vargas" loading="lazy" width="1300" height="868">
+      <img class="hero-img" src="/assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida de Andrés Vargas" loading="lazy" width="1300" height="868">
       <div class="hero-velo"></div>
       <div class="caja hero-inner">
         <div class="hero-texto">
@@ -1635,7 +1650,7 @@ body.tema-corporativo {
     </div>
 
     <div class="hero-capa" style="--pos:50% 12%; --pos-movil:50% 14%;" aria-label="3 de 3">
-      <img class="hero-img" src="assets/editorial-duo.jpg" alt="Dos esmóquines a medida en tejidos distintos" loading="lazy" width="1275" height="1400">
+      <img class="hero-img" src="/assets/editorial-duo.jpg" alt="Dos esmóquines a medida en tejidos distintos" loading="lazy" width="1275" height="1400">
       <div class="hero-velo"></div>
       <div class="caja hero-inner">
         <div class="hero-texto">
@@ -1675,7 +1690,7 @@ body.tema-corporativo {
       </div>
       <div class="rejilla r4">
         <a href="/ternos-a-medida" class="tarjeta rev" data-ir="trajes">
-          <img src="assets/traje-negro.jpg" alt="Terno negro a medida confeccionado en Lima" loading="lazy" width="454" height="1000">
+          <img src="/assets/traje-negro.jpg" alt="Terno negro a medida confeccionado en Lima" loading="lazy" width="454" height="1000">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Ternos y trajes</b>
@@ -1684,7 +1699,7 @@ body.tema-corporativo {
           </span>
         </a>
         <a href="/camisas-a-medida" class="tarjeta rev" data-d="1" data-ir="camisas">
-          <img src="assets/camisa-hero.jpg" alt="Camisa a medida confeccionada en Lima" loading="lazy" width="1200" height="2153">
+          <img src="/assets/camisa-hero.jpg" alt="Camisa a medida confeccionada en Lima" loading="lazy" width="1200" height="2153">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Camisas</b>
@@ -1693,7 +1708,7 @@ body.tema-corporativo {
           </span>
         </a>
         <a href="/trajes-de-novio" class="tarjeta rev" data-d="2" data-ir="novios">
-          <img src="assets/novios-novio.jpg" alt="Traje de novio a medida en Lima" loading="lazy" width="801" height="1200">
+          <img src="/assets/novios-novio.jpg" alt="Traje de novio a medida en Lima" loading="lazy" width="801" height="1200">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Trajes de novio</b>
@@ -1702,7 +1717,7 @@ body.tema-corporativo {
           </span>
         </a>
         <a href="/telas" class="tarjeta rev" data-d="3" data-ir="telas">
-          <img src="assets/traje-petroleo.jpg" alt="Terno cruzado en tela importada" loading="lazy" width="412" height="1000">
+          <img src="/assets/traje-petroleo.jpg" alt="Terno cruzado en tela importada" loading="lazy" width="412" height="1000">
           <span class="tarjeta-velo"></span>
           <span class="tarjeta-txt">
             <b>Telas</b>
@@ -1731,7 +1746,7 @@ body.tema-corporativo {
   <section class="seccion fondo-nube">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La casa</span>
         <h2 class="t-xl">El oficio, sin atajos</h2>
         <p class="lead" style="margin-top:1.25rem;">Desde 1982 vestimos a Lima. Ves tu traje nacer desde el patrón en blanco, con sastres que llevan 44 años haciendo lo mismo.</p>
@@ -1759,7 +1774,7 @@ body.tema-corporativo {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial/ed-macro-orillo.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
     <div class="caja dos-col">
       <div class="rev">
         <div class="marca-div izq"><i></i></div>
@@ -1774,12 +1789,12 @@ body.tema-corporativo {
         <div style="margin-top:2rem;"><a href="/telas" class="enlace" data-ir="telas">Ver las telas</a></div>
       </div>
       <div class="rev" data-d="1">
-        <img src="assets/editorial/ed-blazer-azul.jpg" alt="Blazer azul a medida" loading="lazy" width="1328" height="1106">
+        <img src="/assets/editorial/ed-blazer-azul.jpg" alt="Blazer azul a medida" loading="lazy" width="1328" height="1106">
       </div>
     </div>
   </section>
 
-  <section class="seccion-corta fondo-profundo sobre-azul con-foto" style="--foto:url('assets/editorial-esmoquin-marfil.jpg');">
+  <section class="seccion-corta fondo-profundo sobre-azul con-foto" style="--foto:url('/assets/editorial-esmoquin-marfil.jpg');">
     <div class="caja rejilla r3">
       <div class="cifra rev"><b>1982</b><span>Año de fundación</span></div>
       <div class="cifra rev" data-d="1"><b>44</b><span>Años de oficio</span></div>
@@ -1793,34 +1808,34 @@ body.tema-corporativo {
   <section class="seccion" id="muestrario">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">El muestrario</span>
         <h2 class="t-xl">Empieza por la tela</h2>
         <p class="lead" style="margin-top:1rem;">Todo el muestrario de Barrington, tela por tela y con su código. Elige la tuya, escríbenos el código y la tenemos lista para tu cita.</p>
       </div>
       <div class="puertas">
-        <a class="puerta rev" href="/catalogo-de-telas?grado=Super+100s">
-          <span class="puerta-foto"><img src="assets/telas/s100-0006.jpg" alt="Tela Super 100s de Barrington" loading="lazy" width="480" height="319"></span>
+        <a class="puerta rev" href="/telas/super-100s">
+          <span class="puerta-foto"><img src="/assets/telas/s100-0006.jpg" alt="Tela Super 100s de Barrington" loading="lazy" width="480" height="319"></span>
           <span class="puerta-cuerpo"><b>Super 100s</b><em>Para el uso diario. Aguanta la rutina de oficina, los viajes y el trajín sin perder la forma.</em></span>
         </a>
-        <a class="puerta rev" href="/catalogo-de-telas?grado=Super+120s">
-          <span class="puerta-foto"><img src="assets/telas/s120-0062.jpg" alt="Tela Super 120s de Barrington" loading="lazy" width="480" height="319"></span>
+        <a class="puerta rev" href="/telas/super-120s">
+          <span class="puerta-foto"><img src="/assets/telas/s120-0062.jpg" alt="Tela Super 120s de Barrington" loading="lazy" width="480" height="319"></span>
           <span class="puerta-cuerpo"><b>Super 120s</b><em>Tacto más suave y caída más fluida. La tela del terno con el que se recibe y se presenta.</em></span>
         </a>
-        <a class="puerta rev" href="/catalogo-de-telas?grado=Super+140s">
-          <span class="puerta-foto"><img src="assets/telas/diamond-0030.jpg" alt="Tela Super 140s de la Diamond Collection de Barrington" loading="lazy" width="480" height="319"></span>
+        <a class="puerta rev" href="/telas/super-140s">
+          <span class="puerta-foto"><img src="/assets/telas/diamond-0030.jpg" alt="Tela Super 140s de la Diamond Collection de Barrington" loading="lazy" width="480" height="319"></span>
           <span class="puerta-cuerpo"><b>Super 140s</b><em>Hilo muy fino de la Diamond Collection. Para gala, boda y las fechas que se recuerdan.</em></span>
         </a>
         <a class="puerta rev" href="/catalogo-de-telas?coleccion=Casimir">
-          <span class="puerta-foto"><img src="assets/telas/casimir-0142.jpg" alt="Tela casimir de Barrington" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-foto"><img src="/assets/telas/casimir-0142.jpg" alt="Tela casimir de Barrington" loading="lazy" width="480" height="319"></span>
           <span class="puerta-cuerpo"><b>Casimir</b><em>El tejido de siempre de la casa, en color entero y en diseño. Sirve todo el año en Lima.</em></span>
         </a>
-        <a class="puerta rev" href="/catalogo-de-telas?coleccion=Lanilla">
-          <span class="puerta-foto"><img src="assets/telas/lanilla-0031.jpg" alt="Tela lanilla de Barrington" loading="lazy" width="480" height="319"></span>
+        <a class="puerta rev" href="/telas/lanilla">
+          <span class="puerta-foto"><img src="/assets/telas/lanilla-0031.jpg" alt="Tela lanilla de Barrington" loading="lazy" width="480" height="319"></span>
           <span class="puerta-cuerpo"><b>Lanilla</b><em>Ligera y fresca. Para el verano, la costa norte y los climas cálidos.</em></span>
         </a>
-        <a class="puerta rev" href="/catalogo-de-telas?uso=Abrigo">
-          <span class="puerta-foto"><img src="assets/telas/tweed-0002.jpg" alt="Tela de tweed de Barrington" loading="lazy" width="480" height="319"></span>
+        <a class="puerta rev" href="/telas/pano">
+          <span class="puerta-foto"><img src="/assets/telas/tweed-0002.jpg" alt="Tela de tweed de Barrington" loading="lazy" width="480" height="319"></span>
           <span class="puerta-cuerpo"><b>Abrigos</b><em>Tweed, paño y baby alpaca. El cuerpo que pide un abrigo o un saco de invierno.</em></span>
         </a>
       </div>
@@ -1830,7 +1845,7 @@ body.tema-corporativo {
           <a class="chip" href="/catalogo-de-telas?uso=Oficina">Oficina</a>
           <a class="chip" href="/catalogo-de-telas?uso=Gala">Gala</a>
           <a class="chip" href="/catalogo-de-telas?uso=Sport">Sport</a>
-          <a class="chip" href="/catalogo-de-telas?uso=Abrigo">Abrigo</a>
+          <a class="chip" href="/telas/pano">Abrigo</a>
         </span>
         <a class="btn btn-azul" href="/catalogo-de-telas" data-ir="catalogo">Ver el catálogo completo</a>
       </div>
@@ -1839,7 +1854,7 @@ body.tema-corporativo {
 
   <section class="seccion fondo-nube">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/novios-trio.jpg" alt="Novio con dos padrinos" loading="lazy" width="801" height="1200"></div>
+      <div class="rev"><img src="/assets/novios-trio.jpg" alt="Novio con dos padrinos" loading="lazy" width="801" height="1200"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Servicio de novios</span>
@@ -1858,10 +1873,10 @@ body.tema-corporativo {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial/ed-verano-cruzado.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-verano-cruzado.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Nos han confiado su imagen</span>
         <h2 class="t-xl">Instituciones que visten con nosotros</h2>
         <p class="lead" style="margin-top:1rem;">En 44 años hemos vestido a clubes, elencos y empresas. Estos son algunos de los proyectos de los que estamos orgullosos.</p>
@@ -1889,12 +1904,12 @@ body.tema-corporativo {
   <section class="seccion-corta">
     <div class="caja">
       <div class="rejilla r2">
-        <a href="/telas" class="banner rev" data-ir="telas" style="--foto:url('assets/editorial/ed-macro-cuadros.jpg');">
+        <a href="/telas" class="banner rev" data-ir="telas" style="--foto:url('/assets/editorial/ed-macro-cuadros.jpg');">
           <span class="banner-rotulo">Distribuidores oficiales</span>
           <span class="banner-titulo">Elige tu tela</span>
           <span class="banner-cta">Ver las telas</span>
         </a>
-        <a href="/trajes-de-novio" class="banner rev" data-d="1" data-ir="novios" style="--foto:url('assets/editorial/ed-gala-pinstripe.jpg');">
+        <a href="/trajes-de-novio" class="banner rev" data-d="1" data-ir="novios" style="--foto:url('/assets/editorial/ed-gala-pinstripe.jpg');">
           <span class="banner-rotulo">Experiencia novio</span>
           <span class="banner-titulo">Tu traje de novio</span>
           <span class="banner-cta">Ver la experiencia</span>
@@ -1908,15 +1923,15 @@ body.tema-corporativo {
       <div class="enc"><span class="rotulo">Diario</span><h2 class="t-xl">Del blog</h2></div>
       <div class="rejilla r3">
         <article class="nota rev" data-ir="blog">
-          <div class="nota-img"><img src="assets/editorial/ed-oficina-azul.jpg" alt="Terno azul a medida" loading="lazy" width="848" height="1106"></div>
+          <div class="nota-img"><img src="/assets/editorial/ed-oficina-azul.jpg" alt="Terno azul a medida" loading="lazy" width="848" height="1106"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Guías</span><h3>Cómo elegir tu primer traje a medida</h3><p>Qué esperar de tu primera visita a la tienda.</p></div>
         </article>
         <article class="nota rev" data-d="1" data-ir="blog">
-          <div class="nota-img"><img src="assets/editorial/ed-macro-super100.jpg" alt="Tejido Super 100s de Barrington" loading="lazy" width="1050" height="1500"></div>
+          <div class="nota-img"><img src="/assets/editorial/ed-macro-super100.jpg" alt="Tejido Super 100s de Barrington" loading="lazy" width="1050" height="1500"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Telas</span><h3>Nacional o importada: cómo decidir</h3><p>Las diferencias que de verdad importan al elegir tejido.</p></div>
         </article>
         <article class="nota rev" data-d="2" data-ir="blog">
-          <div class="nota-img"><img src="assets/novios-duo.jpg" alt="Trajes de novio" loading="lazy" width="801" height="1200"></div>
+          <div class="nota-img"><img src="/assets/novios-duo.jpg" alt="Trajes de novio" loading="lazy" width="801" height="1200"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Novios</span><h3>Calendario del novio: cuándo empezar</h3><p>Los tiempos reales para llegar tranquilo a la boda.</p></div>
         </article>
       </div>
@@ -2039,10 +2054,10 @@ body.tema-corporativo {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul con-foto" id="tiendas" style="--foto:url('assets/editorial/ed-abrigo-paisaje.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" id="tiendas" style="--foto:url('/assets/editorial/ed-abrigo-paisaje.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Visítanos</span>
         <h2 class="t-xl">Seis tiendas en Lima</h2>
         <p class="lead" style="margin-top:1rem;">Cinco en el Cercado de Lima y una en Surco. Escríbenos por WhatsApp y coordinamos en la que te quede más cerca.</p>
@@ -2061,7 +2076,7 @@ body.tema-corporativo {
 <!-- ==================== A MEDIDA ==================== -->
 <main class="pagina" data-pag="medida">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/traje-petroleo.jpg" alt="Traje cruzado confeccionado a medida" style="object-position:50% 22%;" loading="lazy" width="412" height="1000">
+    <img class="pag-hero-img" src="/assets/traje-petroleo.jpg" alt="Traje cruzado confeccionado a medida" style="object-position:50% 22%;" loading="lazy" width="412" height="1000">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · A medida</div>
@@ -2078,7 +2093,7 @@ body.tema-corporativo {
   <section class="seccion">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La diferencia</span>
         <h2 class="t-xl">Qué cambia cuando es a medida</h2>
       </div>
@@ -2115,7 +2130,7 @@ body.tema-corporativo {
       </div>
       <div class="rejilla r2">
         <a href="/ternos-a-medida" class="duo rev" data-ir="trajes">
-          <div class="duo-img"><img src="assets/traje-negro.jpg" alt="Terno negro a medida con solapa de pico" loading="lazy" width="454" height="1000"></div>
+          <div class="duo-img"><img src="/assets/traje-negro.jpg" alt="Terno negro a medida con solapa de pico" loading="lazy" width="454" height="1000"></div>
           <div class="duo-txt">
             <h3>Ternos y trajes</h3>
             <p>De dos y tres piezas, para la oficina, una ocasión o una gala. Esmóquines y chaqués incluidos.</p>
@@ -2123,7 +2138,7 @@ body.tema-corporativo {
           </div>
         </a>
         <a href="/camisas-a-medida" class="duo rev" data-d="1" data-ir="camisas">
-          <div class="duo-img"><img src="assets/camisa-rayas.jpg" alt="Camisa de rayas a medida" loading="lazy" width="375" height="469"></div>
+          <div class="duo-img"><img src="/assets/camisa-rayas.jpg" alt="Camisa de rayas a medida" loading="lazy" width="375" height="469"></div>
           <div class="duo-txt">
             <h3>Camisas</h3>
             <p>Cuello, puño y silueta definidos contigo. La prenda que más contacto tiene con tu piel.</p>
@@ -2135,7 +2150,7 @@ body.tema-corporativo {
   </section>
 
   <!-- El proceso -->
-  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/traje-burdeos.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('/assets/traje-burdeos.jpg');">
     <div class="caja dos-col">
       <div class="rev">
         <div class="marca-div izq"><i></i></div>
@@ -2149,12 +2164,12 @@ body.tema-corporativo {
           <div class="paso"><b>04</b><div><h3>Entrega</h3><p>Recibes la prenda terminada, lista para usar.</p></div></div>
         </div>
       </div>
-      <div class="rev foto-caja" data-d="1"><img src="assets/editorial/ed-oficina-camel.jpg" alt="Terno azul a medida con chaleco camel" loading="lazy" width="1364" height="1050"></div>
+      <div class="rev foto-caja" data-d="1"><img src="/assets/editorial/ed-oficina-camel.jpg" alt="Terno azul a medida con chaleco camel" loading="lazy" width="1364" height="1050"></div>
     </div>
   </section>
 
   <!-- Banner hacia Telas -->
-  <a href="/telas" class="banner rev" data-ir="telas" style="--foto:url('assets/editorial/ed-macro-super100.jpg');">
+  <a href="/telas" class="banner rev" data-ir="telas" style="--foto:url('/assets/editorial/ed-macro-super100.jpg');">
     <span class="banner-rotulo">La decisión que más pesa</span>
     <span class="banner-titulo">Todo empieza por la tela</span>
     <span class="banner-cta">Ver las telas</span>
@@ -2162,10 +2177,10 @@ body.tema-corporativo {
 
   <!-- Cierre -->
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/editorial/ed-abrigo-alpaca.jpg" alt="" loading="lazy" width="990" height="1204">
+    <img class="cierre-img" src="/assets/editorial/ed-abrigo-alpaca.jpg" alt="" loading="lazy" width="990" height="1204">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+      <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Empieza aquí</span>
       <h2 class="t-xl">Elige tu tela antes de venir</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Revisa el muestrario completo con calma, anota el código de la que te guste y llega a la cita con esa parte resuelta.</p>
@@ -2180,7 +2195,7 @@ body.tema-corporativo {
 <!-- ==================== TRAJES ==================== -->
 <main class="pagina" data-pag="trajes">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial-duo.jpg" alt="Trajes a medida de Andrés Vargas" style="object-position:50% 26%;" loading="lazy" width="1275" height="1400">
+    <img class="pag-hero-img" src="/assets/editorial-duo.jpg" alt="Trajes a medida de Andrés Vargas" style="object-position:50% 26%;" loading="lazy" width="1275" height="1400">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/a-medida" data-ir="medida">A medida</a> · Trajes</div>
@@ -2195,19 +2210,19 @@ body.tema-corporativo {
       <div class="enc"><span class="rotulo">Colección</span><h2 class="t-xl">Confeccionados en nuestro taller</h2></div>
       <div class="rejilla r4">
         <article class="ficha rev">
-          <div class="ficha-img"><img src="assets/traje-negro.jpg" alt="Smoking negro con solapa de raso" loading="lazy" width="454" height="1000"></div>
+          <div class="ficha-img"><img src="/assets/traje-negro.jpg" alt="Smoking negro con solapa de raso" loading="lazy" width="454" height="1000"></div>
           <div class="ficha-cuerpo doble-filete"><h3>Smoking negro</h3><p>Solapa de raso, para gala y etiqueta.</p></div>
         </article>
         <article class="ficha rev" data-d="1">
-          <div class="ficha-img"><img src="assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo" loading="lazy" width="412" height="1000"></div>
+          <div class="ficha-img"><img src="/assets/traje-petroleo.jpg" alt="Traje cruzado verde petróleo" loading="lazy" width="412" height="1000"></div>
           <div class="ficha-cuerpo doble-filete"><h3>Cruzado petróleo</h3><p>Doble botonadura, presencia y carácter.</p></div>
         </article>
         <article class="ficha rev" data-d="2">
-          <div class="ficha-img"><img src="assets/traje-burdeos.jpg" alt="Traje cruzado burdeos" loading="lazy" width="412" height="1000"></div>
+          <div class="ficha-img"><img src="/assets/traje-burdeos.jpg" alt="Traje cruzado burdeos" loading="lazy" width="412" height="1000"></div>
           <div class="ficha-cuerpo doble-filete"><h3>Cruzado burdeos</h3><p>Para quien quiere salir del negro sin estridencias.</p></div>
         </article>
         <article class="ficha rev" data-d="3">
-          <div class="ficha-img"><img src="assets/traje-gris.jpg" alt="Saco de fiesta gris perla" loading="lazy" width="451" height="1000"></div>
+          <div class="ficha-img"><img src="/assets/traje-gris.jpg" alt="Saco de fiesta gris perla" loading="lazy" width="451" height="1000"></div>
           <div class="ficha-cuerpo doble-filete"><h3>Saco gris perla</h3><p>Chaqueta de fiesta con pantalón de contraste.</p></div>
         </article>
       </div>
@@ -2216,7 +2231,7 @@ body.tema-corporativo {
 
   <section class="seccion fondo-nube">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/editorial/ed-gala-pinstripe.jpg" alt="Traje cruzado a rayas a medida" loading="lazy" width="990" height="1120"></div>
+      <div class="rev"><img src="/assets/editorial/ed-gala-pinstripe.jpg" alt="Traje cruzado a rayas a medida" loading="lazy" width="990" height="1120"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">El proceso</span>
@@ -2245,7 +2260,7 @@ body.tema-corporativo {
 <!-- ==================== CAMISAS ==================== -->
 <main class="pagina" data-pag="camisas">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/camisa-hero.jpg" alt="Camisa a medida en tejido azul" style="object-position:50% 6%;" loading="lazy" width="1200" height="2153">
+    <img class="pag-hero-img" src="/assets/camisa-hero.jpg" alt="Camisa a medida en tejido azul" style="object-position:50% 6%;" loading="lazy" width="1200" height="2153">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/a-medida" data-ir="medida">A medida</a> · Camisas</div>
@@ -2257,7 +2272,7 @@ body.tema-corporativo {
 
   <section class="seccion">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/camisa-medida.jpg" alt="Camisa a medida sobre maniquí con cinta métrica" loading="lazy" width="573" height="535"></div>
+      <div class="rev"><img src="/assets/camisa-medida.jpg" alt="Camisa a medida sobre maniquí con cinta métrica" loading="lazy" width="573" height="535"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">El detalle</span>
@@ -2278,10 +2293,10 @@ body.tema-corporativo {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/camisa-detalle.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('/assets/camisa-detalle.jpg');">
     <div class="caja">
       <div class="enc centro"><span class="rotulo">Personalización</span><h2 class="t-xl">Lo que puedes elegir</h2></div>
-      <div class="rev foto-caja tira-ancha"><img src="assets/camisa-cuellos.jpg" alt="Tres tipos de cuello de camisa a medida" loading="lazy" width="1200" height="800"></div>
+      <div class="rev foto-caja tira-ancha"><img src="/assets/camisa-cuellos.jpg" alt="Tres tipos de cuello de camisa a medida" loading="lazy" width="1200" height="800"></div>
       <div class="rejilla r3">
         <article class="pilar doble-filete rev"><span class="num">01</span><span class="icono" data-icono="cuello"></span>
           <h3>El cuello</h3><p>Define el carácter de la camisa y cómo se ve con o sin corbata.</p></article>
@@ -2297,7 +2312,7 @@ body.tema-corporativo {
 <!-- ==================== TELAS ==================== -->
 <main class="pagina" data-pag="telas">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial/ed-macro-orillo.jpg" alt="Tejidos de sastrería" style="object-position:50% 38%;" loading="lazy" width="1160" height="1500">
+    <img class="pag-hero-img" src="/assets/editorial/ed-macro-orillo.jpg" alt="Tejidos de sastrería" style="object-position:50% 38%;" loading="lazy" width="1160" height="1500">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Telas</div>
@@ -2311,7 +2326,7 @@ body.tema-corporativo {
   <section class="seccion" id="las-casas">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Las marcas</span>
         <h2 class="t-xl">Con quién trabajamos</h2>
         <p class="lead" style="margin-top:1rem;">Tejeduría peruana junto a algunas de las casas más antiguas de Italia e Inglaterra. Al ser distribuidores oficiales tratamos directo con ellas, sin intermediarios de por medio.</p>
@@ -2325,12 +2340,12 @@ body.tema-corporativo {
        bloque de la página que tiene que destacar por encima de los demás.
        La placa junta el escudo de la casa con la marca de Barrington, que es
        la forma más directa de enseñar el vínculo en lugar de contarlo. -->
-  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial/ed-macro-super100.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-super100.jpg');">
     <div class="caja casa-destacada">
       <div class="casa-placa rev">
-        <img class="placa-escudo" src="assets/escudo-azul.png" alt="Andrés Vargas Boutique" loading="lazy" width="261" height="420">
+        <img class="placa-escudo" src="/assets/escudo-azul.png" alt="Andrés Vargas Boutique" loading="lazy" width="261" height="420">
         <span class="placa-union"><i></i><em>junto a</em><i></i></span>
-        <img class="placa-marca" src="assets/tela-barrington.png" alt="Barrington" loading="lazy" width="460" height="261">
+        <img class="placa-marca" src="/assets/tela-barrington.png" alt="Barrington" loading="lazy" width="460" height="261">
         <span class="sello-txt">Distribuidor oficial</span>
       </div>
       <div class="rev" data-d="1">
@@ -2399,24 +2414,24 @@ body.tema-corporativo {
       </div>
 
       <div class="escala escala-3">
-        <a class="grado" href="/catalogo-de-telas?grado=Super+100s" data-ir="catalogo">
-          <span class="grado-foto"><img src="assets/telas/s100-0012.jpg" alt="Tela Casimir Super 100s de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="grado" href="/telas/super-100s" data-ir="tela-s100">
+          <span class="grado-foto"><img src="/assets/telas/s100-0012.jpg" alt="Tela Casimir Super 100s de Barrington" loading="lazy" width="480" height="320"></span>
           <span class="grado-num">100<em style="font-style:normal;font-size:0.5em;">s</em></span>
           <span class="grado-micras">100% lana · 260–270 g/m</span>
           <p>La base del muestrario. Barrington la trabaja con microdiseños, falsos lisos y cuadros, y le reconoce brillo natural y buena caída. Es la tela con la que se hace el saco o el blazer que se usa de verdad: aguanta el uso continuo y vuelve a su sitio al colgarla.</p>
           <span class="grado-ocasion">Saco y blazer · verano</span>
           <span class="grado-cta">Ver estas telas</span>
         </a>
-        <a class="grado" href="/catalogo-de-telas?grado=Super+120s" data-ir="catalogo">
-          <span class="grado-foto"><img src="assets/telas/s120-0006.jpg" alt="Tela Casimir Super 120s de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="grado" href="/telas/super-120s" data-ir="tela-s120">
+          <span class="grado-foto"><img src="/assets/telas/s120-0006.jpg" alt="Tela Casimir Super 120s de Barrington" loading="lazy" width="480" height="320"></span>
           <span class="grado-num">120<em style="font-style:normal;font-size:0.5em;">s</em></span>
           <span class="grado-micras">100% lana merino australiana</span>
           <p>Tejido de peso ligero hecho con las fibras más finas de merino australiano. La elasticidad de la fibra es lo que se nota al ponérselo. Barrington lo sitúa en el traje de ocasión: la celebración, el evento al que se va bien puesto.</p>
           <span class="grado-ocasion">Ocasión · celebraciones</span>
           <span class="grado-cta">Ver estas telas</span>
         </a>
-        <a class="grado" href="/catalogo-de-telas?grado=Super+140s" data-ir="catalogo">
-          <span class="grado-foto"><img src="assets/telas/diamond-0048.jpg" alt="Orillo de una tela Super 140s de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="grado" href="/telas/super-140s" data-ir="tela-s140">
+          <span class="grado-foto"><img src="/assets/telas/diamond-0048.jpg" alt="Orillo de una tela Super 140s de Barrington" loading="lazy" width="480" height="320"></span>
           <span class="grado-num">140<em style="font-style:normal;font-size:0.5em;">s</em></span>
           <span class="grado-micras">100% lana merino</span>
           <p>La colección Diamond, lo más fino que tenemos. Hecha con las fibras de lana más finas seleccionadas, junta el saber de la sastrería de siempre con un aire actual. La caída es la que se busca en un traje de gala. A cambio es delicada: no es la tela del maletín y el metro todos los días.</p>
@@ -2439,43 +2454,43 @@ body.tema-corporativo {
       </div>
 
       <div class="tejidos">
-        <a class="tejido-f" href="/catalogo-de-telas?tejido=Casimir" data-ir="catalogo">
-          <span class="tejido-foto"><img src="assets/telas/casimir-0016.jpg" alt="Tela casimir de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="tejido-f" href="/telas/casimir" data-ir="tela-casimir">
+          <span class="tejido-foto"><img src="/assets/telas/casimir-0016.jpg" alt="Tela casimir de Barrington" loading="lazy" width="480" height="320"></span>
           <h3>Casimir</h3><p><b>100% lana merino.</b> El paño de terno de toda la vida: peso equilibrado, brillo propio y caída perfecta. Es donde viven los grados Super, y viene en dos acabados, <em style="font-style:normal;color:var(--azul)">rasado</em> —superficie limpia, más formal— y <em style="font-style:normal;color:var(--azul)">batanado</em>, trabajado para quedar más lleno al tacto.</p>
           <span class="grado-ocasion">Terno formal · todo el año</span>
         </a>
-        <a class="tejido-f" href="/catalogo-de-telas?tejido=Casimir+Richwool" data-ir="catalogo">
-          <span class="tejido-foto"><img src="assets/telas/richwool-0026.jpg" alt="Tela Casimir Richwool de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="tejido-f" href="/telas/richwool" data-ir="tela-richwool">
+          <span class="tejido-foto"><img src="/assets/telas/richwool-0026.jpg" alt="Tela Casimir Richwool de Barrington" loading="lazy" width="480" height="320"></span>
           <h3>Casimir Richwool</h3><p><b>55% lana · 45% poliéster.</b> La mezcla pensada para la prenda que trabaja todos los días: gana resistencia sin perder suavidad ni confort. Es la tela del terno que va a la oficina y sigue entero al año siguiente.</p>
           <span class="grado-ocasion">Oficina · uso diario</span>
         </a>
-        <a class="tejido-f" href="/catalogo-de-telas?tejido=Lanilla" data-ir="catalogo">
-          <span class="tejido-foto"><img src="assets/telas/lanilla-0013.jpg" alt="Tela lanilla de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="tejido-f" href="/telas/lanilla" data-ir="tela-lanilla">
+          <span class="tejido-foto"><img src="/assets/telas/lanilla-0013.jpg" alt="Tela lanilla de Barrington" loading="lazy" width="480" height="320"></span>
           <h3>Lanilla</h3><p><b>70% lana · 30% poliéster.</b> Pensada para clima templado, que es el de Lima casi todo el año. Suma durabilidad y flexibilidad a la caída de la lana, sin el peso de un paño grueso.</p>
           <span class="grado-ocasion">Clima templado · oficina con calor</span>
         </a>
-        <a class="tejido-f" href="/catalogo-de-telas?tejido=Superfine" data-ir="catalogo">
-          <span class="tejido-foto"><img src="assets/telas/superfine-0009.jpg" alt="Tela Superfine de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="tejido-f" href="/telas/superfine" data-ir="tela-superfine">
+          <span class="tejido-foto"><img src="/assets/telas/superfine-0009.jpg" alt="Tela Superfine de Barrington" loading="lazy" width="480" height="320"></span>
           <h3>Superfine</h3><p><b>100% lana.</b> La respuesta de la casa al tweed cuando se quiere su carácter sin su aspereza: mano más dulce y mejor tacto, con microdiseños sobre una combinación selecta de fibras de merino.</p>
           <span class="grado-ocasion">Saco sport · entretiempo</span>
         </a>
-        <a class="tejido-f" href="/catalogo-de-telas?tejido=Tweed" data-ir="catalogo">
-          <span class="tejido-foto"><img src="assets/telas/tweed-0019.jpg" alt="Tela tweed de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="tejido-f" href="/telas/tweed" data-ir="tela-tweed">
+          <span class="tejido-foto"><img src="/assets/telas/tweed-0019.jpg" alt="Tela tweed de Barrington" loading="lazy" width="480" height="320"></span>
           <h3>Tweed</h3><p><b>100% lana merino.</b> Se teje retorciendo hebras de distintos colores en un hilo de dos o tres cabos, y de ahí sale su relieve y su profundidad de color. La pelusa que se forma en la superficie repele el agua: por eso el tweed escocés abriga, aguanta y envejece bien.</p>
           <span class="grado-ocasion">Invierno · sport · fin de semana</span>
         </a>
-        <a class="tejido-f" href="/catalogo-de-telas?tejido=Pa%C3%B1o" data-ir="catalogo">
-          <span class="tejido-foto"><img src="assets/telas/pano-0020.jpg" alt="Tela paño de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="tejido-f" href="/telas/pano" data-ir="tela-pano">
+          <span class="tejido-foto"><img src="/assets/telas/pano-0020.jpg" alt="Tela paño de Barrington" loading="lazy" width="480" height="320"></span>
           <h3>Paño</h3><p><b>Lana merino, acabado batanado.</b> De la familia del melton, desarrollado para el invierno. El batán compacta el tejido hasta darle cuerpo y calor al tacto, sobre cuadros y microdiseños. Es la tela que se sostiene sola: la del abrigo.</p>
           <span class="grado-ocasion">Abrigo · sobretodo · invierno</span>
         </a>
-        <a class="tejido-f" href="/catalogo-de-telas?tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri" data-ir="catalogo">
-          <span class="tejido-foto"><img src="assets/telas/alpaca-suri-0015.jpg" alt="Tela de baby alpaca de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="tejido-f" href="/telas/baby-alpaca" data-ir="tela-alpaca">
+          <span class="tejido-foto"><img src="/assets/telas/alpaca-suri-0015.jpg" alt="Tela de baby alpaca de Barrington" loading="lazy" width="480" height="320"></span>
           <h3>Baby alpaca</h3><p>Fibra peruana, de las más apreciadas del mundo. La <em style="font-style:normal;color:var(--azul)">suri</em> es la variedad de hebra larga y rizada: brillo, sedosidad y una ligereza que sorprende. El <em style="font-style:normal;color:var(--azul)">velour</em> lleva el pelo corto y aterciopelado, de tacto delicado y colores intensos.</p>
           <span class="grado-ocasion">Gala · abrigo · lo excepcional</span>
         </a>
-        <a class="tejido-f" href="/catalogo-de-telas?tejido=Denim" data-ir="catalogo">
-          <span class="tejido-foto"><img src="assets/telas/denim-0004.jpg" alt="Tela denim de Barrington" loading="lazy" width="480" height="320"></span>
+        <a class="tejido-f" href="/telas/denim" data-ir="tela-denim">
+          <span class="tejido-foto"><img src="/assets/telas/denim-0004.jpg" alt="Tela denim de Barrington" loading="lazy" width="480" height="320"></span>
           <h3>Denim</h3><p><b>51% lana merino · fibra sintética.</b> El denim de siempre, pero en calidad de sastrería: la lana le da un tacto suave y refinado que no tiene un jean, y la fibra sintética le da la resistencia que se le pide a una prenda de diario.</p>
           <span class="grado-ocasion">Casual · fin de semana</span>
         </a>
@@ -2502,10 +2517,10 @@ body.tema-corporativo {
   </section>
 
   <!-- CONSULTA DE TELA -->
-  <section class="seccion con-foto sobre-azul" id="consulta-tela" style="--foto:url('assets/editorial/ed-macro-cuadros.jpg');">
+  <section class="seccion con-foto sobre-azul" id="consulta-tela" style="--foto:url('/assets/editorial/ed-macro-cuadros.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Consúltanos</span>
         <h2 class="t-xl">¿Quieres tela de alguna de estas casas?</h2>
         <p class="lead medida centro" style="margin-top:1rem;">Déjanos tus datos y te respondemos con disponibilidad, colores y lo que necesites saber. Sin compromiso.</p>
@@ -2544,7 +2559,7 @@ body.tema-corporativo {
 <!-- ==================== NOVIOS ==================== -->
 <main class="pagina" data-pag="novios">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida" style="object-position:50% 32%;" loading="lazy" width="1300" height="868">
+    <img class="pag-hero-img" src="/assets/novios-trio-wide.jpg" alt="Novio y padrinos con trajes a medida" style="object-position:50% 32%;" loading="lazy" width="1300" height="868">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Novios</div>
@@ -2559,7 +2574,7 @@ body.tema-corporativo {
 
   <section class="seccion">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/novios-novio.jpg" alt="Novio con esmoquin negro a medida" loading="lazy" width="801" height="1200"></div>
+      <div class="rev"><img src="/assets/novios-novio.jpg" alt="Novio con esmoquin negro a medida" loading="lazy" width="801" height="1200"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Qué incluye</span>
@@ -2578,10 +2593,10 @@ body.tema-corporativo {
   </section>
 
   <!-- Tres pilares de la experiencia -->
-  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/editorial/ed-verano-cruzado.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-verano-cruzado.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La experiencia</span>
         <h2 class="t-xl">Cómo se vive en el atelier</h2>
       </div>
@@ -2626,7 +2641,7 @@ body.tema-corporativo {
           <a class="btn btn-azul" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos con tu fecha</a>
         </div>
       </div>
-      <div class="rev"><img src="assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro confeccionado a medida" loading="lazy" width="659" height="1300"></div>
+      <div class="rev"><img src="/assets/editorial-esmoquin-negro.jpg" alt="Esmoquin negro confeccionado a medida" loading="lazy" width="659" height="1300"></div>
     </div>
   </section>
 
@@ -2636,9 +2651,9 @@ body.tema-corporativo {
         <p class="lead medida centro" style="margin-top:1rem;">Vestimos también a padrinos, padres y hermanos, para que el conjunto se vea coherente en las fotos.</p>
       </div>
       <div class="rejilla r3">
-        <div class="rev foto-caja"><img src="assets/novios-trio.jpg" alt="Novio con dos padrinos" loading="lazy" width="801" height="1200"></div>
-        <div class="rev foto-caja" data-d="1"><img src="assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida" loading="lazy" width="801" height="1200"></div>
-        <div class="rev foto-caja" data-d="2"><img src="assets/editorial-duo.jpg" alt="Dos trajes a medida para el cortejo" loading="lazy" width="1275" height="1400"></div>
+        <div class="rev foto-caja"><img src="/assets/novios-trio.jpg" alt="Novio con dos padrinos" loading="lazy" width="801" height="1200"></div>
+        <div class="rev foto-caja" data-d="1"><img src="/assets/novios-duo.jpg" alt="Novio y padrino con trajes a medida" loading="lazy" width="801" height="1200"></div>
+        <div class="rev foto-caja" data-d="2"><img src="/assets/editorial-duo.jpg" alt="Dos trajes a medida para el cortejo" loading="lazy" width="1275" height="1400"></div>
       </div>
     </div>
   </section>
@@ -2667,15 +2682,15 @@ body.tema-corporativo {
           <a class="btn btn-linea" href="https://www.google.com/maps/search/?api=1&query=Av.+Primavera+252+Chacarilla+Santiago+de+Surco+Lima" target="_blank" rel="noopener">Cómo llegar</a>
         </div>
       </div>
-      <div class="rev" data-d="1"><img src="assets/editorial/ed-gala-pinstripe.jpg" alt="Traje cruzado a rayas a medida" loading="lazy" width="990" height="1120"></div>
+      <div class="rev" data-d="1"><img src="/assets/editorial/ed-gala-pinstripe.jpg" alt="Traje cruzado a rayas a medida" loading="lazy" width="990" height="1120"></div>
     </div>
   </section>
 
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/editorial-esmoquin-marfil.jpg" alt="" loading="lazy" width="1275" height="1400">
+    <img class="cierre-img" src="/assets/editorial-esmoquin-marfil.jpg" alt="" loading="lazy" width="1275" height="1400">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+      <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Tu fecha</span>
       <h2 class="t-xl">Empecemos con tiempo</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Escríbenos con la fecha de tu boda y coordinamos el calendario de medidas y pruebas sin apuros.</p>
@@ -2689,7 +2704,7 @@ body.tema-corporativo {
 <!-- ==================== CORPORATIVO ==================== -->
 <main class="pagina" data-pag="corporativo">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial/ed-oficina-camel.jpg" alt="Vestuario formal a medida" style="object-position:50% 26%;" loading="lazy" width="1364" height="1050">
+    <img class="pag-hero-img" src="/assets/editorial/ed-oficina-camel.jpg" alt="Vestuario formal a medida" style="object-position:50% 26%;" loading="lazy" width="1364" height="1050">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Corporativo</div>
@@ -2724,7 +2739,7 @@ body.tema-corporativo {
 
   <section class="seccion">
     <div class="caja dos-col">
-      <div class="rev"><img src="assets/editorial/ed-blazer-azul.jpg" alt="Blazer azul a medida" loading="lazy" width="1328" height="1106"></div>
+      <div class="rev"><img src="/assets/editorial/ed-blazer-azul.jpg" alt="Blazer azul a medida" loading="lazy" width="1328" height="1106"></div>
       <div class="rev" data-d="1">
         <div class="marca-div izq"><i></i></div>
         <span class="rotulo">Coordinación</span>
@@ -2746,10 +2761,10 @@ body.tema-corporativo {
   </section>
 
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/editorial/ed-abrigos.jpg" alt="" loading="lazy" width="988" height="1204">
+    <img class="cierre-img" src="/assets/editorial/ed-abrigos.jpg" alt="" loading="lazy" width="988" height="1204">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+      <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Cotización a medida</span>
       <h2 class="t-xl">Hablemos de tu equipo</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Cada programa se cotiza según el número de personas, las prendas y la tela elegida. Cuéntanos qué necesitas y preparamos una propuesta.</p>
@@ -2775,7 +2790,7 @@ body.tema-corporativo {
 <!-- ============ CATÁLOGO DE TELAS ============ -->
 <main class="pagina" data-pag="catalogo">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial/ed-sport-cuadros.jpg" alt="Telas para ternos a medida" style="object-position:50% 30%;" loading="lazy" width="990" height="1092">
+    <img class="pag-hero-img" src="/assets/editorial/ed-sport-cuadros.jpg" alt="Telas para ternos a medida" style="object-position:50% 30%;" loading="lazy" width="990" height="1092">
     <div class="pag-hero-velo"></div>
     <div class="caja pag-hero-inner">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Catálogo</div>
@@ -2832,7 +2847,7 @@ body.tema-corporativo {
 
 <main class="pagina" data-pag="blog">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial/ed-abrigo-paisaje.jpg" alt="Abrigo de paño a medida" style="object-position:50% 20%;" loading="lazy" width="1376" height="1078">
+    <img class="pag-hero-img" src="/assets/editorial/ed-abrigo-paisaje.jpg" alt="Abrigo de paño a medida" style="object-position:50% 20%;" loading="lazy" width="1376" height="1078">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Blog</div>
@@ -2850,27 +2865,27 @@ body.tema-corporativo {
       </div>
       <div class="rejilla r3">
         <article class="nota rev">
-          <div class="nota-img"><img src="assets/editorial/ed-oficina-azul.jpg" alt="Terno azul a medida" loading="lazy" width="848" height="1106"></div>
+          <div class="nota-img"><img src="/assets/editorial/ed-oficina-azul.jpg" alt="Terno azul a medida" loading="lazy" width="848" height="1106"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Guías · Próximamente</span><h3>Cómo elegir tu primer traje a medida</h3><p>Qué esperar de tu primera visita y cómo llegar preparado.</p></div>
         </article>
         <article class="nota rev" data-d="1">
-          <div class="nota-img"><img src="assets/editorial/ed-macro-super100.jpg" alt="Tejido Super 100s de Barrington" loading="lazy" width="1050" height="1500"></div>
+          <div class="nota-img"><img src="/assets/editorial/ed-macro-super100.jpg" alt="Tejido Super 100s de Barrington" loading="lazy" width="1050" height="1500"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Telas · Próximamente</span><h3>Nacional o importada: cómo decidir</h3><p>Las diferencias que de verdad importan al elegir el tejido.</p></div>
         </article>
         <article class="nota rev" data-d="2">
-          <div class="nota-img"><img src="assets/novios-duo.jpg" alt="Trajes de novio" loading="lazy" width="801" height="1200"></div>
+          <div class="nota-img"><img src="/assets/novios-duo.jpg" alt="Trajes de novio" loading="lazy" width="801" height="1200"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Novios · Próximamente</span><h3>Calendario del novio: cuándo empezar</h3><p>Los tiempos reales para llegar tranquilo al día de la boda.</p></div>
         </article>
         <article class="nota rev">
-          <div class="nota-img"><img src="assets/editorial/ed-gala-pinstripe.jpg" alt="Traje cruzado a rayas" loading="lazy" width="990" height="1120"></div>
+          <div class="nota-img"><img src="/assets/editorial/ed-gala-pinstripe.jpg" alt="Traje cruzado a rayas" loading="lazy" width="990" height="1120"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Estilo · Próximamente</span><h3>Etiqueta: qué se espera de un código de vestimenta</h3><p>Traducción práctica de lo que dice la invitación.</p></div>
         </article>
         <article class="nota rev" data-d="1">
-          <div class="nota-img"><img src="assets/traje-burdeos.jpg" alt="Traje burdeos" loading="lazy" width="412" height="1000"></div>
+          <div class="nota-img"><img src="/assets/traje-burdeos.jpg" alt="Traje burdeos" loading="lazy" width="412" height="1000"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Cuidado · Próximamente</span><h3>Cómo cuidar un traje para que dure</h3><p>Colgado, cepillado y descanso: lo que sí funciona.</p></div>
         </article>
         <article class="nota rev" data-d="2">
-          <div class="nota-img"><img src="assets/editorial/ed-blazer-salmon.jpg" alt="Blazer en tono salmón" loading="lazy" width="990" height="1064"></div>
+          <div class="nota-img"><img src="/assets/editorial/ed-blazer-salmon.jpg" alt="Blazer en tono salmón" loading="lazy" width="990" height="1064"></div>
           <div class="nota-cuerpo doble-filete"><span class="nota-meta">Estilo · Próximamente</span><h3>Salir del negro sin equivocarse</h3><p>Colores que funcionan en Lima y con qué combinarlos.</p></div>
         </article>
       </div>
@@ -2878,10 +2893,10 @@ body.tema-corporativo {
   </section>
 
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/editorial/ed-abrigo-tweed.jpg" alt="" loading="lazy" width="990" height="1162">
+    <img class="cierre-img" src="/assets/editorial/ed-abrigo-tweed.jpg" alt="" loading="lazy" width="990" height="1162">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+      <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">¿Tienes una duda?</span>
       <h2 class="t-xl">Pregúntale al sastre</h2>
       <p class="lead medida centro" style="margin-top:1rem;">No hace falta esperar al artículo. Escríbenos y te respondemos lo que necesites saber sobre tu prenda.</p>
@@ -2895,7 +2910,7 @@ body.tema-corporativo {
 <!-- ==================== TIENDAS ==================== -->
 <main class="pagina" data-pag="tiendas">
   <section class="pag-hero sobre-azul">
-    <img class="pag-hero-img" src="assets/editorial/ed-abrigos.jpg" alt="Prendas a medida de Andrés Vargas" style="object-position:50% 44%;" loading="lazy" width="988" height="1204">
+    <img class="pag-hero-img" src="/assets/editorial/ed-abrigos.jpg" alt="Prendas a medida de Andrés Vargas" style="object-position:50% 44%;" loading="lazy" width="988" height="1204">
     <div class="pag-hero-velo"></div>
     <div class="caja">
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Tiendas</div>
@@ -2919,10 +2934,10 @@ body.tema-corporativo {
     </div>
   </section>
 
-  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('assets/novios-trio-wide.jpg');">
+  <section class="seccion fondo-azul sobre-azul con-foto" style="--foto:url('/assets/novios-trio-wide.jpg');">
     <div class="caja">
       <div class="enc centro">
-        <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+        <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La visita</span>
         <h2 class="t-xl">La experiencia en el atelier</h2>
       </div>
@@ -2950,10 +2965,10 @@ body.tema-corporativo {
   </section>
 
   <section class="cierre sobre-azul">
-    <img class="cierre-img" src="assets/editorial/ed-abrigo-alpaca.jpg" alt="" loading="lazy" width="990" height="1204">
+    <img class="cierre-img" src="/assets/editorial/ed-abrigo-alpaca.jpg" alt="" loading="lazy" width="990" height="1204">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
-      <div class="marca-div"><i></i><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
+      <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
       <span class="rotulo">Tu visita</span>
       <h2 class="t-xl">¿Cómo te gustaría agendar?</h2>
       <p class="lead medida centro" style="margin-top:1rem;">Elige el canal que prefieras. Te respondemos con los horarios disponibles en la tienda que te quede más cerca.</p>
@@ -2975,12 +2990,698 @@ body.tema-corporativo {
   </section>
 </main>
 
+<!-- ==================== TELA · TELAS SUPER 100S ==================== -->
+<main class="pagina" data-pag="tela-s100">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/s100-0006.jpg" alt="Tela Telas Super 100s de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Telas Super 100s</div>
+      <span class="rotulo">Grado</span>
+      <h1 class="t-hero">Telas Super 100s</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El grado con el que se hace el terno que se usa de verdad: aguanta la rutina y vuelve a su sitio al colgarlo.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">La base del muestrario. Barrington la trabaja con microdiseños, falsos lisos y cuadros, y le reconoce brillo natural y buena caída. Es la tela con la que se hace el saco o el blazer que se usa de verdad: aguanta el uso continuo y vuelve a su sitio al colgarla.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+100s">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Grado</dt><dd>Super 100s</dd></div>
+          <div><dt>Composición</dt><dd>100% lana · 100% lana merino</dd></div>
+          <div><dt>Peso</dt><dd>Medio</dd></div>
+          <div><dt>Uso</dt><dd>Oficina · Ocasión · Sport</dd></div>
+          <div><dt>Colores</dt><dd>Azul · Beige · Negro · Burdeos · Gris · Marrón</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="grado=Super+100s"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+100s">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · TELAS SUPER 120S ==================== -->
+<main class="pagina" data-pag="tela-s120">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/s120-0062.jpg" alt="Tela Telas Super 120s de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Telas Super 120s</div>
+      <span class="rotulo">Grado</span>
+      <h1 class="t-hero">Telas Super 120s</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Un hilo más fino y una caída más fluida. El grado del terno con el que se recibe y se presenta.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">Tejido de peso ligero hecho con las fibras más finas de merino australiano. La elasticidad de la fibra es lo que se nota al ponérselo. Barrington lo sitúa en el traje de ocasión: la celebración, el evento al que se va bien puesto.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+120s">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Grado</dt><dd>Super 120s</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino australiana</dd></div>
+          <div><dt>Peso</dt><dd>Medio</dd></div>
+          <div><dt>Uso</dt><dd>Oficina · Ocasión</dd></div>
+          <div><dt>Colores</dt><dd>Negro · Azul · Gris · Burdeos · Marrón · Beige</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="grado=Super+120s"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+120s">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · TELAS SUPER 140S ==================== -->
+<main class="pagina" data-pag="tela-s140">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/diamond-0030.jpg" alt="Tela Telas Super 140s de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Telas Super 140s</div>
+      <span class="rotulo">Grado</span>
+      <h1 class="t-hero">Telas Super 140s</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Lo más fino del muestrario. Para gala, boda y las fechas que se recuerdan.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">La colección Diamond, lo más fino que tenemos. Hecha con las fibras de lana más finas seleccionadas, junta el saber de la sastrería de siempre con un aire actual. La caída es la que se busca en un traje de gala.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+140s">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Grado</dt><dd>Super 140s</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino</dd></div>
+          <div><dt>Peso</dt><dd>Medio</dd></div>
+          <div><dt>Uso</dt><dd>Gala · Ocasión</dd></div>
+          <div><dt>Colores</dt><dd>Azul · Negro · Marrón · Beige · Burdeos · Gris</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="grado=Super+140s"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+140s">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · CASIMIR ==================== -->
+<main class="pagina" data-pag="tela-casimir">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/casimir-0142.jpg" alt="Tela Casimir de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Casimir</div>
+      <span class="rotulo">Tejido</span>
+      <h1 class="t-hero">Casimir</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El paño de terno de toda la vida, y donde viven los grados Super.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">100% lana merino. El paño de terno de toda la vida: peso equilibrado, brillo propio y caída perfecta. Es donde viven los grados Super, y viene en dos acabados, rasado —superficie limpia, más formal— y batanado, trabajado para quedar más lleno al tacto.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Casimir">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Grado</dt><dd>Super 100s · Super 120s · Super 140s</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino · 100% lana merino australiana · 100% lana</dd></div>
+          <div><dt>Peso</dt><dd>Medio</dd></div>
+          <div><dt>Uso</dt><dd>Ocasión · Oficina · Gala · Sport</dd></div>
+          <div><dt>Colores</dt><dd>Azul · Negro · Gris · Beige · Burdeos · Marrón</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="tejido=Casimir"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Casimir">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · LANILLA ==================== -->
+<main class="pagina" data-pag="tela-lanilla">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/lanilla-0031.jpg" alt="Tela Lanilla de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Lanilla</div>
+      <span class="rotulo">Tejido</span>
+      <h1 class="t-hero">Lanilla</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Ligera y fresca, para el clima templado de Lima casi todo el año.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">70% lana · 30% poliéster. Pensada para clima templado, que es el de Lima casi todo el año. Suma durabilidad y flexibilidad a la caída de la lana, sin el peso de un paño grueso.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Lanilla">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Composición</dt><dd>70% lana · 30% poliéster</dd></div>
+          <div><dt>Peso</dt><dd>Ligero</dd></div>
+          <div><dt>Uso</dt><dd>Oficina</dd></div>
+          <div><dt>Colores</dt><dd>Negro · Marrón · Burdeos · Azul · Gris · Celeste · Beige</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="tejido=Lanilla"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Lanilla">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · CASIMIR RICHWOOL ==================== -->
+<main class="pagina" data-pag="tela-richwool">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/richwool-0026.jpg" alt="Tela Casimir Richwool de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Casimir Richwool</div>
+      <span class="rotulo">Tejido</span>
+      <h1 class="t-hero">Casimir Richwool</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">La tela del terno que va a la oficina y sigue entero al año siguiente.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">55% lana · 45% poliéster. La mezcla pensada para la prenda que trabaja todos los días: gana resistencia sin perder suavidad ni confort. Es la tela del terno que va a la oficina y sigue entero al año siguiente.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Casimir+Richwool">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Composición</dt><dd>55% lana · 45% poliéster</dd></div>
+          <div><dt>Peso</dt><dd>Medio</dd></div>
+          <div><dt>Uso</dt><dd>Oficina</dd></div>
+          <div><dt>Colores</dt><dd>Negro · Gris · Marrón · Azul · Burdeos</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="tejido=Casimir+Richwool"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Casimir+Richwool">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · SUPERFINE ==================== -->
+<main class="pagina" data-pag="tela-superfine">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/superfine-0009.jpg" alt="Tela Superfine de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Superfine</div>
+      <span class="rotulo">Tejido</span>
+      <h1 class="t-hero">Superfine</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El carácter del tweed sin su aspereza, con mano más dulce.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">100% lana. La respuesta de la casa al tweed cuando se quiere su carácter sin su aspereza: mano más dulce y mejor tacto, con microdiseños sobre una combinación selecta de fibras de merino.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Superfine">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Composición</dt><dd>100% lana</dd></div>
+          <div><dt>Peso</dt><dd>Ligero</dd></div>
+          <div><dt>Uso</dt><dd>Oficina · Ocasión</dd></div>
+          <div><dt>Colores</dt><dd>Negro · Azul · Gris</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="tejido=Superfine"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Superfine">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · TWEED ==================== -->
+<main class="pagina" data-pag="tela-tweed">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/tweed-0002.jpg" alt="Tela Tweed de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Tweed</div>
+      <span class="rotulo">Tejido</span>
+      <h1 class="t-hero">Tweed</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Abriga, aguanta y envejece bien. El saco de fin de semana y el abrigo.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">100% lana merino. Se teje retorciendo hebras de distintos colores en un hilo de dos o tres cabos, y de ahí sale su relieve y su profundidad de color. La pelusa que se forma en la superficie repele el agua: por eso el tweed escocés abriga, aguanta y envejece bien.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Tweed">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Composición</dt><dd>100% lana merino</dd></div>
+          <div><dt>Peso</dt><dd>Pesado</dd></div>
+          <div><dt>Uso</dt><dd>Sport · Abrigo</dd></div>
+          <div><dt>Colores</dt><dd>Marrón · Burdeos · Negro · Azul · Gris · Beige</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="tejido=Tweed"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Tweed">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · PAÑO ==================== -->
+<main class="pagina" data-pag="tela-pano">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/pano-0020.jpg" alt="Tela Paño de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Paño</div>
+      <span class="rotulo">Tejido</span>
+      <h1 class="t-hero">Paño</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">La tela que se sostiene sola: la del abrigo.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">Lana merino, acabado batanado. De la familia del melton, desarrollado para el invierno. El batán compacta el tejido hasta darle cuerpo y calor al tacto, sobre cuadros y microdiseños. Es la tela que se sostiene sola: la del abrigo.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Pa%C3%B1o">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Composición</dt><dd>Lana merino, acabado batanado</dd></div>
+          <div><dt>Peso</dt><dd>Pesado</dd></div>
+          <div><dt>Uso</dt><dd>Abrigo</dd></div>
+          <div><dt>Colores</dt><dd>Negro · Burdeos · Gris · Azul · Beige · Marrón</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="tejido=Pa%C3%B1o"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Pa%C3%B1o">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · BABY ALPACA ==================== -->
+<main class="pagina" data-pag="tela-alpaca">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/alpaca-suri-0015.jpg" alt="Tela Baby alpaca de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Baby alpaca</div>
+      <span class="rotulo">Tejido</span>
+      <h1 class="t-hero">Baby alpaca</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Fibra peruana, de las más apreciadas del mundo.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">Fibra peruana, de las más apreciadas del mundo. La suri es la variedad de hebra larga y rizada: brillo, sedosidad y una ligereza que sorprende. El velour lleva el pelo corto y aterciopelado, de tacto delicado y colores intensos.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Composición</dt><dd>Baby alpaca velour · Baby alpaca suri</dd></div>
+          <div><dt>Peso</dt><dd>Pesado</dd></div>
+          <div><dt>Uso</dt><dd>Gala · Abrigo</dd></div>
+          <div><dt>Colores</dt><dd>Negro · Gris · Burdeos · Azul · Beige · Marrón · Verde</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== TELA · DENIM DE SASTRERÍA ==================== -->
+<main class="pagina" data-pag="tela-denim">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/denim-0004.jpg" alt="Tela Denim de sastrería de Barrington" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Denim de sastrería</div>
+      <span class="rotulo">Tejido</span>
+      <h1 class="t-hero">Denim de sastrería</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El denim de siempre, pero en calidad de sastrería.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El tejido</span>
+        <h2 class="t-xl">Qué es y para qué sirve</h2>
+        <p class="lead" style="margin-top:1.25rem;">51% lana merino · fibra sintética. El denim de siempre, pero en calidad de sastrería: la lana le da un tacto suave y refinado que no tiene un jean, y la fibra sintética le da la resistencia que se le pide a una prenda de diario.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Denim">Ver estas telas</a>
+          <a class="btn btn-linea" href="https://wa.me/51959370397" target="_blank" rel="noopener">Consultar</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Composición</dt><dd>51% lana merino · fibra sintética</dd></div>
+          <div><dt>Peso</dt><dd>Medio</dd></div>
+          <div><dt>Uso</dt><dd>Casual</dd></div>
+          <div><dt>Colores</dt><dd>Azul · Negro</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="tejido=Denim"></div>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Denim">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Te interesa alguna?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos con el código y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas a verla y tocarla.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397" target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
 <!-- ==================== PIE ==================== -->
 <footer class="pie">
   <div class="caja">
     <div class="pie-rejilla">
       <div class="pie-logo">
-        <img src="assets/logo-blanco.png" alt="Andrés Vargas Sastrería" loading="lazy" width="700" height="700">
+        <img src="/assets/logo-blanco.png" alt="Andrés Vargas Sastrería" loading="lazy" width="700" height="700">
         <p>Sastrería a medida en Lima desde 1982. Distribuidores oficiales de telas nacionales e importadas.</p>
         <div class="redes">
           <a href="https://www.instagram.com/andres_vargas_sastreria/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -3086,7 +3787,20 @@ body.tema-corporativo {
     inicio: '/', medida: '/a-medida', trajes: '/ternos-a-medida',
     camisas: '/camisas-a-medida', telas: '/telas', novios: '/trajes-de-novio',
     corporativo: '/corporativo', tiendas: '/tiendas', blog: '/blog',
-    catalogo: '/catalogo-de-telas'
+    catalogo: '/catalogo-de-telas',
+    /* Una URL por colección: cada una compite por su búsqueda («tela super
+       120», «tweed lima») en lugar de que el catálogo entero pelee por todas. */
+    'tela-s100': '/telas/super-100s',
+    'tela-s120': '/telas/super-120s',
+    'tela-s140': '/telas/super-140s',
+    'tela-casimir': '/telas/casimir',
+    'tela-lanilla': '/telas/lanilla',
+    'tela-richwool': '/telas/richwool',
+    'tela-superfine': '/telas/superfine',
+    'tela-tweed': '/telas/tweed',
+    'tela-pano': '/telas/pano',
+    'tela-alpaca': '/telas/baby-alpaca',
+    'tela-denim': '/telas/denim',
   };
 
   function ir(nombre, ancla, sinHistorial) {
@@ -3109,7 +3823,8 @@ body.tema-corporativo {
       history.pushState({ pagina: nombre }, '', ruta);
     }
     // Trajes y Camisas cuelgan de "A medida", así que marcan ese ítem del menú
-    var padre = { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[nombre] || nombre;
+    var padre = /^tela-/.test(nombre) ? 'telas' :
+      { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[nombre] || nombre;
     // El enlace de primer nivel se marca por su sección padre; el del submenú,
     // por coincidencia exacta. Si no, en el catálogo se encendía «Las marcas».
     menuLinks.forEach(function (a) {
@@ -3285,8 +4000,8 @@ body.tema-corporativo {
         '<div class="tienda-foto' + (t.foto ? '' : ' sin-foto') + '">' +
           (t.foto
             ? '<img src="' + t.foto + '" alt="Tienda de Andrés Vargas en ' + t.zona + '" loading="lazy">'
-            : '<span class="tienda-placa"><img src="assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><b>' + t.nombre + '</b></span>') +
-          (t.foto ? '<img src="assets/escudo-blanco.png" alt="" class="sello" loading="lazy" width="261" height="420">' : '') +
+            : '<span class="tienda-placa"><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><b>' + t.nombre + '</b></span>') +
+          (t.foto ? '<img src="/assets/escudo-blanco.png" alt="" class="sello" loading="lazy" width="261" height="420">' : '') +
           '<span class="zona">' + t.zona + '</span>' +
           (t.destacado ? '<span class="tienda-badge">' + t.destacado + '</span>' : '') +
         '</div>' +
@@ -3338,7 +4053,7 @@ body.tema-corporativo {
       nombre: 'Universitario de Deportes',
       cat: 'Club deportivo',
       badge: 'Institucional',
-      foto: 'assets/caso-universitario.jpg',
+      foto: '/assets/caso-universitario.jpg',
       /* Cuadrada en un recuadro 4:3: sin subir el encuadre, el forro con el
          escudo cae en la zona que el degradado oscurece para el titular. */
       pos: '50% 34%',
@@ -3352,7 +4067,7 @@ body.tema-corporativo {
       cat: 'Artes escénicas',
       badge: 'Elenco',
       /* 640x480 es justo el 4:3 del recuadro: entra sin recorte. */
-      foto: 'assets/caso-teatro.jpg',
+      foto: '/assets/caso-teatro.jpg',
       titulo: 'Vestuario a medida para producción teatral',
       texto: 'Prendas confeccionadas para el elenco de la producción.',
       chips: ['Vestuario de elenco'],
@@ -3362,7 +4077,7 @@ body.tema-corporativo {
       nombre: 'Barrington',
       cat: 'Marca',
       badge: 'Marca',
-      foto: 'assets/editorial/ed-macro-super100.jpg',
+      foto: '/assets/editorial/ed-macro-super100.jpg',
       titulo: 'Proyecto de confección para la marca',
       texto: 'Desarrollo y confección de prendas para Barrington.',
       chips: ['Confección'],
@@ -3384,7 +4099,7 @@ body.tema-corporativo {
         '<div class="caso-visual">' +
           '<img class="caso-foto" src="' + p.foto + '" alt="' + p.nombre + '" loading="lazy"' +
             (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '>' +
-          '<img src="assets/escudo-blanco.png" alt="" class="caso-escudo" loading="lazy" width="261" height="420">' +
+          '<img src="/assets/escudo-blanco.png" alt="" class="caso-escudo" loading="lazy" width="261" height="420">' +
           (p.badge ? '<span class="caso-badge">' + p.badge + '</span>' : '') +
           '<div class="caso-meta">' + metrica + '</div>' +
         '</div>' +
@@ -3429,23 +4144,56 @@ body.tema-corporativo {
     }).join('');
   })();
 
+  /* Rejilla de las páginas de tejido. Lee el mismo telas.json que el catálogo
+     y aplica el filtro que la página declara en data-telas, así que no hay una
+     segunda lista de telas que se pueda desincronizar de la primera. */
+  (function () {
+    var caja = document.querySelector('.pagina.activa .rejilla-telas') ||
+               document.querySelector('.rejilla-telas');
+    if (!caja) return;
+    var p = new URLSearchParams(caja.dataset.telas || '');
+    var mapa = { coleccion: 'k', grado: 'g', tejido: 'j', uso: 'u' };
+    fetch('/assets/telas.json').then(function (r) { return r.json(); }).then(function (d) {
+      var todas = d.telas || d;
+      var lista = todas.filter(function (x) {
+        // Un mismo campo puede repetirse (los dos baby alpaca): dentro del
+        // campo se suma, y entre campos distintos se cruza.
+        return Array.from(new Set(p.keys())).every(function (n) {
+          var c = mapa[n];
+          return p.getAll(n).some(function (v) {
+            return c === 'u' ? (x.u || []).indexOf(v) >= 0 : x[c] === v;
+          });
+        });
+      });
+      // Se muestran doce: las suficientes para dar idea de la variedad sin
+      // convertir la página en una segunda copia del catálogo.
+      var paso = Math.max(1, Math.floor(lista.length / 12));
+      caja.innerHTML = lista.filter(function (_, i) { return i % paso === 0; }).slice(0, 12)
+        .map(function (x) {
+          return '<figure><img src="/assets/telas/' + (x.i2 || x.i) + '" alt="Tela ' + x.c +
+                 ' de Barrington" loading="lazy" width="480" height="319">' +
+                 '<figcaption><b>' + x.c + '</b><span>' + (x.g || x.j) + '</span></figcaption></figure>';
+        }).join('');
+    });
+  })();
+
   /* ================= CASAS DE TELA =================
      `destacada: true` la saca de la rejilla de detalle: Barrington tiene su
      propio bloque. El slider sí las muestra todas. */
   var CASAS = [
-    { n: 'Barrington', logo: 'assets/tela-barrington.png', origen: '', destacada: true,
+    { n: 'Barrington', logo: '/assets/tela-barrington.png', origen: '', destacada: true,
       d: '' },
-    { n: 'Vitale Barberis Canonico', logo: 'assets/tela-vbc.png', origen: 'Italia · 1663',
+    { n: 'Vitale Barberis Canonico', logo: '/assets/tela-vbc.png', origen: 'Italia · 1663',
       d: 'Tejen lana en Biella desde antes de que Italia fuera un país, y siguen en manos de la misma familia tres siglos y medio después. De su telar salen los paños que más pedimos para terno: lanas peinadas que caen bien y aguantan el uso diario. Su muestrario está en nuestras tiendas, así que eliges sobre la tela real y no sobre una foto.' },
-    { n: 'Albini', logo: 'assets/tela-albini.png', origen: 'Italia · 1876',
+    { n: 'Albini', logo: '/assets/tela-albini.png', origen: 'Italia · 1876',
       d: 'Uno de los mayores grupos camiseros de Europa y dueño del archivo de Thomas Mason. Cultiva su propio algodón para las calidades más finas, algo que casi ninguna hilandería hace. De Albini traemos los algodones de camisería, que son los tejidos que vas a tener en contacto con la piel todos los días.' },
-    { n: 'Thomas Mason', logo: 'assets/tela-thomasmason.png', origen: 'Inglaterra · 1796',
+    { n: 'Thomas Mason', logo: '/assets/tela-thomasmason.png', origen: 'Inglaterra · 1796',
       d: 'Dos siglos de camisería inglesa guardados en un archivo de diseños que sigue alimentando cada colección. Es la referencia cuando alguien busca una camisa con carácter británico: popelinas, oxford, rayas de época. Lo pedimos para camisas de oficina y de ocasión, con el cuello y el puño que elijas.' },
     /* La ruta ya está puesta: en cuanto el PNG esté en assets/ aparece solo.
        Mientras no exista, `onerror` degrada al nombre en texto en lugar de
        dejar el icono de imagen rota. El texto de la casa sigue pendiente del
        cliente: no se inventa. */
-    { n: 'Creditex', logo: 'assets/tela-creditex.png', origen: 'Perú', escala: 0.68,
+    { n: 'Creditex', logo: '/assets/tela-creditex.png', origen: 'Perú', escala: 0.68,
       d: 'El algodón pima peruano está entre los más finos del mundo, y Creditex es de las casas que lo lleva del campo al telar sin salir del país. Es la respuesta para quien quiere una prenda tejida con fibra peruana de primer nivel: la misma exigencia que pedimos a las casas europeas, con el orgullo de que se hizo aquí.' }
   ];
 
@@ -3715,7 +4463,7 @@ body.tema-corporativo {
           // La drapeada enseña el orillo con el nombre de la casa; la plana es
           // un rectángulo de color que no dice nada en una rejilla. 22 telas no
           // tienen drapeada y caen a la plana.
-          '<img src="assets/telas/' + (t.i2 || t.i) + '" alt="Tela ' + t.c + ' de ' + CASA + '" loading="lazy" width="480" height="320">' +
+          '<img src="/assets/telas/' + (t.i2 || t.i) + '" alt="Tela ' + t.c + ' de ' + CASA + '" loading="lazy" width="480" height="320">' +
           '<span class="cat-pie">' +
             '<span class="cat-casa">' + CASA + '</span>' +
             '<b class="cat-cod">' + (t.c || 'Sin código') + '</b>' +
@@ -3844,8 +4592,8 @@ body.tema-corporativo {
     var visor = document.getElementById('cat-visor');
     function abrir(t) {
       document.getElementById('cat-fotos').innerHTML =
-        (t.i2 ? '<img src="assets/telas/' + t.i2 + '" alt="Orillo de la tela ' + t.c + ' de ' + CASA + '" width="480" height="320">' : '') +
-        '<img src="assets/telas/' + t.i + '" alt="Tejido de la tela ' + t.c + ' de ' + CASA + '" width="420" height="280">';
+        (t.i2 ? '<img src="/assets/telas/' + t.i2 + '" alt="Orillo de la tela ' + t.c + ' de ' + CASA + '" width="480" height="320">' : '') +
+        '<img src="/assets/telas/' + t.i + '" alt="Tejido de la tela ' + t.c + ' de ' + CASA + '" width="420" height="280">';
       /* Casa, colección y grado suben al linaje: repetirlos como campos deja
          «Barrington» once veces en las 483 fichas y no distingue ninguna. */
       /* En 80 telas la colección y el grado son la misma palabra («Super 120s»),
@@ -3891,7 +4639,7 @@ body.tema-corporativo {
       if (p.get('q')) { estado.q = p.get('q'); document.getElementById('cat-q').value = estado.q; }
     }
 
-    fetch('assets/telas.json').then(function (r) { return r.json(); }).then(function (d) {
+    fetch('/assets/telas.json').then(function (r) { return r.json(); }).then(function (d) {
       TELAS = d; desdeURL(); filtrar();
     }).catch(function () {
       document.getElementById('cat-vacio').hidden = false;

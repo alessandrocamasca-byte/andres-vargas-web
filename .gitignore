@@ -18,3 +18,7 @@ tmp/
 catalogo-fuente/
 pauta/
 assets/_hoja/
+
+# Local: caché de wrangler y config del editor
+.wrangler/
+.claude/
