@@ -771,8 +771,29 @@ body.tema-corporativo {
 .cifra { text-align: center; padding: var(--e4) var(--e2); }
 /* Cifras tabulares: sin esto el número cambia de ancho en cada paso del
    contador y la fila entera baila. */
-.cifra b { font-variant-numeric: tabular-nums; display: block; font-family: var(--display); font-weight: 200; font-size: clamp(2rem, 3.2vw, 2.6rem); line-height: 1; color: var(--blanco); }
-.cifra span { display: block; font-family: var(--display); font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-top: var(--e2); }
+.cifra b { font-variant-numeric: tabular-nums; display: block; font-family: var(--display); font-weight: 200; font-size: clamp(2rem, 3.2vw, 2.6rem); line-height: 1; color: var(--azul); }
+.cifra span { display: block; font-family: var(--display); font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--piedra); margin-top: var(--e2); }
+/* El color depende del fondo y no de la clase: la cifra era blanca sin
+   condición, así que sobre papel habría desaparecido. */
+.sobre-azul .cifra b { color: var(--blanco); }
+.sobre-azul .cifra span { color: rgba(255,255,255,0.85); }
+
+/* Banda de credibilidad bajo el hero. En papel y con filete arriba y abajo:
+   pegada al hero, que es azul con foto, el azul con foto no dejaba borde entre
+   las dos y se leían como una sola mancha. */
+.banda-cifras { background: var(--papel); border-top: 1px solid var(--filete); border-bottom: 1px solid var(--filete); }
+.banda-cifras .cifra + .cifra { border-left: 1px solid var(--filete); }
+/* Tres cifras: o las tres en fila o una debajo de otra. En dos columnas queda
+   2+1 y la fila se ve coja. */
+.banda-cifras .rejilla { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 620px) {
+  .banda-cifras .rejilla { grid-template-columns: 1fr; }
+  .banda-cifras .cifra + .cifra { border-left: 0; border-top: 1px solid var(--filete); }
+}
+/* Con tres columnas estrechas la etiqueta necesita menos aire entre letras. */
+@media (max-width: 820px) {
+  .banda-cifras .cifra span { letter-spacing: 0.18em; font-size: 0.6rem; }
+}
 
 /* ---------- Pilar ---------- */
 .pilar { padding-top: var(--e4); }
@@ -1774,7 +1795,7 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
 
   <!-- Banda de credibilidad, justo bajo el hero: fundación, oficio y
        tiendas. Las cifras cuentan al entrar en pantalla. -->
-<section class="seccion-corta fondo-profundo sobre-azul con-foto" style="--foto:url('/assets/editorial-esmoquin-marfil.jpg');">
+  <section class="seccion-corta banda-cifras">
     <div class="caja rejilla r3">
       <div class="cifra rev"><b data-cifra="1982" data-desde="1900">1982</b><span>Año de fundación</span></div>
       <div class="cifra rev" data-d="1"><b data-cifra="44" data-desde-anio="1982">44</b><span>Años de oficio</span></div>
