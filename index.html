@@ -769,7 +769,9 @@ body.tema-corporativo {
 
 /* ---------- Cifras ---------- */
 .cifra { text-align: center; padding: var(--e4) var(--e2); }
-.cifra b { display: block; font-family: var(--display); font-weight: 200; font-size: clamp(2rem, 3.2vw, 2.6rem); line-height: 1; color: var(--blanco); }
+/* Cifras tabulares: sin esto el número cambia de ancho en cada paso del
+   contador y la fila entera baila. */
+.cifra b { font-variant-numeric: tabular-nums; display: block; font-family: var(--display); font-weight: 200; font-size: clamp(2rem, 3.2vw, 2.6rem); line-height: 1; color: var(--blanco); }
 .cifra span { display: block; font-family: var(--display); font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-top: var(--e2); }
 
 /* ---------- Pilar ---------- */
@@ -1770,6 +1772,16 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
     </div>
   </section>
 
+  <!-- Banda de credibilidad, justo bajo el hero: fundación, oficio y
+       tiendas. Las cifras cuentan al entrar en pantalla. -->
+<section class="seccion-corta fondo-profundo sobre-azul con-foto" style="--foto:url('/assets/editorial-esmoquin-marfil.jpg');">
+    <div class="caja rejilla r3">
+      <div class="cifra rev"><b data-cifra="1982" data-desde="1900">1982</b><span>Año de fundación</span></div>
+      <div class="cifra rev" data-d="1"><b data-cifra="44" data-desde-anio="1982">44</b><span>Años de oficio</span></div>
+      <div class="cifra rev" data-d="2"><b data-cifra="6">6</b><span>Tiendas en Lima</span></div>
+    </div>
+  </section>
+
   <section class="seccion">
     <div class="caja">
       <div class="enc">
@@ -1837,7 +1849,7 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
         <div class="marca-div"><i></i><img src="/assets/escudo-azul.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">La casa</span>
         <h2 class="t-xl">El oficio, sin atajos</h2>
-        <p class="lead" style="margin-top:1.25rem;">Desde 1982 vestimos a Lima. Ves tu traje nacer desde el patrón en blanco, con sastres que llevan 44 años haciendo lo mismo.</p>
+        <p class="lead" style="margin-top:1.25rem;">Desde 1982 vestimos a Lima. Ves tu traje nacer desde el patrón en blanco, con sastres que llevan <span data-anios="1982">44</span> años haciendo lo mismo.</p>
       </div>
       <div class="rejilla r3">
         <article class="pilar doble-filete rev">
@@ -1882,13 +1894,7 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
     </div>
   </section>
 
-  <section class="seccion-corta fondo-profundo sobre-azul con-foto" style="--foto:url('/assets/editorial-esmoquin-marfil.jpg');">
-    <div class="caja rejilla r3">
-      <div class="cifra rev"><b>1982</b><span>Año de fundación</span></div>
-      <div class="cifra rev" data-d="1"><b>44</b><span>Años de oficio</span></div>
-      <div class="cifra rev" data-d="2"><b>3</b><span>Tiendas en Lima</span></div>
-    </div>
-  </section>
+  
 
   <!-- Seis puertas de entrada al muestrario, cada una a un filtro real del
        catálogo. Las descripciones hablan de para qué sirve cada tela, no de
@@ -1967,7 +1973,7 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
         <div class="marca-div"><i></i><img src="/assets/escudo-blanco.png" alt="" loading="lazy" width="261" height="420"><i></i></div>
         <span class="rotulo">Nos han confiado su imagen</span>
         <h2 class="t-xl">Instituciones que visten con nosotros</h2>
-        <p class="lead" style="margin-top:1rem;">En 44 años hemos vestido a clubes, elencos y empresas. Estos son algunos de los proyectos de los que estamos orgullosos.</p>
+        <p class="lead" style="margin-top:1rem;">En <span data-anios="1982">44</span> años hemos vestido a clubes, elencos y empresas. Estos son algunos de los proyectos de los que estamos orgullosos.</p>
       </div>
       <div class="rejilla r3" id="casos-inicio"></div>
       <div class="centro" style="margin-top:2.5rem;">
@@ -3034,7 +3040,7 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
       <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · Blog</div>
       <span class="rotulo">Diario</span>
       <h1 class="t-hero">Blog de sastrería</h1>
-      <p class="lead medida" style="margin-top:1.25rem;">Lo que hemos aprendido en 44 años, contado sin tecnicismos: cómo elegir, cómo cuidar y cuándo empezar.</p>
+      <p class="lead medida" style="margin-top:1.25rem;">Lo que hemos aprendido en <span data-anios="1982">44</span> años, contado sin tecnicismos: cómo elegir, cómo cuidar y cuándo empezar.</p>
     </div>
   </section>
 
@@ -5458,6 +5464,68 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     els.forEach(function (e) { io.observe(e); });
   }
+
+  /* Las cifras cuentan al entrar en pantalla. El número correcto ya está en el
+     HTML —un rastreador sin JavaScript lee 44 y 6, no un cero—; el script solo
+     anima desde un valor de arranque hasta el que ya estaba escrito.
+
+     Los años de oficio se recalculan desde el año de fundación: escritos a
+     mano vuelven a estar mal cada enero. */
+  (function () {
+    var cifras = document.querySelectorAll('[data-cifra]');
+
+    /* El reloj del visitante puede estar en cualquier año, así que la cuenta
+       lleva red: fuera de rango se deja el número que ya está escrito en el
+       HTML, que es correcto hoy. */
+    function aniosDesde(anio) {
+      var a = new Date().getFullYear() - parseInt(anio, 10);
+      return (a >= 40 && a <= 120) ? a : null;
+    }
+
+    document.querySelectorAll('[data-anios]').forEach(function (e) {
+      var a = aniosDesde(e.dataset.anios);
+      if (a !== null) e.textContent = a;
+    });
+
+    if (!cifras.length) return;
+
+    cifras.forEach(function (e) {
+      var desdeAnio = e.dataset.desdeAnio;
+      if (desdeAnio) {
+        var anios = aniosDesde(desdeAnio);
+        if (anios !== null) { e.dataset.cifra = anios; e.textContent = anios; }
+      }
+    });
+
+
+    var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (quieto || !('IntersectionObserver' in window)) return;
+
+    function contar(e) {
+      var fin = parseInt(e.dataset.cifra, 10);
+      var ini = parseInt(e.dataset.desde || 0, 10);
+      if (isNaN(fin)) return;
+      var t0 = null, dur = 1100;
+      function paso(t) {
+        if (t0 === null) t0 = t;
+        var p = Math.min(1, (t - t0) / dur);
+        // Desacelera al final: la cifra se posa en lugar de frenar en seco.
+        var e2 = 1 - Math.pow(1 - p, 3);
+        e.textContent = Math.round(ini + (fin - ini) * e2);
+        if (p < 1) requestAnimationFrame(paso);
+      }
+      requestAnimationFrame(paso);
+    }
+
+    var io = new IntersectionObserver(function (ent) {
+      ent.forEach(function (x) {
+        if (!x.isIntersecting) return;
+        io.unobserve(x.target);
+        contar(x.target);
+      });
+    }, { threshold: 0.6 });
+    cifras.forEach(function (e) { io.observe(e); });
+  })();
 
   /* Desplazamiento propio. `scrollIntoView({behavior:'smooth'})` no es fiable en
      todos los motores (en algunos no hace nada), así que se anima a mano. */

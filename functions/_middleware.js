@@ -24,6 +24,16 @@ const BLOQUEADO = [
 
 const SITIO = 'https://sastreriaandresvargas.pe';
 
+/* Los años de oficio se cuentan solos: escritos a mano vuelven a estar mal
+   cada 1 de enero. Con red de seguridad, porque el reloj de un runtime no
+   siempre es el que uno espera —el emulador local devuelve 1970— y prefiero
+   un número viejo a un «-12 años» en la descripción de Google. */
+const FUNDACION = 1982;
+const ANIOS_OFICIO = (() => {
+  const a = new Date().getFullYear() - FUNDACION;
+  return a >= 40 && a <= 120 ? a : 44;
+})();
+
 /* Cada ruta apunta a la página interna que abre el script y lleva el texto con
    el que se presenta en buscadores. Los títulos abren con el término que la
    gente escribe —en Perú «terno», no «traje»— y dejan la marca al final. */
@@ -307,7 +317,7 @@ const RUTAS = {
   '/blog': {
     pagina: 'blog',
     titulo: 'Blog de Sastrería | Andrés Vargas',
-    desc: 'Cómo elegir, cómo cuidar y cuándo empezar. Lo que hemos aprendido en 44 años de oficio, contado sin tecnicismos.',
+    desc: `Cómo elegir, cómo cuidar y cuándo empezar. Lo que hemos aprendido en ${ANIOS_OFICIO} años de oficio, contado sin tecnicismos.`,
     imagen: 'editorial-duo.jpg',
     miga: 'Blog',
   },
