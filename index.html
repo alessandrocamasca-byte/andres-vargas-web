@@ -1577,7 +1577,13 @@ body.tema-corporativo {
 
 .wa-titulo { font-family: var(--display); font-size: 1.02rem; font-weight: 400; letter-spacing: 0.04em; color: var(--azul); margin: 0 0 0.95rem; }
 .wa-opciones { display: flex; flex-direction: column; gap: 0.6rem; }
-.wa-op { display: block; border: 1px solid var(--filete); padding: 0.85rem 0.95rem; transition: border-color 0.25s var(--ease), background 0.25s var(--ease); }
+.wa-op { display: flex; align-items: center; gap: 0.85rem; border: 1px solid var(--filete); padding: 0.85rem 0.95rem; transition: border-color 0.25s var(--ease), background 0.25s var(--ease); }
+/* El escudo va sin el logotipo: a este tamaño «ANDRÉS VARGAS» sería una
+   mancha, y el nombre ya está en la cabecera. La corona da la altura, así que
+   manda el alto y no el ancho. El filete lo separa del texto igual que en el
+   resto del sitio. */
+.wa-escudo { flex: 0 0 auto; width: auto; height: 44px; padding-right: 0.85rem; border-right: 1px solid var(--filete); }
+.wa-op > span { min-width: 0; }
 .wa-op:hover, .wa-op:focus-visible { border-color: var(--azul-medio); background: var(--azul-tenue); }
 .wa-op b { display: block; font-family: var(--display); font-size: 0.92rem; font-weight: 400; letter-spacing: 0.05em; color: var(--azul); }
 .wa-op em { display: block; margin-top: 0.2rem; font-style: normal; font-size: 0.79rem; font-weight: 300; line-height: 1.5; color: var(--piedra); }
@@ -4411,10 +4417,12 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
     <p class="wa-titulo">¿Sobre qué nos escribes?</p>
     <div class="wa-opciones">
       <a class="wa-op" data-via="persona" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20una%20prenda%20a%20medida." target="_blank" rel="noopener">
-        <b>Para ti</b><em>Terno, camisa, traje de novio o arreglo.</em>
+        <img class="wa-escudo" src="/assets/escudo-azul-44.png" alt="" width="82" height="132">
+        <span><b>Para ti</b><em>Terno, camisa, traje de novio o arreglo.</em></span>
       </a>
       <a class="wa-op" data-via="empresa" href="https://wa.me/51928820334?text=Hola%2C%20quiero%20consultar%20por%20el%20servicio%20corporativo." target="_blank" rel="noopener">
-        <b>Para tu empresa</b><em>Uniformes y programas corporativos.</em>
+        <img class="wa-escudo" src="/assets/escudo-ciruela-44.png" alt="" width="82" height="132">
+        <span><b>Para tu empresa</b><em>Uniformes y programas corporativos.</em></span>
       </a>
     </div>
   </div>
