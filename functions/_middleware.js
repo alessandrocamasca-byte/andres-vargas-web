@@ -30,7 +30,7 @@ const SITIO = 'https://sastreriaandresvargas.pe';
 const RUTAS = {
   '/': {
     pagina: 'inicio',
-    titulo: 'Ternos y Trajes a Medida en Lima | Sastrería Andrés Vargas',
+    titulo: 'Trajes y Camisas a Medida en Lima | Sastrería Andrés Vargas',
     desc: 'Sastrería en Lima desde 1982. Ternos, trajes y camisas a medida, traje de novio y vestuario corporativo. Seis tiendas. Escríbenos por WhatsApp.',
     imagen: 'hero.jpg',
   },
