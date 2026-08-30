@@ -335,9 +335,15 @@
 <!-- Escudo blanco sobre el azul de la casa, no el azul sobre transparente: en
      pestañas oscuras un escudo azul sin fondo desaparece. Con lienzo propio se
      lee igual en claro y en oscuro. -->
+<!-- Google exige que el icono de sus resultados sea cuadrado y de lado
+     múltiplo de 48, y lo busca primero en /favicon.ico. Por eso van 48, 96 y
+     192 más el .ico en la raíz; el 32 es para la pestaña del navegador y el
+     180 es el formato que pide Apple para la pantalla de inicio. -->
+<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
-<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
