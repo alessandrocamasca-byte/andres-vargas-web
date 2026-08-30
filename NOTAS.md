@@ -802,3 +802,9 @@ S/ 200, es decir S/ 700 más IGV.
 **Hueco conocido:** qué pasa si el mes cierra por debajo de seis contenidos. La
 escala no lo cubre y no se inventó un número: hay una nota que dice que ese caso
 se revisa entre las partes antes de facturar. Conviene cerrarlo en el contrato.
+
+**Plazo del soporte (30 ago 2026).** La pauta, la pagina de LinkedIn y el CRM ya
+no se exigen al cierre del mes sino **en la primera semana de septiembre**. Si al
+terminar esa semana falta alguno de los tres, corre el descuento de S/ 200. El
+ejemplo del bloque 02 se ajusto a esa redaccion. Queda sin fijar el dia exacto de
+corte: el documento dice la semana, no una fecha.
