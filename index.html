@@ -1090,12 +1090,14 @@ body.tema-corporativo {
 /* ---------- Páginas de tejido ---------- */
 .ficha-tela { grid-template-columns: 1fr; margin-top: 0; }
 @media (min-width: 620px) { .ficha-tela { grid-template-columns: 1fr 1fr; column-gap: clamp(1.5rem,3vw,2.4rem); } }
-.rejilla-telas { display: grid; gap: clamp(0.9rem, 2vw, 1.4rem); grid-template-columns: repeat(6, 1fr); }
-/* Son doce muestras y las columnas son divisores de doce en cada tamaño:
-   así la última fila nunca queda a medias. */
-@media (max-width: 1100px) { .rejilla-telas { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 720px)  { .rejilla-telas { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 480px)  { .rejilla-telas { grid-template-columns: repeat(2, 1fr); } }
+.rejilla-telas { --hueco: clamp(0.9rem, 2vw, 1.4rem);
+  display: flex; flex-wrap: wrap; justify-content: center; gap: var(--hueco); }
+/* Seis por fila, y doce muestras: dos filas llenas. Cuando la colección tiene
+   menos —denim son cinco— la fila se centra en vez de dejar el hueco a un lado. */
+.rejilla-telas figure { flex: 0 1 calc((100% - 5 * var(--hueco)) / 6); }
+@media (max-width: 1100px) { .rejilla-telas figure { flex-basis: calc((100% - 3 * var(--hueco)) / 4); } }
+@media (max-width: 720px)  { .rejilla-telas figure { flex-basis: calc((100% - 2 * var(--hueco)) / 3); } }
+@media (max-width: 480px)  { .rejilla-telas figure { flex-basis: calc((100% - var(--hueco)) / 2); } }
 .rejilla-telas figure { margin: 0; border: 1px solid var(--filete); background: var(--blanco); }
 .rejilla-telas img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
 .rejilla-telas figcaption { padding: 0.7rem 0.85rem 0.85rem; }
@@ -2502,6 +2504,44 @@ body.tema-corporativo {
     </div>
   </section>
 
+<!-- === ENTRADA POR COLOR (generada por herramientas/telas-paginas.py) === -->
+  <section class="seccion">
+    <div class="caja">
+      <div class="enc">
+        <span class="rotulo">Entender la tela · 03</span>
+        <h2 class="t-xl">Y luego está el color</h2>
+        <p class="lead" style="margin-top:1rem;">El grado dice cómo de fino es el hilo y el tejido de qué está hecha la tela. El color decide cuándo te la vas a poner. Estos son los seis del muestrario, con lo que resuelve cada uno.</p>
+      </div>
+      <div class="puertas">
+        <a class="puerta rev" href="/terno-azul" data-ir="color-azul">
+          <span class="puerta-foto"><img src="/assets/telas/diamond-0001.jpg" alt="Tela azul de Barrington para terno a medida" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Terno azul</b><em>El que sirve para todo: oficina, matrimonio y entrevista.</em></span>
+        </a>
+        <a class="puerta rev" href="/terno-negro" data-ir="color-negro">
+          <span class="puerta-foto"><img src="/assets/telas/diamond-0003.jpg" alt="Tela negro de Barrington para terno a medida" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Terno negro</b><em>El de la ceremonia y la noche, donde más se nota la tela.</em></span>
+        </a>
+        <a class="puerta rev" href="/terno-gris" data-ir="color-gris">
+          <span class="puerta-foto"><img src="/assets/telas/diamond-0065.jpg" alt="Tela gris de Barrington para terno a medida" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Terno gris</b><em>El más discreto, y el que combina con más camisas.</em></span>
+        </a>
+        <a class="puerta rev" href="/terno-burdeos" data-ir="color-burdeos">
+          <span class="puerta-foto"><img src="/assets/telas/diamond-0015.jpg" alt="Tela burdeos de Barrington para terno a medida" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Terno burdeos</b><em>Para el que ya tiene el azul y el gris.</em></span>
+        </a>
+        <a class="puerta rev" href="/terno-marron" data-ir="color-marron">
+          <span class="puerta-foto"><img src="/assets/telas/diamond-0021.jpg" alt="Tela marrón de Barrington para terno a medida" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Terno marrón</b><em>El del saco sport, el tweed y el fin de semana.</em></span>
+        </a>
+        <a class="puerta rev" href="/terno-beige" data-ir="color-beige">
+          <span class="puerta-foto"><img src="/assets/telas/diamond-0013.jpg" alt="Tela beige de Barrington para terno a medida" loading="lazy" width="480" height="319"></span>
+          <span class="puerta-cuerpo"><b>Terno beige</b><em>El de verano, de día y al aire libre.</em></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- === FIN ENTRADA POR COLOR === -->
+
   <section class="seccion fondo-nube">
     <div class="caja">
       <div class="enc"><span class="rotulo">Ventajas</span><h2 class="t-xl">Por qué la tela importa</h2></div>
@@ -3033,7 +3073,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="grado=Super+100s"></div>
+      <div class="rejilla-telas" data-telas="grado=Super+100s">
+        <figure><img src="/assets/telas/s100-0004.jpg" alt="Tela 460032 - 170 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>460032 - 170</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0016.jpg" alt="Tela 460033 - 340 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460033 - 340</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0026.jpg" alt="Tela 460035 - 150 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460035 - 150</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0036.jpg" alt="Tela 460036 - 230 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460036 - 230</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0048.jpg" alt="Tela 460037 - 860 de Barrington, casimir marrón" loading="lazy" width="480" height="319"><figcaption><b>460037 - 860</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0060.jpg" alt="Tela 460039 - 840 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460039 - 840</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0002.jpg" alt="Tela 460032 - 170 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>460032 - 170</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0014.jpg" alt="Tela 460033 - 340 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460033 - 340</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0024.jpg" alt="Tela 460035 - 150 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460035 - 150</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0034.jpg" alt="Tela 460036 - 230 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460036 - 230</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0046.jpg" alt="Tela 460037 - 860 de Barrington, casimir marrón" loading="lazy" width="480" height="319"><figcaption><b>460037 - 860</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0058.jpg" alt="Tela 460039 - 840 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460039 - 840</b><span>Super 100s</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas Super 100s","url":"https://sastreriaandresvargas.pe/telas/super-100s","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"460032 - 170","sku":"460032 - 170","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0004.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"460033 - 340","sku":"460033 - 340","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0016.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"460035 - 150","sku":"460035 - 150","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0026.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"460036 - 230","sku":"460036 - 230","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0036.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"460037 - 860","sku":"460037 - 860","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0048.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"460039 - 840","sku":"460039 - 840","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0060.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"460032 - 170","sku":"460032 - 170","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0002.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"460033 - 340","sku":"460033 - 340","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0014.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"460035 - 150","sku":"460035 - 150","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0024.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"460036 - 230","sku":"460036 - 230","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0034.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"460037 - 860","sku":"460037 - 860","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0046.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"460039 - 840","sku":"460039 - 840","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0058.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+100s">Ver todas en el catálogo</a>
       </div>
@@ -3096,7 +3150,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="grado=Super+120s"></div>
+      <div class="rejilla-telas" data-telas="grado=Super+120s">
+        <figure><img src="/assets/telas/s120-0002.jpg" alt="Tela 510028 - 280 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>510028 - 280</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0008.jpg" alt="Tela 542019 - 140 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>542019 - 140</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0016.jpg" alt="Tela 542019 - 270 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>542019 - 270</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0022.jpg" alt="Tela 542019 - 740 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>542019 - 740</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0030.jpg" alt="Tela 542022 - 270 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>542022 - 270</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0036.jpg" alt="Tela 542137 - 270 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>542137 - 270</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0044.jpg" alt="Tela 542138 - 360 de Barrington, casimir marrón" loading="lazy" width="480" height="319"><figcaption><b>542138 - 360</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0052.jpg" alt="Tela 542139 - 850 de Barrington, casimir burdeos" loading="lazy" width="480" height="319"><figcaption><b>542139 - 850</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0058.jpg" alt="Tela 542140 - 190 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>542140 - 190</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0066.jpg" alt="Tela 542142 - 260 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>542142 - 260</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0072.jpg" alt="Tela 542143 - 260 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>542143 - 260</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0080.jpg" alt="Tela 542144 - 240 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>542144 - 240</b><span>Super 120s</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas Super 120s","url":"https://sastreriaandresvargas.pe/telas/super-120s","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"510028 - 280","sku":"510028 - 280","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"542019 - 140","sku":"542019 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0008.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"542019 - 270","sku":"542019 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0016.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"542019 - 740","sku":"542019 - 740","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0022.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"542022 - 270","sku":"542022 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0030.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"542137 - 270","sku":"542137 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0036.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"542138 - 360","sku":"542138 - 360","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0044.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"542139 - 850","sku":"542139 - 850","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0052.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"542140 - 190","sku":"542140 - 190","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0058.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"542142 - 260","sku":"542142 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0066.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"542143 - 260","sku":"542143 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0072.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"542144 - 240","sku":"542144 - 240","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0080.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+120s">Ver todas en el catálogo</a>
       </div>
@@ -3159,7 +3227,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="grado=Super+140s"></div>
+      <div class="rejilla-telas" data-telas="grado=Super+140s">
+        <figure><img src="/assets/telas/diamond-0002.jpg" alt="Tela 518001 - 135 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>518001 - 135</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0010.jpg" alt="Tela 518002 - 265 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>518002 - 265</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0020.jpg" alt="Tela 518002 - 470 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>518002 - 470</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0028.jpg" alt="Tela 548011 - 240 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>548011 - 240</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0038.jpg" alt="Tela 548012 - 260 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>548012 - 260</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0045.jpg" alt="Tela 548013 - 280 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>548013 - 280</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0056.jpg" alt="Tela 548015 - 170 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>548015 - 170</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0066.jpg" alt="Tela 548017 - 140 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>548017 - 140</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0074.jpg" alt="Tela 548017 - 240 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>548017 - 240</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0084.jpg" alt="Tela 548018 - 160 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>548018 - 160</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0092.jpg" alt="Tela 548018 - 270 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>548018 - 270</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0102.jpg" alt="Tela 548020 - 190 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>548020 - 190</b><span>Super 140s</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas Super 140s","url":"https://sastreriaandresvargas.pe/telas/super-140s","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"518001 - 135","sku":"518001 - 135","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"518002 - 265","sku":"518002 - 265","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0010.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"518002 - 470","sku":"518002 - 470","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0020.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"548011 - 240","sku":"548011 - 240","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0028.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"548012 - 260","sku":"548012 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0038.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"548013 - 280","sku":"548013 - 280","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0045.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"548015 - 170","sku":"548015 - 170","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0056.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"548017 - 140","sku":"548017 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0066.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"548017 - 240","sku":"548017 - 240","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0074.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"548018 - 160","sku":"548018 - 160","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0084.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"548018 - 270","sku":"548018 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0092.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"548020 - 190","sku":"548020 - 190","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0102.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?grado=Super+140s">Ver todas en el catálogo</a>
       </div>
@@ -3222,7 +3304,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="tejido=Casimir"></div>
+      <div class="rejilla-telas" data-telas="tejido=Casimir">
+        <figure><img src="/assets/telas/diamond-0002.jpg" alt="Tela 518001 - 135 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>518001 - 135</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0045.jpg" alt="Tela 548013 - 280 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>548013 - 280</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0090.jpg" alt="Tela 548018 - 190 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>548018 - 190</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0025.jpg" alt="Tela 120130 - 340 de Barrington, casimir burdeos" loading="lazy" width="480" height="319"><figcaption><b>120130 - 340</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0069.jpg" alt="Tela 120185 - 360 de Barrington, casimir marrón" loading="lazy" width="480" height="319"><figcaption><b>120185 - 360</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0114.jpg" alt="Tela 121404 - 280 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>121404 - 280</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0160.jpg" alt="Tela 121451 - 530 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>121451 - 530</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0014.jpg" alt="Tela 542019 - 265 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>542019 - 265</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0058.jpg" alt="Tela 542140 - 190 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>542140 - 190</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0018.jpg" alt="Tela 460033 - 440 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460033 - 440</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0058.jpg" alt="Tela 460039 - 230 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460039 - 230</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0028.jpg" alt="Tela 460035 - 350 de Barrington, casimir burdeos" loading="lazy" width="480" height="319"><figcaption><b>460035 - 350</b><span>Super 100s</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas de casimir","url":"https://sastreriaandresvargas.pe/telas/casimir","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"518001 - 135","sku":"518001 - 135","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"548013 - 280","sku":"548013 - 280","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0045.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"548018 - 190","sku":"548018 - 190","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0090.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"120130 - 340","sku":"120130 - 340","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0025.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"120185 - 360","sku":"120185 - 360","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0069.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"121404 - 280","sku":"121404 - 280","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0114.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"121451 - 530","sku":"121451 - 530","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0160.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"542019 - 265","sku":"542019 - 265","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0014.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"542140 - 190","sku":"542140 - 190","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0058.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"460033 - 440","sku":"460033 - 440","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0018.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"460039 - 230","sku":"460039 - 230","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0058.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"460035 - 350","sku":"460035 - 350","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0028.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Casimir">Ver todas en el catálogo</a>
       </div>
@@ -3284,7 +3380,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="tejido=Lanilla"></div>
+      <div class="rejilla-telas" data-telas="tejido=Lanilla">
+        <figure><img src="/assets/telas/lanilla-0002.jpg" alt="Tela 180046 - 354 de Barrington, lanilla burdeos" loading="lazy" width="480" height="319"><figcaption><b>180046 - 354</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0013.jpg" alt="Tela 180046 - 534 de Barrington, lanilla marrón" loading="lazy" width="480" height="319"><figcaption><b>180046 - 534</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0031.jpg" alt="Tela 180050 - 530 de Barrington, lanilla beige" loading="lazy" width="480" height="319"><figcaption><b>180050 - 530</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0043.jpg" alt="Tela 190189 - 260 de Barrington, lanilla azul" loading="lazy" width="480" height="319"><figcaption><b>190189 - 260</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0067.jpg" alt="Tela 190190 - 120 de Barrington, lanilla gris" loading="lazy" width="480" height="319"><figcaption><b>190190 - 120</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0086.jpg" alt="Tela 190190 - 330 de Barrington, lanilla negro" loading="lazy" width="480" height="319"><figcaption><b>190190 - 330</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0116.jpg" alt="Tela 190194 - 520 de Barrington, lanilla marrón" loading="lazy" width="480" height="319"><figcaption><b>190194 - 520</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0130.jpg" alt="Tela 190195 - 560 de Barrington, lanilla negro" loading="lazy" width="480" height="319"><figcaption><b>190195 - 560</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0141.jpg" alt="Tela 190198 - 370 de Barrington, lanilla marrón" loading="lazy" width="480" height="319"><figcaption><b>190198 - 370</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0155.jpg" alt="Tela 190201 - 270 de Barrington, lanilla negro" loading="lazy" width="480" height="319"><figcaption><b>190201 - 270</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0166.jpg" alt="Tela 190201 - 570 de Barrington, lanilla negro" loading="lazy" width="480" height="319"><figcaption><b>190201 - 570</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0181.jpg" alt="Tela 190211 - 140 de Barrington, lanilla gris" loading="lazy" width="480" height="319"><figcaption><b>190211 - 140</b><span>Lanilla</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas de lanilla","url":"https://sastreriaandresvargas.pe/telas/lanilla","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"180046 - 354","sku":"180046 - 354","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"180046 - 534","sku":"180046 - 534","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0013.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"180050 - 530","sku":"180050 - 530","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0031.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"190189 - 260","sku":"190189 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0043.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"190190 - 120","sku":"190190 - 120","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0067.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"190190 - 330","sku":"190190 - 330","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0086.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"190194 - 520","sku":"190194 - 520","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0116.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"190195 - 560","sku":"190195 - 560","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0130.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"190198 - 370","sku":"190198 - 370","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0141.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"190201 - 270","sku":"190201 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0155.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"190201 - 570","sku":"190201 - 570","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0166.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"190211 - 140","sku":"190211 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0181.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Lanilla">Ver todas en el catálogo</a>
       </div>
@@ -3346,7 +3456,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="tejido=Casimir+Richwool"></div>
+      <div class="rejilla-telas" data-telas="tejido=Casimir+Richwool">
+        <figure><img src="/assets/telas/richwool-0003.jpg" alt="Tela 240145 - 160 de Barrington, casimir richwool gris" loading="lazy" width="480" height="319"><figcaption><b>240145 - 160</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0006.jpg" alt="Tela 240175 - 180 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240175 - 180</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0010.jpg" alt="Tela 240180 - 180 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240180 - 180</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0016.jpg" alt="Tela 240223 - 180 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240223 - 180</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0020.jpg" alt="Tela 240223 - 370 de Barrington, casimir richwool marrón" loading="lazy" width="480" height="319"><figcaption><b>240223 - 370</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0024.jpg" alt="Tela 240233 - 180 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240233 - 180</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0030.jpg" alt="Tela 240245 - 380 de Barrington, casimir richwool marrón" loading="lazy" width="480" height="319"><figcaption><b>240245 - 380</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0034.jpg" alt="Tela 240251 - 285 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240251 - 285</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0038.jpg" alt="Tela 240267 - 190 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240267 - 190</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0044.jpg" alt="Tela 240270 - 370 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240270 - 370</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0048.jpg" alt="Tela 240288 - 230 de Barrington, casimir richwool azul" loading="lazy" width="480" height="319"><figcaption><b>240288 - 230</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0052.jpg" alt="Tela 240292 - 270 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240292 - 270</b><span>Casimir Richwool</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas Casimir Richwool","url":"https://sastreriaandresvargas.pe/telas/richwool","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"240145 - 160","sku":"240145 - 160","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0003.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"240175 - 180","sku":"240175 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0006.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"240180 - 180","sku":"240180 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0010.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"240223 - 180","sku":"240223 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0016.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"240223 - 370","sku":"240223 - 370","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0020.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"240233 - 180","sku":"240233 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0024.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"240245 - 380","sku":"240245 - 380","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0030.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"240251 - 285","sku":"240251 - 285","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0034.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"240267 - 190","sku":"240267 - 190","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0038.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"240270 - 370","sku":"240270 - 370","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0044.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"240288 - 230","sku":"240288 - 230","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0048.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"240292 - 270","sku":"240292 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0052.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Casimir+Richwool">Ver todas en el catálogo</a>
       </div>
@@ -3408,7 +3532,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="tejido=Superfine"></div>
+      <div class="rejilla-telas" data-telas="tejido=Superfine">
+        <figure><img src="/assets/telas/superfine-0003.jpg" alt="Tela 145001 - 140 de Barrington, superfine gris" loading="lazy" width="480" height="319"><figcaption><b>145001 - 140</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0009.jpg" alt="Tela 145002 - 140 de Barrington, superfine gris" loading="lazy" width="480" height="319"><figcaption><b>145002 - 140</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0015.jpg" alt="Tela 145002 - 360 de Barrington, superfine negro" loading="lazy" width="480" height="319"><figcaption><b>145002 - 360</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0021.jpg" alt="Tela 145003 - 270 de Barrington, superfine azul" loading="lazy" width="480" height="319"><figcaption><b>145003 - 270</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0027.jpg" alt="Tela 145005 - 160 de Barrington, superfine negro" loading="lazy" width="480" height="319"><figcaption><b>145005 - 160</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0033.jpg" alt="Tela 145005 - 350 de Barrington, superfine negro" loading="lazy" width="480" height="319"><figcaption><b>145005 - 350</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0038.jpg" alt="Tela 145006 - 270 de Barrington, superfine azul" loading="lazy" width="480" height="319"><figcaption><b>145006 - 270</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0043.jpg" alt="Tela 145007 - 180 de Barrington, superfine negro" loading="lazy" width="480" height="319"><figcaption><b>145007 - 180</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0049.jpg" alt="Tela 145008 - 140 de Barrington, superfine gris" loading="lazy" width="480" height="319"><figcaption><b>145008 - 140</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0055.jpg" alt="Tela 145008 - 290 de Barrington, superfine azul" loading="lazy" width="480" height="319"><figcaption><b>145008 - 290</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0061.jpg" alt="Tela 145009 - 260 de Barrington, superfine azul" loading="lazy" width="480" height="319"><figcaption><b>145009 - 260</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0067.jpg" alt="Tela 145010 - 160 de Barrington, superfine negro" loading="lazy" width="480" height="319"><figcaption><b>145010 - 160</b><span>Superfine</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas Superfine","url":"https://sastreriaandresvargas.pe/telas/superfine","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"145001 - 140","sku":"145001 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0003.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"145002 - 140","sku":"145002 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0009.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"145002 - 360","sku":"145002 - 360","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0015.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"145003 - 270","sku":"145003 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0021.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"145005 - 160","sku":"145005 - 160","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0027.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"145005 - 350","sku":"145005 - 350","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0033.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"145006 - 270","sku":"145006 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0038.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"145007 - 180","sku":"145007 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0043.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"145008 - 140","sku":"145008 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0049.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"145008 - 290","sku":"145008 - 290","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0055.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"145009 - 260","sku":"145009 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0061.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"145010 - 160","sku":"145010 - 160","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0067.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Superfine">Ver todas en el catálogo</a>
       </div>
@@ -3470,7 +3608,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="tejido=Tweed"></div>
+      <div class="rejilla-telas" data-telas="tejido=Tweed">
+        <figure><img src="/assets/telas/tweed-0002.jpg" alt="Tela 160061 - 150 de Barrington, tweed marrón" loading="lazy" width="480" height="319"><figcaption><b>160061 - 150</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0006.jpg" alt="Tela 160061 - 240 de Barrington, tweed negro" loading="lazy" width="480" height="319"><figcaption><b>160061 - 240</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0012.jpg" alt="Tela 160061 - 530 de Barrington, tweed marrón" loading="lazy" width="480" height="319"><figcaption><b>160061 - 530</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0018.jpg" alt="Tela 160073 - 730 de Barrington, tweed burdeos" loading="lazy" width="480" height="319"><figcaption><b>160073 - 730</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0024.jpg" alt="Tela 160073 - 860 de Barrington, tweed gris" loading="lazy" width="480" height="319"><figcaption><b>160073 - 860</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0028.jpg" alt="Tela 160078 - 260 de Barrington, tweed azul" loading="lazy" width="480" height="319"><figcaption><b>160078 - 260</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0034.jpg" alt="Tela 160078 - 460 de Barrington, tweed gris" loading="lazy" width="480" height="319"><figcaption><b>160078 - 460</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0040.jpg" alt="Tela 160083 - 140 de Barrington, tweed marrón" loading="lazy" width="480" height="319"><figcaption><b>160083 - 140</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0046.jpg" alt="Tela 160078 - 270 de Barrington, tweed negro" loading="lazy" width="480" height="319"><figcaption><b>160078 - 270</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0050.jpg" alt="Tela 160083 - 630 de Barrington, tweed burdeos" loading="lazy" width="480" height="319"><figcaption><b>160083 - 630</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0056.jpg" alt="Tela 160086 - 240 de Barrington, tweed azul" loading="lazy" width="480" height="319"><figcaption><b>160086 - 240</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0061.jpg" alt="Tela 160086 - 430 de Barrington, tweed marrón" loading="lazy" width="480" height="319"><figcaption><b>160086 - 430</b><span>Tweed</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas de tweed","url":"https://sastreriaandresvargas.pe/telas/tweed","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"160061 - 150","sku":"160061 - 150","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"160061 - 240","sku":"160061 - 240","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0006.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"160061 - 530","sku":"160061 - 530","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0012.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"160073 - 730","sku":"160073 - 730","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0018.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"160073 - 860","sku":"160073 - 860","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0024.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"160078 - 260","sku":"160078 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0028.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"160078 - 460","sku":"160078 - 460","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0034.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"160083 - 140","sku":"160083 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0040.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"160078 - 270","sku":"160078 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0046.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"160083 - 630","sku":"160083 - 630","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0050.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"160086 - 240","sku":"160086 - 240","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0056.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"160086 - 430","sku":"160086 - 430","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0061.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Tweed">Ver todas en el catálogo</a>
       </div>
@@ -3532,7 +3684,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="tejido=Pa%C3%B1o"></div>
+      <div class="rejilla-telas" data-telas="tejido=Pa%C3%B1o">
+        <figure><img src="/assets/telas/pano-0002.jpg" alt="Tela 130017 - 150 de Barrington, paño gris" loading="lazy" width="480" height="319"><figcaption><b>130017 - 150</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0004.jpg" alt="Tela 130017 - 180 de Barrington, paño negro" loading="lazy" width="480" height="319"><figcaption><b>130017 - 180</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0006.jpg" alt="Tela 130017 - 190 de Barrington, paño negro" loading="lazy" width="480" height="319"><figcaption><b>130017 - 190</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0008.jpg" alt="Tela 130017 - 260 de Barrington, paño azul" loading="lazy" width="480" height="319"><figcaption><b>130017 - 260</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0010.jpg" alt="Tela 130017 - 280 de Barrington, paño negro" loading="lazy" width="480" height="319"><figcaption><b>130017 - 280</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0012.jpg" alt="Tela 130017 - 290 de Barrington, paño negro" loading="lazy" width="480" height="319"><figcaption><b>130017 - 290</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0014.jpg" alt="Tela 130017 - 330 de Barrington, paño beige" loading="lazy" width="480" height="319"><figcaption><b>130017 - 330</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0016.jpg" alt="Tela 130017 - 340 de Barrington, paño burdeos" loading="lazy" width="480" height="319"><figcaption><b>130017 - 340</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0018.jpg" alt="Tela 130017 - 360 de Barrington, paño marrón" loading="lazy" width="480" height="319"><figcaption><b>130017 - 360</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0020.jpg" alt="Tela 130017 - 725 de Barrington, paño burdeos" loading="lazy" width="480" height="319"><figcaption><b>130017 - 725</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0022.jpg" alt="Tela 130017 - 820 de Barrington, paño burdeos" loading="lazy" width="480" height="319"><figcaption><b>130017 - 820</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0024.jpg" alt="Tela 130017 - 860 de Barrington, paño burdeos" loading="lazy" width="480" height="319"><figcaption><b>130017 - 860</b><span>Paño</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas de paño","url":"https://sastreriaandresvargas.pe/telas/pano","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"130017 - 150","sku":"130017 - 150","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"130017 - 180","sku":"130017 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0004.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"130017 - 190","sku":"130017 - 190","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0006.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"130017 - 260","sku":"130017 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0008.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"130017 - 280","sku":"130017 - 280","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0010.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"130017 - 290","sku":"130017 - 290","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0012.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"130017 - 330","sku":"130017 - 330","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0014.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"130017 - 340","sku":"130017 - 340","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0016.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"130017 - 360","sku":"130017 - 360","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0018.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"130017 - 725","sku":"130017 - 725","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0020.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"130017 - 820","sku":"130017 - 820","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0022.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"130017 - 860","sku":"130017 - 860","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0024.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Pa%C3%B1o">Ver todas en el catálogo</a>
       </div>
@@ -3594,7 +3760,21 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri"></div>
+      <div class="rejilla-telas" data-telas="tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri">
+        <figure><img src="/assets/telas/alpaca-velour-0002.jpg" alt="Tela 130049 - 140 de Barrington, baby alpaca velour gris" loading="lazy" width="480" height="319"><figcaption><b>130049 - 140</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0004.jpg" alt="Tela 130049 - 170 de Barrington, baby alpaca velour negro" loading="lazy" width="480" height="319"><figcaption><b>130049 - 170</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0008.jpg" alt="Tela 130049 - 230 de Barrington, baby alpaca velour azul" loading="lazy" width="480" height="319"><figcaption><b>130049 - 230</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0012.jpg" alt="Tela 130049 - 282 de Barrington, baby alpaca velour azul" loading="lazy" width="480" height="319"><figcaption><b>130049 - 282</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0015.jpg" alt="Tela 130049 - 340 de Barrington, baby alpaca velour burdeos" loading="lazy" width="480" height="319"><figcaption><b>130049 - 340</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0020.jpg" alt="Tela 130049 - 820 de Barrington, baby alpaca velour beige" loading="lazy" width="480" height="319"><figcaption><b>130049 - 820</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0024.jpg" alt="Tela 130049 - 885 de Barrington, baby alpaca velour gris" loading="lazy" width="480" height="319"><figcaption><b>130049 - 885</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-suri-0003.jpg" alt="Tela 130050 - 160 de Barrington, baby alpaca suri gris" loading="lazy" width="480" height="319"><figcaption><b>130050 - 160</b><span>Baby alpaca suri</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-suri-0007.jpg" alt="Tela 130050 - 190 de Barrington, baby alpaca suri negro" loading="lazy" width="480" height="319"><figcaption><b>130050 - 190</b><span>Baby alpaca suri</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-suri-0011.jpg" alt="Tela 130050 - 275 de Barrington, baby alpaca suri negro" loading="lazy" width="480" height="319"><figcaption><b>130050 - 275</b><span>Baby alpaca suri</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-suri-0015.jpg" alt="Tela 130050 - 335 de Barrington, baby alpaca suri marrón" loading="lazy" width="480" height="319"><figcaption><b>130050 - 335</b><span>Baby alpaca suri</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-suri-0019.jpg" alt="Tela 130050 - 650 de Barrington, baby alpaca suri burdeos" loading="lazy" width="480" height="319"><figcaption><b>130050 - 650</b><span>Baby alpaca suri</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas de baby alpaca","url":"https://sastreriaandresvargas.pe/telas/baby-alpaca","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"130049 - 140","sku":"130049 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"130049 - 170","sku":"130049 - 170","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0004.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"130049 - 230","sku":"130049 - 230","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0008.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"130049 - 282","sku":"130049 - 282","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0012.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"130049 - 340","sku":"130049 - 340","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0015.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"130049 - 820","sku":"130049 - 820","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0020.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"130049 - 885","sku":"130049 - 885","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0024.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"130050 - 160","sku":"130050 - 160","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"Baby alpaca suri","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-suri-0003.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"130050 - 190","sku":"130050 - 190","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"Baby alpaca suri","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-suri-0007.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"130050 - 275","sku":"130050 - 275","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"Baby alpaca suri","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-suri-0011.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"130050 - 335","sku":"130050 - 335","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"Baby alpaca suri","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-suri-0015.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"130050 - 650","sku":"130050 - 650","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Baby alpaca suri","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-suri-0019.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Baby+alpaca+velour&amp;tejido=Baby+alpaca+suri">Ver todas en el catálogo</a>
       </div>
@@ -3656,7 +3836,14 @@ body.tema-corporativo {
         <span class="rotulo">Del muestrario</span>
         <h2 class="t-xl">Algunas de estas telas</h2>
       </div>
-      <div class="rejilla-telas" data-telas="tejido=Denim"></div>
+      <div class="rejilla-telas" data-telas="tejido=Denim">
+        <figure><img src="/assets/telas/denim-0002.jpg" alt="Tela 110118 - 179 de Barrington, denim negro" loading="lazy" width="480" height="319"><figcaption><b>110118 - 179</b><span>Denim</span></figcaption></figure>
+        <figure><img src="/assets/telas/denim-0004.jpg" alt="Tela 110118 - 264 de Barrington, denim azul" loading="lazy" width="480" height="319"><figcaption><b>110118 - 264</b><span>Denim</span></figcaption></figure>
+        <figure><img src="/assets/telas/denim-0006.jpg" alt="Tela 110118 - 274 de Barrington, denim azul" loading="lazy" width="480" height="319"><figcaption><b>110118 - 274</b><span>Denim</span></figcaption></figure>
+        <figure><img src="/assets/telas/denim-0008.jpg" alt="Tela 110118 - 282 de Barrington, denim azul" loading="lazy" width="480" height="319"><figcaption><b>110118 - 282</b><span>Denim</span></figcaption></figure>
+        <figure><img src="/assets/telas/denim-0010.jpg" alt="Tela 110118 - 284 de Barrington, denim azul" loading="lazy" width="480" height="319"><figcaption><b>110118 - 284</b><span>Denim</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas de denim","url":"https://sastreriaandresvargas.pe/telas/denim","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"110118 - 179","sku":"110118 - 179","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"51% lana merino · fibra sintética","image":"https://sastreriaandresvargas.pe/assets/telas/denim-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"110118 - 264","sku":"110118 - 264","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"51% lana merino · fibra sintética","image":"https://sastreriaandresvargas.pe/assets/telas/denim-0004.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"110118 - 274","sku":"110118 - 274","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"51% lana merino · fibra sintética","image":"https://sastreriaandresvargas.pe/assets/telas/denim-0006.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"110118 - 282","sku":"110118 - 282","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"51% lana merino · fibra sintética","image":"https://sastreriaandresvargas.pe/assets/telas/denim-0008.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"110118 - 284","sku":"110118 - 284","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"51% lana merino · fibra sintética","image":"https://sastreriaandresvargas.pe/assets/telas/denim-0010.jpg"}}]}</script>
       <div style="text-align:center;margin-top:2.2rem;">
         <a class="btn btn-azul" href="/catalogo-de-telas?tejido=Denim">Ver todas en el catálogo</a>
       </div>
@@ -3674,6 +3861,471 @@ body.tema-corporativo {
     </div>
   </section>
 </main>
+
+<!-- === PÁGINAS DE COLOR (generadas por herramientas/telas-paginas.py) === -->
+
+<!-- ==================== COLOR · TERNO AZUL ==================== -->
+<main class="pagina" data-pag="color-azul">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/diamond-0001.jpg" alt="Tela azul de Barrington para terno a medida" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Terno azul</div>
+      <span class="rotulo">Color</span>
+      <h1 class="t-hero">Terno azul</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El que más se usa y el que mejor se lleva con todo.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El color</span>
+        <h2 class="t-xl">Cuándo se lleva</h2>
+        <p class="lead" style="margin-top:1.25rem;">Es el color con el que se empieza. Sirve en la oficina, en un matrimonio y en una entrevista, y va desde el marino cerrado hasta el azul con microdiseño que solo se ve de cerca. Si vas a mandarte hacer un solo terno, hazlo azul.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?color=azul">Ver estas telas</a>
+          <a class="btn btn-linea" href="/ternos-a-medida" data-ir="trajes">El terno a medida</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Tejidos</dt><dd>Casimir · Superfine · Lanilla</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino · 100% lana · 100% lana merino australiana</dd></div>
+          <div><dt>Peso</dt><dd>Medio · Ligero · Pesado</dd></div>
+          <div><dt>Uso</dt><dd>Ocasión · Oficina · Gala · Sport · Abrigo · Casual</dd></div>
+          <div><dt>Grado</dt><dd>Super 100s · Super 120s · Super 140s</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="color=azul">
+        <figure><img src="/assets/telas/diamond-0002.jpg" alt="Tela 518001 - 135 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>518001 - 135</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0048.jpg" alt="Tela 548014 - 140 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>548014 - 140</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0076.jpg" alt="Tela 548017 - 250 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>548017 - 250</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0056.jpg" alt="Tela 160086 - 240 de Barrington, tweed azul" loading="lazy" width="480" height="319"><figcaption><b>160086 - 240</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0052.jpg" alt="Tela 120164 - 260 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>120164 - 260</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0144.jpg" alt="Tela 121429 - 270 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>121429 - 270</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0060.jpg" alt="Tela 542140 - 275 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>542140 - 275</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0038.jpg" alt="Tela 145006 - 270 de Barrington, superfine azul" loading="lazy" width="480" height="319"><figcaption><b>145006 - 270</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0020.jpg" alt="Tela 460034 - 240 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460034 - 240</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0064.jpg" alt="Tela 460040 - 270 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460040 - 270</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0031.jpg" alt="Tela 460036 - 140 de Barrington, casimir azul" loading="lazy" width="480" height="319"><figcaption><b>460036 - 140</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0104.jpg" alt="Tela 190194 - 260 de Barrington, lanilla azul" loading="lazy" width="480" height="319"><figcaption><b>190194 - 260</b><span>Lanilla</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas azul de Barrington","url":"https://sastreriaandresvargas.pe/terno-azul","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"518001 - 135","sku":"518001 - 135","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0002.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"548014 - 140","sku":"548014 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0048.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"548017 - 250","sku":"548017 - 250","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0076.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"160086 - 240","sku":"160086 - 240","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0056.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"120164 - 260","sku":"120164 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0052.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"121429 - 270","sku":"121429 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0144.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"542140 - 275","sku":"542140 - 275","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0060.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"145006 - 270","sku":"145006 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0038.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"460034 - 240","sku":"460034 - 240","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0020.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"460040 - 270","sku":"460040 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0064.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"460036 - 140","sku":"460036 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0031.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"190194 - 260","sku":"190194 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Azul","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0104.jpg"}}]}</script>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?color=azul">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Quieres verlas en persona?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas de Lima a verlas y tocarlas.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20telas%20azul." target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== COLOR · TERNO NEGRO ==================== -->
+<main class="pagina" data-pag="color-negro">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/diamond-0003.jpg" alt="Tela negro de Barrington para terno a medida" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Terno negro</div>
+      <span class="rotulo">Color</span>
+      <h1 class="t-hero">Terno negro</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El de las fechas señaladas, y el que menos perdona la tela.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El color</span>
+        <h2 class="t-xl">Cuándo se lleva</h2>
+        <p class="lead" style="margin-top:1.25rem;">El negro no tiene matices donde esconderse: se le ve todo, la caída, el corte y la calidad del paño. Por eso es el color donde más se nota la diferencia entre una tela buena y una regular. Es el terno de la ceremonia y de la noche.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?color=negro">Ver estas telas</a>
+          <a class="btn btn-linea" href="/ternos-a-medida" data-ir="trajes">El terno a medida</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Tejidos</dt><dd>Casimir · Lanilla · Superfine</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino · 70% lana · 30% poliéster · 100% lana</dd></div>
+          <div><dt>Peso</dt><dd>Medio · Ligero · Pesado</dd></div>
+          <div><dt>Uso</dt><dd>Oficina · Ocasión · Gala · Abrigo · Sport · Casual</dd></div>
+          <div><dt>Grado</dt><dd>Super 100s · Super 120s · Super 140s</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="color=negro">
+        <figure><img src="/assets/telas/diamond-0004.jpg" alt="Tela 518001 - 165 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>518001 - 165</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/diamond-0088.jpg" alt="Tela 548018 - 180 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>548018 - 180</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0010.jpg" alt="Tela 130017 - 280 de Barrington, paño negro" loading="lazy" width="480" height="319"><figcaption><b>130017 - 280</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0042.jpg" alt="Tela 240270 - 260 de Barrington, casimir richwool negro" loading="lazy" width="480" height="319"><figcaption><b>240270 - 260</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0042.jpg" alt="Tela 120149 - 270 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>120149 - 270</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0126.jpg" alt="Tela 121414 - 190 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>121414 - 190</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0016.jpg" alt="Tela 542019 - 270 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>542019 - 270</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0015.jpg" alt="Tela 145002 - 360 de Barrington, superfine negro" loading="lazy" width="480" height="319"><figcaption><b>145002 - 360</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0063.jpg" alt="Tela 145009 - 370 de Barrington, superfine negro" loading="lazy" width="480" height="319"><figcaption><b>145009 - 370</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0048.jpg" alt="Tela 460038 - 180 de Barrington, casimir negro" loading="lazy" width="480" height="319"><figcaption><b>460038 - 180</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0071.jpg" alt="Tela 190190 - 180 de Barrington, lanilla negro" loading="lazy" width="480" height="319"><figcaption><b>190190 - 180</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0126.jpg" alt="Tela 190195 - 340 de Barrington, lanilla negro" loading="lazy" width="480" height="319"><figcaption><b>190195 - 340</b><span>Lanilla</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas negro de Barrington","url":"https://sastreriaandresvargas.pe/terno-negro","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"518001 - 165","sku":"518001 - 165","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0004.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"548018 - 180","sku":"548018 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0088.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"130017 - 280","sku":"130017 - 280","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0010.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"240270 - 260","sku":"240270 - 260","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0042.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"120149 - 270","sku":"120149 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0042.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"121414 - 190","sku":"121414 - 190","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0126.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"542019 - 270","sku":"542019 - 270","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0016.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"145002 - 360","sku":"145002 - 360","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0015.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"145009 - 370","sku":"145009 - 370","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0063.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"460038 - 180","sku":"460038 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0048.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"190190 - 180","sku":"190190 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0071.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"190195 - 340","sku":"190195 - 340","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Negro","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0126.jpg"}}]}</script>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?color=negro">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Quieres verlas en persona?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas de Lima a verlas y tocarlas.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20telas%20negro." target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== COLOR · TERNO GRIS ==================== -->
+<main class="pagina" data-pag="color-gris">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/diamond-0065.jpg" alt="Tela gris de Barrington para terno a medida" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Terno gris</div>
+      <span class="rotulo">Color</span>
+      <h1 class="t-hero">Terno gris</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El más versátil después del azul, y el más discreto de todos.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El color</span>
+        <h2 class="t-xl">Cuándo se lleva</h2>
+        <p class="lead" style="margin-top:1.25rem;">El gris no llama la atención, y ese es el punto. El gris medio va a la oficina todos los días; el oxford, más oscuro, aguanta una ocasión formal; el claro es de día y de verano. Combina con más camisas y más corbatas que ningún otro color.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?color=gris">Ver estas telas</a>
+          <a class="btn btn-linea" href="/ternos-a-medida" data-ir="trajes">El terno a medida</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Tejidos</dt><dd>Casimir · Superfine · Lanilla</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino · 100% lana · 100% lana merino australiana</dd></div>
+          <div><dt>Peso</dt><dd>Medio · Ligero · Pesado</dd></div>
+          <div><dt>Uso</dt><dd>Oficina · Ocasión · Abrigo · Gala · Sport</dd></div>
+          <div><dt>Grado</dt><dd>Super 100s · Super 120s · Super 140s</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="color=gris">
+        <figure><img src="/assets/telas/diamond-0066.jpg" alt="Tela 548017 - 140 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>548017 - 140</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0026.jpg" alt="Tela 130017 - 870 de Barrington, paño gris" loading="lazy" width="480" height="319"><figcaption><b>130017 - 870</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0002.jpg" alt="Tela 130049 - 140 de Barrington, baby alpaca velour gris" loading="lazy" width="480" height="319"><figcaption><b>130049 - 140</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0037.jpg" alt="Tela 120142 - 380 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>120142 - 380</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0073.jpg" alt="Tela 120296 - 130 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>120296 - 130</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0096.jpg" alt="Tela 121362 - 180 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>121362 - 180</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0138.jpg" alt="Tela 121429 - 160 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>121429 - 160</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0173.jpg" alt="Tela 121454 - 150 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>121454 - 150</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0024.jpg" alt="Tela 542022 - 140 de Barrington, casimir gris" loading="lazy" width="480" height="319"><figcaption><b>542022 - 140</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0003.jpg" alt="Tela 145001 - 140 de Barrington, superfine gris" loading="lazy" width="480" height="319"><figcaption><b>145001 - 140</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/superfine-0049.jpg" alt="Tela 145008 - 140 de Barrington, superfine gris" loading="lazy" width="480" height="319"><figcaption><b>145008 - 140</b><span>Superfine</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0038.jpg" alt="Tela 190189 - 140 de Barrington, lanilla gris" loading="lazy" width="480" height="319"><figcaption><b>190189 - 140</b><span>Lanilla</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas gris de Barrington","url":"https://sastreriaandresvargas.pe/terno-gris","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"548017 - 140","sku":"548017 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0066.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"130017 - 870","sku":"130017 - 870","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0026.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"130049 - 140","sku":"130049 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0002.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"120142 - 380","sku":"120142 - 380","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0037.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"120296 - 130","sku":"120296 - 130","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0073.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"121362 - 180","sku":"121362 - 180","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0096.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"121429 - 160","sku":"121429 - 160","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0138.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"121454 - 150","sku":"121454 - 150","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0173.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"542022 - 140","sku":"542022 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0024.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"145001 - 140","sku":"145001 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0003.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"145008 - 140","sku":"145008 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/superfine-0049.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"190189 - 140","sku":"190189 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Gris","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0038.jpg"}}]}</script>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?color=gris">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Quieres verlas en persona?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas de Lima a verlas y tocarlas.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20telas%20gris." target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== COLOR · TERNO BURDEOS ==================== -->
+<main class="pagina" data-pag="color-burdeos">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/diamond-0015.jpg" alt="Tela burdeos de Barrington para terno a medida" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Terno burdeos</div>
+      <span class="rotulo">Color</span>
+      <h1 class="t-hero">Terno burdeos</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">Para el que ya tiene el azul y el gris.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El color</span>
+        <h2 class="t-xl">Cuándo se lleva</h2>
+        <p class="lead" style="margin-top:1.25rem;">No es un primer terno. Es el saco con el que se sale de la rutina sin disfrazarse: se lleva de noche, en una celebración y con pantalón gris o negro. En tweed y en paño da un abrigo con carácter.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?color=burdeos">Ver estas telas</a>
+          <a class="btn btn-linea" href="/ternos-a-medida" data-ir="trajes">El terno a medida</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Tejidos</dt><dd>Casimir · Lanilla · Tweed</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino · 70% lana · 30% poliéster · Lana merino, acabado batanado</dd></div>
+          <div><dt>Peso</dt><dd>Medio · Pesado · Ligero</dd></div>
+          <div><dt>Uso</dt><dd>Oficina · Ocasión · Abrigo · Sport · Gala</dd></div>
+          <div><dt>Grado</dt><dd>Super 100s · Super 120s · Super 140s</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="color=burdeos">
+        <figure><img src="/assets/telas/diamond-0016.jpg" alt="Tela 518002 - 360 de Barrington, casimir burdeos" loading="lazy" width="480" height="319"><figcaption><b>518002 - 360</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0030.jpg" alt="Tela 160078 - 330 de Barrington, tweed burdeos" loading="lazy" width="480" height="319"><figcaption><b>160078 - 330</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0050.jpg" alt="Tela 160083 - 630 de Barrington, tweed burdeos" loading="lazy" width="480" height="319"><figcaption><b>160083 - 630</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0024.jpg" alt="Tela 130017 - 860 de Barrington, paño burdeos" loading="lazy" width="480" height="319"><figcaption><b>130017 - 860</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0017.jpg" alt="Tela 130049 - 350 de Barrington, baby alpaca velour burdeos" loading="lazy" width="480" height="319"><figcaption><b>130049 - 350</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0028.jpg" alt="Tela 120130 - 360 de Barrington, casimir burdeos" loading="lazy" width="480" height="319"><figcaption><b>120130 - 360</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0158.jpg" alt="Tela 121451 - 350 de Barrington, casimir burdeos" loading="lazy" width="480" height="319"><figcaption><b>121451 - 350</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-suri-0019.jpg" alt="Tela 130050 - 650 de Barrington, baby alpaca suri burdeos" loading="lazy" width="480" height="319"><figcaption><b>130050 - 650</b><span>Baby alpaca suri</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0084.jpg" alt="Tela 542144 - 840 de Barrington, casimir burdeos" loading="lazy" width="480" height="319"><figcaption><b>542144 - 840</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0028.jpg" alt="Tela 460035 - 350 de Barrington, casimir burdeos" loading="lazy" width="480" height="319"><figcaption><b>460035 - 350</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0004.jpg" alt="Tela 180046 - 364 de Barrington, lanilla burdeos" loading="lazy" width="480" height="319"><figcaption><b>180046 - 364</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0033.jpg" alt="Tela 180050 - 535 de Barrington, lanilla burdeos" loading="lazy" width="480" height="319"><figcaption><b>180050 - 535</b><span>Lanilla</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas burdeos de Barrington","url":"https://sastreriaandresvargas.pe/terno-burdeos","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"518002 - 360","sku":"518002 - 360","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0016.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"160078 - 330","sku":"160078 - 330","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0030.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"160083 - 630","sku":"160083 - 630","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0050.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"130017 - 860","sku":"130017 - 860","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0024.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"130049 - 350","sku":"130049 - 350","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0017.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"120130 - 360","sku":"120130 - 360","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0028.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"121451 - 350","sku":"121451 - 350","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0158.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"130050 - 650","sku":"130050 - 650","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"Baby alpaca suri","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-suri-0019.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"542144 - 840","sku":"542144 - 840","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0084.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"460035 - 350","sku":"460035 - 350","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0028.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"180046 - 364","sku":"180046 - 364","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0004.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"180050 - 535","sku":"180050 - 535","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Burdeos","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0033.jpg"}}]}</script>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?color=burdeos">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Quieres verlas en persona?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas de Lima a verlas y tocarlas.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20telas%20burdeos." target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== COLOR · TERNO MARRÓN ==================== -->
+<main class="pagina" data-pag="color-marron">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/diamond-0021.jpg" alt="Tela marrón de Barrington para terno a medida" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Terno marrón</div>
+      <span class="rotulo">Color</span>
+      <h1 class="t-hero">Terno marrón</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El color del sport, del tweed y del fin de semana.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El color</span>
+        <h2 class="t-xl">Cuándo se lleva</h2>
+        <p class="lead" style="margin-top:1.25rem;">El marrón es el que menos pisa la oficina y el que más se agradece fuera de ella. Va con el tweed y con la lanilla, se lleva con camisa clara y sin corbata, y admite el zapato marrón que el azul y el negro complican.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?color=marron">Ver estas telas</a>
+          <a class="btn btn-linea" href="/ternos-a-medida" data-ir="trajes">El terno a medida</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Tejidos</dt><dd>Casimir · Lanilla · Tweed</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino · 70% lana · 30% poliéster · 55% lana · 45% poliéster</dd></div>
+          <div><dt>Peso</dt><dd>Medio · Ligero · Pesado</dd></div>
+          <div><dt>Uso</dt><dd>Oficina · Sport · Abrigo · Ocasión · Gala</dd></div>
+          <div><dt>Grado</dt><dd>Super 100s · Super 120s · Super 140s</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="color=marron">
+        <figure><img src="/assets/telas/diamond-0022.jpg" alt="Tela 518002 - 860 de Barrington, casimir marrón" loading="lazy" width="480" height="319"><figcaption><b>518002 - 860</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0002.jpg" alt="Tela 160061 - 150 de Barrington, tweed marrón" loading="lazy" width="480" height="319"><figcaption><b>160061 - 150</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0026.jpg" alt="Tela 160078 - 140 de Barrington, tweed marrón" loading="lazy" width="480" height="319"><figcaption><b>160078 - 140</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/tweed-0060.jpg" alt="Tela 160086 - 340 de Barrington, tweed marrón" loading="lazy" width="480" height="319"><figcaption><b>160086 - 340</b><span>Tweed</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0012.jpg" alt="Tela 240181 - 570 de Barrington, casimir richwool marrón" loading="lazy" width="480" height="319"><figcaption><b>240181 - 570</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/richwool-0054.jpg" alt="Tela 240292 - 370 de Barrington, casimir richwool marrón" loading="lazy" width="480" height="319"><figcaption><b>240292 - 370</b><span>Casimir Richwool</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0118.jpg" alt="Tela 121404 - 370 de Barrington, casimir marrón" loading="lazy" width="480" height="319"><figcaption><b>121404 - 370</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0044.jpg" alt="Tela 542138 - 360 de Barrington, casimir marrón" loading="lazy" width="480" height="319"><figcaption><b>542138 - 360</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0052.jpg" alt="Tela 460038 - 350 de Barrington, casimir marrón" loading="lazy" width="480" height="319"><figcaption><b>460038 - 350</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0024.jpg" alt="Tela 180050 - 349 de Barrington, lanilla marrón" loading="lazy" width="480" height="319"><figcaption><b>180050 - 349</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0141.jpg" alt="Tela 190198 - 370 de Barrington, lanilla marrón" loading="lazy" width="480" height="319"><figcaption><b>190198 - 370</b><span>Lanilla</span></figcaption></figure>
+        <figure><img src="/assets/telas/lanilla-0177.jpg" alt="Tela 190208 - 370 de Barrington, lanilla marrón" loading="lazy" width="480" height="319"><figcaption><b>190208 - 370</b><span>Lanilla</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas marrón de Barrington","url":"https://sastreriaandresvargas.pe/terno-marron","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"518002 - 860","sku":"518002 - 860","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0022.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"160061 - 150","sku":"160061 - 150","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0002.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"160078 - 140","sku":"160078 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0026.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"160086 - 340","sku":"160086 - 340","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/tweed-0060.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"240181 - 570","sku":"240181 - 570","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0012.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"240292 - 370","sku":"240292 - 370","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"55% lana · 45% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/richwool-0054.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"121404 - 370","sku":"121404 - 370","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0118.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"542138 - 360","sku":"542138 - 360","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0044.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"460038 - 350","sku":"460038 - 350","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0052.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"180050 - 349","sku":"180050 - 349","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0024.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"190198 - 370","sku":"190198 - 370","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0141.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"190208 - 370","sku":"190208 - 370","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Marrón","material":"70% lana · 30% poliéster","image":"https://sastreriaandresvargas.pe/assets/telas/lanilla-0177.jpg"}}]}</script>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?color=marron">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Quieres verlas en persona?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas de Lima a verlas y tocarlas.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20telas%20marrón." target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ==================== COLOR · TERNO BEIGE ==================== -->
+<main class="pagina" data-pag="color-beige">
+  <section class="pag-hero sobre-azul">
+    <img class="pag-hero-img" src="/assets/telas/diamond-0013.jpg" alt="Tela beige de Barrington para terno a medida" loading="lazy" width="480" height="319">
+    <div class="pag-hero-velo"></div>
+    <div class="caja">
+      <div class="miga"><a href="/" data-ir="inicio">Inicio</a> · <a href="/telas" data-ir="telas">Telas</a> · Terno beige</div>
+      <span class="rotulo">Color</span>
+      <h1 class="t-hero">Terno beige</h1>
+      <p class="lead medida" style="margin-top:1.25rem;">El de verano, el de día y el de matrimonio al aire libre.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="caja dos-col">
+      <div class="rev">
+        <div class="marca-div izq"><i></i></div>
+        <span class="rotulo">El color</span>
+        <h2 class="t-xl">Cuándo se lleva</h2>
+        <p class="lead" style="margin-top:1.25rem;">El beige es de luz: funciona cuando hay sol y espacio abierto. Pide camisa blanca y poco más. Es un color que se ensucia a la vista, así que se usa cuando se va a lucir, no cuando se va a trabajar.</p>
+        <div class="acciones" style="margin-top:2rem;">
+          <a class="btn btn-azul" href="/catalogo-de-telas?color=beige">Ver estas telas</a>
+          <a class="btn btn-linea" href="/ternos-a-medida" data-ir="trajes">El terno a medida</a>
+        </div>
+      </div>
+      <div class="rev" data-d="1">
+        <dl class="cat-datos ficha-tela">
+          <div><dt>Tejidos</dt><dd>Casimir · Baby alpaca velour · Tweed</dd></div>
+          <div><dt>Composición</dt><dd>100% lana merino · 100% lana · Baby alpaca velour</dd></div>
+          <div><dt>Peso</dt><dd>Medio · Pesado · Ligero</dd></div>
+          <div><dt>Uso</dt><dd>Ocasión · Oficina · Sport · Abrigo · Gala</dd></div>
+          <div><dt>Grado</dt><dd>Super 100s · Super 120s · Super 140s</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion fondo-nube">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Del muestrario</span>
+        <h2 class="t-xl">Algunas de estas telas</h2>
+      </div>
+      <div class="rejilla-telas" data-telas="color=beige">
+        <figure><img src="/assets/telas/diamond-0014.jpg" alt="Tela 518002 - 330 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>518002 - 330</b><span>Super 140s</span></figcaption></figure>
+        <figure><img src="/assets/telas/pano-0014.jpg" alt="Tela 130017 - 330 de Barrington, paño beige" loading="lazy" width="480" height="319"><figcaption><b>130017 - 330</b><span>Paño</span></figcaption></figure>
+        <figure><img src="/assets/telas/alpaca-velour-0020.jpg" alt="Tela 130049 - 820 de Barrington, baby alpaca velour beige" loading="lazy" width="480" height="319"><figcaption><b>130049 - 820</b><span>Baby alpaca velour</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0116.jpg" alt="Tela 121404 - 330 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>121404 - 330</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0150.jpg" alt="Tela 121451 - 140 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>121451 - 140</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/casimir-0160.jpg" alt="Tela 121451 - 530 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>121451 - 530</b><span>Casimir</span></figcaption></figure>
+        <figure><img src="/assets/telas/s120-0086.jpg" alt="Tela 542145 - 140 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>542145 - 140</b><span>Super 120s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0022.jpg" alt="Tela 460034 - 330 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460034 - 330</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-0060.jpg" alt="Tela 460039 - 840 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460039 - 840</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0014.jpg" alt="Tela 460033 - 340 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460033 - 340</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0022.jpg" alt="Tela 460034 - 840 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460034 - 840</b><span>Super 100s</span></figcaption></figure>
+        <figure><img src="/assets/telas/s100-jackets-0064.jpg" alt="Tela 460040 - 830 de Barrington, casimir beige" loading="lazy" width="480" height="319"><figcaption><b>460040 - 830</b><span>Super 100s</span></figcaption></figure>
+      </div>
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Telas beige de Barrington","url":"https://sastreriaandresvargas.pe/terno-beige","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"518002 - 330","sku":"518002 - 330","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/diamond-0014.jpg"}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"130017 - 330","sku":"130017 - 330","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"Lana merino, acabado batanado","image":"https://sastreriaandresvargas.pe/assets/telas/pano-0014.jpg"}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"130049 - 820","sku":"130049 - 820","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"Baby alpaca velour","image":"https://sastreriaandresvargas.pe/assets/telas/alpaca-velour-0020.jpg"}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"121404 - 330","sku":"121404 - 330","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0116.jpg"}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"121451 - 140","sku":"121451 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0150.jpg"}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"121451 - 530","sku":"121451 - 530","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/casimir-0160.jpg"}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"542145 - 140","sku":"542145 - 140","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino australiana","image":"https://sastreriaandresvargas.pe/assets/telas/s120-0086.jpg"}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"460034 - 330","sku":"460034 - 330","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0022.jpg"}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"460039 - 840","sku":"460039 - 840","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana","image":"https://sastreriaandresvargas.pe/assets/telas/s100-0060.jpg"}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"460033 - 340","sku":"460033 - 340","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0014.jpg"}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"460034 - 840","sku":"460034 - 840","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0022.jpg"}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"460040 - 830","sku":"460040 - 830","category":"Tela para sastrería a medida","brand":{"@type":"Brand","name":"Barrington"},"color":"Beige","material":"100% lana merino","image":"https://sastreriaandresvargas.pe/assets/telas/s100-jackets-0064.jpg"}}]}</script>
+      <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn btn-azul" href="/catalogo-de-telas?color=beige">Ver todas en el catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-corta fondo-azul sobre-azul con-foto" style="--foto:url('/assets/editorial/ed-macro-orillo.jpg');">
+    <div class="caja centro">
+      <h2 class="t-xl">¿Quieres verlas en persona?</h2>
+      <p class="lead centro medida" style="margin-top:1rem;">Escríbenos y te decimos disponibilidad, o pásate por cualquiera de nuestras seis tiendas de Lima a verlas y tocarlas.</p>
+      <div class="acciones" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn-claro" href="https://wa.me/51959370397?text=Hola%2C%20quiero%20consultar%20por%20telas%20beige." target="_blank" rel="noopener">Escríbenos</a>
+        <a class="btn btn-linea-clara" href="/tiendas" data-ir="tiendas">Ver tiendas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- === FIN PÁGINAS DE COLOR === -->
 
 
 <!-- ==================== PIE ==================== -->
@@ -3788,6 +4440,12 @@ body.tema-corporativo {
     camisas: '/camisas-a-medida', telas: '/telas', novios: '/trajes-de-novio',
     corporativo: '/corporativo', tiendas: '/tiendas', blog: '/blog',
     catalogo: '/catalogo-de-telas',
+    'color-azul': '/terno-azul',
+    'color-negro': '/terno-negro',
+    'color-gris': '/terno-gris',
+    'color-burdeos': '/terno-burdeos',
+    'color-marron': '/terno-marron',
+    'color-beige': '/terno-beige',
     /* Una URL por colección: cada una compite por su búsqueda («tela super
        120», «tweed lima») en lugar de que el catálogo entero pelee por todas. */
     'tela-s100': '/telas/super-100s',
@@ -3823,7 +4481,7 @@ body.tema-corporativo {
       history.pushState({ pagina: nombre }, '', ruta);
     }
     // Trajes y Camisas cuelgan de "A medida", así que marcan ese ítem del menú
-    var padre = /^tela-/.test(nombre) ? 'telas' :
+    var padre = /^(tela|color)-/.test(nombre) ? 'telas' :
       { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[nombre] || nombre;
     // El enlace de primer nivel se marca por su sección padre; el del submenú,
     // por coincidencia exacta. Si no, en el catálogo se encendía «Las marcas».
@@ -4144,39 +4802,6 @@ body.tema-corporativo {
     }).join('');
   })();
 
-  /* Rejilla de las páginas de tejido. Lee el mismo telas.json que el catálogo
-     y aplica el filtro que la página declara en data-telas, así que no hay una
-     segunda lista de telas que se pueda desincronizar de la primera. */
-  (function () {
-    var caja = document.querySelector('.pagina.activa .rejilla-telas') ||
-               document.querySelector('.rejilla-telas');
-    if (!caja) return;
-    var p = new URLSearchParams(caja.dataset.telas || '');
-    var mapa = { coleccion: 'k', grado: 'g', tejido: 'j', uso: 'u' };
-    fetch('/assets/telas.json').then(function (r) { return r.json(); }).then(function (d) {
-      var todas = d.telas || d;
-      var lista = todas.filter(function (x) {
-        // Un mismo campo puede repetirse (los dos baby alpaca): dentro del
-        // campo se suma, y entre campos distintos se cruza.
-        return Array.from(new Set(p.keys())).every(function (n) {
-          var c = mapa[n];
-          return p.getAll(n).some(function (v) {
-            return c === 'u' ? (x.u || []).indexOf(v) >= 0 : x[c] === v;
-          });
-        });
-      });
-      // Se muestran doce: las suficientes para dar idea de la variedad sin
-      // convertir la página en una segunda copia del catálogo.
-      var paso = Math.max(1, Math.floor(lista.length / 12));
-      caja.innerHTML = lista.filter(function (_, i) { return i % paso === 0; }).slice(0, 12)
-        .map(function (x) {
-          return '<figure><img src="/assets/telas/' + (x.i2 || x.i) + '" alt="Tela ' + x.c +
-                 ' de Barrington" loading="lazy" width="480" height="319">' +
-                 '<figcaption><b>' + x.c + '</b><span>' + (x.g || x.j) + '</span></figcaption></figure>';
-        }).join('');
-    });
-  })();
-
   /* ================= CASAS DE TELA =================
      `destacada: true` la saca de la rejilla de detalle: Barrington tiene su
      propio bloque. El slider sí las muestra todas. */
@@ -4405,7 +5030,10 @@ body.tema-corporativo {
   (function () {
     var inicial = document.body.dataset.ruta || 'inicio';
     if (inicial !== 'inicio') ir(inicial, null, true);
+    var rutaActual = location.pathname;
     window.addEventListener('popstate', function () {
+      if (location.pathname === rutaActual) return;  // solo cambió el parámetro de la ficha
+      rutaActual = location.pathname;
       var destino = 'inicio';
       for (var k in RUTAS) { if (RUTAS[k] === location.pathname) { destino = k; break; } }
       ir(destino, null, true);
@@ -4590,7 +5218,24 @@ body.tema-corporativo {
 
     /* ---- Ficha ampliada ---- */
     var visor = document.getElementById('cat-visor');
-    function abrir(t) {
+    /* La ficha vive en la URL: .../catalogo-de-telas?tela=518001-135 abre esa
+       tela directamente. Es lo que el asesor le manda al cliente por WhatsApp,
+       donde además se ve la foto porque el servidor le pone sus etiquetas og.
+       Google no la indexa aparte: la canónica sigue siendo el catálogo. */
+    // «518001 - 135» en la URL sería «518001%20-%20135»: se compacta para que el
+    // enlace que se pega en WhatsApp se lea.
+    function clave(c) { return String(c || '').replace(/[^a-z0-9]/gi, '').toLowerCase(); }
+
+    function urlTela(codigo) {
+      var p = new URLSearchParams(location.search);
+      if (codigo) p.set('tela', clave(codigo)); else p.delete('tela');
+      var q = p.toString();
+      return location.pathname + (q ? '?' + q : '');
+    }
+
+    function abrir(t, sinHistorial) {
+      if (!sinHistorial && history.state && history.state.tela === clave(t.c)) sinHistorial = true;
+      if (!sinHistorial) history.pushState({ pagina: 'catalogo', tela: clave(t.c) }, '', urlTela(t.c));
       document.getElementById('cat-fotos').innerHTML =
         (t.i2 ? '<img src="/assets/telas/' + t.i2 + '" alt="Orillo de la tela ' + t.c + ' de ' + CASA + '" width="480" height="320">' : '') +
         '<img src="/assets/telas/' + t.i + '" alt="Tejido de la tela ' + t.c + ' de ' + CASA + '" width="420" height="280">';
@@ -4617,7 +5262,15 @@ body.tema-corporativo {
       document.body.style.overflow = 'hidden';
       document.getElementById('cat-cerrar').focus();
     }
-    function cerrar() { visor.hidden = true; document.body.style.overflow = ''; }
+    function cerrar(sinHistorial) {
+      visor.hidden = true;
+      document.body.style.overflow = '';
+      if (sinHistorial) return;
+      // Si la ficha se abrió aquí, «atrás» es lo natural; si se llegó por enlace
+      // directo no hay nada detrás y solo se limpia el parámetro.
+      if (history.state && history.state.tela) history.back();
+      else if (new URLSearchParams(location.search).get('tela')) history.replaceState({ pagina: 'catalogo' }, '', urlTela(null));
+    }
     rejilla.addEventListener('click', function (ev) {
       var b = ev.target.closest('.cat-tela');
       if (b) abrir(filtradas[+b.dataset.i]);
@@ -4625,6 +5278,11 @@ body.tema-corporativo {
     document.getElementById('cat-cerrar').addEventListener('click', cerrar);
     visor.addEventListener('click', function (ev) { if (ev.target === visor) cerrar(); });
     document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !visor.hidden) cerrar(); });
+    window.addEventListener('popstate', function () {
+      var cod = new URLSearchParams(location.search).get('tela');
+      var t = cod && TELAS ? TELAS.filter(function (x) { return clave(x.c) === clave(cod); })[0] : null;
+      if (t) abrir(t, true); else if (!visor.hidden) cerrar(true);
+    });
 
     /* Los bloques de la página de Telas enlazan aquí con el filtro ya puesto:
        .../catalogo-de-telas?grado=Super+140s abre el catálogo mostrando solo
@@ -4641,6 +5299,11 @@ body.tema-corporativo {
 
     fetch('/assets/telas.json').then(function (r) { return r.json(); }).then(function (d) {
       TELAS = d; desdeURL(); filtrar();
+      var cod = new URLSearchParams(location.search).get('tela');
+      if (cod) {
+        var t = TELAS.filter(function (x) { return clave(x.c) === clave(cod); })[0];
+        if (t) abrir(t, true);
+      }
     }).catch(function () {
       document.getElementById('cat-vacio').hidden = false;
       document.getElementById('cat-vacio').textContent = 'No se pudo cargar el catálogo. Vuelve a intentarlo.';

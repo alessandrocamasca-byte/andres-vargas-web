@@ -83,6 +83,54 @@ const RUTAS = {
     imagen: 'hero.jpg',
     miga: 'Tiendas',
   },
+  '/terno-azul': {
+    pagina: 'color-azul',
+    titulo: 'Terno Azul a Medida en Lima | Andrés Vargas',
+    desc: 'Telas azules para terno a medida: casimir, superfine y lanilla de Barrington. Sastrería en Lima desde 1982.',
+    imagen: 'telas/diamond-0001.jpg',
+    miga: 'Terno azul',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+  },
+  '/terno-negro': {
+    pagina: 'color-negro',
+    titulo: 'Terno Negro a Medida en Lima | Andrés Vargas',
+    desc: 'Telas negras para terno a medida: casimir, lanilla y superfine de Barrington. Sastrería en Lima desde 1982.',
+    imagen: 'telas/diamond-0003.jpg',
+    miga: 'Terno negro',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+  },
+  '/terno-gris': {
+    pagina: 'color-gris',
+    titulo: 'Terno Gris a Medida en Lima | Andrés Vargas',
+    desc: 'Telas grises para terno a medida, del gris medio de oficina al oxford de ocasión. Barrington en Lima.',
+    imagen: 'telas/diamond-0065.jpg',
+    miga: 'Terno gris',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+  },
+  '/terno-burdeos': {
+    pagina: 'color-burdeos',
+    titulo: 'Terno y Saco Burdeos a Medida en Lima | Andrés Vargas',
+    desc: 'Telas burdeos y guinda para terno, saco y abrigo a medida, en casimir, tweed y paño. Lima, desde 1982.',
+    imagen: 'telas/diamond-0015.jpg',
+    miga: 'Terno burdeos',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+  },
+  '/terno-marron': {
+    pagina: 'color-marron',
+    titulo: 'Terno y Saco Marrón a Medida en Lima | Andrés Vargas',
+    desc: 'Telas marrones para saco sport, terno y abrigo a medida, en tweed, casimir y lanilla. Barrington en Lima.',
+    imagen: 'telas/diamond-0021.jpg',
+    miga: 'Terno marrón',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+  },
+  '/terno-beige': {
+    pagina: 'color-beige',
+    titulo: 'Terno Beige y Arena a Medida en Lima | Andrés Vargas',
+    desc: 'Telas beige y arena para terno de día y de verano, en casimir y baby alpaca. Sastrería a medida en Lima.',
+    imagen: 'telas/diamond-0013.jpg',
+    miga: 'Terno beige',
+    padre: { nombre: 'Telas', ruta: '/telas' },
+  },
   '/telas/super-100s': {
     pagina: 'tela-s100',
     padre: { nombre: 'Telas', ruta: '/telas' },
@@ -281,7 +329,7 @@ class MenuSub {
 class Menu {
   constructor(pagina) {
     this.pagina = pagina;
-    this.activo = /^tela-/.test(pagina) ? 'telas' :
+    this.activo = /^(tela|color)-/.test(pagina) ? 'telas' :
       { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[pagina] || pagina;
   }
   element(el) {
@@ -300,6 +348,47 @@ class Menu {
    previsualizaciones de rama llevan un prefijo distinto y deben seguir
    abriéndose para poder revisarlas antes de publicar. */
 const HOST_VIEJO = 'andres-vargas-web.pages.dev';
+
+/* Una tela concreta se comparte como /catalogo-de-telas?tela=518001-135. No es
+   una página aparte —la canónica sigue siendo el catálogo, y 483 fichas casi
+   idénticas solo servirían para diluir el sitio—, pero sí necesita sus propias
+   etiquetas og: sin ellas, el enlace que el asesor manda por WhatsApp llega
+   como un rectángulo con el logo en lugar de con la foto de la tela.
+
+   El índice se guarda en el isolate: se lee una vez y sirve para las siguientes
+   peticiones que caigan en el mismo. */
+let INDICE = null;
+
+const clave = (c) => String(c || '').replace(/[^a-z0-9]/gi, '').toLowerCase();
+
+async function buscarTela(env, url, codigo) {
+  if (!INDICE) {
+    const res = await env.ASSETS.fetch(new URL('/assets/telas.json', url));
+    if (!res.ok) return null;
+    const datos = await res.json();
+    const lista = Array.isArray(datos) ? datos : datos.telas;
+    // La clave se compacta igual que en el navegador: «518001 - 135» → «518001135».
+    INDICE = new Map(lista.map((t) => [clave(t.c), t]));
+  }
+  return INDICE.get(clave(codigo)) || null;
+}
+
+const COLOR = { negro: 'negro', azul: 'azul', gris: 'gris', burdeos: 'burdeos',
+  marron: 'marrón', beige: 'beige', celeste: 'celeste', verde: 'verde' };
+
+function fichaTela(base, t) {
+  // Colección y grado son la misma palabra en 80 telas: repetirla queda torpe.
+  const linaje = ['Barrington', t.k, t.g].filter(Boolean)
+    .filter((v, i, a) => a.indexOf(v) === i).join(' · ');
+  const rasgos = [t.j, t.comp, COLOR[t.o] || t.o].filter(Boolean).join(', ');
+  return {
+    ...base,
+    titulo: t.c + ' · ' + linaje + ' | Andrés Vargas',
+    desc: 'Tela ' + t.c + ' de ' + linaje + '. ' + rasgos +
+      '. Consúltala en Andrés Vargas, sastrería a medida en Lima.',
+    imagen: 'telas/' + (t.i2 || t.i),
+  };
+}
 
 export async function onRequest(context) {
   const url = new URL(context.request.url);
@@ -323,7 +412,14 @@ export async function onRequest(context) {
   // /index.html sería una segunda dirección para la portada.
   if (ruta === '/index.html') return Response.redirect(SITIO + '/' + url.search, 301);
 
-  const conf = RUTAS[ruta];
+  let conf = RUTAS[ruta];
+  if (conf && ruta === '/catalogo-de-telas') {
+    const codigo = url.searchParams.get('tela');
+    if (codigo) {
+      const t = await buscarTela(context.env, url, codigo);
+      if (t) conf = fichaTela(conf, t);
+    }
+  }
   if (conf) {
     const res = await context.env.ASSETS.fetch(new URL('/index.html', url));
     const html = new Response(res.body, res);
