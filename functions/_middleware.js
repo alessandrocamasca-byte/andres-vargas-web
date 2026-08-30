@@ -133,8 +133,8 @@ const RUTAS = {
   },
   '/proyectos/universitario-de-deportes': {
     pagina: 'proy-universitario',
-    titulo: 'Vestuario Formal para Universitario de Deportes | Andrés Vargas',
-    desc: 'Confección a medida para Universitario de Deportes: trajes con forro conmemorativo y escudo en la solapa. Vestuario institucional en Lima.',
+    titulo: 'Vestuario Institucional: Universitario de Deportes | Andrés Vargas',
+    desc: 'Vestuario institucional a medida en Lima: terno de protocolo confeccionado por encargo de Universitario de Deportes, con forro de los cien años.',
     imagen: 'caso-universitario.jpg',
     miga: 'Universitario de Deportes',
     padre: { nombre: 'Corporativo', ruta: '/corporativo' },
