@@ -357,6 +357,26 @@ class Menu {
    propio conservando ruta y parámetros. Solo se compara el host exacto: las
    previsualizaciones de rama llevan un prefijo distinto y deben seguir
    abriéndose para poder revisarlas antes de publicar. */
+/* Pages servía todo con cuatro horas de caché, así que quien volvía al día
+   siguiente se descargaba otra vez las fotos, que son casi todo el peso. Cada
+   ruta recibe aquí una sola política, y no en _headers, porque allí las reglas
+   que coinciden se suman en lugar de sustituirse. */
+function politicaCache(ruta) {
+  // Las 966 fotos de tela llevan el código de la tela en el nombre y no se
+  // reemplazan nunca en su sitio: se pueden guardar un año.
+  if (/^\/assets\/telas\/[^/]+\.(jpe?g|png|webp)$/i.test(ruta)) {
+    return 'public, max-age=31536000, immutable';
+  }
+  // El catálogo sí cambia cuando entra tela nueva.
+  if (ruta === '/assets/telas.json') return 'public, max-age=86400, must-revalidate';
+  // El resto de assets sí se ha reemplazado alguna vez conservando el nombre,
+  // así que un mes y no un año: un cambio tarda semanas en llegar, no un año.
+  if (ruta.startsWith('/assets/')) return 'public, max-age=2592000';
+  if (ruta === '/favicon.ico') return 'public, max-age=604800';
+  if (ruta === '/sitemap.xml' || ruta === '/robots.txt') return 'public, max-age=3600';
+  return null;
+}
+
 const HOST_VIEJO = 'andres-vargas-web.pages.dev';
 
 /* Una tela concreta se comparte como /catalogo-de-telas?tela=518001-135. No es
@@ -462,7 +482,10 @@ export async function onRequest(context) {
         headers: { 'content-type': 'text/plain; charset=utf-8' },
       });
     }
-    return res;
+    const salida = new Response(res.body, res);
+    const cache = politicaCache(ruta);
+    if (cache) salida.headers.set('cache-control', cache);
+    return salida;
   }
 
   // Cualquier otra cosa no existe. Antes devolvía la portada con 200.

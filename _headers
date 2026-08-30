@@ -1,0 +1,7 @@
+# Solo cabeceras que no dependen de la ruta. El caché NO se pone aquí: Cloudflare
+# concatena las reglas que coinciden en lugar de sustituirlas, y con dos patrones
+# solapados sale «max-age=2592000, max-age=31536000», que es ambiguo. Va en
+# functions/_middleware.js, donde cada ruta recibe exactamente una política.
+/*
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
