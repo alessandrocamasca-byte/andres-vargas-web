@@ -131,6 +131,54 @@ const RUTAS = {
     miga: 'Terno beige',
     padre: { nombre: 'Telas', ruta: '/telas' },
   },
+  '/blog/primer-traje-a-medida': {
+    pagina: 'art-primer-traje',
+    titulo: 'Cómo Elegir tu Primer Traje a Medida | Andrés Vargas',
+    desc: 'Qué decidir antes de ir al sastre, qué llevar a la primera cita y el error que casi todos cometen con la tela. Guía de Andrés Vargas, Lima.',
+    imagen: 'editorial/ed-oficina-azul.jpg',
+    miga: 'Cómo elegir tu primer traje a medida',
+    padre: { nombre: 'Blog', ruta: '/blog' },
+  },
+  '/blog/tela-nacional-o-importada': {
+    pagina: 'art-nacional-importada',
+    titulo: 'Tela Nacional o Importada para tu Terno | Andrés Vargas',
+    desc: 'Qué cambia de verdad entre una tela peruana y una importada, y por qué la mejor fibra del mundo para abrigo es nacional. Andrés Vargas, Lima.',
+    imagen: 'editorial/ed-macro-super100-fondo.jpg',
+    miga: 'Nacional o importada: cómo decidir',
+    padre: { nombre: 'Blog', ruta: '/blog' },
+  },
+  '/blog/calendario-del-novio': {
+    pagina: 'art-calendario-novio',
+    titulo: 'Calendario del Novio: Cuándo Empezar el Traje | Andrés Vargas',
+    desc: 'Qué determina el tiempo de un traje de novio a medida y en qué orden conviene resolver cada cosa para llegar tranquilo al día de la boda.',
+    imagen: 'novios-duo.jpg',
+    miga: 'Calendario del novio: cuándo empezar',
+    padre: { nombre: 'Blog', ruta: '/blog' },
+  },
+  '/blog/codigo-de-vestimenta': {
+    pagina: 'art-etiqueta',
+    titulo: 'Códigos de Vestimenta: Qué Significa Cada Uno | Andrés Vargas',
+    desc: 'Traducción práctica de lo que dice la invitación: etiqueta rigurosa, etiqueta, formal, terno oscuro y casual elegante, con lo que se espera en Lima.',
+    imagen: 'editorial/ed-gala-pinstripe.jpg',
+    miga: 'Etiqueta: qué se espera de un código de vestimenta',
+    padre: { nombre: 'Blog', ruta: '/blog' },
+  },
+  '/blog/cuidar-un-traje': {
+    pagina: 'art-cuidado',
+    titulo: 'Cómo Cuidar un Traje para que Dure | Andrés Vargas',
+    desc: 'Colgado, cepillado, descanso entre usos y por qué la tintorería frecuente arruina la lana. Cuidado del terno en el clima húmedo de Lima.',
+    imagen: 'traje-burdeos.jpg',
+    miga: 'Cómo cuidar un traje para que dure',
+    padre: { nombre: 'Blog', ruta: '/blog' },
+  },
+  '/blog/salir-del-negro': {
+    pagina: 'art-color',
+    titulo: 'Colores de Terno que Funcionan en Lima | Andrés Vargas',
+    desc: 'Azul, gris, burdeos, marrón y beige: qué resuelve cada color de terno, con qué combinarlo y por qué la luz de Lima cambia cómo se ven.',
+    imagen: 'editorial/ed-blazer-salmon.jpg',
+    miga: 'Salir del negro sin equivocarse',
+    padre: { nombre: 'Blog', ruta: '/blog' },
+  },
   '/proyectos/universitario-de-deportes': {
     pagina: 'proy-universitario',
     titulo: 'Vestuario Institucional: Universitario de Deportes | Andrés Vargas',
@@ -363,7 +411,8 @@ class MenuSub {
 class Menu {
   constructor(pagina) {
     this.pagina = pagina;
-    this.activo = /^proy-/.test(pagina) ? 'corporativo' :
+    this.activo = /^art-/.test(pagina) ? 'blog' :
+      /^proy-/.test(pagina) ? 'corporativo' :
       /^(tela|color)-/.test(pagina) ? 'telas' :
       { trajes: 'medida', camisas: 'medida', catalogo: 'telas' }[pagina] || pagina;
   }
