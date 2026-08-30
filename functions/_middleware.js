@@ -202,9 +202,20 @@ class Menu {
   }
 }
 
+/* El proyecto sigue respondiendo en su subdominio de Pages, así que la misma
+   web vivía en dos direcciones y Google penaliza eso. Se manda al dominio
+   propio conservando ruta y parámetros. Solo se compara el host exacto: las
+   previsualizaciones de rama llevan un prefijo distinto y deben seguir
+   abriéndose para poder revisarlas antes de publicar. */
+const HOST_VIEJO = 'andres-vargas-web.pages.dev';
+
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   let ruta = url.pathname;
+
+  if (url.hostname === HOST_VIEJO) {
+    return Response.redirect(SITIO + ruta + url.search, 301);
+  }
 
   if (BLOQUEADO.some((re) => re.test(ruta))) {
     return new Response('Not Found', {

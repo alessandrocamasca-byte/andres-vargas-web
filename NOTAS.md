@@ -603,3 +603,89 @@ tenerlo.
 2. Logo de Creditex.
 3. El PDF del catálogo de modelos.
 4. Los logos de empresas, con la lista confirmada.
+
+## Plan de contenido de Corporativo · septiembre 2026 (30 ago 2026)
+
+Nuevo documento: `pauta/planificacion/2026-09-plan-corporativo.html`. Sale de la
+propuesta comercial de la línea corporativa (las dos opciones de inversión, A
+fija y B con comisión). **Alcance del documento: solo contenido orgánico**, las
+6 piezas de Instagram y Facebook más las 6 de LinkedIn. La pauta pagada, el
+growth B2B y el CRM que también van en esa propuesta se planifican aparte y no
+están aquí.
+
+**Design system:** la variante B2B, es decir la ciruela de
+`body.tema-corporativo` de `index.html` (`#5D3347` y su familia), no el azul de
+marca. Mismos pasos de claridad, así que los contrastes se conservan. El escudo
+no se recolorea: va blanco sobre banda ciruela, como en la cabecera del sitio.
+HTML autocontenido con los escudos en base64, se abre con `file://`.
+
+**Contenido:** cuatro pilares (Oficio 3, Criterio 4, Prueba 2, Operación 3),
+calendario día por día con formato y llamada, especificaciones por canal,
+reglas de redacción, circuito de aprobación con fechas y qué se mide.
+
+**Lo que quedó marcado como no confirmado** (regla de honestidad, nada
+inventado): si existe la página de empresa en LinkedIn y quién la administra;
+permiso escrito de los clientes corporativos para nombrarlos; fotografía de
+proyectos corporativos reales (hoy solo hay editorial de marca); tiempo de
+medición por persona y plazos por volumen; quién responde los mensajes de
+LinkedIn. Los dos primeros bloquean piezas del calendario.
+
+El documento dice explícito que septiembre es mes de base: sin pauta, una
+página nueva de LinkedIn crece despacio.
+
+**Cuidado al commitear:** vale lo de siempre para `pauta/`. El repo despliega
+la raíz en Cloudflare Pages, así que este archivo en `main` queda accesible en
+`sastreriaandresvargas.pe/pauta/...`. Sigue sin pushearse.
+
+### Publicado en Cloudflare Pages (30 ago 2026)
+
+Proyecto **`andresvargas-plan-corporativo`** en la cuenta de Cloudflare de la
+agencia (alessandrocamasca@eqapla.com). URL:
+**https://andresvargas-plan-corporativo.pages.dev**
+
+Va como proyecto aparte, con `wrangler pages deploy` desde una carpeta temporal,
+no dentro de la web del cliente. Las razones: `pauta/` está en el `.gitignore`
+del repo y el middleware devuelve 404 a `/pauta/*` desde el hallazgo de agosto.
+Meterlo en el sitio obligaba a desactivar las dos cosas.
+
+Se publica con `noindex` por tres vías: la etiqueta meta del HTML, un
+`robots.txt` con `Disallow: /` y una cabecera `X-Robots-Tag: noindex, nofollow,
+noarchive` desde `_headers`. Aun así **la URL es pública**: quien la tenga, lo
+lee. No lleva presupuestos ni datos personales, pero sí los pendientes internos.
+Si tiene que quedar cerrado de verdad, hay que ponerle Cloudflare Access desde
+el panel.
+
+**Trampa que costó un deploy:** `wrangler pages deploy` toma la carpeta
+`functions/` del directorio desde el que se lanza. Corriéndolo desde la raíz del
+proyecto, el middleware de la web se subió junto al plan y reescribió el `<head>`
+del documento con el título y la descripción de la portada del sitio. Se corrigió
+lanzando el deploy desde una carpeta limpia. Para cualquier documento suelto de
+este repo: **deployar siempre desde fuera de la raíz del proyecto.**
+
+### El plan pasa a ser por entregables (30 ago 2026)
+
+A pedido de Alessandro, el documento ya no es solo el calendario: abre con el
+**modelo de inversión fija**, que es el que quiere el cliente. Nuevo bloque 01
+«Qué se paga y qué se recibe», con los **S/ 1,800 mensuales** desglosados en
+cinco entregables (contenido Instagram y Facebook, contenido LinkedIn,
+estrategia de contenido ejecutivo, growth marketing B2B y reporte mensual) más
+el CRM como única línea opcional, +S/ 150. Los demás bloques corrieron a 02..09.
+
+Las cifras salen de la propuesta comercial: opción A, S/ 1,800 fijo, frente a la
+B de S/ 1,200 más 5 % con tope de S/ 1,000. No se inventó ninguna.
+
+**Lo que se dejó dicho explícito, porque callarlo genera discusión después:** el
+fijo no cubre la inversión en medios (si se activa pauta, el presupuesto va
+directo a la plataforma), ni producción fotográfica con equipo en locación, ni
+el CRM sin contratar. Y se sumó a los pendientes si los S/ 1,800 son con o sin
+IGV, que la propuesta no lo dice.
+
+Republicado en el mismo proyecto de Pages, misma URL.
+
+**Corrección de precio (30 ago 2026, misma sesión).** El acuerdo final no es la
+opción A de la propuesta: es **S/ 1,200 fijos con el CRM incluido y sin
+comisión**. La propuesta ofrecía S/ 1,800 fijo sin CRM o S/ 1,200 más 5 % con
+CRM; el cliente se queda con lo mejor de las dos. En el documento el CRM pasó de
+línea opcional a sexto entregable incluido, y desapareció el +S/ 150. La
+tarjeta que comparaba modelos se rehizo, y el pendiente de IGV ahora habla de
+los S/ 1,200. Republicado en la misma URL.
