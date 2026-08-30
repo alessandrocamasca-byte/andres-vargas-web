@@ -131,50 +131,56 @@ const RUTAS = {
     miga: 'Terno beige',
     padre: { nombre: 'Telas', ruta: '/telas' },
   },
-  '/blog/primer-traje-a-medida': {
+  '/blog/primer-terno-a-medida': {
     pagina: 'art-primer-traje',
-    titulo: 'Cómo Elegir tu Primer Traje a Medida | Andrés Vargas',
-    desc: 'Qué decidir antes de ir al sastre, qué llevar a la primera cita y el error que casi todos cometen con la tela. Guía de Andrés Vargas, Lima.',
+    articulo: true,
+    titulo: 'Cómo Elegir tu Primer Terno a Medida | Andrés Vargas',
+    desc: 'Qué decidir antes de ir al sastre, qué llevar a la primera cita, cuántas pruebas esperar y el error que casi todos cometen al elegir la tela.',
     imagen: 'editorial/ed-oficina-azul.jpg',
-    miga: 'Cómo elegir tu primer traje a medida',
+    miga: 'Cómo elegir tu primer terno a medida',
     padre: { nombre: 'Blog', ruta: '/blog' },
   },
   '/blog/tela-nacional-o-importada': {
     pagina: 'art-nacional-importada',
+    articulo: true,
     titulo: 'Tela Nacional o Importada para tu Terno | Andrés Vargas',
-    desc: 'Qué cambia de verdad entre una tela peruana y una importada, y por qué la mejor fibra del mundo para abrigo es nacional. Andrés Vargas, Lima.',
+    desc: 'Qué cambia de verdad entre una tela peruana y una importada, qué casas hay detrás de cada una y por qué la mejor fibra para abrigo es nacional.',
     imagen: 'editorial/ed-macro-super100-fondo.jpg',
-    miga: 'Nacional o importada: cómo decidir',
+    miga: 'Nacional o importada: cómo decidir la tela',
     padre: { nombre: 'Blog', ruta: '/blog' },
   },
   '/blog/calendario-del-novio': {
     pagina: 'art-calendario-novio',
-    titulo: 'Calendario del Novio: Cuándo Empezar el Traje | Andrés Vargas',
-    desc: 'Qué determina el tiempo de un traje de novio a medida y en qué orden conviene resolver cada cosa para llegar tranquilo al día de la boda.',
+    articulo: true,
+    titulo: 'Calendario del Novio: Cuándo Empezar el Terno | Andrés Vargas',
+    desc: 'Qué determina el tiempo de un terno de novio a medida, en qué orden resolver cada cosa y los dos errores de calendario que más caros salen.',
     imagen: 'novios-duo.jpg',
-    miga: 'Calendario del novio: cuándo empezar',
+    miga: 'Calendario del novio: cuándo empezar el terno',
     padre: { nombre: 'Blog', ruta: '/blog' },
   },
   '/blog/codigo-de-vestimenta': {
     pagina: 'art-etiqueta',
+    articulo: true,
     titulo: 'Códigos de Vestimenta: Qué Significa Cada Uno | Andrés Vargas',
-    desc: 'Traducción práctica de lo que dice la invitación: etiqueta rigurosa, etiqueta, formal, terno oscuro y casual elegante, con lo que se espera en Lima.',
+    desc: 'Etiqueta rigurosa, black tie, terno oscuro, business y casual elegante: qué pide cada código, qué no ponerse y qué hacer si la invitación no dice nada.',
     imagen: 'editorial/ed-gala-pinstripe.jpg',
-    miga: 'Etiqueta: qué se espera de un código de vestimenta',
+    miga: 'Qué se espera de cada código de vestimenta',
     padre: { nombre: 'Blog', ruta: '/blog' },
   },
   '/blog/cuidar-un-traje': {
     pagina: 'art-cuidado',
-    titulo: 'Cómo Cuidar un Traje para que Dure | Andrés Vargas',
-    desc: 'Colgado, cepillado, descanso entre usos y por qué la tintorería frecuente arruina la lana. Cuidado del terno en el clima húmedo de Lima.',
+    articulo: true,
+    titulo: 'Cómo Cuidar un Terno para que Dure | Andrés Vargas',
+    desc: 'Gancho, cepillado, descanso entre usos, tintorería y humedad: qué mata un terno en Lima y qué hacer si te agarra la garúa con él puesto.',
     imagen: 'traje-burdeos.jpg',
-    miga: 'Cómo cuidar un traje para que dure',
+    miga: 'Cómo cuidar un terno para que dure',
     padre: { nombre: 'Blog', ruta: '/blog' },
   },
   '/blog/salir-del-negro': {
     pagina: 'art-color',
+    articulo: true,
     titulo: 'Colores de Terno que Funcionan en Lima | Andrés Vargas',
-    desc: 'Azul, gris, burdeos, marrón y beige: qué resuelve cada color de terno, con qué combinarlo y por qué la luz de Lima cambia cómo se ven.',
+    desc: 'Azul, gris, burdeos, marrón y beige: qué resuelve cada color de terno, con qué combinarlo y por qué la luz de Lima cambia cómo se ven todos.',
     imagen: 'editorial/ed-blazer-salmon.jpg',
     miga: 'Salir del negro sin equivocarse',
     padre: { nombre: 'Blog', ruta: '/blog' },
@@ -331,6 +337,7 @@ class Meta {
     // og:image:width/height se quedan como están: cada foto tiene su tamaño,
     // pero declararlo mal es peor que no declararlo, así que se eliminan
     // cuando la imagen no es la de portada.
+    else if (prop === 'og:type' && this.r.articulo) el.setAttribute('content', 'article');
     else if ((prop === 'og:image:width' || prop === 'og:image:height') && this.r.imagen !== 'hero.jpg') el.remove();
   }
 }
@@ -501,6 +508,9 @@ export async function onRequest(context) {
   if (url.hostname === HOST_VIEJO) {
     return Response.redirect(SITIO + ruta + url.search, 301);
   }
+
+  const MOVIDAS = { '/blog/primer-traje-a-medida': '/blog/primer-terno-a-medida' };
+  if (MOVIDAS[ruta]) return Response.redirect(SITIO + MOVIDAS[ruta] + url.search, 301);
 
   if (BLOQUEADO.some((re) => re.test(ruta))) {
     return new Response('Not Found', {
