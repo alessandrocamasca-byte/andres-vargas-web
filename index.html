@@ -1603,6 +1603,9 @@ body.tema-corporativo {
 .horario span { font-weight: 300; color: var(--piedra); }
 .horario b { font-weight: 500; color: var(--tinta); font-variant-numeric: tabular-nums; }
 .horario .pendiente { color: var(--azul-pizarra); font-weight: 400; }
+/* «No atiende» es un dato, no una oferta: va en el gris del texto secundario
+   y sin la negrita del horario, para que no compita con los días que sí abren. */
+.horario .cerrado { color: var(--piedra); font-weight: 300; }
 .tienda-cuerpo .acciones { margin-top: auto; padding-top: var(--e4); }
 .tienda-cuerpo .btn { padding: 0.72rem 1.3rem; font-size: 0.72rem; }
 
@@ -5825,9 +5828,17 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
 
   (function () {
     function ficha(t, i) {
-      var horas = t.horas.map(function (h) {
-        var pend = /consúltanos/i.test(h[1]) ? ' class="pendiente"' : '';
-        return '<div><span>' + h[0] + '</span><b' + pend + '>' + h[1] + '</b></div>';
+      /* El domingo se declara siempre. Callarlo obliga al visitante a suponer,
+         y la suposición más cara es la de aparecerse un domingo. Solo Huallaga
+         558 abre; en las demás la línea lo dice en lugar de faltar. */
+      var filas = t.horas.slice();
+      if (!filas.some(function (h) { return /domingo/i.test(h[0]); })) {
+        filas.push(['Domingo', 'No atiende']);
+      }
+      var horas = filas.map(function (h) {
+        var cls = /consúltanos/i.test(h[1]) ? ' class="pendiente"'
+                : /no atiende/i.test(h[1]) ? ' class="cerrado"' : '';
+        return '<div><span>' + h[0] + '</span><b' + cls + '>' + h[1] + '</b></div>';
       }).join('');
       return '<article class="tienda-ficha rev"' + (i ? ' data-d="' + i + '"' : '') + '>' +
         '<div class="tienda-foto' + (t.foto ? '' : ' sin-foto') + '">' +
