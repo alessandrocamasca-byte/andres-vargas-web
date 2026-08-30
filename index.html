@@ -1203,9 +1203,14 @@ body.tema-corporativo {
 
 /* ---------- Pie ---------- */
 .pie { background: var(--azul-profundo); color: rgba(255,255,255,0.85); padding-top: clamp(3rem, 6vw, 4.5rem); }
-.pie-rejilla { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: clamp(1.5rem, 3vw, 2.5rem); padding-bottom: var(--e6); }
-@media (max-width: 900px) { .pie-rejilla { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .pie-rejilla { grid-template-columns: 1fr; } }
+.pie-rejilla { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.5fr 1.4fr; gap: clamp(1.5rem, 2.6vw, 2.4rem); padding-bottom: var(--e6); }
+/* El bloque de marca ocupa la fila entera al bajar a dos columnas: si comparte
+   fila, el logo queda pegado a una lista y se lee como si fueran lo mismo. */
+/* Con la marca en su propia fila quedan cuatro listas: cuatro o dos columnas,
+   nunca tres, o la última se queda sola. */
+@media (max-width: 1180px) { .pie-rejilla { grid-template-columns: repeat(4, 1fr); } .pie-logo { grid-column: 1 / -1; } }
+@media (max-width: 860px)  { .pie-rejilla { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px)  { .pie-rejilla { grid-template-columns: 1fr; } }
 .pie-logo img { width: 130px; margin-bottom: var(--e3); }
 .pie-rejilla p { font-size: 0.88rem; font-weight: 300; }
 .pie h4 { font-family: var(--display); font-size: 0.76rem; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blanco); margin-bottom: var(--e3); }
@@ -1213,6 +1218,20 @@ body.tema-corporativo {
 .pie li { font-size: 0.88rem; font-weight: 300; }
 .pie ul a { cursor: pointer; transition: color 0.3s; }
 .pie ul a:hover { color: var(--blanco); }
+/* Cada tienda es un bloque de tres alturas: dirección, distrito y horario.
+   Sin el respiro entre bloques, seis líneas seguidas se leen como una lista
+   de nada. */
+.pie-tiendas { gap: 1.1rem; }
+.pie-tiendas b { display: block; font-weight: 400; color: var(--blanco); }
+.pie-tiendas span { display: block; margin-top: 0.1rem; }
+.pie-tiendas em { display: block; margin-top: 0.25rem; font-style: normal; font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+.pie-mas { margin-top: 1rem; font-size: 0.82rem; }
+.pie-mas a { color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.28); padding-bottom: 1px; transition: color 0.3s, border-color 0.3s; }
+.pie-mas a:hover { color: var(--blanco); border-color: var(--blanco); }
+/* La etiqueta dice a qué línea escribe cada uno: son dos números y dos
+   destinatarios distintos. */
+.pie-et { display: block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.2rem; }
+
 .redes { display: flex; gap: 0.6rem; margin-top: var(--e3); }
 .redes a { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.2); display: grid; place-items: center; transition: all 0.3s; }
 .redes a:hover { background: var(--blanco); border-color: var(--blanco); color: var(--azul); }
@@ -4372,39 +4391,76 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
         <img src="/assets/logo-blanco.png" alt="Andrés Vargas Sastrería" loading="lazy" width="700" height="700">
         <p>Sastrería a medida en Lima desde 1982. Distribuidores oficiales de telas nacionales e importadas.</p>
         <div class="redes">
-          <a href="https://www.instagram.com/andres_vargas_sastreria/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="https://www.tiktok.com/@andresvargasboutique" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3h-2.7v11.2a2.6 2.6 0 11-2.6-2.6c.2 0 .4 0 .6.1V9a5.4 5.4 0 102 4.2V8.1a5 5 0 002.7.8V6.2a2.7 2.7 0 01-2.7-2.7 2 2 0 010-.5z"/></svg></a>
+          <a href="https://www.instagram.com/sastreria_andresvargas/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.tiktok.com/@andresvargasboutique" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.1 2h2.6c.2 1.3.8 2.4 1.8 3.1.7.5 1.6.9 2.5 1v2.7a7.5 7.5 0 01-4.3-1.5v6.4a5.9 5.9 0 11-5.9-5.9c.3 0 .6 0 .9.1v2.8a3.1 3.1 0 101.9 2.9V2z"/></svg></a>
         </div>
       </div>
+
       <div>
-        <h4>Servicios</h4>
+        <h4>Prendas</h4>
         <ul>
-          <li><a href="/a-medida" data-ir="medida">A medida</a></li>
-          <li><a href="/ternos-a-medida" data-ir="trajes">Trajes</a></li>
+          <li><a href="/a-medida" data-ir="medida">Cómo trabajamos</a></li>
+          <li><a href="/ternos-a-medida" data-ir="trajes">Trajes y ternos</a></li>
           <li><a href="/camisas-a-medida" data-ir="camisas">Camisas</a></li>
-          <li><a href="/telas" data-ir="telas">Telas</a></li>
-          <li><a href="/trajes-de-novio" data-ir="novios">Novios</a></li>
+          <li><a href="/trajes-de-novio" data-ir="novios">Trajes de novio</a></li>
           <li><a href="/corporativo" data-ir="corporativo">Corporativo</a></li>
-          <li><a href="/tiendas" data-ir="tiendas">Tiendas</a></li>
+          <li><a href="/blog" data-ir="blog">Blog</a></li>
         </ul>
       </div>
+
+      <div>
+        <h4>Telas</h4>
+        <ul>
+          <li><a href="/telas" data-ir="telas">Las marcas</a></li>
+          <li><a href="/catalogo-de-telas" data-ir="catalogo">Catálogo completo</a></li>
+          <li><a href="/telas/casimir">Casimir</a></li>
+          <li><a href="/telas/tweed">Tweed</a></li>
+          <li><a href="/telas/super-120s">Super 120s</a></li>
+          <li><a href="/terno-azul">Por color</a></li>
+        </ul>
+      </div>
+
       <div>
         <h4>Tiendas</h4>
-        <ul>
-          <li>Av. Primavera 252, Chacarilla<br>Santiago de Surco</li>
-          <li>Jr. Huallaga 558 y 570<br>Cercado de Lima</li>
-          <li>Jr. Ucayali 115 · 119 · 121<br>Cercado de Lima</li>
+        <ul class="pie-tiendas">
+          <li>
+            <b>Av. Primavera 252</b>
+            <span>Chacarilla, Santiago de Surco</span>
+            <em>Lunes a sábado, 10 am a 8 pm</em>
+          </li>
+          <li>
+            <b>Jr. Huallaga 558 y 570</b>
+            <span>Cercado de Lima</span>
+            <em>Lunes a sábado, 10 am a 8 pm<br>Domingo, 10 am a 4 pm (558)</em>
+          </li>
+          <li>
+            <b>Jr. Ucayali 115 · 119 · 121</b>
+            <span>Cercado de Lima</span>
+            <em>Lunes a viernes, 10 am a 1 pm y 2 pm a 8 pm</em>
+          </li>
         </ul>
+        <p class="pie-mas"><a href="/tiendas" data-ir="tiendas">Ver las seis tiendas y cómo llegar</a></p>
       </div>
+
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li><a href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a></li>
-          <li><a href="mailto:ventas@sastreriaandresvargas.pe">ventas@sastreriaandresvargas.pe</a></li>
-          <li><a href="https://www.andresvargas.pe/" target="_blank" rel="noopener">andresvargas.pe</a></li>
+          <li>
+            <span class="pie-et">Para ti</span>
+            <a href="https://wa.me/51959370397" target="_blank" rel="noopener">WhatsApp 959 370 397</a>
+          </li>
+          <li>
+            <span class="pie-et">Para tu empresa</span>
+            <a href="https://wa.me/51928820334" target="_blank" rel="noopener">WhatsApp 928 820 334</a>
+          </li>
+          <li>
+            <span class="pie-et">Correo</span>
+            <a href="mailto:ventas@sastreriaandresvargas.pe">ventas@sastreriaandresvargas.pe</a>
+          </li>
         </ul>
       </div>
     </div>
+
     <div class="pie-base">
       <span>© 2026 Andrés Vargas Sastrería · Since 1982</span>
       <span>Lima, Perú</span>
