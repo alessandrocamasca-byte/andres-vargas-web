@@ -689,3 +689,116 @@ CRM; el cliente se queda con lo mejor de las dos. En el documento el CRM pasó d
 línea opcional a sexto entregable incluido, y desapareció el +S/ 150. La
 tarjeta que comparaba modelos se rehizo, y el pendiente de IGV ahora habla de
 los S/ 1,200. Republicado en la misma URL.
+
+**Segunda corrección del acuerdo (30 ago 2026).** El modelo no es fijo puro: es
+**S/ 1,200 fijos con CRM incluido más 5 % de comisión sobre ventas, sin tope**.
+La propuesta traía ese 5 % con techo de S/ 1,000 al mes; el acuerdo final quita
+el techo. El documento pasó a llamarlo modelo mixto, el pie de la tabla tiene
+ahora dos líneas (fijo y variable) y se sumó un pendiente **bloqueante**: cómo
+se calcula ese 5 %, sobre qué ventas, quién reporta la cifra y con qué documento
+se comprueba. Sin eso, el primer cierre de mes es una discusión.
+
+**Fuera las propuestas de contenido (30 ago 2026).** A pedido de Alessandro, el
+calendario ya no lleva el tema de cada pieza. Queda la cadencia completa: fecha,
+canal, pilar, formato y llamada, doce filas. Los temas se entregan con los
+guiones de cada tanda, no en el documento que ve el cliente antes de firmar.
+Añadida una línea que lo dice explícito, para que la tabla no parezca incompleta.
+
+**El «sin tope» pasó a letra pequeña.** Salió de los recuadros grandes, del pie
+de la tabla y de las dos bajadas. Queda en una nota `.mini` bajo la tabla de
+inversión, junto con las condiciones de facturación. Se mantiene legible a
+propósito: no se bajó el tamaño por debajo del resto de notas del documento ni
+se tocó el color. Un cliente que descubre una condición escondida discute el
+contrato entero, no solo esa línea. También se quitó la mención al tope de
+S/ 1,000 de la tarjeta comparativa: dejarla ahí sin decir que el acuerdo lo
+elimina daba a entender lo contrario de lo pactado.
+
+### El documento pasa a ser propuesta, no plan de contenido (30 ago 2026)
+
+Alessandro: nada de piezas ni de contenido, solo la propuesta. El documento se
+rehízo entero y cambió de nombre a
+`pauta/planificacion/2026-09-propuesta-corporativo.html`. Cuatro bloques:
+
+1. Qué se paga y qué se recibe (los seis entregables, el fijo, la comisión y lo
+   que el fijo no cubre).
+2. Cómo funciona el mes (dos entregas, revisión en 48 horas, reporte al cierre).
+3. Qué trae el reporte.
+4. Lo que falta confirmar, encabezado por el cálculo del 5 %.
+
+Fuera: calendario día por día, pilares, especificaciones por canal, reglas de
+redacción y perfil del público. Nada de eso viaja al cliente antes de firmar.
+
+La versión con el plan de contenido queda archivada como
+`2026-09-plan-contenido-SUPERADO.html`, siguiendo la convención de agosto. Sirve
+como base de trabajo interna cuando el acuerdo esté cerrado: ahí están los
+cuatro pilares, el calendario de las doce piezas, las especificaciones de cada
+canal y las reglas de redacción.
+
+El proyecto de Cloudflare Pages sigue llamándose `andresvargas-plan-corporativo`
+y la URL no cambió, aunque el documento ya no sea un plan. Renombrarlo obligaba
+a repartir un enlace nuevo.
+
+**Fuera el bloque de pendientes y el IGV queda definido (30 ago 2026).** El
+documento se queda en tres bloques: la inversión, cómo funciona el mes y qué
+trae el reporte. **Los S/ 1,200 son sin IGV**, y así está escrito en la nota al
+pie de la tabla y en el cierre del documento.
+
+Los pendientes salieron del documento que ve el cliente, pero siguen en pie y
+son trabajo nuestro: el cálculo del 5 % (sobre qué ventas, quién reporta, con
+qué documento y cuándo se factura), la página de empresa en LinkedIn, el permiso
+escrito de los clientes corporativos y quién responde los mensajes. El del 5 %
+es el caro: sin acuerdo escrito, el primer cierre de mes se discute.
+
+**Favicon (30 ago 2026).** El icono venía heredado del plan de medios de agosto
+y era el escudo azul: sobre la barra oscura del navegador no se distinguía. Se
+cambió por el **escudo blanco** de `assets/escudo-blanco.png`, reducido a
+74 x 120 px e incrustado en base64. Aplicado a la propuesta y también al
+archivo SUPERADO, para que los dos se vean igual en la pestaña.
+
+### El mensual pasa a estar sujeto a cumplimiento (30 ago 2026)
+
+Nuevo bloque 02 de la propuesta, «Cómo se calcula lo que se paga». La cifra ya no
+es un fijo incondicional:
+
+- **Base de doce contenidos al mes** (seis Instagram y Facebook, seis LinkedIn).
+  Cada contenido publicado vale **S/ 100**. La regla en una línea:
+  `S/ 1,200 × publicados ÷ 12`. Tabla con la escala al 100, 75, 50, 25 y 0 %.
+- **Descuento de S/ 200** si la pauta, la página de LinkedIn o el CRM no están
+  listos y operativos al cierre del mes. Decisión de Alessandro: es **un solo
+  descuento**, falte uno o falten los tres, no S/ 200 por cada uno.
+- La comisión del 5 % se calcula aparte y no la toca este ajuste.
+
+**Cláusula que se añadió por criterio, no la pidió el cliente:** el contenido
+entregado a tiempo que no sale por causa ajena a la agencia (aprobación tardía,
+página que no existe, material que el cliente no entregó) cuenta como publicado.
+Sin eso, el mismo pendiente que bloquea la publicación descuenta el pago, y la
+agencia paga por una decisión que no toma. Si Alessandro no la quiere, se borra,
+pero conviene que sea una decisión y no un olvido.
+
+En la portada el rótulo del importe pasó a «Mensual · sujeto a cumplimiento» y
+las bajadas dicen «hasta S/ 1,200». Bandas realternadas: 01 papel, 02 nube,
+03 papel, 04 nube.
+
+**Fuera el valor por contenido (30 ago 2026).** Se quitó la tarjeta de S/ 100 y
+la frase que fijaba el precio unitario. La escala porcentual se queda igual
+(12 de 12, 9 de 12, 6 de 12, 3 de 12, 0 de 12), y la regla de la tabla pasó de
+la división por contenido a «se paga el mismo porcentaje que se publica». El
+bloque quedó con dos tarjetas, así que su rejilla pasó a r2.
+
+**Fuera «Del encargo a la publicación» (30 ago 2026).** El documento queda en
+tres bloques: la inversión, cómo se calcula lo que se paga y qué trae el
+reporte. Con ese bloque se fue también la regla de las 48 horas de revisión, que
+era lo único que fijaba plazo de aprobación al cliente. No es un olvido, es una
+decisión de Alessandro: si hace falta, va en el contrato y no en la propuesta.
+Bandas realternadas: 01 papel, 02 nube, 03 papel.
+
+**Nueva escala de cumplimiento (30 ago 2026).** Ya no es proporcional. Arranca en
+seis contenidos y sube S/ 50 por cada contenido adicional: 6 son S/ 900, 9 son
+S/ 1,050 y 12 son S/ 1,200. La tabla muestra los siete escalones, de 6 a 12, con
+la fila del 12 resaltada. Se quitaron las filas de 3 y 0. El ejemplo del
+descuento se recalculó: 6 contenidos con el CRM sin activar son S/ 900 menos
+S/ 200, es decir S/ 700 más IGV.
+
+**Hueco conocido:** qué pasa si el mes cierra por debajo de seis contenidos. La
+escala no lo cubre y no se inventó un número: hay una nota que dice que ese caso
+se revisa entre las partes antes de facturar. Conviene cerrarlo en el contrato.
