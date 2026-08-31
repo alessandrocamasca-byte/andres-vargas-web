@@ -141,6 +141,13 @@ const RUTAS = {
     miga: 'Terno beige',
     padre: { nombre: 'Telas', ruta: '/telas' },
   },
+  '/privacidad': {
+    pagina: 'privacidad',
+    titulo: 'Política de Privacidad | Andrés Vargas Sastrería',
+    desc: 'Qué datos pedimos, para qué los usamos y cómo pedir que los borremos. Sin cookies, sin analítica y sin scripts de terceros. Ley N.º 29733.',
+    imagen: 'hero.jpg',
+    miga: 'Política de privacidad',
+  },
   '/libro-de-reclamaciones': {
     pagina: 'reclamaciones',
     titulo: 'Libro de Reclamaciones | Andrés Vargas Sastrería',
@@ -559,6 +566,40 @@ function fichaTela(base, t) {
   };
 }
 
+/* Antes cualquier direccion inexistente devolvia nueve bytes de texto plano.
+   Quien escribia mal una URL veia una pantalla en blanco, sin escudo, sin menu
+   y sin salida. Ahora se pinta la pagina de error con el mismo camino que
+   cualquier otra, cambiando solo el codigo de estado. */
+const NO_ENCONTRADO = {
+  pagina: 'error',
+  titulo: 'Página no encontrada | Andrés Vargas Sastrería',
+  desc: 'La página que buscas no existe o cambió de dirección.',
+  imagen: 'hero.jpg',
+  miga: 'Página no encontrada',
+};
+
+async function pintar(context, url, conf, canonica, estado) {
+  const res = await context.env.ASSETS.fetch(new URL('/index.html', url));
+  const html = new Response(res.body, res);
+  html.headers.set('content-type', 'text/html; charset=utf-8');
+  const salida = new HTMLRewriter()
+    .on('title, meta, link[rel="canonical"]', new Meta(conf, canonica))
+    .on('head', new Miga(conf, canonica))
+    .on('.menu > li > a[data-ir]', new Menu(conf.pagina))
+    .on('.submenu a[data-ir]', new MenuSub(conf.pagina))
+    .on('body', new Cuerpo(conf.pagina))
+    .on('main[data-pag]', new Podar(conf.pagina))
+    .on(conf.pagina === 'corporativo' ? '.menu [data-wa-corp]' : 'nada-que-no-existe', new Wasap())
+    .transform(html);
+  if (estado === 200) return salida;
+  /* Un 404 no se cachea y no se indexa: si Google guardara esta pagina como
+     valida, empezaria a mostrarla en resultados. */
+  const r = new Response(salida.body, { status: estado, headers: salida.headers });
+  r.headers.set('cache-control', 'no-store');
+  r.headers.set('x-robots-tag', 'noindex');
+  return r;
+}
+
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   let ruta = url.pathname;
@@ -597,18 +638,7 @@ export async function onRequest(context) {
     }
   }
   if (conf) {
-    const res = await context.env.ASSETS.fetch(new URL('/index.html', url));
-    const html = new Response(res.body, res);
-    html.headers.set('content-type', 'text/html; charset=utf-8');
-    return new HTMLRewriter()
-      .on('title, meta, link[rel="canonical"]', new Meta(conf, SITIO + (ruta === '/' ? '/' : ruta)))
-      .on('head', new Miga(conf, SITIO + (ruta === '/' ? '/' : ruta)))
-      .on('.menu > li > a[data-ir]', new Menu(conf.pagina))
-      .on('.submenu a[data-ir]', new MenuSub(conf.pagina))
-      .on('body', new Cuerpo(conf.pagina))
-      .on('main[data-pag]', new Podar(conf.pagina))
-      .on(conf.pagina === 'corporativo' ? '.menu [data-wa-corp]' : 'nada-que-no-existe', new Wasap())
-      .transform(html);
+    return pintar(context, url, conf, SITIO + (ruta === '/' ? '/' : ruta), 200);
   }
 
   /* Archivos reales (assets, robots.txt, sitemap.xml, favicon…).
@@ -635,8 +665,5 @@ export async function onRequest(context) {
   }
 
   // Cualquier otra cosa no existe. Antes devolvía la portada con 200.
-  return new Response('Not Found', {
-    status: 404,
-    headers: { 'content-type': 'text/plain; charset=utf-8' },
-  });
+  return pintar(context, url, NO_ENCONTRADO, SITIO + ruta, 404);
 }
