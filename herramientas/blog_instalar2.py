@@ -36,7 +36,19 @@ for a in ARTS2:
 # tarjetas del listado del blog
 i = h.find('data-pag="blog"'); fin = h.find('</main>', i)
 listado = h[i:fin]
-ultima = listado.rfind('</a>') + 4
+# El punto de inserción es el cierre de <div class="rejilla r3">, contando
+# anidamiento. Buscar el último </a> del listado no sirve: el último enlace de
+# la página es el botón de WhatsApp del pie, y las tarjetas caían fuera de la
+# rejilla, a todo el ancho y con la foto enorme.
+_gi = listado.find('<div class="rejilla r3">')
+_prof = 0
+ultima = None
+for _m in re.finditer(r'<div\b|</div>', listado[_gi:]):
+    _prof += 1 if _m.group(0) != '</div>' else -1
+    if _prof == 0:
+        ultima = _gi + _m.start()
+        break
+assert ultima, 'no encontre el cierre de la rejilla del listado'
 tarjetas = ''
 for a in ARTS2:
     if '/blog/%s"' % a['slug'] in listado: continue
