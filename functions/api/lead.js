@@ -49,8 +49,18 @@ export async function onRequestPost(context) {
     return json({ ok: false, motivo: 'correo-invalido' }, 400);
   }
 
+  /* El teléfono llega como lo escriba la persona: con +51, con espacios o con
+     guiones. wa.me solo acepta dígitos, así que se manda también normalizado
+     para que el aviso interno lleve un botón de WhatsApp que funcione. */
+  const waNumero = (() => {
+    let n = limpio.telefono.replace(/\D/g, '').replace(/^0+/, ''); // 00 y 0 de salida
+    if (n.length === 9) n = '51' + n;          // móvil peruano sin prefijo país
+    return n;
+  })();
+
   const cuerpo = {
     ...limpio,
+    telefono_wa: waNumero,
     origen: 'Formulario corporativo · sastreriaandresvargas.pe',
     pagina: request.headers.get('referer') || '',
     recibido: new Date().toISOString(),
