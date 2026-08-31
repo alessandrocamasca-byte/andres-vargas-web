@@ -1168,6 +1168,38 @@ body.tema-corporativo {
   .cat-ficha .acciones { margin-top: 1rem !important; }
 }
 
+/* ---------- Formulario corporativo ---------- */
+/* Reutiliza el patrón del libro de reclamaciones: las reglas .campo del
+   formulario antiguo están pensadas para fondo oscuro y pintarían el texto
+   blanco sobre papel, así que todo se ata al contenedor. */
+.form-corp { text-align: left; }
+.form-corp .dos { display: grid; gap: 1rem; }
+@media (min-width: 620px) { .form-corp .dos { grid-template-columns: 1fr 1fr; } }
+.form-corp .campo { display: block; margin-bottom: 1rem; }
+.form-corp .campo label { display: block; font-family: var(--texto); font-size: 0.78rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--piedra); margin-bottom: 0.35rem; }
+.form-corp .campo label span { color: var(--azul-medio); }
+.form-corp .campo input, .form-corp .campo textarea {
+  width: 100%; font: inherit; font-size: 0.9rem; font-weight: 300; color: var(--tinta);
+  background: var(--blanco); border: 1px solid var(--filete); padding: 0.7rem 0.85rem;
+  border-radius: 0; transition: border-color 0.25s var(--ease);
+}
+.form-corp .campo input:focus, .form-corp .campo textarea:focus { outline: 0; border-color: var(--azul-medio); }
+.form-corp .campo textarea { resize: vertical; line-height: 1.7; }
+.form-corp .campo [aria-invalid="true"] { border-color: #9B3B3B; }
+#c-error { color: #9B3B3B; }
+
+/* La confirmación: tic dibujado con el mismo trazo de 1px que los iconos. */
+.confirma { text-align: left; border: 1px solid var(--filete); background: var(--papel); padding: clamp(1.6rem, 3vw, 2.4rem); }
+.confirma[hidden], .form-corp[hidden] { display: none; }
+.confirma-tic { width: 42px; height: 42px; stroke: var(--azul-medio); stroke-width: 1; fill: none; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 1rem; }
+.confirma h3 { font-family: var(--display); font-weight: 400; font-size: 1.3rem; letter-spacing: 0.04em; color: var(--azul); }
+.confirma .lead { margin-top: 0.7rem; }
+.confirma .cat-datos { margin-top: 1.6rem; }
+.confirma .fila-larga { grid-column: 1 / -1; display: block; }
+.confirma .fila-larga dd { margin-top: 0.35rem; text-align: left; line-height: 1.7; }
+.enlace-plano { background: none; border: 0; padding: 0; font: inherit; color: var(--azul-medio); cursor: pointer; border-bottom: 1px solid var(--azul-claro); }
+.enlace-plano:hover { color: var(--azul); border-color: var(--azul); }
+
 /* ---------- Libro de reclamaciones ---------- */
 .aviso-legal { border: 1px solid var(--filete); border-left: 3px solid var(--azul); padding: 1.1rem 1.25rem; background: var(--papel); margin-bottom: clamp(2rem,4vw,2.8rem); }
 .form-lr fieldset { border: 0; padding: 0; margin: 0 0 clamp(1.8rem,3vw,2.4rem); }
@@ -3085,14 +3117,66 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
         <div style="margin-top:2rem;">
           <div class="acciones">
             <a class="btn btn-azul" href="https://wa.me/51928820334" target="_blank" rel="noopener"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>Consultar por WhatsApp</a>
-            <a class="btn btn-linea" href="mailto:ventas@sastreriaandresvargas.pe?subject=Consulta%20corporativa">Solicitar una propuesta</a>
+            <a class="btn btn-linea" href="#solicitar" data-ir="corporativo" data-scroll="solicitar">Solicitar una propuesta</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="cierre sobre-azul">
+  
+  <!-- Formulario corporativo. Sin servicio de correo contratado no puede
+       enviarse solo, así que compone la solicitud y la abre en WhatsApp o en
+       el correo. La confirmación dice exactamente eso: que la solicitud está
+       lista y falta el último clic. Un cartel de «enviado» sería mentira. -->
+  <section class="seccion fondo-nube" id="solicitar">
+    <div class="caja">
+      <div class="enc centro">
+        <span class="rotulo">Solicitar propuesta</span>
+        <h2 class="t-xl">Cuéntanos de tu equipo</h2>
+        <p class="lead centro medida" style="margin-top:1rem;">Completa los datos y preparamos una propuesta con las prendas, la tela y los plazos que necesitas.</p>
+      </div>
+
+      <form class="form-corp medida centro rev" id="form-corp" novalidate>
+        <div class="dos">
+          <div class="campo"><label for="c-nombre">Nombre completo <span aria-hidden="true">*</span></label>
+            <input id="c-nombre" name="Nombre" required autocomplete="name"></div>
+          <div class="campo"><label for="c-tel">Número de contacto <span aria-hidden="true">*</span></label>
+            <input id="c-tel" name="Teléfono" required type="tel" inputmode="tel" autocomplete="tel"></div>
+        </div>
+        <div class="dos">
+          <div class="campo"><label for="c-mail">Correo <span aria-hidden="true">*</span></label>
+            <input id="c-mail" name="Correo" required type="email" autocomplete="email"></div>
+          <div class="campo"><label for="c-empresa">Empresa <span aria-hidden="true">*</span></label>
+            <input id="c-empresa" name="Empresa" required autocomplete="organization"></div>
+        </div>
+        <div class="campo"><label for="c-puesto">Puesto <span aria-hidden="true">*</span></label>
+          <input id="c-puesto" name="Puesto" required autocomplete="organization-title"></div>
+        <div class="campo"><label for="c-mensaje">Cuéntanos más sobre lo que necesitas</label>
+          <textarea id="c-mensaje" name="Detalle" rows="5" placeholder="Cuántas personas, qué prendas y para cuándo."></textarea></div>
+
+        <p class="mini" id="c-error" role="alert" hidden></p>
+        <div class="acciones" style="margin-top:1.6rem;">
+          <button class="btn btn-azul" type="submit">Enviar solicitud</button>
+        </div>
+        <p class="mini" style="margin-top:1.1rem;">Tus datos no se guardan en este sitio: viajan directamente de ti a la sastrería.</p>
+      </form>
+
+      <div class="confirma medida centro rev" id="c-ok" hidden role="status">
+        <svg class="confirma-tic" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M9.5 16.5l4.5 4.5 8.5-9"/></svg>
+        <h3 id="c-ok-titulo">Solicitud lista</h3>
+        <p class="lead" id="c-ok-texto"></p>
+        <dl class="cat-datos ficha-tela" id="c-resumen"></dl>
+        <div class="acciones" style="margin-top:1.8rem;">
+          <a class="btn btn-azul" id="c-wa" href="#" target="_blank" rel="noopener"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.1-.7.9-.9 1.1-.4.3-.7.1a8 8 0 01-2.4-1.5 9 9 0 01-1.6-2.1c-.2-.3 0-.5.1-.7l.6-.8c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 00-.9.4A3.5 3.5 0 005.9 9c0 1.3.5 2.6 1.1 3.7a12 12 0 004.6 4.4c2.3 1.1 3.2 1 3.8.9a3.2 3.2 0 002.1-1.5 2.6 2.6 0 00.2-1.5c-.1-.2-.2-.4-.4-.5zM12 22a10 10 0 01-5.1-1.4L2 22l1.4-4.8A10 10 0 1112 22z"/></svg>Enviar por WhatsApp</a>
+          <a class="btn btn-linea" id="c-mail-btn" href="#">Enviar por correo</a>
+        </div>
+        <p class="mini" style="margin-top:1.2rem;"><button type="button" class="enlace-plano" id="c-volver">Corregir algún dato</button></p>
+      </div>
+    </div>
+  </section>
+
+<section class="cierre sobre-azul">
     <img class="cierre-img" src="/assets/editorial/ed-abrigos.jpg" alt="" loading="lazy" width="988" height="1204">
     <div class="cierre-velo"></div>
     <div class="caja cierre-inner">
@@ -6752,6 +6836,84 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
     var clases = e.getAttribute('class') || 'icono';
     e.outerHTML = '<svg class="' + clases + '" viewBox="0 0 32 32" aria-hidden="true">' + d + '</svg>';
   });
+
+  /* Formulario corporativo. No hay servicio de correo contratado, así que la
+     solicitud se compone aquí y sale por WhatsApp o por el correo del
+     visitante. La confirmación dice exactamente eso —«lista, falta enviarla»—
+     y no «enviada»: si no se pulsa el último botón, no llega nada, y un cartel
+     de éxito haría creer lo contrario. */
+  (function () {
+    var form = document.getElementById('form-corp');
+    if (!form) return;
+    var ok = document.getElementById('c-ok');
+    var err = document.getElementById('c-error');
+    var WA_CORP = '51928820334';
+
+    function validar() {
+      var faltan = [];
+      form.querySelectorAll('[required]').forEach(function (c) {
+        var v = String(c.value).trim();
+        var malo = !v || (c.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
+        c.setAttribute('aria-invalid', malo ? 'true' : 'false');
+        if (malo) faltan.push(c);
+      });
+      return faltan;
+    }
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var faltan = validar();
+      if (faltan.length) {
+        err.hidden = false;
+        err.textContent = faltan[0].type === 'email' && faltan[0].value.trim()
+          ? 'Revisa el correo: no parece una dirección válida.'
+          : 'Faltan ' + faltan.length + ' campo' + (faltan.length > 1 ? 's' : '') + ' por completar.';
+        faltan[0].focus();
+        return;
+      }
+      err.hidden = true;
+
+      var filas = [];
+      form.querySelectorAll('input[name], textarea[name]').forEach(function (c) {
+        var v = String(c.value).trim();
+        if (v) filas.push([c.name, v]);
+      });
+
+      // El detalle es un párrafo, no un dato corto: a media columna y alineado
+      // a la derecha salía una palabra por línea.
+      document.getElementById('c-resumen').innerHTML = filas.map(function (f) {
+        var largo = f[1].length > 45 ? ' class="fila-larga"' : '';
+        return '<div' + largo + '><dt>' + f[0] + '</dt><dd>' + f[1].replace(/[<>]/g, '') + '</dd></div>';
+      }).join('');
+
+      var nombre = document.getElementById('c-nombre').value.trim().split(' ')[0];
+      document.getElementById('c-ok-titulo').textContent = nombre + ', tu solicitud está lista';
+      document.getElementById('c-ok-texto').textContent =
+        'Revisa que los datos estén bien y pulsa uno de los dos botones para hacérnosla llegar. ' +
+        'Te respondemos con una propuesta.';
+
+      var texto = 'SOLICITUD DE PROPUESTA CORPORATIVA\n\n' +
+        filas.map(function (f) { return f[0] + ': ' + f[1]; }).join('\n');
+
+      document.getElementById('c-wa').href =
+        'https://wa.me/' + WA_CORP + '?text=' + encodeURIComponent(texto);
+      document.getElementById('c-mail-btn').href =
+        'mailto:ventas@sastreriaandresvargas.pe?subject=' +
+        encodeURIComponent('Solicitud corporativa · ' + document.getElementById('c-empresa').value.trim()) +
+        '&body=' + encodeURIComponent(texto);
+
+      form.hidden = true;
+      ok.hidden = false;
+      ok.classList.add('ver');
+      ok.focus && ok.focus();
+    });
+
+    document.getElementById('c-volver').addEventListener('click', function () {
+      ok.hidden = true;
+      form.hidden = false;
+      document.getElementById('c-nombre').focus();
+    });
+  })();
 
   /* ================= FORMULARIO DE CONSULTA =================
      No hay backend, así que el formulario compone el mensaje y lo abre en
