@@ -22,3 +22,6 @@ assets/_hoja/
 # Local: caché de wrangler y config del editor
 .wrangler/
 .claude/
+
+# Secretos locales de wrangler
+.dev.vars

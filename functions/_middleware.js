@@ -570,6 +570,10 @@ export async function onRequest(context) {
   const MOVIDAS = { '/blog/primer-traje-a-medida': '/blog/primer-terno-a-medida' };
   if (MOVIDAS[ruta]) return Response.redirect(SITIO + MOVIDAS[ruta] + url.search, 301);
 
+  // Las funciones de /api/ se atienden solas. Sin esto el middleware llega
+  // hasta el 404 final, porque no llevan extensión ni están en RUTAS.
+  if (ruta.startsWith('/api/')) return context.next();
+
   if (BLOQUEADO.some((re) => re.test(ruta))) {
     return new Response('Not Found', {
       status: 404,

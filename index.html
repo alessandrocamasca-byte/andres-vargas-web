@@ -1187,6 +1187,7 @@ body.tema-corporativo {
 .form-corp .campo textarea { resize: vertical; line-height: 1.7; }
 .form-corp .campo [aria-invalid="true"] { border-color: #9B3B3B; }
 #c-error { color: #9B3B3B; }
+.trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 /* La confirmación: tic dibujado con el mismo trazo de 1px que los iconos. */
 .confirma { text-align: left; border: 1px solid var(--filete); background: var(--papel); padding: clamp(1.6rem, 3vw, 2.4rem); }
@@ -3155,6 +3156,7 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
         <div class="campo"><label for="c-mensaje">Cuéntanos más sobre lo que necesitas</label>
           <textarea id="c-mensaje" name="Detalle" rows="5" placeholder="Cuántas personas, qué prendas y para cuándo."></textarea></div>
 
+        <div class="trampa" aria-hidden="true"><label for="c-web">No llenes este campo</label><input id="c-web" name="web" tabindex="-1" autocomplete="off"></div>
         <p class="mini" id="c-error" role="alert" hidden></p>
         <div class="acciones" style="margin-top:1.6rem;">
           <button class="btn btn-azul" type="submit">Enviar solicitud</button>
@@ -6886,10 +6888,6 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
       }).join('');
 
       var nombre = document.getElementById('c-nombre').value.trim().split(' ')[0];
-      document.getElementById('c-ok-titulo').textContent = nombre + ', tu solicitud está lista';
-      document.getElementById('c-ok-texto').textContent =
-        'Revisa que los datos estén bien y pulsa uno de los dos botones para hacérnosla llegar. ' +
-        'Te respondemos con una propuesta.';
 
       var texto = 'SOLICITUD DE PROPUESTA CORPORATIVA\n\n' +
         filas.map(function (f) { return f[0] + ': ' + f[1]; }).join('\n');
@@ -6901,10 +6899,44 @@ body.tema-corporativo .wa-op[data-via="empresa"] { order: -1; }
         encodeURIComponent('Solicitud corporativa · ' + document.getElementById('c-empresa').value.trim()) +
         '&body=' + encodeURIComponent(texto);
 
-      form.hidden = true;
-      ok.hidden = false;
-      ok.classList.add('ver');
-      ok.focus && ok.focus();
+      function mostrar(enviado) {
+        document.getElementById('c-ok-titulo').textContent = enviado
+          ? nombre + ', recibimos tu solicitud'
+          : nombre + ', tu solicitud está lista';
+        document.getElementById('c-ok-texto').textContent = enviado
+          ? 'Ya está en nuestro sistema y te responderemos con una propuesta. Si prefieres adelantarlo por WhatsApp, aquí lo tienes.'
+          : 'Revisa que los datos estén bien y pulsa uno de los dos botones para hacérnosla llegar. Te respondemos con una propuesta.';
+        form.hidden = true;
+        ok.hidden = false;
+        ok.classList.add('ver');
+        ok.focus && ok.focus();
+      }
+
+      var boton = form.querySelector('button[type="submit"]');
+      boton.disabled = true;
+      var antes = boton.textContent;
+      boton.textContent = 'Enviando…';
+
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          nombre: document.getElementById('c-nombre').value.trim(),
+          telefono: document.getElementById('c-tel').value.trim(),
+          correo: document.getElementById('c-mail').value.trim(),
+          empresa: document.getElementById('c-empresa').value.trim(),
+          puesto: document.getElementById('c-puesto').value.trim(),
+          detalle: document.getElementById('c-mensaje').value.trim(),
+          web: document.getElementById('c-web').value
+        })
+      })
+        .then(function (r) { return r.ok; })
+        .catch(function () { return false; })
+        .then(function (enviado) {
+          boton.disabled = false;
+          boton.textContent = antes;
+          mostrar(enviado);
+        });
     });
 
     document.getElementById('c-volver').addEventListener('click', function () {
