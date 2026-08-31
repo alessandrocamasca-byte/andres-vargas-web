@@ -95,8 +95,8 @@ A8 = {
  ],
  'wa':'Hola%2C%20quiero%20ver%20telas%20italianas%20para%20un%20terno.',
  'rel':[('/catalogo-de-telas','El catálogo'),('/blog/tela-nacional-o-importada','Nacional o importada'),('/telas','Las casas')],
- 'fig':[('/assets/editorial/ed-macro-super100.jpg',1050,1500,'Macro del tejido de una lana Super 100s','El número mide la finura del hilo, no la calidad de la prenda.'),
-        ('/assets/editorial/ed-macro-cuadros.jpg',1050,1500,'Macro de una tela de cuadros para sastrería','Del 100s al 120s, para llevar. Del 130s en adelante, para lucir.')],
+ 'fig':[('/assets/editorial/ed-macro-super100-fondo.jpg',900,1285,'Macro del tejido de una lana Super 100s','El número mide la finura del hilo, no la calidad de la prenda.'),
+        ('/assets/editorial/ed-macro-cuadros-fondo.jpg',900,1285,'Macro de una tela de cuadros para sastrería','Del 100s al 120s, para llevar. Del 130s en adelante, para lucir.')],
 }
 
 # ------------------------------------------------------------------------ 9
@@ -139,8 +139,8 @@ A9 = {
  ],
  'wa':'Hola%2C%20quiero%20consultar%20por%20una%20tela%20del%20cat%C3%A1logo.',
  'rel':[('/catalogo-de-telas','El catálogo'),('/proyectos/barrington','Proyecto Barrington'),('/telas','Las casas')],
- 'fig':[('/assets/editorial/ed-macro-orillo.jpg',1160,1500,'Orillo de una tela del muestrario de Barrington','El orillo lleva tejido el nombre de la casa. Es la forma de comprobar el origen.'),
-        ('/assets/editorial/ed-macro-super100.jpg',1050,1500,'Macro de un tejido Super 100s del muestrario','Nueve tejidos distintos, del casimir de oficina al paño de abrigo.')],
+ 'fig':[('/assets/editorial/ed-macro-orillo-fondo.jpg',900,1163,'Orillo de una tela del muestrario de Barrington','El orillo lleva tejido el nombre de la casa. Es la forma de comprobar el origen.'),
+        ('/assets/editorial/ed-macro-super100-fondo.jpg',900,1285,'Macro de un tejido Super 100s del muestrario','Nueve tejidos distintos, del casimir de oficina al paño de abrigo.')],
 }
 
 # ------------------------------------------------------------------------ 10
@@ -184,7 +184,7 @@ A10 = {
  'wa':'Hola%2C%20quiero%20ir%20un%20domingo.%20%C2%BFMe%20confirman%20la%20hora%3F',
  'rel':[('/tiendas','Las seis tiendas'),('/catalogo-de-telas','El catálogo'),('/blog/como-llegar-a-nuestras-tiendas','Cómo llegar')],
  'fig':[('/assets/editorial/ed-verano-cruzado.jpg',990,1176,'Terno cruzado a medida','Medir, ver telas y probar se hace igual un domingo que un miércoles.'),
-        ('/assets/editorial/ed-macro-orillo.jpg',1160,1500,'Orillo de tela en el mostrador','Llegar con los códigos apuntados convierte una hora de mostrador en diez minutos.')],
+        ('/assets/editorial/ed-macro-orillo-fondo.jpg',900,1163,'Orillo de tela en el mostrador','Llegar con los códigos apuntados convierte una hora de mostrador en diez minutos.')],
 }
 
 # ------------------------------------------------------------------------ 11
@@ -272,7 +272,7 @@ A12 = {
  'wa':'Hola%2C%20quiero%20saber%20si%20me%20conviene%20un%20terno%20a%20medida.',
  'rel':[('/a-medida','Cómo trabajamos'),('/ternos-a-medida','Ternos a medida'),('/blog/primer-terno-a-medida','Tu primer terno')],
  'fig':[('/assets/editorial/ed-saco-pieddepoule.jpg',988,966,'Detalle de hombro de un saco a medida','El hombro es lo único que no se arregla después. Por eso es lo primero que miramos.'),
-        ('/assets/editorial/ed-macro-cuadros.jpg',1050,1500,'Macro de tela de cuadros para sastrería','A medida no eliges entre la temporada: eliges entre el muestrario completo.')],
+        ('/assets/editorial/ed-macro-cuadros-fondo.jpg',900,1285,'Macro de tela de cuadros para sastrería','A medida no eliges entre la temporada: eliges entre el muestrario completo.')],
 }
 
 ARTS2 = [A7, A8, A9, A10, A11, A12]
