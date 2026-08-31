@@ -172,7 +172,7 @@ const RUTAS = {
     pagina: 'art-domingo',
     articulo: true,
     titulo: 'Sastrería Abierta Domingo en Lima | Andrés Vargas Sastrería',
-    desc: 'Abrimos los domingos de 10 a 16 en Jr. Huallaga 558, Cercado de Lima. Qué se puede resolver un domingo y qué conviene dejar para día de semana.',
+    desc: 'Abrimos dos tiendas los domingos de 10 a 16: Jr. Huallaga 558 en Cercado de Lima y Chacarilla en Surco. Qué se resuelve un domingo y qué no.',
     imagen: 'editorial/ed-oficina-azul.jpg',
     miga: '¿Hay alguna sastrería abierta el domingo en Lima?',
     padre: { nombre: 'Blog', ruta: '/blog' },

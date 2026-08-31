@@ -148,14 +148,14 @@ A10 = {
  'slug':'sastreria-abierta-domingo-lima', 'pag':'art-domingo', 'cat':'Tiendas',
  'h1':'¿Hay alguna sastrería abierta el domingo en Lima?',
  'titulo':'Sastrería Abierta Domingo en Lima | Andrés Vargas Sastrería',
- 'desc':'Abrimos los domingos de 10 a 16 en Jr. Huallaga 558, Cercado de Lima. Qué se puede resolver un domingo y qué conviene dejar para día de semana.',
+ 'desc':'Abrimos dos tiendas los domingos de 10 a 16: Jr. Huallaga 558 en Cercado de Lima y Chacarilla en Surco. Qué se resuelve un domingo y qué no.',
  'img':'/assets/editorial/ed-oficina-azul.jpg', 'w':848, 'h':1106,
  'alt':'Terno azul a medida en el atelier de Andrés Vargas',
- 'lead':'Casi todo el rubro cierra domingo, y es justo el día que mucha gente tiene libre. Nosotros abrimos una de las seis tiendas: Jr. Huallaga 558, en Cercado de Lima, de 10 de la mañana a 4 de la tarde.',
+ 'lead':'Casi todo el rubro cierra domingo, y es justo el día que mucha gente tiene libre. Nosotros abrimos dos de las seis: Jr. Huallaga 558, en Cercado de Lima, y la de Av. Primavera 252, en Chacarilla. Las dos de 10 de la mañana a 4 de la tarde.',
  'cuerpo':'''
-<h2 class="t-xl">¿Qué tienda abre el domingo?</h2>
-<p class="lead">Solo una, y conviene decirlo claro para que nadie se dé un viaje en balde: <b>Jr. Huallaga 558, Cercado de Lima, domingos de 10:00 a 16:00</b>. Las otras cinco —Huallaga 570, las tres de Jr. Ucayali y la de Av. Primavera 252 en Chacarilla— no abren domingo.</p>
-<p class="lead">Los horarios completos de las seis, día por día, están en <a href="/tiendas" data-ir="tiendas">la página de tiendas</a>. Si vas un domingo, apunta esa dirección y no otra.</p>
+<h2 class="t-xl">¿Qué tiendas abren el domingo?</h2>
+<p class="lead">Dos, una en cada zona de la ciudad, y conviene decirlo claro para que nadie se dé un viaje en balde: <b>Jr. Huallaga 558, en Cercado de Lima</b>, y <b>Av. Primavera 252, Chacarilla, en Surco</b>. Las dos de 10:00 a 16:00. Las otras cuatro —Huallaga 570 y las tres de Jr. Ucayali— no abren domingo.</p>
+<p class="lead">Los horarios completos de las seis, día por día, están en <a href="/tiendas" data-ir="tiendas">la página de tiendas</a>. Si vas un domingo, elige entre esas dos: si te queda mejor el centro, Huallaga; si vives por el sur, Chacarilla.</p>
 %(FIG1)s
 
 <h2 class="t-xl">¿Qué se puede resolver un domingo?</h2>
@@ -168,15 +168,15 @@ A10 = {
 %(FIG2)s
 
 <h2 class="t-xl">¿Hace falta cita?</h2>
-<p class="lead">No hace falta, puedes llegar y te atendemos. Pero el domingo es el día con más movimiento en Huallaga y una hora acordada es la diferencia entre entrar y esperar. Si vienes con algo concreto en la cabeza, avísanos.</p>
+<p class="lead">No hace falta, puedes llegar y te atendemos. Pero el domingo es el día con más movimiento en las dos y una hora acordada es la diferencia entre entrar y esperar. Si vienes con algo concreto en la cabeza, avísanos.</p>
 <p class="lead">Y si vienes a ver telas, adelanta trabajo desde casa: el <a href="/catalogo-de-telas" data-ir="catalogo">catálogo completo</a> está publicado, y llegar con tres o cuatro códigos apuntados convierte una hora de mostrador en diez minutos.</p>
 
-<h2 class="t-xl">¿Por qué solo una tienda?</h2>
-<p class="lead">Porque preferimos abrir una bien que seis a medias. El domingo el equipo es más corto y concentrarlo en un punto significa que quien llega encuentra a alguien que puede medir, aconsejar y cerrar un encargo, no solo abrir la puerta.</p>
-<p class="lead">Huallaga 558 es la elegida por sitio y por espacio. Si vives por el sur y te queda lejos, la de <a href="/tiendas" data-ir="tiendas">Chacarilla</a> abre de lunes a sábado hasta las 8 de la noche, que para muchos funciona mejor que un domingo.</p>
+<h2 class="t-xl">¿Por qué solo dos?</h2>
+<p class="lead">Porque preferimos abrir dos bien que seis a medias. El domingo el equipo es más corto, y concentrarlo significa que quien llega encuentra a alguien que puede medir, aconsejar y cerrar un encargo, no solo abrir la puerta.</p>
+<p class="lead">Son esas dos por sitio: una en el centro y una en el sur, para que nadie tenga que cruzar Lima un domingo. Si ninguna te acomoda, las de Huallaga y Chacarilla abren de lunes a sábado hasta las 8 de la noche, que para muchos funciona mejor.</p>
 ''',
  'faq':[
-  ('¿Qué sastrería abre domingo en Lima?','La nuestra de Jr. Huallaga 558, Cercado de Lima, domingos de 10:00 a 16:00. Las otras cinco tiendas no abren ese día.'),
+  ('¿Qué sastrerías abren domingo en Lima?','Dos de las nuestras: Jr. Huallaga 558, en Cercado de Lima, y Av. Primavera 252, Chacarilla, en Surco. Las dos de 10:00 a 16:00. Las otras cuatro no abren ese día.'),
   ('¿Puedo tomarme medidas un domingo?','Sí. Medidas, elección de tela y pruebas se hacen igual que cualquier otro día. Lo que depende del taller conviene dejarlo para lunes a sábado.'),
   ('¿Necesito cita para ir un domingo?','No es obligatoria, pero es el día de más movimiento. Escríbenos por WhatsApp y acordamos una hora.'),
   ('¿Hasta qué hora abren los demás días?','De lunes a sábado hasta las 20:00 en Huallaga y en Chacarilla. Las tiendas de Jr. Ucayali cierran al mediodía entre 13:00 y 14:00.'),
@@ -203,12 +203,12 @@ A11 = {
 %(FIG1)s
 
 <h2 class="t-xl">Surco: Av. Primavera 252, Chacarilla</h2>
-<p class="lead">La sexta está en <b>Av. Primavera 252, Chacarilla</b>, y es la que resuelve el lado sur de la ciudad. Abre de lunes a sábado de 10:00 a 20:00. Para quien vive o trabaja en Surco, San Borja, Miraflores o La Molina, es la que ahorra el viaje al centro.</p>
+<p class="lead">La sexta está en <b>Av. Primavera 252, Chacarilla</b>, y es la que resuelve el lado sur de la ciudad. Abre de lunes a sábado de 10:00 a 20:00, y también <a href="/blog/sastreria-abierta-domingo-lima" data-ir="art-domingo">los domingos de 10:00 a 16:00</a>. Para quien vive o trabaja en Surco, San Borja, Miraflores o La Molina, es la que ahorra el viaje al centro.</p>
 <p class="lead">Es también la que solemos recomendar para la <a href="/trajes-de-novio" data-ir="novios">experiencia de novios</a>, donde suelen venir varias personas a la vez y el espacio y el estacionamiento importan.</p>
 
 <h2 class="t-xl">¿Cuál me conviene?</h2>
 <p class="lead">Si vienes en transporte público desde el norte, el este o el propio centro, cualquiera de Cercado. Si vienes en carro desde el sur, Chacarilla sin dudar: estacionar en Cercado un día de semana consume más tiempo que la visita.</p>
-<p class="lead">Si tu única ventana es el domingo, la respuesta es una sola: Huallaga 558. Y si tienes que venir en hora de almuerzo, Huallaga o Chacarilla, porque Ucayali cierra.</p>
+<p class="lead">Si tu única ventana es el domingo, tienes dos: Huallaga 558 en el centro y Chacarilla en el sur, las dos de 10:00 a 16:00. Y si tienes que venir en hora de almuerzo, Huallaga o Chacarilla, porque Ucayali cierra.</p>
 %(FIG2)s
 
 <h2 class="t-xl">¿Qué conviene llevar la primera vez?</h2>
@@ -221,7 +221,7 @@ A11 = {
 ''',
  'faq':[
   ('¿Dónde están las tiendas de Andrés Vargas?','Cinco en Cercado de Lima: Jr. Ucayali 115, 119 y 121, y Jr. Huallaga 558 y 570. La sexta en Av. Primavera 252, Chacarilla, Santiago de Surco.'),
-  ('¿Cuál abre domingo?','Solo Jr. Huallaga 558, de 10:00 a 16:00.'),
+  ('¿Cuáles abren domingo?','Jr. Huallaga 558 y la de Chacarilla, las dos de 10:00 a 16:00.'),
   ('¿Las tiendas de Ucayali cierran al mediodía?','Sí, de 13:00 a 14:00, y abren de lunes a viernes. Huallaga y Chacarilla abren corrido de 10:00 a 20:00 de lunes a sábado.'),
   ('¿Qué tienda me conviene si vengo en carro desde el sur?','La de Av. Primavera 252, Chacarilla. Estacionar en Cercado en día de semana suele tomar más tiempo que la visita.'),
  ],

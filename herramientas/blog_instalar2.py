@@ -15,7 +15,7 @@ TEASER = {
  'camisa-a-medida-lima': 'El cuello y el puño se deciden antes, y no se corrigen después.',
  'telas-italianas-en-lima': 'Cuándo una tela italiana es la decisión correcta y cuándo no.',
  'telas-barrington-muestrario-completo': 'Las 483 telas publicadas, con código y composición.',
- 'sastreria-abierta-domingo-lima': 'Huallaga 558, domingos de 10 a 16. Solo esa tienda.',
+ 'sastreria-abierta-domingo-lima': 'Huallaga 558 y Chacarilla, domingos de 10 a 16.',
  'como-llegar-a-nuestras-tiendas': 'Seis tiendas, dos zonas y horarios que no son iguales.',
  'terno-a-medida-o-de-tienda': 'La diferencia está en el hombro, no en el forro.',
 }
