@@ -874,3 +874,49 @@ declarada de 760 a 840).
 
 Como siempre: `pauta/` está gitignored, el reporte se entrega por archivo, no se
 publica.
+
+### Informe web y plan de septiembre (misma sesión, 2 sep 2026)
+
+**Nuevo: `pauta/informes/2026-09/`**, informe multipágina (6 HTML enlazados con
+barra de navegación, cada uno autocontenido): `index` (resumen),
+`posicionamiento` (buscadores e IA), `benchmark`, `oportunidades`,
+`pauta-septiembre` y `organico-septiembre`. Design system del cliente. Se abre
+por `index.html` DESDE LA CARPETA (los enlaces entre páginas son relativos).
+
+**Diagnóstico web del 2 sep (contra sastreriaandresvargas.pe en producción):**
+
+- El sitio en producción está más avanzado que lo que decían estas notas:
+  título «Trajes y Camisas a Medida en Lima», JSON-LD estático con Organization
+  + WebSite + 6 ClothingStore + FAQPage (7 preguntas), rutas limpias con título
+  propio (ternos, camisas, novios, telas, corporativo, tiendas, esmoquin,
+  chaqué, blazer, saco sport, abrigo), sitemap completo, blog con 6 artículos
+  REALES publicados, 200 KB / 0,4 s. **Son 6 tiendas, no 3** (actualizar el
+  CLAUDE.md del proyecto). Correo del schema: ventas@sastreriaandresvargas.pe.
+- **HALLAZGO CENTRAL: andresvargas.pe (dominio viejo) está caído con 403 y
+  sigue indexado en Google.** Se queda con la búsqueda de marca y muestra un
+  enlace muerto. Oportunidad nº 1 del informe: reactivarlo solo para 301.
+- **Dos cuentas de Instagram** aparecen en búsquedas: @andres_vargas_sastreria
+  y @sastreria_andresvargas. Confirmar con el cliente cuál es la oficial.
+- llms.txt da 404 (oportunidad barata).
+- Benchmark leído en vivo (Lavalliere, Vercchelli, Baronet, Mebiniti,
+  TernosPeru, Firenze): NINGUNO tiene FAQPage, solo 2 tienen LocalBusiness,
+  solo Firenze y TernosPeru tienen blog. La ventaja de ellos es antigüedad,
+  enlaces y reseñas, no técnica. Búsquedas hechas desde fuera del Perú,
+  declaradas como orientativas en el documento.
+- Menciones sin enlace al dominio nuevo: Revista Cocktail (cocktail.pe) y
+  Barrington (blog «Maestros a la medida» + video en Facebook). Pedir el enlace.
+
+**Pauta septiembre propuesta (S/ 1 962, 30 días):** camisas Huallaga 12/día
+(360), camisas Chacarilla 10/día (300), trajes Huallaga 12/día (360), trajes
+Chacarilla 10/día (300), Novios APAGADO, IG 15/día (450), domingos 12/día x 16
+días (192; septiembre tiene 4 jue, 4 vie, 4 sáb y 4 dom, calza exacto).
+Proyección declarada con costos reales de agosto: 570 a 630 conversaciones,
+costo objetivo S/ 2,30, techos de alarma = costo de agosto de cada conjunto
++10%. Hitos: 140/280/420/560/600. IGV: 1 962 + 353,16 = S/ 2 315,16.
+Decisiones abiertas: IG visitas vs seguidores, y si se reactiva «cómo llegar».
+
+**Orgánico septiembre (lista entregada por Alessandro):** tanda anterior con 4
+publicadas, 4 en corrección y 6 por producir; tanda nueva de 12 piezas en 4
+pilares (Bodas, Marca, Camisas, Traje), 2 videos + 1 estático por pilar. El
+informe cruza guiones con blog (cuellos, forros Brunello, primer traje,
+algodón egipcio) y sugiere ritmo: cerrar correcciones primero, 3 posts/semana.
