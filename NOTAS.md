@@ -920,3 +920,21 @@ publicadas, 4 en corrección y 6 por producir; tanda nueva de 12 piezas en 4
 pilares (Bodas, Marca, Camisas, Traje), 2 videos + 1 estático por pilar. El
 informe cruza guiones con blog (cuellos, forros Brunello, primer traje,
 algodón egipcio) y sugiere ritmo: cerrar correcciones primero, 3 posts/semana.
+
+### Publicado en Cloudflare Pages (2 sep 2026)
+
+Proyecto nuevo **`andresvargas-informes`** en la cuenta de la agencia
+(alessandrocamasca@eqapla.com). URL: **https://andresvargas-informes.pages.dev**
+
+Contenido: las 6 páginas del informe de septiembre MÁS el reporte de agosto
+como `reporte-agosto.html` (séptima entrada de la navegación; en el deploy la
+tarjeta estática «lo que se hizo bien» del index se cambió por el enlace al
+reporte). Deploy con `wrangler pages deploy` desde carpeta limpia FUERA de la
+raíz del repo (la trampa del middleware, ya documentada). Noindex por tres
+vías: meta en cada HTML, robots.txt con Disallow total y X-Robots-Tag desde
+`_headers`. Cloudflare sirve rutas limpias: los `.html` responden 308 hacia
+`/posicionamiento`, `/reporte-agosto`, etc.; todo verificado en 200.
+
+**La URL es pública aunque no indexable: quien la tenga, lee presupuestos y
+resultados del cliente.** Compartirla solo con Andrés Vargas. Si tiene que
+quedar cerrada de verdad, Cloudflare Access desde el panel.
