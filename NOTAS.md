@@ -808,3 +808,69 @@ no se exigen al cierre del mes sino **en la primera semana de septiembre**. Si a
 terminar esa semana falta alguno de los tres, corre el descuento de S/ 200. El
 ejemplo del bloque 02 se ajusto a esa redaccion. Queda sin fijar el dia exacto de
 corte: el documento dice la semana, no una fecha.
+
+## Sesión 2 sep 2026 · Reporte de resultados de agosto
+
+### Primer reporte mensual: `pauta/reportes/2026-08-reporte.html`
+
+Primer documento de la carpeta `reportes/` (lo que pasó). HTML autocontenido con
+el design system del cliente, formato dashboard ejecutivo: portada con titulares,
+6 KPI con comparativa contra julio, tablas por campaña y por conjunto, barras CSS
+julio contra agosto, progreso contra el objetivo del plan, propuesta de
+septiembre y factura con IGV. Solo los tres azules (los deltas van con ▲▼ y
+peso tipográfico, sin verde ni rojo). Favicon: escudo blanco.
+
+**Lectura de datos:** la API de Meta SIGUE rechazando la cuenta
+(`is_ads_mcp_enabled: false`, "gradually rolled out"; se intentó la llamada de
+verdad y devolvió el error, no fue frenarse en el flag). Se leyó por navegador
+con la sesión del usuario. Trucos que sirvieron esta vez: el parámetro `date` de
+la URL trata el fin como EXCLUSIVO (para 1 al 31 de agosto hay que pedir
+`date=2026-08-01_2026-09-01`), y las columnas fuera de pantalla se leen con
+`get_page_text`, que trae las celdas renderizadas aunque estén recortadas. Lo
+que no se pudo: clics, CTR, CPM e impresiones (la virtualización de columnas de
+la tabla no las renderiza ni con scrollLeft por JS ni con zoom CSS). El reporte
+salió sin columnas de clics; no se inventó nada.
+
+**AGOSTO 2026 · 1 al 31 · leído el 2-sep-2026, nivel campaña:**
+
+| Campaña | Invertido | Alcance | Frec. | Resultados | Costo |
+|---|---|---|---|---|---|
+| 2. CAMISAS A MEDIDA | S/ 612,15 | 20 706 | 1,97 | **337** conversaciones | **S/ 1,82** |
+| 3. TRAJES A MEDIDA | S/ 672,85 | 25 912 | 2,25 | **243** conversaciones | **S/ 2,77** |
+| 1. TRAFICO A IG | S/ 966,39 | 99 165 | 1,70 | 6 957 visitas al perfil | S/ 0,14 |
+| **Total (21 campañas)** | **S/ 2 251,39** | 130 800 único | 2,04 | 580 conversaciones | |
+
+**Nivel conjunto:** camisas Huallaga 197 a S/ 1,56 · camisas Chacarilla 140 a
+S/ 2,18 · trajes Huallaga 142 a S/ 2,16 · trajes Chacarilla 58 a S/ 3,15 ·
+trajes Novios 43 a S/ 4,27. Todo cuadra contra los totales de campaña.
+
+**Hallazgos del mes:**
+
+1. **Agosto corrió con la estructura de julio, no con el plan de 8 campañas.**
+   3 campañas activas; se ejecutó S/ 2 251,39 de los S/ 2 983,35 planificados
+   (75%). En leads: S/ 1 285 de S/ 1 860 (69%). Seguidores, cómo llegar y
+   domingos no corrieron; la campaña de IG siguió midiendo visitas al perfil.
+2. **Más leads con menos plata:** 580 conversaciones (+10,1% vs 527) con S/ 49
+   menos en leads. Costo por conversación S/ 2,22 (julio S/ 2,53), MEJOR que el
+   costo objetivo del plan (S/ 2,30). Contra el objetivo de 810: 72%, pero con
+   69% de la inversión prevista; la eficiencia cumplió, la inversión no se
+   desplegó.
+3. **Huallaga ganó en los dos productos** (julio había dicho que cada zona
+   vendía un producto distinto; agosto lo corrige). Trajes Huallaga fue la
+   mejora del mes: S/ 3,36 a S/ 2,16 (36% menos).
+4. **Novios volvió a correr pese a que el plan decía no repetirlo** y sigue
+   siendo el conjunto más caro (S/ 4,27). Propuesta para septiembre: apagarlo y
+   mover sus S/ 6 diarios a trajes Huallaga.
+5. En el Administrador hay **3 borradores sin publicar** ("Revisar y publicar
+   (3)", los conjuntos de giftcard dicen "Cambios sin publicar"). No se tocaron.
+
+**Propuesta de septiembre (bloque 05 del reporte, pendiente de decisión del
+cliente):** apagar Novios, no tocar camisas Huallaga, decidir en la primera
+semana si se despliega el resto del plan, y meta de superar 580 manteniendo el
+costo bajo S/ 2,30 (con la inversión completa de leads del plan, proyección
+declarada de 760 a 840).
+
+**Factura:** S/ 2 251,39 + IGV 18% (S/ 405,25) = S/ 2 656,64 facturado por Meta.
+
+Como siempre: `pauta/` está gitignored, el reporte se entrega por archivo, no se
+publica.
